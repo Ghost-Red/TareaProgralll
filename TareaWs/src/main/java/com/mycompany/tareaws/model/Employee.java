@@ -38,7 +38,11 @@ import jakarta.persistence.Table;
     @NamedQuery(name = "Employee.findByEmpAdminState", query = "SELECT e FROM Employee e WHERE e.empAdminState = :empAdminState"),
     @NamedQuery(name = "Employee.findByEmpActivatedState", query = "SELECT e FROM Employee e WHERE e.empActivatedState = :empActivatedState"),
     @NamedQuery(name = "Employee.findByEmpForgotPasswordState", query = "SELECT e FROM Employee e WHERE e.empForgotPasswordState = :empForgotPasswordState"),
-    @NamedQuery(name = "Employee.findByEmpVersion", query = "SELECT e FROM Employee e WHERE e.empVersion = :empVersion")})
+    @NamedQuery(name = "Employee.findByEmpVersion", query = "SELECT e FROM Employee e WHERE e.empVersion = :empVersion"),
+    
+    @NamedQuery(name = "Empleado.findByCedulaNameFirstLastName", query = "SELECT e FROM Empleado e WHERE UPPER(e.empName) like :empName and UPPER(e.empCedula) like :empCedula and UPPER(e.empPapellido) like :empFirstLastName"),
+    @NamedQuery(name = "Employee.findByEmpEmailPassword", query = "SELECT e FROM Employee e WHERE e.empEmail = :empEmail adn e.empPassword = :empPassword")})
+
 public class Employee implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -117,6 +121,28 @@ public class Employee implements Serializable {
         this.empVersion = empVersion;
     }
 
+    public Employee(EmployeeDto employee) {
+        this.empId = employee.getEmpId();
+        updateEmployee(employee);
+    }
+   
+        public void updateEmployee(EmployeeDto employee){
+        this.empId = employee.getEmpId();
+        this.empCedula = employee.getEmpCedula();
+        this.empName = employee.getEmpName();
+        this.empFirstLastname = employee.getEmpFirstLastname();
+        this.empSecondLastname = employee.getEmpSecondLastname();
+        this.empEmail = employee.getEmpEmail();
+        this.empPassword = employee.getEmpPassword();
+        this.empPhoneNumber = employee.getEmpPhoneNumber();
+        this.empCellphoneNumber = employee.getEmpCellphoneNumber();
+        this.empAdminState = employee.getEmpAdminState();
+        this.empActivatedState = employee.getEmpActivatedState();
+        this.empForgotPasswordState = employee.getEmpForgotPasswordState();
+        this.empComId = employee.getEmpComId();
+        this.empJobId = employee.getEmpJobId();
+    }
+        
     public Long getEmpId() {
         return empId;
     }
