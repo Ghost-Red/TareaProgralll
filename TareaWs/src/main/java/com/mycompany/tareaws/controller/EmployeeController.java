@@ -18,15 +18,19 @@ import jakarta.ws.rs.core.Response;
  */
 @WebService(serviceName = "EmployeeController")
 public class EmployeeController {
-
+    
+    @WebMethod(operationName = "getMensaje")
+    public String getMensaje(@WebParam(name = "code") String code){
+        String a = "Este webservice funciona" + code;
+        return a;
+    }
     @EJB
     EmployeeService employeeService;
-    /**
-     * This is a sample web service operation
-     */
+    
     @WebMethod(operationName = "getEmpleado")
     public Response getEmpleado(@WebParam(name = "empId") Long empId) {
         Respuesta res = employeeService.getEmployee(empId);
         return Response.ok(res.getResultado("Employee")).build();
     }
+    
 }

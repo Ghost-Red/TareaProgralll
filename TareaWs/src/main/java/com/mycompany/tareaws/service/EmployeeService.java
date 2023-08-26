@@ -53,11 +53,11 @@ public class EmployeeService {
         }
     }
 
-    public Respuesta getEmployee(Long id) {
+    public Respuesta getEmployee(Long empId) {
         try {
-            Query qryEmployee = em.createNamedQuery("Empleado.findByEmpId", Employee.class);
-            qryEmployee.setParameter("empId", id);
-
+            Query qryEmployee = em.createNamedQuery("Employee.findByEmpId", Employee.class);
+            qryEmployee.setParameter("empId", empId);
+            EmployeeDto abc = new EmployeeDto((Employee) qryEmployee.getSingleResult());
             return new Respuesta(true, CodigoRespuesta.CORRECTO, "", "", "Empleado", new EmployeeDto((Employee) qryEmployee.getSingleResult()));
 
         } catch (NoResultException ex) {
@@ -73,7 +73,7 @@ public class EmployeeService {
 
     public Respuesta getEmployees(String cedula, String name, String firstLastName) {
         try {
-            Query qryEmployee = em.createNamedQuery("Empleado.findByCedulaNameFirstLastName", Employee.class);
+            Query qryEmployee = em.createNamedQuery("Employee.findByCedulaNameFirstLastName", Employee.class);
             qryEmployee.setParameter("empCedula", cedula);
             qryEmployee.setParameter("empName", name);
             qryEmployee.setParameter("empFirstLastName", firstLastName);
