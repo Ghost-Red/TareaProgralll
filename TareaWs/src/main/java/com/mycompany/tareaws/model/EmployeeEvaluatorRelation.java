@@ -17,6 +17,7 @@ import jakarta.persistence.NamedQueries;
 import jakarta.persistence.NamedQuery;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.persistence.Version;
 
 /**
  *
@@ -42,7 +43,7 @@ public class EmployeeEvaluatorRelation implements Serializable {
     private String eeRelationType;
     @Column(name = "EE_FEEDBACK")
     private String eeFeedback;
-    @Basic(optional = false)
+    @Version
     @Column(name = "EE_VERSION")
     private Long eeVersion;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "eesEeId")

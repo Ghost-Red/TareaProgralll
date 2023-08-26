@@ -19,6 +19,7 @@ import jakarta.persistence.NamedQueries;
 import jakarta.persistence.NamedQuery;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.persistence.Version;
 
 /**
  *
@@ -46,7 +47,7 @@ public class Job implements Serializable {
     @Basic(optional = false)
     @Column(name = "JOB_STATE")
     private String jobState;
-    @Basic(optional = false)
+    @Version
     @Column(name = "JOB_VERSION")
     private Long jobVersion;
     @JoinTable(name = "JOB_SKILL_RELATION", joinColumns = {

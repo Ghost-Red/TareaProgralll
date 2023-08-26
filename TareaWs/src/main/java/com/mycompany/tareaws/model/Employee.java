@@ -17,6 +17,7 @@ import jakarta.persistence.NamedQueries;
 import jakarta.persistence.NamedQuery;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.persistence.Version;
 
 /**
  *
@@ -82,7 +83,7 @@ public class Employee implements Serializable {
     @Basic(optional = false)
     @Column(name = "EMP_FORGOT_PASSWORD_STATE")
     private String empForgotPasswordState;
-    @Basic(optional = false)
+    @Version
     @Column(name = "EMP_VERSION")
     private Long empVersion;
     @JoinColumn(name = "EMP_COM_ID", referencedColumnName = "COM_ID")

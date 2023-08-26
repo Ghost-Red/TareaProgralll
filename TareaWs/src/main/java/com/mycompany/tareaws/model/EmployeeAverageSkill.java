@@ -14,6 +14,7 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.NamedQueries;
 import jakarta.persistence.NamedQuery;
 import jakarta.persistence.Table;
+import jakarta.persistence.Version;
 
 /**
  *
@@ -36,7 +37,7 @@ public class EmployeeAverageSkill implements Serializable {
     private Long easId;
     @Column(name = "EAS_EMPLOYEE_SKILL_LVL")
     private Long easEmployeeSkillLvl;
-    @Basic(optional = false)
+    @Version
     @Column(name = "EAS_VERSION")
     private Long easVersion;
     @JoinColumn(name = "EAS_EER_ID", referencedColumnName = "EER_ID")

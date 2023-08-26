@@ -17,6 +17,7 @@ import jakarta.persistence.NamedQueries;
 import jakarta.persistence.NamedQuery;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.persistence.Version;
 
 /**
  *
@@ -39,7 +40,7 @@ public class EmployeeEvaluationRelation implements Serializable {
     private Long eerId;
     @Column(name = "EER_EMPLOYEE_CLASIFICATION")
     private Long eerEmployeeClasification;
-    @Basic(optional = false)
+    @Version
     @Column(name = "EER_VERSION")
     private Long eerVersion;
     @JoinColumn(name = "EER_EMP_ID", referencedColumnName = "EMP_ID")

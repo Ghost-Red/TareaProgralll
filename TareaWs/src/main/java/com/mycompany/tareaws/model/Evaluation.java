@@ -20,6 +20,7 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
+import jakarta.persistence.Version;
 
 /**
  *
@@ -55,7 +56,7 @@ public class Evaluation implements Serializable {
     @Basic(optional = false)
     @Column(name = "EVA_STATE")
     private String evaState;
-    @Basic(optional = false)
+    @Version
     @Column(name = "EVA_VERSION")
     private Long evaVersion;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "ejrEvaId")

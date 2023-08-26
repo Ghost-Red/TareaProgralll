@@ -14,6 +14,7 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.NamedQueries;
 import jakarta.persistence.NamedQuery;
 import jakarta.persistence.Table;
+import jakarta.persistence.Version;
 
 /**
  *
@@ -36,7 +37,7 @@ public class EESkillRelation implements Serializable {
     private Long eesId;
     @Column(name = "EES_SKILL_CLASIFICATION")
     private Long eesSkillClasification;
-    @Basic(optional = false)
+    @Version
     @Column(name = "EES_VERSION")
     private Long eesVersion;
     @JoinColumn(name = "EES_EE_ID", referencedColumnName = "EE_ID")

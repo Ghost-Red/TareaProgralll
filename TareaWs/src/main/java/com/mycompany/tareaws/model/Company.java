@@ -16,6 +16,7 @@ import jakarta.persistence.NamedQueries;
 import jakarta.persistence.NamedQuery;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.persistence.Version;
 
 /**
  *
@@ -55,7 +56,7 @@ public class Company implements Serializable {
     @Basic(optional = false)
     @Column(name = "COM_TOKEN_EMAIL")
     private String comTokenEmail;
-    @Basic(optional = false)
+    @Version
     @Column(name = "COM_VERSION")
     private Long comVersion;
     @Basic(optional = false)
