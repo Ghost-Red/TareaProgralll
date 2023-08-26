@@ -120,7 +120,7 @@ public class EESkillRelation implements Serializable {
 
     @Override
     public String toString() {
-        return "model.EESkillRelation[ eesId=" + eesId + " ]";
+        return "com.mycompany.tareaws.model.EESkillRelation[ eesId=" + eesId + " ]";
     }
     
 }

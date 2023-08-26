@@ -165,7 +165,7 @@ public class Skill implements Serializable {
 
     @Override
     public String toString() {
-        return "model.Skill[ skillId=" + skillId + " ]";
+        return "com.mycompany.tareaws.model.Skill[ skillId=" + skillId + " ]";
     }
     
 }

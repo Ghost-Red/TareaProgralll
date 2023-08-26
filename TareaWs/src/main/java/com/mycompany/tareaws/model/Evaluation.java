@@ -58,7 +58,7 @@ public class Evaluation implements Serializable {
     @Basic(optional = false)
     @Column(name = "EVA_VERSION")
     private Long evaVersion;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "evaId")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "ejrEvaId")
     private List<EvaluationJobRelation> evaluationJobRelationList;
     @JoinColumn(name = "EVA_COM_ID", referencedColumnName = "COM_ID")
     @ManyToOne(optional = false)
@@ -164,7 +164,7 @@ public class Evaluation implements Serializable {
 
     @Override
     public String toString() {
-        return "model.Evaluation[ evaId=" + evaId + " ]";
+        return "com.mycompany.tareaws.model.Evaluation[ evaId=" + evaId + " ]";
     }
     
 }

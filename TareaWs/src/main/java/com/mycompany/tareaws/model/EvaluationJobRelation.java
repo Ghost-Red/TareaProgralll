@@ -25,7 +25,8 @@ import jakarta.persistence.Table;
 @Table(name = "EVALUATION_JOB_RELATION")
 @NamedQueries({
     @NamedQuery(name = "EvaluationJobRelation.findAll", query = "SELECT e FROM EvaluationJobRelation e"),
-    @NamedQuery(name = "EvaluationJobRelation.findByEjrId", query = "SELECT e FROM EvaluationJobRelation e WHERE e.ejrId = :ejrId")})
+    @NamedQuery(name = "EvaluationJobRelation.findByEjrId", query = "SELECT e FROM EvaluationJobRelation e WHERE e.ejrId = :ejrId"),
+    @NamedQuery(name = "EvaluationJobRelation.findByEjrVersion", query = "SELECT e FROM EvaluationJobRelation e WHERE e.ejrVersion = :ejrVersion")})
 public class EvaluationJobRelation implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -34,12 +35,15 @@ public class EvaluationJobRelation implements Serializable {
     @Basic(optional = false)
     @Column(name = "EJR_ID")
     private Long ejrId;
-    @JoinColumn(name = "EVA_ID", referencedColumnName = "EVA_ID")
+    @Basic(optional = false)
+    @Column(name = "EJR_VERSION")
+    private Long ejrVersion;
+    @JoinColumn(name = "EJR_EVA_ID", referencedColumnName = "EVA_ID")
     @ManyToOne(optional = false)
-    private Evaluation evaId;
-    @JoinColumn(name = "JOB_ID", referencedColumnName = "JOB_ID")
+    private Evaluation ejrEvaId;
+    @JoinColumn(name = "EJR_JOB_ID", referencedColumnName = "JOB_ID")
     @ManyToOne(optional = false)
-    private Job jobId;
+    private Job ejrJobId;
     @OneToMany(mappedBy = "eerEjrId")
     private List<EmployeeEvaluationRelation> employeeEvaluationRelationList;
 
@@ -50,6 +54,11 @@ public class EvaluationJobRelation implements Serializable {
         this.ejrId = ejrId;
     }
 
+    public EvaluationJobRelation(Long ejrId, Long ejrVersion) {
+        this.ejrId = ejrId;
+        this.ejrVersion = ejrVersion;
+    }
+
     public Long getEjrId() {
         return ejrId;
     }
@@ -58,20 +67,28 @@ public class EvaluationJobRelation implements Serializable {
         this.ejrId = ejrId;
     }
 
-    public Evaluation getEvaId() {
-        return evaId;
+    public Long getEjrVersion() {
+        return ejrVersion;
     }
 
-    public void setEvaId(Evaluation evaId) {
-        this.evaId = evaId;
+    public void setEjrVersion(Long ejrVersion) {
+        this.ejrVersion = ejrVersion;
     }
 
-    public Job getJobId() {
-        return jobId;
+    public Evaluation getEjrEvaId() {
+        return ejrEvaId;
     }
 
-    public void setJobId(Job jobId) {
-        this.jobId = jobId;
+    public void setEjrEvaId(Evaluation ejrEvaId) {
+        this.ejrEvaId = ejrEvaId;
+    }
+
+    public Job getEjrJobId() {
+        return ejrJobId;
+    }
+
+    public void setEjrJobId(Job ejrJobId) {
+        this.ejrJobId = ejrJobId;
     }
 
     public List<EmployeeEvaluationRelation> getEmployeeEvaluationRelationList() {
@@ -104,7 +121,7 @@ public class EvaluationJobRelation implements Serializable {
 
     @Override
     public String toString() {
-        return "model.EvaluationJobRelation[ ejrId=" + ejrId + " ]";
+        return "com.mycompany.tareaws.model.EvaluationJobRelation[ ejrId=" + ejrId + " ]";
     }
     
 }

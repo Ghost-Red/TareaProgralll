@@ -54,7 +54,7 @@ public class Job implements Serializable {
         @JoinColumn(name = "SKILL_ID", referencedColumnName = "SKILL_ID")})
     @ManyToMany
     private List<Skill> skillList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "jobId")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "ejrJobId")
     private List<EvaluationJobRelation> evaluationJobRelationList;
     @OneToMany(mappedBy = "empJobId")
     private List<Employee> employeeList;
@@ -162,7 +162,7 @@ public class Job implements Serializable {
 
     @Override
     public String toString() {
-        return "model.Job[ jobId=" + jobId + " ]";
+        return "com.mycompany.tareaws.model.Job[ jobId=" + jobId + " ]";
     }
     
 }

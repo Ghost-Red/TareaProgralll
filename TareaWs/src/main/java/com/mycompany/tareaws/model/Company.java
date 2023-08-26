@@ -22,16 +22,14 @@ import jakarta.persistence.Table;
  * @author grana
  */
 @Entity
-@Table(name = "Company")
+@Table(name = "COMPANY")
 @NamedQueries({
     @NamedQuery(name = "Company.findAll", query = "SELECT c FROM Company c"),
     @NamedQuery(name = "Company.findByComId", query = "SELECT c FROM Company c WHERE c.comId = :comId"),
     @NamedQuery(name = "Company.findByComName", query = "SELECT c FROM Company c WHERE c.comName = :comName"),
     @NamedQuery(name = "Company.findByComEmail", query = "SELECT c FROM Company c WHERE c.comEmail = :comEmail"),
-    @NamedQuery(name = "Company.findByComEmailTemplatePassword", query = "SELECT c FROM Company c WHERE c.comEmailTemplatePassword = :comEmailTemplatePassword"),
     @NamedQuery(name = "Company.findByComTokenEmail", query = "SELECT c FROM Company c WHERE c.comTokenEmail = :comTokenEmail"),
-    @NamedQuery(name = "Company.findByComVersion", query = "SELECT c FROM Company c WHERE c.comVersion = :comVersion"),
-    @NamedQuery(name = "Company.findByComEmailTemplateActivateUser", query = "SELECT c FROM Company c WHERE c.comEmailTemplateActivateUser = :comEmailTemplateActivateUser")})
+    @NamedQuery(name = "Company.findByComVersion", query = "SELECT c FROM Company c WHERE c.comVersion = :comVersion")})
 public class Company implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -51,8 +49,9 @@ public class Company implements Serializable {
     @Column(name = "COM_LOGO")
     private Serializable comLogo;
     @Basic(optional = false)
+    @Lob
     @Column(name = "COM_EMAIL_TEMPLATE_PASSWORD")
-    private String comEmailTemplatePassword;
+    private Serializable comEmailTemplatePassword;
     @Basic(optional = false)
     @Column(name = "COM_TOKEN_EMAIL")
     private String comTokenEmail;
@@ -60,8 +59,9 @@ public class Company implements Serializable {
     @Column(name = "COM_VERSION")
     private Long comVersion;
     @Basic(optional = false)
+    @Lob
     @Column(name = "COM_EMAIL_TEMPLATE_ACTIVATE_USER")
-    private String comEmailTemplateActivateUser;
+    private Serializable comEmailTemplateActivateUser;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "skillComId")
     private List<Skill> skillList;
     @OneToMany(mappedBy = "empComId")
@@ -78,7 +78,7 @@ public class Company implements Serializable {
         this.comId = comId;
     }
 
-    public Company(Long comId, String comName, String comEmail, Serializable comLogo, String comEmailTemplatePassword, String comTokenEmail, Long comVersion, String comEmailTemplateActivateUser) {
+    public Company(Long comId, String comName, String comEmail, Serializable comLogo, Serializable comEmailTemplatePassword, String comTokenEmail, Long comVersion, Serializable comEmailTemplateActivateUser) {
         this.comId = comId;
         this.comName = comName;
         this.comEmail = comEmail;
@@ -121,11 +121,11 @@ public class Company implements Serializable {
         this.comLogo = comLogo;
     }
 
-    public String getComEmailTemplatePassword() {
+    public Serializable getComEmailTemplatePassword() {
         return comEmailTemplatePassword;
     }
 
-    public void setComEmailTemplatePassword(String comEmailTemplatePassword) {
+    public void setComEmailTemplatePassword(Serializable comEmailTemplatePassword) {
         this.comEmailTemplatePassword = comEmailTemplatePassword;
     }
 
@@ -145,11 +145,11 @@ public class Company implements Serializable {
         this.comVersion = comVersion;
     }
 
-    public String getComEmailTemplateActivateUser() {
+    public Serializable getComEmailTemplateActivateUser() {
         return comEmailTemplateActivateUser;
     }
 
-    public void setComEmailTemplateActivateUser(String comEmailTemplateActivateUser) {
+    public void setComEmailTemplateActivateUser(Serializable comEmailTemplateActivateUser) {
         this.comEmailTemplateActivateUser = comEmailTemplateActivateUser;
     }
 
@@ -207,7 +207,7 @@ public class Company implements Serializable {
 
     @Override
     public String toString() {
-        return "model.Company[ comId=" + comId + " ]";
+        return "com.mycompany.tareaws.model.Company[ comId=" + comId + " ]";
     }
     
 }
