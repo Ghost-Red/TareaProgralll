@@ -41,7 +41,6 @@ import jakarta.persistence.Table;
     @NamedQuery(name = "Employee.findByEmpVersion", query = "SELECT e FROM Employee e WHERE e.empVersion = :empVersion"),
     @NamedQuery(name = "Empleado.findByCedulaNameFirstLastName", query = "SELECT e FROM Employee e WHERE UPPER(e.empName) like :empName and UPPER(e.empCedula) like :empCedula and UPPER(e.empFirstLastname) like :empFirstLastName"),
     @NamedQuery(name = "Employee.findByEmpEmailPassword", query = "SELECT e FROM Employee e WHERE e.empEmail = :empEmail and e.empPassword = :empPassword")})
-
 public class Employee implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -124,8 +123,8 @@ public class Employee implements Serializable {
         this.empId = employee.getEmpId();
         updateEmployee(employee);
     }
-   
-        public void updateEmployee(EmployeeDto employee){
+
+    public void updateEmployee(EmployeeDto employee) {
         this.empId = employee.getEmpId();
         this.empCedula = employee.getEmpCedula();
         this.empName = employee.getEmpName();
@@ -141,7 +140,7 @@ public class Employee implements Serializable {
         this.empComId = employee.getEmpComId();
         this.empJobId = employee.getEmpJobId();
     }
-        
+
     public Long getEmpId() {
         return empId;
     }
@@ -300,7 +299,7 @@ public class Employee implements Serializable {
 
     @Override
     public String toString() {
-        return "model.Employee[ empId=" + empId + " ]";
+        return "com.mycompany.tareaws.model.Employee[ empId=" + empId + " ]";
     }
-    
+
 }

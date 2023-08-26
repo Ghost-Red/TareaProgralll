@@ -143,7 +143,7 @@ public class EmployeeEvaluationRelation implements Serializable {
 
     @Override
     public String toString() {
-        return "model.EmployeeEvaluationRelation[ eerId=" + eerId + " ]";
+        return "com.mycompany.tareaws.model.EmployeeEvaluationRelation[ eerId=" + eerId + " ]";
     }
     
 }
