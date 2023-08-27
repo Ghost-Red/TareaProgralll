@@ -4,7 +4,6 @@
  */
 package com.mycompany.tareaws.model;
 
-import java.util.List;
 
 /**
  *
@@ -17,7 +16,6 @@ public class CompanyDto {
     private Byte[] comLogo;
     private Byte[] comEmailTemplatePassword;
     private String comTokenEmail;
-    private Long comVersion;
     private Byte[] comEmailTemplateActivateUser;
     private boolean modificate;
 
@@ -33,7 +31,6 @@ public class CompanyDto {
         this.comLogo = company.getComLogo();
         this.comEmailTemplatePassword = company.getComEmailTemplatePassword();
         this.comTokenEmail = company.getComTokenEmail();
-        this.comVersion = company.getComVersion();
         this.comEmailTemplateActivateUser = company.getComEmailTemplateActivateUser();
     }
     
@@ -44,7 +41,6 @@ public class CompanyDto {
         this.comLogo = company.getComLogo();
         this.comEmailTemplatePassword = company.getComEmailTemplatePassword();
         this.comTokenEmail = company.getComTokenEmail();
-        this.comVersion = company.getComVersion();
         this.comEmailTemplateActivateUser = company.getComEmailTemplateActivateUser();
     }
     
@@ -96,14 +92,6 @@ public class CompanyDto {
         this.comTokenEmail = comTokenEmail;
     }
 
-    public Long getComVersion() {
-        return comVersion;
-    }
-
-    public void setComVersion(Long comVersion) {
-        this.comVersion = comVersion;
-    }
-
     public Byte[] getComEmailTemplateActivateUser() {
         return comEmailTemplateActivateUser;
     }
@@ -122,7 +110,7 @@ public class CompanyDto {
 
     @Override
     public String toString() {
-        return "CompanyDto{" + "comId=" + comId + ", comName=" + comName + ", comEmail=" + comEmail + ", comLogo=" + comLogo + ", comEmailTemplatePassword=" + comEmailTemplatePassword + ", comTokenEmail=" + comTokenEmail + ", comVersion=" + comVersion + ", comEmailTemplateActivateUser=" + comEmailTemplateActivateUser + ", modificate=" + modificate + '}';
+        return "CompanyDto{" + "comId=" + comId + ", comName=" + comName + ", comEmail=" + comEmail + ", comLogo=" + comLogo + ", comEmailTemplatePassword=" + comEmailTemplatePassword + ", comTokenEmail=" + comTokenEmail + ", comEmailTemplateActivateUser=" + comEmailTemplateActivateUser + ", modificate=" + modificate + '}';
     }
-
+    
 }

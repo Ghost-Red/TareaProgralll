@@ -29,10 +29,11 @@ public class EmployeeController {
     EmployeeService employeeService;
     
     @WebMethod(operationName = "getEmpleado")
-    public Response getEmpleado(@WebParam(name = "empId") Long empId) {
+    public EmployeeDto getEmpleado(@WebParam(name = "empId") Long empId) {
         Respuesta res = employeeService.getEmployee(empId);
-        Response response = Response.ok(res.getResultado("Employee")).build();
-        return response;
+        EmployeeDto abc = (EmployeeDto) res.getResultado("Employee");
+        //Response response = Response.ok(res.getResultado("Employee")).build();
+        return abc;
     }
     
 }

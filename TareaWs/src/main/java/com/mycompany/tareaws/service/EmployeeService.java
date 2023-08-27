@@ -40,7 +40,7 @@ public class EmployeeService {
             qryActivity.setParameter("empEmail", email);
             qryActivity.setParameter("empPassword", password);
 
-            return new Respuesta(true, CodigoRespuesta.CORRECTO, "", "", "Empleado", new EmployeeDto((Employee) qryActivity.getSingleResult()));
+            return new Respuesta(true, CodigoRespuesta.CORRECTO, "", "", "Employee", new EmployeeDto((Employee) qryActivity.getSingleResult()));
 
         } catch (NoResultException ex) {
             return new Respuesta(false, CodigoRespuesta.ERROR_NOENCONTRADO, "No existe un usuario con las credenciales ingresadas.", "validarUsuario NoResultException");

@@ -14,11 +14,7 @@ public class JobDto {
     private Long jobId;
     private String jobName;
     private String jobState;
-    private Long jobVersion;
-    private List<Skill> skillList;
-    private List<EvaluationJobRelation> evaluationJobRelationList;
-    private List<Employee> employeeList;
-    private Company jobComId;
+    private CompanyDto jobComId;
     private boolean modificate;
 
     public JobDto() {
@@ -30,13 +26,14 @@ public class JobDto {
         this.jobId = job.getJobId();
         this.jobName = job.getJobName();
         this.jobState = job.getJobState();
-        this.jobVersion = job.getJobVersion();
+        this.jobComId = new CompanyDto(job.getJobComId());
     }
+    
     public void updateJobDto(Job job){
         this.jobId = job.getJobId();
         this.jobName = job.getJobName();
         this.jobState = job.getJobState();
-        this.jobVersion = job.getJobVersion();
+        this.jobComId.updateCompanyDto(job.getJobComId());
         
     }
 
@@ -64,48 +61,17 @@ public class JobDto {
         this.jobState = jobState;
     }
 
-    public Long getJobVersion() {
-        return jobVersion;
-    }
-
-    public void setJobVersion(Long jobVersion) {
-        this.jobVersion = jobVersion;
-    }
-
-    public List<Skill> getSkillList() {
-        return skillList;
-    }
-
-    public void setSkillList(List<Skill> skillList) {
-        this.skillList = skillList;
-    }
-
-    public List<EvaluationJobRelation> getEvaluationJobRelationList() {
-        return evaluationJobRelationList;
-    }
-
-    public void setEvaluationJobRelationList(List<EvaluationJobRelation> evaluationJobRelationList) {
-        this.evaluationJobRelationList = evaluationJobRelationList;
-    }
-
-    public List<Employee> getEmployeeList() {
-        return employeeList;
-    }
-
-    public void setEmployeeList(List<Employee> employeeList) {
-        this.employeeList = employeeList;
-    }
-
-    public Company getJobComId() {
+    public CompanyDto getJobComId() {
         return jobComId;
     }
 
-    public void setJobComId(Company jobComId) {
+    public void setJobComId(CompanyDto jobComId) {
         this.jobComId = jobComId;
     }
-    
+
     @Override
     public String toString() {
-        return "JobDto{" + "jobId=" + jobId + ", jobName=" + jobName + ", jobState=" + jobState + ", jobVersion=" + jobVersion + ", skillList=" + skillList + ", evaluationJobRelationList=" + evaluationJobRelationList + ", employeeList=" + employeeList + ", jobComId=" + jobComId + ", modificate=" + modificate + '}';
+        return "JobDto{" + "jobId=" + jobId + ", jobName=" + jobName + ", jobState=" + jobState + ", jobComId=" + jobComId + ", modificate=" + modificate + '}';
     }
+    
 }

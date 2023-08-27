@@ -9,7 +9,7 @@ package com.mycompany.tareaws.model;
  * @author grana
  */
 public class EmployeeDto {
-    
+
     private Long empId;
     private String empCedula;
     private String empName;
@@ -22,15 +22,15 @@ public class EmployeeDto {
     private String empAdminState;
     private String empActivatedState;
     private String empForgotPasswordState;
-    private Company empComId;
-    private Job empJobId;
+    private CompanyDto empComId;
+    private JobDto empJobId;
     private boolean modificate;
 
     public EmployeeDto() {
         modificate = false;
     }
-    
-    public EmployeeDto(Employee employee){
+
+    public EmployeeDto(Employee employee) {
         this();
         this.empId = employee.getEmpId();
         this.empCedula = employee.getEmpCedula();
@@ -44,8 +44,8 @@ public class EmployeeDto {
         this.empAdminState = employee.getEmpAdminState();
         this.empActivatedState = employee.getEmpActivatedState();
         this.empForgotPasswordState = employee.getEmpForgotPasswordState();
-        this.empComId = employee.getEmpComId();
-        this.empJobId = employee.getEmpJobId();
+        this.empComId = new CompanyDto(employee.getEmpComId());
+        this.empJobId = new JobDto(employee.getEmpJobId());
     }
 
     public Long getEmpId() {
@@ -144,19 +144,19 @@ public class EmployeeDto {
         this.empForgotPasswordState = empForgotPasswordState;
     }
 
-    public Company getEmpComId() {
+    public CompanyDto getEmpComId() {
         return empComId;
     }
 
-    public void setEmpComId(Company empComId) {
+    public void setEmpComId(CompanyDto empComId) {
         this.empComId = empComId;
     }
 
-    public Job getEmpJobId() {
+    public JobDto getEmpJobId() {
         return empJobId;
     }
 
-    public void setEmpJobId(Job empJobId) {
+    public void setEmpJobId(JobDto empJobId) {
         this.empJobId = empJobId;
     }
 
@@ -172,6 +172,5 @@ public class EmployeeDto {
     public String toString() {
         return "EmployeeDto{" + "empId=" + empId + ", empCedula=" + empCedula + ", empName=" + empName + ", empFirstLastname=" + empFirstLastname + ", empSecondLastname=" + empSecondLastname + ", empEmail=" + empEmail + ", empPassword=" + empPassword + ", empPhoneNumber=" + empPhoneNumber + ", empCellphoneNumber=" + empCellphoneNumber + ", empAdminState=" + empAdminState + ", empActivatedState=" + empActivatedState + ", empForgotPasswordState=" + empForgotPasswordState /*+ ", empComId=" + empComId + ", empJobId=" + empJobId + ", modificate="*/ + modificate + '}';
     }
-    
-    
+
 }

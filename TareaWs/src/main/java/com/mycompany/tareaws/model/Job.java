@@ -84,7 +84,6 @@ public class Job implements Serializable {
         this.jobId = jobDto.getJobId();
         this.jobName = jobDto.getJobName();
         this.jobState = jobDto.getJobState();
-        this.jobVersion = jobDto.getJobVersion();
     }
     
     public Long getJobId() {

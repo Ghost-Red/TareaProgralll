@@ -102,7 +102,6 @@ public class Company implements Serializable{
         this.comLogo = companyDto.getComLogo();
         this.comEmailTemplatePassword = companyDto.getComEmailTemplatePassword();
         this.comTokenEmail = companyDto.getComTokenEmail();
-        this.comVersion = companyDto.getComVersion();
         this.comEmailTemplateActivateUser = companyDto.getComEmailTemplateActivateUser();
     }
     
