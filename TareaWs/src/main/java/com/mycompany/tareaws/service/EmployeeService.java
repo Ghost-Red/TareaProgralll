@@ -52,24 +52,31 @@ public class EmployeeService {
             return new Respuesta(false, CodigoRespuesta.ERROR_INTERNO, "Ocurrio un error al consultar el usuario.", "validarUsuario " + ex.getMessage());
         }
     }
-
+    /*
+    public EmployeeDto getEmployee(Long empId){
+            Query qryEmployee = em.createNamedQuery("Employee.findByEmpId", Employee.class);
+            qryEmployee.setParameter("empId", empId);
+            EmployeeDto abc = new EmployeeDto((Employee) qryEmployee.getSingleResult());
+            return abc;
+    }
+    */
     public Respuesta getEmployee(Long empId) {
         try {
             Query qryEmployee = em.createNamedQuery("Employee.findByEmpId", Employee.class);
             qryEmployee.setParameter("empId", empId);
-            EmployeeDto abc = new EmployeeDto((Employee) qryEmployee.getSingleResult());
-            return new Respuesta(true, CodigoRespuesta.CORRECTO, "", "", "Empleado", new EmployeeDto((Employee) qryEmployee.getSingleResult()));
+            return new Respuesta(true, CodigoRespuesta.CORRECTO, "", "", "Employee", new EmployeeDto((Employee) qryEmployee.getSingleResult()));
 
         } catch (NoResultException ex) {
-            return new Respuesta(false, CodigoRespuesta.ERROR_NOENCONTRADO, "No existe un empleado con el código ingresado.", "getEmpleado NoResultException");
+            return new Respuesta(false, CodigoRespuesta.ERROR_NOENCONTRADO, "No existe un empleado con el código ingresado.", "getEmployee NoResultException");
         } catch (NonUniqueResultException ex) {
             LOG.log(Level.SEVERE, "Ocurrio un error al consultar el empleado.", ex);
-            return new Respuesta(false, CodigoRespuesta.ERROR_INTERNO, "Ocurrio un error al consultar el empleado.", "getEmpleado NonUniqueResultException");
+            return new Respuesta(false, CodigoRespuesta.ERROR_INTERNO, "Ocurrio un error al consultar el empleado.", "getEmployee NonUniqueResultException");
         } catch (Exception ex) {
             LOG.log(Level.SEVERE, "Ocurrio un error al consultar el empleado.", ex);
-            return new Respuesta(false, CodigoRespuesta.ERROR_INTERNO, "Ocurrio un error al consultar el empleado.", "getEmpleado " + ex.getMessage());
+            return new Respuesta(false, CodigoRespuesta.ERROR_INTERNO, "Ocurrio un error al consultar el empleado.", "getEmployee " + ex.getMessage());
         }
     }
+
 
     public Respuesta getEmployees(String cedula, String name, String firstLastName) {
         try {
