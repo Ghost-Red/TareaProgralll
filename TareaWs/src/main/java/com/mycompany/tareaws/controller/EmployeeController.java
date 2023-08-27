@@ -4,6 +4,7 @@
  */
 package com.mycompany.tareaws.controller;
 
+import com.mycompany.tareaws.model.EmployeeDto;
 import com.mycompany.tareaws.service.EmployeeService;
 import com.mycompany.tareaws.util.Respuesta;
 import jakarta.ejb.EJB;
@@ -28,9 +29,11 @@ public class EmployeeController {
     EmployeeService employeeService;
     
     @WebMethod(operationName = "getEmpleado")
-    public Response getEmpleado(@WebParam(name = "empId") Long empId) {
+    public EmployeeDto getEmpleado(@WebParam(name = "empId") Long empId) {
         Respuesta res = employeeService.getEmployee(empId);
-        return Response.ok(res.getResultado("Employee")).build();
+        Response response = Response.ok(res.getResultado("Employee")).build();
+        EmployeeDto abc = (EmployeeDto) response.getEntity();
+        return abc;
     }
     
 }

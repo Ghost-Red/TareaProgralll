@@ -40,7 +40,7 @@ import jakarta.persistence.Version;
     @NamedQuery(name = "Employee.findByEmpActivatedState", query = "SELECT e FROM Employee e WHERE e.empActivatedState = :empActivatedState"),
     @NamedQuery(name = "Employee.findByEmpForgotPasswordState", query = "SELECT e FROM Employee e WHERE e.empForgotPasswordState = :empForgotPasswordState"),
     @NamedQuery(name = "Employee.findByEmpVersion", query = "SELECT e FROM Employee e WHERE e.empVersion = :empVersion"),
-    @NamedQuery(name = "Empleado.findByCedulaNameFirstLastName", query = "SELECT e FROM Employee e WHERE UPPER(e.empName) like :empName and UPPER(e.empCedula) like :empCedula and UPPER(e.empFirstLastname) like :empFirstLastName"),
+    @NamedQuery(name = "Employee.findByCedulaNameFirstLastName", query = "SELECT e FROM Employee e WHERE UPPER(e.empName) like :empName and UPPER(e.empCedula) like :empCedula and UPPER(e.empFirstLastname) like :empFirstLastName"),
     @NamedQuery(name = "Employee.findByEmpEmailPassword", query = "SELECT e FROM Employee e WHERE e.empEmail = :empEmail and e.empPassword = :empPassword")})
 public class Employee implements Serializable {
 
