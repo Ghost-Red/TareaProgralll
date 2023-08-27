@@ -4,7 +4,6 @@
  */
 package com.mycompany.tareaws.model;
 
-import java.io.Serializable;
 import java.util.List;
 import jakarta.persistence.Basic;
 import jakarta.persistence.CascadeType;
@@ -17,6 +16,7 @@ import jakarta.persistence.NamedQuery;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.persistence.Version;
+import java.io.Serializable;
 
 /**
  *
@@ -31,7 +31,7 @@ import jakarta.persistence.Version;
     @NamedQuery(name = "Company.findByComEmail", query = "SELECT c FROM Company c WHERE c.comEmail = :comEmail"),
     @NamedQuery(name = "Company.findByComTokenEmail", query = "SELECT c FROM Company c WHERE c.comTokenEmail = :comTokenEmail"),
     @NamedQuery(name = "Company.findByComVersion", query = "SELECT c FROM Company c WHERE c.comVersion = :comVersion")})
-public class Company implements Serializable {
+public class Company implements Serializable{
 
     private static final long serialVersionUID = 1L;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
@@ -48,11 +48,11 @@ public class Company implements Serializable {
     @Basic(optional = false)
     @Lob
     @Column(name = "COM_LOGO")
-    private Serializable comLogo;
+    private Byte[] comLogo;
     @Basic(optional = false)
     @Lob
     @Column(name = "COM_EMAIL_TEMPLATE_PASSWORD")
-    private Serializable comEmailTemplatePassword;
+    private Byte[] comEmailTemplatePassword;
     @Basic(optional = false)
     @Column(name = "COM_TOKEN_EMAIL")
     private String comTokenEmail;
@@ -62,7 +62,7 @@ public class Company implements Serializable {
     @Basic(optional = false)
     @Lob
     @Column(name = "COM_EMAIL_TEMPLATE_ACTIVATE_USER")
-    private Serializable comEmailTemplateActivateUser;
+    private Byte[] comEmailTemplateActivateUser;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "skillComId")
     private List<Skill> skillList;
     @OneToMany(mappedBy = "empComId")
@@ -79,7 +79,7 @@ public class Company implements Serializable {
         this.comId = comId;
     }
 
-    public Company(Long comId, String comName, String comEmail, Serializable comLogo, Serializable comEmailTemplatePassword, String comTokenEmail, Long comVersion, Serializable comEmailTemplateActivateUser) {
+    public Company(Long comId, String comName, String comEmail, Byte[] comLogo, Byte[] comEmailTemplatePassword, String comTokenEmail, Long comVersion, Byte[] comEmailTemplateActivateUser) {
         this.comId = comId;
         this.comName = comName;
         this.comEmail = comEmail;
@@ -130,19 +130,19 @@ public class Company implements Serializable {
         this.comEmail = comEmail;
     }
 
-    public Serializable getComLogo() {
+    public Byte[] getComLogo() {
         return comLogo;
     }
 
-    public void setComLogo(Serializable comLogo) {
+    public void setComLogo(Byte[] comLogo) {
         this.comLogo = comLogo;
     }
 
-    public Serializable getComEmailTemplatePassword() {
+    public Byte[] getComEmailTemplatePassword() {
         return comEmailTemplatePassword;
     }
 
-    public void setComEmailTemplatePassword(Serializable comEmailTemplatePassword) {
+    public void setComEmailTemplatePassword(Byte[] comEmailTemplatePassword) {
         this.comEmailTemplatePassword = comEmailTemplatePassword;
     }
 
@@ -162,11 +162,11 @@ public class Company implements Serializable {
         this.comVersion = comVersion;
     }
 
-    public Serializable getComEmailTemplateActivateUser() {
+    public Byte[] getComEmailTemplateActivateUser() {
         return comEmailTemplateActivateUser;
     }
 
-    public void setComEmailTemplateActivateUser(Serializable comEmailTemplateActivateUser) {
+    public void setComEmailTemplateActivateUser(Byte[] comEmailTemplateActivateUser) {
         this.comEmailTemplateActivateUser = comEmailTemplateActivateUser;
     }
 

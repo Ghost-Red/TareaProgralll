@@ -22,8 +22,8 @@ public class EmployeeDto {
     private String empAdminState;
     private String empActivatedState;
     private String empForgotPasswordState;
-    private CompanyDto empComId;
-    private JobDto empJobId;
+    private Company empComId;
+    private Job empJobId;
     private boolean modificate;
 
     public EmployeeDto() {
@@ -44,8 +44,8 @@ public class EmployeeDto {
         this.empAdminState = employee.getEmpAdminState();
         this.empActivatedState = employee.getEmpActivatedState();
         this.empForgotPasswordState = employee.getEmpForgotPasswordState();
-        this.empComId.updateCompanyDto(employee.getEmpComId());
-        this.empJobId.updateJobDto(employee.getEmpJobId());
+        this.empComId = employee.getEmpComId();
+        this.empJobId = employee.getEmpJobId();
     }
 
     public Long getEmpId() {
@@ -144,19 +144,19 @@ public class EmployeeDto {
         this.empForgotPasswordState = empForgotPasswordState;
     }
 
-    public CompanyDto getEmpComId() {
+    public Company getEmpComId() {
         return empComId;
     }
 
-    public void setEmpComId(CompanyDto empComId) {
+    public void setEmpComId(Company empComId) {
         this.empComId = empComId;
     }
 
-    public JobDto getEmpJobId() {
+    public Job getEmpJobId() {
         return empJobId;
     }
 
-    public void setEmpJobId(JobDto empJobId) {
+    public void setEmpJobId(Job empJobId) {
         this.empJobId = empJobId;
     }
 

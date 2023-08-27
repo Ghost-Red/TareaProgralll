@@ -138,8 +138,8 @@ public class Employee implements Serializable {
         this.empAdminState = employee.getEmpAdminState();
         this.empActivatedState = employee.getEmpActivatedState();
         this.empForgotPasswordState = employee.getEmpForgotPasswordState();
-        this.empComId.updateCompany(employee.getEmpComId());
-        this.empJobId.updateJob(employee.getEmpJobId());
+        this.empComId = employee.getEmpComId();
+        this.empJobId = employee.getEmpJobId();
     }
 
     public Long getEmpId() {

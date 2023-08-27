@@ -4,7 +4,6 @@
  */
 package com.mycompany.tareaws.model;
 
-import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -15,15 +14,11 @@ public class CompanyDto {
     private Long comId;
     private String comName;
     private String comEmail;
-    private Serializable comLogo;
-    private Serializable comEmailTemplatePassword;
+    private Byte[] comLogo;
+    private Byte[] comEmailTemplatePassword;
     private String comTokenEmail;
     private Long comVersion;
-    private Serializable comEmailTemplateActivateUser;
-    private List<Skill> skillList;
-    private List<Employee> employeeList;
-    private List<Evaluation> evaluationList;
-    private List<Job> jobList;
+    private Byte[] comEmailTemplateActivateUser;
     private boolean modificate;
 
     public CompanyDto() {
@@ -77,19 +72,19 @@ public class CompanyDto {
         this.comEmail = comEmail;
     }
 
-    public Serializable getComLogo() {
+    public Byte[] getComLogo() {
         return comLogo;
     }
 
-    public void setComLogo(Serializable comLogo) {
+    public void setComLogo(Byte[] comLogo) {
         this.comLogo = comLogo;
     }
 
-    public Serializable getComEmailTemplatePassword() {
+    public Byte[] getComEmailTemplatePassword() {
         return comEmailTemplatePassword;
     }
 
-    public void setComEmailTemplatePassword(Serializable comEmailTemplatePassword) {
+    public void setComEmailTemplatePassword(Byte[] comEmailTemplatePassword) {
         this.comEmailTemplatePassword = comEmailTemplatePassword;
     }
 
@@ -109,44 +104,12 @@ public class CompanyDto {
         this.comVersion = comVersion;
     }
 
-    public Serializable getComEmailTemplateActivateUser() {
+    public Byte[] getComEmailTemplateActivateUser() {
         return comEmailTemplateActivateUser;
     }
 
-    public void setComEmailTemplateActivateUser(Serializable comEmailTemplateActivateUser) {
+    public void setComEmailTemplateActivateUser(Byte[] comEmailTemplateActivateUser) {
         this.comEmailTemplateActivateUser = comEmailTemplateActivateUser;
-    }
-
-    public List<Skill> getSkillList() {
-        return skillList;
-    }
-
-    public void setSkillList(List<Skill> skillList) {
-        this.skillList = skillList;
-    }
-
-    public List<Employee> getEmployeeList() {
-        return employeeList;
-    }
-
-    public void setEmployeeList(List<Employee> employeeList) {
-        this.employeeList = employeeList;
-    }
-
-    public List<Evaluation> getEvaluationList() {
-        return evaluationList;
-    }
-
-    public void setEvaluationList(List<Evaluation> evaluationList) {
-        this.evaluationList = evaluationList;
-    }
-
-    public List<Job> getJobList() {
-        return jobList;
-    }
-
-    public void setJobList(List<Job> jobList) {
-        this.jobList = jobList;
     }
 
     public boolean isModificate() {
@@ -157,10 +120,9 @@ public class CompanyDto {
         this.modificate = modificate;
     }
 
-
     @Override
     public String toString() {
-        return "CompanyDto{" + "comId=" + comId + ", comName=" + comName + ", comEmail=" + comEmail + ", comLogo=" + comLogo + ", comEmailTemplatePassword=" + comEmailTemplatePassword + ", comTokenEmail=" + comTokenEmail + ", comVersion=" + comVersion + ", comEmailTemplateActivateUser=" + comEmailTemplateActivateUser + ", skillList=" + skillList + ", employeeList=" + employeeList + ", evaluationList=" + evaluationList + ", jobList=" + jobList + ", modificate=" + modificate + '}';
+        return "CompanyDto{" + "comId=" + comId + ", comName=" + comName + ", comEmail=" + comEmail + ", comLogo=" + comLogo + ", comEmailTemplatePassword=" + comEmailTemplatePassword + ", comTokenEmail=" + comTokenEmail + ", comVersion=" + comVersion + ", comEmailTemplateActivateUser=" + comEmailTemplateActivateUser + ", modificate=" + modificate + '}';
     }
-    
+
 }
