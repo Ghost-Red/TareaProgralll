@@ -21,21 +21,21 @@ public class EmployeeEvaluatorRelationDto {
         modificate = false;
     }
 
-    public EmployeeEvaluatorRelationDto(EmployeeEvaluatorRelation EmployeeEvaluatorRelation) {
+    public EmployeeEvaluatorRelationDto(EmployeeEvaluatorRelation employeeEvaluatorRelation) {
         this();
-        this.eeId = EmployeeEvaluatorRelation.getEeId();
-        this.eeRelationType = EmployeeEvaluatorRelation.getEeRelationType();
-        this.eeFeedback = EmployeeEvaluatorRelation.getEeFeedback();
-        this.eeEmpId = new EmployeeDto(EmployeeEvaluatorRelation.getEeEmpId());
-        this.evaEmployeeId = new EmployeeEvaluationRelationDto(EmployeeEvaluatorRelation.getEvaEmployeeId());
+        this.eeId = employeeEvaluatorRelation.getEeId();
+        this.eeRelationType = employeeEvaluatorRelation.getEeRelationType();
+        this.eeFeedback = employeeEvaluatorRelation.getEeFeedback();
+        this.eeEmpId = new EmployeeDto(employeeEvaluatorRelation.getEeEmpId());
+        this.evaEmployeeId = new EmployeeEvaluationRelationDto(employeeEvaluatorRelation.getEvaEmployeeId());
     }
 
-    public void updateEmployeeEvaluatorRelationDto(EmployeeEvaluatorRelation EmployeeEvaluatorRelation) {
-        this.eeId = EmployeeEvaluatorRelation.getEeId();
-        this.eeRelationType = EmployeeEvaluatorRelation.getEeRelationType();
-        this.eeFeedback = EmployeeEvaluatorRelation.getEeFeedback();
-        this.eeEmpId.updateEmployeeDto(EmployeeEvaluatorRelation.getEeEmpId());
-        this.evaEmployeeId.updateEmployeeEvaluationRelationDto(EmployeeEvaluatorRelation.getEvaEmployeeId());
+    public void updateEmployeeEvaluatorRelationDto(EmployeeEvaluatorRelation employeeEvaluatorRelation) {
+        this.eeId = employeeEvaluatorRelation.getEeId();
+        this.eeRelationType = employeeEvaluatorRelation.getEeRelationType();
+        this.eeFeedback = employeeEvaluatorRelation.getEeFeedback();
+        this.eeEmpId.updateEmployeeDto(employeeEvaluatorRelation.getEeEmpId());
+        this.evaEmployeeId.updateEmployeeEvaluationRelationDto(employeeEvaluatorRelation.getEvaEmployeeId());
     }
 
     public Long getEeId() {

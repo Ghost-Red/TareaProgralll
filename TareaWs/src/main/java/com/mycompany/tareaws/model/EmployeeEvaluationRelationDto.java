@@ -20,19 +20,19 @@ public class EmployeeEvaluationRelationDto {
         modificate = false;
     }
 
-    public EmployeeEvaluationRelationDto(EmployeeEvaluationRelation EmployeeEvaluationRelation) {
+    public EmployeeEvaluationRelationDto(EmployeeEvaluationRelation employeeEvaluationRelation) {
         this();
-        this.eerId = EmployeeEvaluationRelation.getEerId();
-        this.eerEmployeeClasification = EmployeeEvaluationRelation.getEerEmployeeClasification();
-        this.eerEmpId = new EmployeeDto(EmployeeEvaluationRelation.getEerEmpId());
-        this.eerEjrId = new EvaluationJobRelationDto(EmployeeEvaluationRelation.getEerEjrId());
+        this.eerId = employeeEvaluationRelation.getEerId();
+        this.eerEmployeeClasification = employeeEvaluationRelation.getEerEmployeeClasification();
+        this.eerEmpId = new EmployeeDto(employeeEvaluationRelation.getEerEmpId());
+        this.eerEjrId = new EvaluationJobRelationDto(employeeEvaluationRelation.getEerEjrId());
     }
 
-    public void updateEmployeeEvaluationRelationDto(EmployeeEvaluationRelation EmployeeEvaluationRelation) {
-        this.eerId = EmployeeEvaluationRelation.getEerId();
-        this.eerEmployeeClasification = EmployeeEvaluationRelation.getEerEmployeeClasification();
-        this.eerEmpId.updateEmployeeDto(EmployeeEvaluationRelation.getEerEmpId());
-        this.eerEjrId.updateEvaluationJobRelationDto(EmployeeEvaluationRelation.getEerEjrId());
+    public void updateEmployeeEvaluationRelationDto(EmployeeEvaluationRelation employeeEvaluationRelation) {
+        this.eerId = employeeEvaluationRelation.getEerId();
+        this.eerEmployeeClasification = employeeEvaluationRelation.getEerEmployeeClasification();
+        this.eerEmpId.updateEmployeeDto(employeeEvaluationRelation.getEerEmpId());
+        this.eerEjrId.updateEvaluationJobRelationDto(employeeEvaluationRelation.getEerEjrId());
     }
 
     public Long getEerId() {

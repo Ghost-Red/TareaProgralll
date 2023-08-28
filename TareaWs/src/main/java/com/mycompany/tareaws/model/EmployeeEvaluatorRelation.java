@@ -67,6 +67,28 @@ public class EmployeeEvaluatorRelation implements Serializable {
         this.eeVersion = eeVersion;
     }
 
+    public EmployeeEvaluatorRelation(Long eeId, String eeRelationType, String eeFeedback, Long eeVersion, List<EESkillRelation> eESkillRelationList, Employee eeEmpId, EmployeeEvaluationRelation evaEmployeeId) {
+        this.eeId = eeId;
+        this.eeRelationType = eeRelationType;
+        this.eeFeedback = eeFeedback;
+        this.eeVersion = eeVersion;
+        this.eESkillRelationList = eESkillRelationList;
+        this.eeEmpId = eeEmpId;
+        this.evaEmployeeId = evaEmployeeId;
+    }
+    
+    public EmployeeEvaluatorRelation(EmployeeEvaluatorRelationDto employeeEvaluatorRelationDto){
+        this.eeId = employeeEvaluatorRelationDto.getEeId();
+        updateEmployeeEvaluatorRelation(employeeEvaluatorRelationDto);
+    }
+    
+    public void updateEmployeeEvaluatorRelation(EmployeeEvaluatorRelationDto employeeEvaluatorRelationDto){
+        this.eeRelationType = employeeEvaluatorRelationDto.getEeRelationType();
+        this.eeFeedback = employeeEvaluatorRelationDto.getEeFeedback();
+        this.eeEmpId.updateEmployee(employeeEvaluatorRelationDto.getEeEmpId());
+        this.evaEmployeeId.updateEmployeeEvaluationRelation(employeeEvaluatorRelationDto.getEvaEmployeeId());
+    }
+
     public Long getEeId() {
         return eeId;
     }
