@@ -18,6 +18,7 @@ import jakarta.jws.WebService;
  */
 @WebService(serviceName = "JobController")
 public class JobController {
+    
     @EJB
     JobService jobService;
     

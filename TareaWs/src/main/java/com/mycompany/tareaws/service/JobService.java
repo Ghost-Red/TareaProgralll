@@ -8,6 +8,8 @@ import com.mycompany.tareaws.model.Job;
 import com.mycompany.tareaws.model.JobDto;
 import com.mycompany.tareaws.util.CodigoRespuesta;
 import com.mycompany.tareaws.util.Respuesta;
+import jakarta.ejb.LocalBean;
+import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.NoResultException;
 import jakarta.persistence.NonUniqueResultException;
@@ -21,6 +23,8 @@ import java.util.logging.Logger;
  *
  * @author james
  */
+@Stateless
+@LocalBean
 public class JobService {
 
     private static final Logger LOG = Logger.getLogger(JobService.class.getName());
