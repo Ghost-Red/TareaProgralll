@@ -47,6 +47,23 @@ public class EmployeeDto {
         this.empComId = new CompanyDto(employee.getEmpComId());
         this.empJobId = new JobDto(employee.getEmpJobId());
     }
+    
+    public void updateEmployeeDto(Employee employee){
+        this.empId = employee.getEmpId();
+        this.empCedula = employee.getEmpCedula();
+        this.empName = employee.getEmpName();
+        this.empFirstLastname = employee.getEmpFirstLastname();
+        this.empSecondLastname = employee.getEmpSecondLastname();
+        this.empEmail = employee.getEmpEmail();
+        this.empPassword = employee.getEmpPassword();
+        this.empPhoneNumber = employee.getEmpPhoneNumber();
+        this.empCellphoneNumber = employee.getEmpCellphoneNumber();
+        this.empAdminState = employee.getEmpAdminState();
+        this.empActivatedState = employee.getEmpActivatedState();
+        this.empForgotPasswordState = employee.getEmpForgotPasswordState();
+        this.empComId.updateCompanyDto(employee.getEmpComId());
+        this.empJobId.updateJobDto(employee.getEmpJobId());
+    }
 
     public Long getEmpId() {
         return empId;
