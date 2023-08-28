@@ -9,6 +9,7 @@ package com.mycompany.tareaws.model;
  * @author james
  */
 public class EmployeeEvaluatorRelationDto {
+
     private Long eeId;
     private String eeRelationType;
     private String eeFeedback;
@@ -19,20 +20,20 @@ public class EmployeeEvaluatorRelationDto {
     public EmployeeEvaluatorRelationDto() {
         modificate = false;
     }
-    
-    public EmployeeEvaluatorRelationDto (EmployeeEvaluatorRelation EmployeeEvaluatorRelation){
+
+    public EmployeeEvaluatorRelationDto(EmployeeEvaluatorRelation EmployeeEvaluatorRelation) {
         this();
-        this.eeId=EmployeeEvaluatorRelation.getEeId();
-        this.eeRelationType=EmployeeEvaluatorRelation.getEeRelationType();
-        this.eeFeedback=EmployeeEvaluatorRelation.getEeFeedback();
-        this.eeEmpId=new EmployeeDto(EmployeeEvaluatorRelation.getEeEmpId());
-        this.evaEmployeeId=new EmployeeEvaluationRelationDto(EmployeeEvaluatorRelation.getEvaEmployeeId());
+        this.eeId = EmployeeEvaluatorRelation.getEeId();
+        this.eeRelationType = EmployeeEvaluatorRelation.getEeRelationType();
+        this.eeFeedback = EmployeeEvaluatorRelation.getEeFeedback();
+        this.eeEmpId = new EmployeeDto(EmployeeEvaluatorRelation.getEeEmpId());
+        this.evaEmployeeId = new EmployeeEvaluationRelationDto(EmployeeEvaluatorRelation.getEvaEmployeeId());
     }
-    
-    public void updateEmployeeEvaluatorRelationDto (EmployeeEvaluatorRelation EmployeeEvaluatorRelation){
-        this.eeId=EmployeeEvaluatorRelation.getEeId();
-        this.eeRelationType=EmployeeEvaluatorRelation.getEeRelationType();
-        this.eeFeedback=EmployeeEvaluatorRelation.getEeFeedback();
+
+    public void updateEmployeeEvaluatorRelationDto(EmployeeEvaluatorRelation EmployeeEvaluatorRelation) {
+        this.eeId = EmployeeEvaluatorRelation.getEeId();
+        this.eeRelationType = EmployeeEvaluatorRelation.getEeRelationType();
+        this.eeFeedback = EmployeeEvaluatorRelation.getEeFeedback();
         this.eeEmpId.updateEmployeeDto(EmployeeEvaluatorRelation.getEeEmpId());
         this.evaEmployeeId.updateEmployeeEvaluationRelationDto(EmployeeEvaluatorRelation.getEvaEmployeeId());
     }
@@ -81,7 +82,5 @@ public class EmployeeEvaluatorRelationDto {
     public String toString() {
         return "EmployeeEvaluatorRelationDto{" + "eeId=" + eeId + ", eeRelationType=" + eeRelationType + ", eeFeedback=" + eeFeedback + ", eeEmpId=" + eeEmpId + ", evaEmployeeId=" + evaEmployeeId + ", modificate=" + modificate + '}';
     }
-    
-    
 
 }

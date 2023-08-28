@@ -146,5 +146,5 @@ public class EmployeeEvaluationRelation implements Serializable {
     public String toString() {
         return "com.mycompany.tareaws.model.EmployeeEvaluationRelation[ eerId=" + eerId + " ]";
     }
-    
+
 }

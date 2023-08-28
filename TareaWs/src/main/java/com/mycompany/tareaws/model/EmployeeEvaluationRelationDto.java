@@ -9,6 +9,7 @@ package com.mycompany.tareaws.model;
  * @author james
  */
 public class EmployeeEvaluationRelationDto {
+
     private Long eerId;
     private Long eerEmployeeClasification;
     private EmployeeDto eerEmpId;
@@ -18,18 +19,18 @@ public class EmployeeEvaluationRelationDto {
     public EmployeeEvaluationRelationDto() {
         modificate = false;
     }
-    
-    public EmployeeEvaluationRelationDto(EmployeeEvaluationRelation EmployeeEvaluationRelation){
+
+    public EmployeeEvaluationRelationDto(EmployeeEvaluationRelation EmployeeEvaluationRelation) {
         this();
-        this.eerId=EmployeeEvaluationRelation.getEerId();
-        this.eerEmployeeClasification=EmployeeEvaluationRelation.getEerEmployeeClasification();
-        this.eerEmpId=new EmployeeDto(EmployeeEvaluationRelation.getEerEmpId());
-        this.eerEjrId=new EvaluationJobRelationDto(EmployeeEvaluationRelation.getEerEjrId());
+        this.eerId = EmployeeEvaluationRelation.getEerId();
+        this.eerEmployeeClasification = EmployeeEvaluationRelation.getEerEmployeeClasification();
+        this.eerEmpId = new EmployeeDto(EmployeeEvaluationRelation.getEerEmpId());
+        this.eerEjrId = new EvaluationJobRelationDto(EmployeeEvaluationRelation.getEerEjrId());
     }
-    
-    public void updateEmployeeEvaluationRelationDto(EmployeeEvaluationRelation EmployeeEvaluationRelation){
-        this.eerId=EmployeeEvaluationRelation.getEerId();
-        this.eerEmployeeClasification=EmployeeEvaluationRelation.getEerEmployeeClasification();
+
+    public void updateEmployeeEvaluationRelationDto(EmployeeEvaluationRelation EmployeeEvaluationRelation) {
+        this.eerId = EmployeeEvaluationRelation.getEerId();
+        this.eerEmployeeClasification = EmployeeEvaluationRelation.getEerEmployeeClasification();
         this.eerEmpId.updateEmployeeDto(EmployeeEvaluationRelation.getEerEmpId());
         this.eerEjrId.updateEvaluationJobRelationDto(EmployeeEvaluationRelation.getEerEjrId());
     }
@@ -71,9 +72,4 @@ public class EmployeeEvaluationRelationDto {
         return "EmployeeEvaluationRelationDto{" + "eerId=" + eerId + ", eerEmployeeClasification=" + eerEmployeeClasification + ", eerEmpId=" + eerEmpId + ", eerEjrId=" + eerEjrId + ", modificate=" + modificate + '}';
     }
 
-   
-
-    
-
-    
 }

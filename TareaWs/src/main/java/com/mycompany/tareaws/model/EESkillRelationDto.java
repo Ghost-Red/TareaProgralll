@@ -9,6 +9,7 @@ package com.mycompany.tareaws.model;
  * @author james
  */
 public class EESkillRelationDto {
+
     private Long eesId;
     private Long eesSkillClasification;
     private EmployeeEvaluatorRelationDto eesEeId;
@@ -18,16 +19,18 @@ public class EESkillRelationDto {
     public EESkillRelationDto() {
         modificate = false;
     }
-    public EESkillRelationDto (EESkillRelation EESkillRelation){
+
+    public EESkillRelationDto(EESkillRelation EESkillRelation) {
         this();
-        this.eesId=EESkillRelation.getEesId();
-        this.eesSkillClasification=EESkillRelation.getEesSkillClasification();
-        this.eesEeId=new EmployeeEvaluatorRelationDto(EESkillRelation.getEesEeId());
-        this.eesSkillId=new SkillDto(EESkillRelation.getEesSkillId());
+        this.eesId = EESkillRelation.getEesId();
+        this.eesSkillClasification = EESkillRelation.getEesSkillClasification();
+        this.eesEeId = new EmployeeEvaluatorRelationDto(EESkillRelation.getEesEeId());
+        this.eesSkillId = new SkillDto(EESkillRelation.getEesSkillId());
     }
-    public void updateEESkillRelationDto(EESkillRelation EESkillRelation){
-        this.eesId=EESkillRelation.getEesId();
-        this.eesSkillClasification=EESkillRelation.getEesSkillClasification();
+
+    public void updateEESkillRelationDto(EESkillRelation EESkillRelation) {
+        this.eesId = EESkillRelation.getEesId();
+        this.eesSkillClasification = EESkillRelation.getEesSkillClasification();
         this.eesEeId.updateEmployeeEvaluatorRelationDto(EESkillRelation.getEesEeId());
         this.eesSkillId.updateSkillDto(EESkillRelation.getEesSkillId());
     }
@@ -63,11 +66,10 @@ public class EESkillRelationDto {
     public void setEesSkillId(SkillDto eesSkillId) {
         this.eesSkillId = eesSkillId;
     }
-    
+
     @Override
     public String toString() {
         return "EESkillRelationDto{" + "eesId=" + eesId + ", eesSkillClasification=" + eesSkillClasification + ", eesEeId=" + eesEeId + ", eesSkillId=" + eesSkillId + ", modificate=" + modificate + '}';
     }
-    
-    
+
 }

@@ -19,15 +19,15 @@ import jakarta.ws.rs.core.Response;
  */
 @WebService(serviceName = "EmployeeController")
 public class EmployeeController {
-    
+
     @WebMethod(operationName = "getMensaje")
-    public String getMensaje(@WebParam(name = "code") String code){
+    public String getMensaje(@WebParam(name = "code") String code) {
         String a = "Este webservice funciona" + code;
         return a;
     }
     @EJB
     EmployeeService employeeService;
-    
+
     @WebMethod(operationName = "getEmpleado")
     public EmployeeDto getEmpleado(@WebParam(name = "empId") Long empId) {
         Respuesta res = employeeService.getEmployee(empId);
@@ -35,5 +35,5 @@ public class EmployeeController {
         //Response response = Response.ok(res.getResultado("Employee")).build();
         return abc;
     }
-    
+
 }

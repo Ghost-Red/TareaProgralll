@@ -11,6 +11,7 @@ import java.util.Date;
  * @author james
  */
 public class EvaluationDto {
+
     private Long evaId;
     private String evaTitle;
     private Date evaStartDate;
@@ -22,23 +23,23 @@ public class EvaluationDto {
     public EvaluationDto() {
         modificate = false;
     }
-    
-    public EvaluationDto(Evaluation evaluation){
+
+    public EvaluationDto(Evaluation evaluation) {
         this();
-        this.evaId=evaluation.getEvaId();
-        this.evaTitle=evaluation.getEvaTitle();
-        this.evaStartDate=evaluation.getEvaStartDate();
-        this.evaFinalDate=evaluation.getEvaFinalDate();
-        this.evaState=evaluation.getEvaState();
-        this.evaComId=new CompanyDto(evaluation.getEvaComId());
+        this.evaId = evaluation.getEvaId();
+        this.evaTitle = evaluation.getEvaTitle();
+        this.evaStartDate = evaluation.getEvaStartDate();
+        this.evaFinalDate = evaluation.getEvaFinalDate();
+        this.evaState = evaluation.getEvaState();
+        this.evaComId = new CompanyDto(evaluation.getEvaComId());
     }
-    
-    public void updateEvaluationDto(Evaluation evaluation){
-        this.evaId=evaluation.getEvaId();
-        this.evaTitle=evaluation.getEvaTitle();
-        this.evaStartDate=evaluation.getEvaStartDate();
-        this.evaFinalDate=evaluation.getEvaFinalDate();
-        this.evaState=evaluation.getEvaState();
+
+    public void updateEvaluationDto(Evaluation evaluation) {
+        this.evaId = evaluation.getEvaId();
+        this.evaTitle = evaluation.getEvaTitle();
+        this.evaStartDate = evaluation.getEvaStartDate();
+        this.evaFinalDate = evaluation.getEvaFinalDate();
+        this.evaState = evaluation.getEvaState();
         this.evaComId.updateCompanyDto(evaluation.getEvaComId());
     }
 
@@ -89,12 +90,10 @@ public class EvaluationDto {
     public void setEvaComId(CompanyDto evaComId) {
         this.evaComId = evaComId;
     }
-    
+
     @Override
     public String toString() {
         return "EvaluationDto{" + "evaId=" + evaId + ", evaTitle=" + evaTitle + ", evaStartDate=" + evaStartDate + ", evaFinalDate=" + evaFinalDate + ", evaState=" + evaState + ", evaComId=" + evaComId + ", modificate=" + modificate + '}';
     }
-    
 
-    
 }

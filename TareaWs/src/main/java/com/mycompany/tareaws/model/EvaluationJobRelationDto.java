@@ -9,24 +9,26 @@ package com.mycompany.tareaws.model;
  * @author james
  */
 public class EvaluationJobRelationDto {
+
     private Long ejrId;
     private EvaluationDto ejrEvaId;
     private JobDto ejrJobId;
-    
+
     private boolean modificate;
 
     public EvaluationJobRelationDto() {
         modificate = false;
     }
-    
-    public EvaluationJobRelationDto(EvaluationJobRelation evaluationJobRelation){
+
+    public EvaluationJobRelationDto(EvaluationJobRelation evaluationJobRelation) {
         this();
-        this.ejrId=evaluationJobRelation.getEjrId();
-        this.ejrEvaId=new EvaluationDto(evaluationJobRelation.getEjrEvaId());
-        this.ejrJobId=new JobDto(evaluationJobRelation.getEjrJobId());
+        this.ejrId = evaluationJobRelation.getEjrId();
+        this.ejrEvaId = new EvaluationDto(evaluationJobRelation.getEjrEvaId());
+        this.ejrJobId = new JobDto(evaluationJobRelation.getEjrJobId());
     }
-    public void updateEvaluationJobRelationDto(EvaluationJobRelation evaluationJobRelation){
-        this.ejrId=evaluationJobRelation.getEjrId();
+
+    public void updateEvaluationJobRelationDto(EvaluationJobRelation evaluationJobRelation) {
+        this.ejrId = evaluationJobRelation.getEjrId();
         this.ejrEvaId.updateEvaluationDto(evaluationJobRelation.getEjrEvaId());
         this.ejrJobId.updateJobDto(evaluationJobRelation.getEjrJobId());
     }
@@ -59,8 +61,5 @@ public class EvaluationJobRelationDto {
     public String toString() {
         return "EvaluationJobRelationDto{" + "ejrId=" + ejrId + ", ejrEvaId=" + ejrEvaId + ", ejrJobId=" + ejrJobId + ", modificate=" + modificate + '}';
     }
-    
-    
 
-    
 }
