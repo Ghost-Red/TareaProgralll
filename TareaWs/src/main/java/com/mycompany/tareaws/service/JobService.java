@@ -4,7 +4,6 @@
  */
 package com.mycompany.tareaws.service;
 
-
 import com.mycompany.tareaws.model.Job;
 import com.mycompany.tareaws.model.JobDto;
 import com.mycompany.tareaws.util.CodigoRespuesta;
@@ -23,10 +22,12 @@ import java.util.logging.Logger;
  * @author james
  */
 public class JobService {
+
     private static final Logger LOG = Logger.getLogger(JobService.class.getName());
 
     @PersistenceContext(unitName = "TareaWsPU")
     private EntityManager em;
+
     public Respuesta getJob(Long jobId) {
         try {
             Query qryJob = em.createNamedQuery("Job.findByJobId", Job.class);
@@ -42,7 +43,7 @@ public class JobService {
             return new Respuesta(false, CodigoRespuesta.ERROR_INTERNO, "Ocurrio un error al consultar el puesto.", "getJob " + ex.getMessage());
         }
     }
-    
+
     public Respuesta saveJob(JobDto jobDto) {
         try {
             Job job;
@@ -64,7 +65,7 @@ public class JobService {
             return new Respuesta(false, CodigoRespuesta.ERROR_INTERNO, "Ocurrio un error al guardar el puesto.", "saveJob " + ex.getMessage());
         }
     }
-    
+
     public Respuesta deleteJob(Long id) {
         try {
             Job job;

@@ -9,6 +9,7 @@ package com.mycompany.tareaws.model;
  * @author james
  */
 public class EmployeeAverageSkillDto {
+
     private Long easId;
     private Long easEmployeeSkillLvl;
     private EmployeeEvaluationRelationDto easEerId;
@@ -18,16 +19,18 @@ public class EmployeeAverageSkillDto {
     public EmployeeAverageSkillDto() {
         modificate = false;
     }
-    public EmployeeAverageSkillDto (EmployeeAverageSkill EmployeeAverageSkill){
+
+    public EmployeeAverageSkillDto(EmployeeAverageSkill EmployeeAverageSkill) {
         this();
-        this.easId=EmployeeAverageSkill.getEasId();
-        this.easEmployeeSkillLvl=EmployeeAverageSkill.getEasEmployeeSkillLvl();
-        this.easEerId=new EmployeeEvaluationRelationDto(EmployeeAverageSkill.getEasEerId());
-        this.easSkillId=new SkillDto(EmployeeAverageSkill.getEasSkillId());
+        this.easId = EmployeeAverageSkill.getEasId();
+        this.easEmployeeSkillLvl = EmployeeAverageSkill.getEasEmployeeSkillLvl();
+        this.easEerId = new EmployeeEvaluationRelationDto(EmployeeAverageSkill.getEasEerId());
+        this.easSkillId = new SkillDto(EmployeeAverageSkill.getEasSkillId());
     }
-    public void updateEmployeeAverageSkillDto(EmployeeAverageSkill EmployeeAverageSkill){
-        this.easId=EmployeeAverageSkill.getEasId();
-        this.easEmployeeSkillLvl=EmployeeAverageSkill.getEasEmployeeSkillLvl();
+
+    public void updateEmployeeAverageSkillDto(EmployeeAverageSkill EmployeeAverageSkill) {
+        this.easId = EmployeeAverageSkill.getEasId();
+        this.easEmployeeSkillLvl = EmployeeAverageSkill.getEasEmployeeSkillLvl();
         this.easEerId.updateEmployeeEvaluationRelationDto(EmployeeAverageSkill.getEasEerId());
         this.easSkillId.updateSkillDto(EmployeeAverageSkill.getEasSkillId());
     }
@@ -68,9 +71,5 @@ public class EmployeeAverageSkillDto {
     public String toString() {
         return "EmployeeAverageSkillDto{" + "easId=" + easId + ", easEmployeeSkillLvl=" + easEmployeeSkillLvl + ", easEerId=" + easEerId + ", easSkillId=" + easSkillId + ", modificate=" + modificate + '}';
     }
-    
-    
 
-    
-    
 }

@@ -52,6 +52,7 @@ public class EmployeeService {
             return new Respuesta(false, CodigoRespuesta.ERROR_INTERNO, "Ocurrio un error al consultar el usuario.", "validarUsuario " + ex.getMessage());
         }
     }
+
     /*
     public EmployeeDto getEmployee(Long empId){
             Query qryEmployee = em.createNamedQuery("Employee.findByEmpId", Employee.class);
@@ -59,7 +60,7 @@ public class EmployeeService {
             EmployeeDto abc = new EmployeeDto((Employee) qryEmployee.getSingleResult());
             return abc;
     }
-    */
+     */
     public Respuesta getEmployee(Long empId) {
         try {
             Query qryEmployee = em.createNamedQuery("Employee.findByEmpId", Employee.class);
@@ -76,7 +77,6 @@ public class EmployeeService {
             return new Respuesta(false, CodigoRespuesta.ERROR_INTERNO, "Ocurrio un error al consultar el empleado.", "getEmployee " + ex.getMessage());
         }
     }
-
 
     public Respuesta getEmployees(String cedula, String name, String firstLastName) {
         try {

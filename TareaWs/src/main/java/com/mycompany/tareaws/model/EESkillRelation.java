@@ -123,5 +123,5 @@ public class EESkillRelation implements Serializable {
     public String toString() {
         return "com.mycompany.tareaws.model.EESkillRelation[ eesId=" + eesId + " ]";
     }
-    
+
 }

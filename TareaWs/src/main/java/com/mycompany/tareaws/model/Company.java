@@ -31,7 +31,7 @@ import java.io.Serializable;
     @NamedQuery(name = "Company.findByComEmail", query = "SELECT c FROM Company c WHERE c.comEmail = :comEmail"),
     @NamedQuery(name = "Company.findByComTokenEmail", query = "SELECT c FROM Company c WHERE c.comTokenEmail = :comTokenEmail"),
     @NamedQuery(name = "Company.findByComVersion", query = "SELECT c FROM Company c WHERE c.comVersion = :comVersion")})
-public class Company implements Serializable{
+public class Company implements Serializable {
 
     private static final long serialVersionUID = 1L;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
@@ -89,12 +89,12 @@ public class Company implements Serializable{
         this.comVersion = comVersion;
         this.comEmailTemplateActivateUser = comEmailTemplateActivateUser;
     }
-    
+
     public Company(CompanyDto company) {
         this.comId = company.getComId();
         updateCompany(company);
     }
-    
+
     public void updateCompany(CompanyDto companyDto) {
         this.comId = companyDto.getComId();
         this.comName = companyDto.getComName();
@@ -104,7 +104,7 @@ public class Company implements Serializable{
         this.comTokenEmail = companyDto.getComTokenEmail();
         this.comEmailTemplateActivateUser = companyDto.getComEmailTemplateActivateUser();
     }
-    
+
     public Long getComId() {
         return comId;
     }
@@ -225,5 +225,5 @@ public class Company implements Serializable{
     public String toString() {
         return "com.mycompany.tareaws.model.Company[ comId=" + comId + " ]";
     }
-    
+
 }

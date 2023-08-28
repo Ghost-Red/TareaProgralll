@@ -67,24 +67,24 @@ public class Skill implements Serializable {
         this.skillId = skillId;
     }
 
-    public Skill(Long skillId, Long skillVersion, String skillName,String skillDescription,String skillState) {
+    public Skill(Long skillId, Long skillVersion, String skillName, String skillDescription, String skillState) {
         this.skillId = skillId;
         this.skillVersion = skillVersion;
-        this.skillName=skillName;
-        this.skillDescription=skillDescription;
-        this.skillState=skillState;
+        this.skillName = skillName;
+        this.skillDescription = skillDescription;
+        this.skillState = skillState;
     }
-    
-    public Skill(SkillDto skill){
-        this.skillId=skill.getSkillId();
+
+    public Skill(SkillDto skill) {
+        this.skillId = skill.getSkillId();
         updateSkill(skill);
     }
-    
-    public void updateSkill(SkillDto skill){
-        this.skillId=skill.getSkillId();
-        this.skillName=skill.getSkillName();
-        this.skillDescription=skill.getSkillDescription();
-        this.skillState=skill.getSkillState();
+
+    public void updateSkill(SkillDto skill) {
+        this.skillId = skill.getSkillId();
+        this.skillName = skill.getSkillName();
+        this.skillDescription = skill.getSkillDescription();
+        this.skillState = skill.getSkillState();
     }
 
     public Long getSkillId() {
@@ -183,5 +183,5 @@ public class Skill implements Serializable {
     public String toString() {
         return "com.mycompany.tareaws.model.Skill[ skillId=" + skillId + " ]";
     }
-    
+
 }

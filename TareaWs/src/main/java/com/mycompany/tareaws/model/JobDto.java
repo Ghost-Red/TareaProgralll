@@ -11,6 +11,7 @@ import java.util.List;
  * @author Progralll
  */
 public class JobDto {
+
     private Long jobId;
     private String jobName;
     private String jobState;
@@ -20,16 +21,16 @@ public class JobDto {
     public JobDto() {
         modificate = false;
     }
-    
-    public JobDto (Job job){
+
+    public JobDto(Job job) {
         this();
         this.jobId = job.getJobId();
         this.jobName = job.getJobName();
         this.jobState = job.getJobState();
         this.jobComId = new CompanyDto(job.getJobComId());
     }
-    
-    public void updateJobDto(Job job){
+
+    public void updateJobDto(Job job) {
         this.jobId = job.getJobId();
         this.jobName = job.getJobName();
         this.jobState = job.getJobState();
@@ -72,5 +73,5 @@ public class JobDto {
     public String toString() {
         return "JobDto{" + "jobId=" + jobId + ", jobName=" + jobName + ", jobState=" + jobState + ", jobComId=" + jobComId + ", modificate=" + modificate + '}';
     }
-    
+
 }

@@ -123,5 +123,5 @@ public class EmployeeAverageSkill implements Serializable {
     public String toString() {
         return "com.mycompany.tareaws.model.EmployeeAverageSkill[ easId=" + easId + " ]";
     }
-    
+
 }

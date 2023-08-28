@@ -4,12 +4,12 @@
  */
 package com.mycompany.tareaws.model;
 
-
 /**
  *
  * @author Progralll
  */
 public class CompanyDto {
+
     private Long comId;
     private String comName;
     private String comEmail;
@@ -33,7 +33,7 @@ public class CompanyDto {
         this.comTokenEmail = company.getComTokenEmail();
         this.comEmailTemplateActivateUser = company.getComEmailTemplateActivateUser();
     }
-    
+
     public void updateCompanyDto(Company company) {
         this.comId = company.getComId();
         this.comName = company.getComName();
@@ -43,7 +43,7 @@ public class CompanyDto {
         this.comTokenEmail = company.getComTokenEmail();
         this.comEmailTemplateActivateUser = company.getComEmailTemplateActivateUser();
     }
-    
+
     public Long getComId() {
         return comId;
     }
@@ -112,5 +112,5 @@ public class CompanyDto {
     public String toString() {
         return "CompanyDto{" + "comId=" + comId + ", comName=" + comName + ", comEmail=" + comEmail + ", comLogo=" + comLogo + ", comEmailTemplatePassword=" + comEmailTemplatePassword + ", comTokenEmail=" + comTokenEmail + ", comEmailTemplateActivateUser=" + comEmailTemplateActivateUser + ", modificate=" + modificate + '}';
     }
-    
+
 }

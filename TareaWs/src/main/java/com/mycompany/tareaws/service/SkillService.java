@@ -26,11 +26,12 @@ import java.util.logging.Logger;
 @Stateless
 @LocalBean
 public class SkillService {
+
     private static final Logger LOG = Logger.getLogger(SkillService.class.getName());
 
     @PersistenceContext(unitName = "TareaWsPU")
     private EntityManager em;
-    
+
     public Respuesta getSkill(Long skillId) {
         try {
             Query qrySkill = em.createNamedQuery("Skill.findBySkillId", Skill.class);
@@ -47,6 +48,7 @@ public class SkillService {
             return new Respuesta(false, CodigoRespuesta.ERROR_INTERNO, "Ocurrio un error al consultar la skill.", "getSkill " + ex.getMessage());
         }
     }
+
     public Respuesta saveSkill(SkillDto skillDto) {
         try {
             Skill skill;
@@ -56,7 +58,7 @@ public class SkillService {
                     return new Respuesta(false, CodigoRespuesta.ERROR_NOENCONTRADO, "No se encrontró la skill a modificar.", "saveSkill NoResultException");
                 }
                 skill.updateSkill(skillDto);
-                skill=em.merge(skill);
+                skill = em.merge(skill);
             } else {
                 skill = new Skill(skillDto);
                 em.persist(skill);
@@ -68,6 +70,7 @@ public class SkillService {
             return new Respuesta(false, CodigoRespuesta.ERROR_INTERNO, "Ocurrio un error al guardar la skill.", "saveSkill " + ex.getMessage());
         }
     }
+
     public Respuesta deleteSkill(Long id) {
         try {
             Skill skill;
@@ -90,6 +93,5 @@ public class SkillService {
             return new Respuesta(false, CodigoRespuesta.ERROR_INTERNO, "Ocurrio un error al eliminar la skill.", "eliminarSkill " + ex.getMessage());
         }
     }
-    
-    
+
 }

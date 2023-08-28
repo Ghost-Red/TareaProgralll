@@ -4,37 +4,37 @@
  */
 package com.mycompany.tareaws.model;
 
-
-
 /**
  *
  * @author james
  */
 public class SkillDto {
+
     private Long skillId;
     private String skillName;
     private String skillDescription;
     private String skillState;
     private CompanyDto skillComId;
     private boolean modificate;
-    
+
     public SkillDto() {
         modificate = false;
     }
-    public SkillDto (Skill skill){
+
+    public SkillDto(Skill skill) {
         this();
-        this.skillId=skill.getSkillId();
-        this.skillName=skill.getSkillName();
-        this.skillDescription=skill.getSkillDescription();
-        this.skillState=skill.getSkillState();
-        this.skillComId=new CompanyDto(skill.getSkillComId());
+        this.skillId = skill.getSkillId();
+        this.skillName = skill.getSkillName();
+        this.skillDescription = skill.getSkillDescription();
+        this.skillState = skill.getSkillState();
+        this.skillComId = new CompanyDto(skill.getSkillComId());
     }
-    
-    public void updateSkillDto(Skill skill){
-        this.skillId=skill.getSkillId();
-        this.skillName=skill.getSkillName();
-        this.skillDescription=skill.getSkillDescription();
-        this.skillState=skill.getSkillState();
+
+    public void updateSkillDto(Skill skill) {
+        this.skillId = skill.getSkillId();
+        this.skillName = skill.getSkillName();
+        this.skillDescription = skill.getSkillDescription();
+        this.skillState = skill.getSkillState();
         this.skillComId.updateCompanyDto(skill.getSkillComId());
     }
 
@@ -82,7 +82,5 @@ public class SkillDto {
     public String toString() {
         return "SkillDto{" + "skillId=" + skillId + ", skillName=" + skillName + ", skillDescription=" + skillDescription + ", skillState=" + skillState + ", skillComId=" + skillComId + ", modificate=" + modificate + '}';
     }
-    
-    
 
 }
