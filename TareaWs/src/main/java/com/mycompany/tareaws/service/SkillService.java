@@ -27,7 +27,7 @@ import java.util.logging.Logger;
 @Stateless
 @LocalBean
 public class SkillService {
-    private static final Logger LOG = Logger.getLogger(EmployeeService.class.getName());
+    private static final Logger LOG = Logger.getLogger(SkillService.class.getName());
 
     @PersistenceContext(unitName = "TareaWsPU")
     private EntityManager em;
@@ -48,5 +48,27 @@ public class SkillService {
             return new Respuesta(false, CodigoRespuesta.ERROR_INTERNO, "Ocurrio un error al consultar la skill.", "getSkill " + ex.getMessage());
         }
     }
+    public Respuesta saveSkill(SkillDto skillDto) {
+        try {
+            Skill skill;
+            if (skillDto.getSkillId() != null && skillDto.getSkillId() > 0) {
+                skill = em.find(Skill.class, skillDto.getSkillId());
+                if (skill == null) {
+                    return new Respuesta(false, CodigoRespuesta.ERROR_NOENCONTRADO, "No se encrontró la skill a modificar.", "saveSkill NoResultException");
+                }
+                skill.updateSkill(skillDto);
+                skill=em.merge(skill);
+            } else {
+                skill = new Skill(skillDto);
+                em.persist(skill);
+            }
+            em.flush();//si hay error lo marca aqui dentro
+            return new Respuesta(true, CodigoRespuesta.CORRECTO, "", "", "Skill", new SkillDto(skill));
+        } catch (Exception ex) {
+            LOG.log(Level.SEVERE, "Ocurrio un error al guardar la skill.", ex);
+            return new Respuesta(false, CodigoRespuesta.ERROR_INTERNO, "Ocurrio un error al guardar la skill.", "saveSkill " + ex.getMessage());
+        }
+    }
+    
     
 }
