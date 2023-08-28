@@ -26,6 +26,7 @@ import java.util.logging.Logger;
 @Stateless
 @LocalBean
 public class EmployeeAverageSkillService {
+
     private static final Logger LOG = Logger.getLogger(EmployeeAverageSkillService.class.getName());
 
     @PersistenceContext(unitName = "TareaWsPU")
@@ -51,7 +52,7 @@ public class EmployeeAverageSkillService {
     public Respuesta saveEmployeeAverageSkill(EmployeeAverageSkillDto employeeAverageSkillDto) {
         try {
             EmployeeAverageSkill employeeAverageSkill;
-            if (employeeAverageSkillDto.getEasId()!= null && employeeAverageSkillDto.getEasId() > 0) {
+            if (employeeAverageSkillDto.getEasId() != null && employeeAverageSkillDto.getEasId() > 0) {
                 employeeAverageSkill = em.find(EmployeeAverageSkill.class, employeeAverageSkillDto.getEasId());
                 if (employeeAverageSkill == null) {
                     return new Respuesta(false, CodigoRespuesta.ERROR_NOENCONTRADO, "No se encrontró la EmployeeAverageSkill a modificar.", "saveEmployeeAverageSkill NoResultException");

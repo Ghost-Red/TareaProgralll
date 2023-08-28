@@ -4,7 +4,6 @@
  */
 package com.mycompany.tareaws.service;
 
-
 import com.mycompany.tareaws.model.EmployeeEvaluatorRelation;
 import com.mycompany.tareaws.model.EmployeeEvaluatorRelationDto;
 import com.mycompany.tareaws.util.CodigoRespuesta;
@@ -24,11 +23,10 @@ import java.util.logging.Logger;
  *
  * @author grana
  */
-
 @Stateless
 @LocalBean
 public class EmployeeEvaluatorRelationService {
-    
+
     private static final Logger LOG = Logger.getLogger(EmployeeEvaluatorRelationService.class.getName());
 
     @PersistenceContext(unitName = "TareaWsPU")
@@ -54,7 +52,7 @@ public class EmployeeEvaluatorRelationService {
     public Respuesta saveEmployeeEvaluatorRelation(EmployeeEvaluatorRelationDto employeeEvaluatorRelationDto) {
         try {
             EmployeeEvaluatorRelation employeeEvaluatorRelation;
-            if (employeeEvaluatorRelationDto.getEeId()!= null && employeeEvaluatorRelationDto.getEeId() > 0) {
+            if (employeeEvaluatorRelationDto.getEeId() != null && employeeEvaluatorRelationDto.getEeId() > 0) {
                 employeeEvaluatorRelation = em.find(EmployeeEvaluatorRelation.class, employeeEvaluatorRelationDto.getEeId());
                 if (employeeEvaluatorRelation == null) {
                     return new Respuesta(false, CodigoRespuesta.ERROR_NOENCONTRADO, "No se encrontró la EmployeeEvaluatorRelation a modificar.", "saveEmployeeEvaluatorRelation NoResultException");

@@ -4,7 +4,6 @@
  */
 package com.mycompany.tareaws.controller;
 
-
 import com.mycompany.tareaws.model.EmployeeEvaluationRelationDto;
 import com.mycompany.tareaws.service.EmployeeEvaluationRelationService;
 import com.mycompany.tareaws.util.Respuesta;
@@ -19,6 +18,7 @@ import jakarta.jws.WebService;
  */
 @WebService(serviceName = "EmployeeEvaluationRelationController")
 public class EmployeeEvaluationRelationController {
+
     @EJB
     EmployeeEvaluationRelationService employeeEvaluationRelationService;
 

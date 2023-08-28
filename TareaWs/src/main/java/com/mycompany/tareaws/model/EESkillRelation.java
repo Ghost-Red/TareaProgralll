@@ -58,16 +58,18 @@ public class EESkillRelation implements Serializable {
         this.eesId = eesId;
         this.eesVersion = eesVersion;
     }
-    public EESkillRelation(EESkillRelationDto eESkillRelationDto){
+
+    public EESkillRelation(EESkillRelationDto eESkillRelationDto) {
         updateEESkillRelation(eESkillRelationDto);
     }
+
     public void updateEESkillRelation(EESkillRelationDto eESkillRelationDto) {
         this.eesId = eESkillRelationDto.getEesId();
         this.eesSkillClasification = eESkillRelationDto.getEesSkillClasification();
         this.eesEeId.updateEmployeeEvaluatorRelation(eESkillRelationDto.getEesEeId());
         this.eesSkillId.updateSkill(eESkillRelationDto.getEesSkillId());
     }
-        
+
     public Long getEesId() {
         return eesId;
     }

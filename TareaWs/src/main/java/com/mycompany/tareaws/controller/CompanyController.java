@@ -16,10 +16,9 @@ import jakarta.jws.WebService;
  *
  * @author grana
  */
-
 @WebService(serviceName = "CompanyController")
 public class CompanyController {
-    
+
     @EJB
     CompanyService companyService;
 

@@ -43,7 +43,7 @@ import jakarta.persistence.Version;
     @NamedQuery(name = "Employee.findByCedulaNameFirstLastName", query = "SELECT e FROM Employee e WHERE UPPER(e.empName) like :empName and UPPER(e.empCedula) like :empCedula and UPPER(e.empFirstLastname) like :empFirstLastName"),
     @NamedQuery(name = "Employee.findByEmpEmailPassword", query = "SELECT e FROM Employee e WHERE e.empEmail = :empEmail and e.empPassword = :empPassword")})
 public class Employee implements Serializable {
-    
+
     private static final long serialVersionUID = 1L;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Id
@@ -96,14 +96,14 @@ public class Employee implements Serializable {
     private List<EmployeeEvaluationRelation> employeeEvaluationRelationList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "eeEmpId")
     private List<EmployeeEvaluatorRelation> employeeEvaluatorRelationList;
-    
+
     public Employee() {
     }
-    
+
     public Employee(Long empId) {
         this.empId = empId;
     }
-    
+
     public Employee(Long empId, String empCedula, String empName, String empFirstLastname, String empSecondLastname, String empEmail, String empPassword, String empPhoneNumber, String empCellphoneNumber, String empAdminState, String empActivatedState, String empForgotPasswordState, Long empVersion) {
         this.empId = empId;
         this.empCedula = empCedula;
@@ -119,12 +119,12 @@ public class Employee implements Serializable {
         this.empForgotPasswordState = empForgotPasswordState;
         this.empVersion = empVersion;
     }
-    
+
     public Employee(EmployeeDto employee) {
         this.empId = employee.getEmpId();
         updateEmployee(employee);
     }
-    
+
     public void updateEmployee(EmployeeDto employee) {
         this.empId = employee.getEmpId();
         this.empCedula = employee.getEmpCedula();
@@ -141,150 +141,150 @@ public class Employee implements Serializable {
         this.empJobId.updateJob(employee.getEmpJobId());
         this.empComId.updateCompany(employee.getEmpComId());
     }
-    
+
     public Long getEmpId() {
         return empId;
     }
-    
+
     public void setEmpId(Long empId) {
         this.empId = empId;
     }
-    
+
     public String getEmpCedula() {
         return empCedula;
     }
-    
+
     public void setEmpCedula(String empCedula) {
         this.empCedula = empCedula;
     }
-    
+
     public String getEmpName() {
         return empName;
     }
-    
+
     public void setEmpName(String empName) {
         this.empName = empName;
     }
-    
+
     public String getEmpFirstLastname() {
         return empFirstLastname;
     }
-    
+
     public void setEmpFirstLastname(String empFirstLastname) {
         this.empFirstLastname = empFirstLastname;
     }
-    
+
     public String getEmpSecondLastname() {
         return empSecondLastname;
     }
-    
+
     public void setEmpSecondLastname(String empSecondLastname) {
         this.empSecondLastname = empSecondLastname;
     }
-    
+
     public String getEmpEmail() {
         return empEmail;
     }
-    
+
     public void setEmpEmail(String empEmail) {
         this.empEmail = empEmail;
     }
-    
+
     public String getEmpPassword() {
         return empPassword;
     }
-    
+
     public void setEmpPassword(String empPassword) {
         this.empPassword = empPassword;
     }
-    
+
     public String getEmpPhoneNumber() {
         return empPhoneNumber;
     }
-    
+
     public void setEmpPhoneNumber(String empPhoneNumber) {
         this.empPhoneNumber = empPhoneNumber;
     }
-    
+
     public String getEmpCellphoneNumber() {
         return empCellphoneNumber;
     }
-    
+
     public void setEmpCellphoneNumber(String empCellphoneNumber) {
         this.empCellphoneNumber = empCellphoneNumber;
     }
-    
+
     public String getEmpAdminState() {
         return empAdminState;
     }
-    
+
     public void setEmpAdminState(String empAdminState) {
         this.empAdminState = empAdminState;
     }
-    
+
     public String getEmpActivatedState() {
         return empActivatedState;
     }
-    
+
     public void setEmpActivatedState(String empActivatedState) {
         this.empActivatedState = empActivatedState;
     }
-    
+
     public String getEmpForgotPasswordState() {
         return empForgotPasswordState;
     }
-    
+
     public void setEmpForgotPasswordState(String empForgotPasswordState) {
         this.empForgotPasswordState = empForgotPasswordState;
     }
-    
+
     public Long getEmpVersion() {
         return empVersion;
     }
-    
+
     public void setEmpVersion(Long empVersion) {
         this.empVersion = empVersion;
     }
-    
+
     public Company getEmpComId() {
         return empComId;
     }
-    
+
     public void setEmpComId(Company empComId) {
         this.empComId = empComId;
     }
-    
+
     public Job getEmpJobId() {
         return empJobId;
     }
-    
+
     public void setEmpJobId(Job empJobId) {
         this.empJobId = empJobId;
     }
-    
+
     public List<EmployeeEvaluationRelation> getEmployeeEvaluationRelationList() {
         return employeeEvaluationRelationList;
     }
-    
+
     public void setEmployeeEvaluationRelationList(List<EmployeeEvaluationRelation> employeeEvaluationRelationList) {
         this.employeeEvaluationRelationList = employeeEvaluationRelationList;
     }
-    
+
     public List<EmployeeEvaluatorRelation> getEmployeeEvaluatorRelationList() {
         return employeeEvaluatorRelationList;
     }
-    
+
     public void setEmployeeEvaluatorRelationList(List<EmployeeEvaluatorRelation> employeeEvaluatorRelationList) {
         this.employeeEvaluatorRelationList = employeeEvaluatorRelationList;
     }
-    
+
     @Override
     public int hashCode() {
         int hash = 0;
         hash += (empId != null ? empId.hashCode() : 0);
         return hash;
     }
-    
+
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
@@ -297,10 +297,10 @@ public class Employee implements Serializable {
         }
         return true;
     }
-    
+
     @Override
     public String toString() {
         return "com.mycompany.tareaws.model.Employee[ empId=" + empId + " ]";
     }
-    
+
 }

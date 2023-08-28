@@ -4,7 +4,6 @@
  */
 package com.mycompany.tareaws.service;
 
-
 import com.mycompany.tareaws.model.Company;
 import com.mycompany.tareaws.model.CompanyDto;
 import com.mycompany.tareaws.util.CodigoRespuesta;
@@ -27,7 +26,7 @@ import java.util.logging.Logger;
 @Stateless
 @LocalBean
 public class CompanyService {
-    
+
     private static final Logger LOG = Logger.getLogger(CompanyService.class.getName());
 
     @PersistenceContext(unitName = "TareaWsPU")

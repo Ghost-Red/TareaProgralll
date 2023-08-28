@@ -26,6 +26,7 @@ import java.util.logging.Logger;
 @Stateless
 @LocalBean
 public class EESkillRelationService {
+
     private static final Logger LOG = Logger.getLogger(EESkillRelationService.class.getName());
 
     @PersistenceContext(unitName = "TareaWsPU")
@@ -51,7 +52,7 @@ public class EESkillRelationService {
     public Respuesta saveEESkillRelation(EESkillRelationDto eESkillRelationDto) {
         try {
             EESkillRelation eESkillRelation;
-            if (eESkillRelationDto.getEesId()!= null && eESkillRelationDto.getEesId() > 0) {
+            if (eESkillRelationDto.getEesId() != null && eESkillRelationDto.getEesId() > 0) {
                 eESkillRelation = em.find(EESkillRelation.class, eESkillRelationDto.getEesId());
                 if (eESkillRelation == null) {
                     return new Respuesta(false, CodigoRespuesta.ERROR_NOENCONTRADO, "No se encrontró la EESkillRelation a modificar.", "saveEESkillRelation NoResultException");

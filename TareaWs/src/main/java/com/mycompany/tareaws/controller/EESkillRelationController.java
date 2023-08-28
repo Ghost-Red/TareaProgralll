@@ -18,6 +18,7 @@ import jakarta.jws.WebService;
  */
 @WebService(serviceName = "EESkillRelationController")
 public class EESkillRelationController {
+
     @EJB
     EESkillRelationService eESkillRelationService;
 

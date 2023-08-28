@@ -26,8 +26,7 @@ import java.util.logging.Logger;
 @Stateless
 @LocalBean
 public class EvaluationJobRelationService {
-    
-    
+
     private static final Logger LOG = Logger.getLogger(EvaluationJobRelationService.class.getName());
 
     @PersistenceContext(unitName = "TareaWsPU")
@@ -53,7 +52,7 @@ public class EvaluationJobRelationService {
     public Respuesta saveEvaluationJobRelation(EvaluationJobRelationDto evaluationJobRelationDto) {
         try {
             EvaluationJobRelation evaluationJobRelation;
-            if (evaluationJobRelationDto.getEjrId()!= null && evaluationJobRelationDto.getEjrId() > 0) {
+            if (evaluationJobRelationDto.getEjrId() != null && evaluationJobRelationDto.getEjrId() > 0) {
                 evaluationJobRelation = em.find(EvaluationJobRelation.class, evaluationJobRelationDto.getEjrId());
                 if (evaluationJobRelation == null) {
                     return new Respuesta(false, CodigoRespuesta.ERROR_NOENCONTRADO, "No se encrontró la EvaluationJobRelation a modificar.", "saveEvaluationJobRelation NoResultException");

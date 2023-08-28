@@ -18,9 +18,10 @@ import jakarta.jws.WebService;
  */
 @WebService(serviceName = "SkillController")
 public class SkillController {
+
     @EJB
     SkillService skillService;
-    
+
     @WebMethod(operationName = "getSkill")
     public SkillDto getSkill(@WebParam(name = "skillId") Long skillId) {
         Respuesta res = skillService.getSkill(skillId);
