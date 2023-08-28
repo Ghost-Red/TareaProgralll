@@ -4,8 +4,6 @@
  */
 package com.mycompany.tareaws.service;
 
-import com.mycompany.tareaws.model.Employee;
-import com.mycompany.tareaws.model.EmployeeDto;
 import com.mycompany.tareaws.model.Skill;
 import com.mycompany.tareaws.model.SkillDto;
 import com.mycompany.tareaws.util.CodigoRespuesta;
