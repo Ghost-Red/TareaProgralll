@@ -66,6 +66,10 @@ public class EmployeeEvaluationRelation implements Serializable {
         this.eerVersion = eerVersion;
     }
 
+    public EmployeeEvaluationRelation(EmployeeEvaluationRelationDto employeeEvaluationRelationDto){
+        updateEmployeeEvaluationRelation(employeeEvaluationRelationDto);
+    }
+    
     public void updateEmployeeEvaluationRelation(EmployeeEvaluationRelationDto employeeEvaluationRelationDto){
         this.eerId = employeeEvaluationRelationDto.getEerId();
         this.eerEmployeeClasification = employeeEvaluationRelationDto.getEerEmployeeClasification();
