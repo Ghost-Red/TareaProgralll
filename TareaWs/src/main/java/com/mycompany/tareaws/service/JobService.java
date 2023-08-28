@@ -15,6 +15,7 @@ import jakarta.persistence.NoResultException;
 import jakarta.persistence.NonUniqueResultException;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.Query;
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -62,6 +63,28 @@ public class JobService {
         } catch (Exception ex) {
             LOG.log(Level.SEVERE, "Ocurrio un error al guardar el puesto.", ex);
             return new Respuesta(false, CodigoRespuesta.ERROR_INTERNO, "Ocurrio un error al guardar el puesto.", "saveJob " + ex.getMessage());
+        }
+    }
+     public Respuesta deleteJob(Long id) {
+        try {
+            Job job;
+            if (id != null && id > 0) {
+                job = em.find(Job.class, id);
+                if (job == null) {
+                    return new Respuesta(false, CodigoRespuesta.ERROR_NOENCONTRADO, "No se encrontró el puesto a eliminar.", "deleteJob NoResultException");
+                }
+                em.remove(job);
+            } else {
+                return new Respuesta(false, CodigoRespuesta.ERROR_NOENCONTRADO, "Debe cargar el puesto a eliminar.", "deleteJob NoResultException");
+            }
+            em.flush();
+            return new Respuesta(true, CodigoRespuesta.CORRECTO, "", "");
+        } catch (Exception ex) {
+            if (ex.getCause() != null && ex.getCause().getCause().getClass() == SQLIntegrityConstraintViolationException.class) {
+                return new Respuesta(false, CodigoRespuesta.ERROR_INTERNO, "No se puede eliminar el puesto porque tiene relaciones con otros registros.", "deleteJob " + ex.getMessage());
+            }
+            LOG.log(Level.SEVERE, "Ocurrio un error al guardar el puesto.", ex);
+            return new Respuesta(false, CodigoRespuesta.ERROR_INTERNO, "Ocurrio un error al eliminar el puesto.", "deleteJob " + ex.getMessage());
         }
     }
 }
