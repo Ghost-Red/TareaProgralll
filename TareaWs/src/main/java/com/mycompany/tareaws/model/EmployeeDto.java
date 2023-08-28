@@ -47,8 +47,8 @@ public class EmployeeDto {
         this.empComId = new CompanyDto(employee.getEmpComId());
         this.empJobId = new JobDto(employee.getEmpJobId());
     }
-    
-    public void updateEmployeeDto(Employee employee){
+
+    public void updateEmployeeDto(Employee employee) {
         this.empId = employee.getEmpId();
         this.empCedula = employee.getEmpCedula();
         this.empName = employee.getEmpName();

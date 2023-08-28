@@ -60,6 +60,16 @@ public class EvaluationJobRelation implements Serializable {
         this.ejrVersion = ejrVersion;
     }
 
+    public EvaluationJobRelation(EvaluationJobRelationDto evaluationJobRelationDto) {
+        updateEvaluationJobRelation(evaluationJobRelationDto);
+    }
+
+    public void updateEvaluationJobRelation(EvaluationJobRelationDto evaluationJobRelationDto) {
+        this.ejrId = evaluationJobRelationDto.getEjrId();
+        this.ejrEvaId.updateEvaluation(evaluationJobRelationDto.getEjrEvaId());
+        this.ejrJobId.updateJob(evaluationJobRelationDto.getEjrJobId());
+    }
+
     public Long getEjrId() {
         return ejrId;
     }
@@ -124,5 +134,5 @@ public class EvaluationJobRelation implements Serializable {
     public String toString() {
         return "com.mycompany.tareaws.model.EvaluationJobRelation[ ejrId=" + ejrId + " ]";
     }
-    
+
 }

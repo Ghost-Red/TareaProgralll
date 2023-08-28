@@ -66,6 +66,17 @@ public class EmployeeEvaluationRelation implements Serializable {
         this.eerVersion = eerVersion;
     }
 
+    public EmployeeEvaluationRelation(EmployeeEvaluationRelationDto employeeEvaluationRelationDto) {
+        updateEmployeeEvaluationRelation(employeeEvaluationRelationDto);
+    }
+
+    public void updateEmployeeEvaluationRelation(EmployeeEvaluationRelationDto employeeEvaluationRelationDto) {
+        this.eerId = employeeEvaluationRelationDto.getEerId();
+        this.eerEmployeeClasification = employeeEvaluationRelationDto.getEerEmployeeClasification();
+        this.eerEmpId.updateEmployee(employeeEvaluationRelationDto.getEerEmpId());
+        this.eerEjrId.updateEvaluationJobRelation(employeeEvaluationRelationDto.getEerEjrId());
+    }
+
     public Long getEerId() {
         return eerId;
     }
@@ -146,5 +157,5 @@ public class EmployeeEvaluationRelation implements Serializable {
     public String toString() {
         return "com.mycompany.tareaws.model.EmployeeEvaluationRelation[ eerId=" + eerId + " ]";
     }
-    
+
 }

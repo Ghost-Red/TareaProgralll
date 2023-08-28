@@ -59,6 +59,17 @@ public class EmployeeAverageSkill implements Serializable {
         this.easVersion = easVersion;
     }
 
+    public EmployeeAverageSkill(EmployeeAverageSkillDto employeeAverageSkillDto) {
+        updateEmployeeAverageSkill(employeeAverageSkillDto);
+    }
+
+    public void updateEmployeeAverageSkill(EmployeeAverageSkillDto employeeAverageSkillDto) {
+        this.easId = employeeAverageSkillDto.getEasId();
+        this.easEmployeeSkillLvl = employeeAverageSkillDto.getEasEmployeeSkillLvl();
+        this.easEerId.updateEmployeeEvaluationRelation(employeeAverageSkillDto.getEasEerId());
+        this.easSkillId.updateSkill(employeeAverageSkillDto.getEasSkillId());
+    }
+
     public Long getEasId() {
         return easId;
     }
@@ -123,5 +134,5 @@ public class EmployeeAverageSkill implements Serializable {
     public String toString() {
         return "com.mycompany.tareaws.model.EmployeeAverageSkill[ easId=" + easId + " ]";
     }
-    
+
 }

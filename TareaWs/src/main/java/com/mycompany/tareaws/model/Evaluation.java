@@ -79,6 +79,20 @@ public class Evaluation implements Serializable {
         this.evaVersion = evaVersion;
     }
 
+    public Evaluation(EvaluationDto evaluation) {
+        this.evaId = evaluation.getEvaId();
+        updateEvaluation(evaluation);
+    }
+
+    public void updateEvaluation(EvaluationDto evaluation) {
+        this.evaId = evaluation.getEvaId();
+        this.evaTitle = evaluation.getEvaTitle();
+        this.evaStartDate = evaluation.getEvaStartDate();
+        this.evaFinalDate = evaluation.getEvaFinalDate();
+        this.evaState = evaluation.getEvaState();
+        this.evaComId.updateCompany(evaluation.getEvaComId());
+    }
+
     public Long getEvaId() {
         return evaId;
     }
@@ -167,5 +181,5 @@ public class Evaluation implements Serializable {
     public String toString() {
         return "com.mycompany.tareaws.model.Evaluation[ evaId=" + evaId + " ]";
     }
-    
+
 }
