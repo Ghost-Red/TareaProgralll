@@ -17,6 +17,7 @@ import jakarta.persistence.NoResultException;
 import jakarta.persistence.NonUniqueResultException;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.Query;
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -67,6 +68,28 @@ public class SkillService {
         } catch (Exception ex) {
             LOG.log(Level.SEVERE, "Ocurrio un error al guardar la skill.", ex);
             return new Respuesta(false, CodigoRespuesta.ERROR_INTERNO, "Ocurrio un error al guardar la skill.", "saveSkill " + ex.getMessage());
+        }
+    }
+    public Respuesta deleteSkill(Long id) {
+        try {
+            Skill skill;
+            if (id != null && id > 0) {
+                skill = em.find(Skill.class, id);
+                if (skill == null) {
+                    return new Respuesta(false, CodigoRespuesta.ERROR_NOENCONTRADO, "No se encrontró la skill a eliminar.", "eliminarSkill NoResultException");
+                }
+                em.remove(skill);
+            } else {
+                return new Respuesta(false, CodigoRespuesta.ERROR_NOENCONTRADO, "Debe cargar la skill a eliminar.", "eliminarSkill NoResultException");
+            }
+            em.flush();
+            return new Respuesta(true, CodigoRespuesta.CORRECTO, "", "");
+        } catch (Exception ex) {
+            if (ex.getCause() != null && ex.getCause().getCause().getClass() == SQLIntegrityConstraintViolationException.class) {
+                return new Respuesta(false, CodigoRespuesta.ERROR_INTERNO, "No se puede eliminar la skill porque tiene relaciones con otros registros.", "eliminarSkill " + ex.getMessage());
+            }
+            LOG.log(Level.SEVERE, "Ocurrio un error al guardar la skill.", ex);
+            return new Respuesta(false, CodigoRespuesta.ERROR_INTERNO, "Ocurrio un error al eliminar la skill.", "eliminarSkill " + ex.getMessage());
         }
     }
     
