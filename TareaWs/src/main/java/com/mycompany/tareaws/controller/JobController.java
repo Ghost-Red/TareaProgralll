@@ -18,18 +18,12 @@ import jakarta.jws.WebService;
  */
 @WebService(serviceName = "JobController")
 public class JobController {
-    @WebMethod(operationName = "getMensaje")
-    public String getMensaje(@WebParam(name = "code") String code){
-        String a = "Este webservice funciona" + code;
-        return a;
-    }
     @EJB
     JobService jobService;
     
     @WebMethod(operationName = "getJob")
     public JobDto getJob(@WebParam(name = "jobId") Long jobId) {
         Respuesta res = jobService.getJob(jobId);
-        JobDto abc = (JobDto) res.getResultado("Job");
-        return abc;
+        return (JobDto) res.getResultado("Job");
     }
 }

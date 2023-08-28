@@ -4,7 +4,6 @@
  */
 package com.mycompany.tareaws.controller;
 
-
 import com.mycompany.tareaws.model.SkillDto;
 import com.mycompany.tareaws.service.SkillService;
 import com.mycompany.tareaws.util.Respuesta;
@@ -19,18 +18,12 @@ import jakarta.jws.WebService;
  */
 @WebService(serviceName = "SkillController")
 public class SkillController {
-    @WebMethod(operationName = "getMensaje")
-    public String getMensaje(@WebParam(name = "code") String code){
-        String a = "Este webservice funciona" + code;
-        return a;
-    }
     @EJB
     SkillService skillService;
     
     @WebMethod(operationName = "getSkill")
     public SkillDto getSkill(@WebParam(name = "skillId") Long skillId) {
         Respuesta res = skillService.getSkill(skillId);
-        SkillDto abc = (SkillDto) res.getResultado("Skill");
-        return abc;
+        return (SkillDto) res.getResultado("Skill");
     }
 }
