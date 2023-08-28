@@ -18,7 +18,7 @@ import jakarta.jws.WebService;
  * @author grana
  */
 
-@WebService(serviceName = "EmployeeEvaluationRelationController")
+@WebService(serviceName = "EmployeeEvaluatorRelationController")
 public class EmployeeEvaluatorRelationController {
     @EJB
     EmployeeEvaluatorRelationService employeeEvaluatorRelationService;
