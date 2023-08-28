@@ -20,19 +20,19 @@ public class EESkillRelationDto {
         modificate = false;
     }
 
-    public EESkillRelationDto(EESkillRelation EESkillRelation) {
+    public EESkillRelationDto(EESkillRelation eESkillRelation) {
         this();
-        this.eesId = EESkillRelation.getEesId();
-        this.eesSkillClasification = EESkillRelation.getEesSkillClasification();
-        this.eesEeId = new EmployeeEvaluatorRelationDto(EESkillRelation.getEesEeId());
-        this.eesSkillId = new SkillDto(EESkillRelation.getEesSkillId());
+        this.eesId = eESkillRelation.getEesId();
+        this.eesSkillClasification = eESkillRelation.getEesSkillClasification();
+        this.eesEeId = new EmployeeEvaluatorRelationDto(eESkillRelation.getEesEeId());
+        this.eesSkillId = new SkillDto(eESkillRelation.getEesSkillId());
     }
 
-    public void updateEESkillRelationDto(EESkillRelation EESkillRelation) {
-        this.eesId = EESkillRelation.getEesId();
-        this.eesSkillClasification = EESkillRelation.getEesSkillClasification();
-        this.eesEeId.updateEmployeeEvaluatorRelationDto(EESkillRelation.getEesEeId());
-        this.eesSkillId.updateSkillDto(EESkillRelation.getEesSkillId());
+    public void updateEESkillRelationDto(EESkillRelation eESkillRelation) {
+        this.eesId = eESkillRelation.getEesId();
+        this.eesSkillClasification = eESkillRelation.getEesSkillClasification();
+        this.eesEeId.updateEmployeeEvaluatorRelationDto(eESkillRelation.getEesEeId());
+        this.eesSkillId.updateSkillDto(eESkillRelation.getEesSkillId());
     }
 
     public Long getEesId() {

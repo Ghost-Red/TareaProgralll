@@ -20,19 +20,19 @@ public class EmployeeAverageSkillDto {
         modificate = false;
     }
 
-    public EmployeeAverageSkillDto(EmployeeAverageSkill EmployeeAverageSkill) {
+    public EmployeeAverageSkillDto(EmployeeAverageSkill employeeAverageSkill) {
         this();
-        this.easId = EmployeeAverageSkill.getEasId();
-        this.easEmployeeSkillLvl = EmployeeAverageSkill.getEasEmployeeSkillLvl();
-        this.easEerId = new EmployeeEvaluationRelationDto(EmployeeAverageSkill.getEasEerId());
-        this.easSkillId = new SkillDto(EmployeeAverageSkill.getEasSkillId());
+        this.easId = employeeAverageSkill.getEasId();
+        this.easEmployeeSkillLvl = employeeAverageSkill.getEasEmployeeSkillLvl();
+        this.easEerId = new EmployeeEvaluationRelationDto(employeeAverageSkill.getEasEerId());
+        this.easSkillId = new SkillDto(employeeAverageSkill.getEasSkillId());
     }
 
-    public void updateEmployeeAverageSkillDto(EmployeeAverageSkill EmployeeAverageSkill) {
-        this.easId = EmployeeAverageSkill.getEasId();
-        this.easEmployeeSkillLvl = EmployeeAverageSkill.getEasEmployeeSkillLvl();
-        this.easEerId.updateEmployeeEvaluationRelationDto(EmployeeAverageSkill.getEasEerId());
-        this.easSkillId.updateSkillDto(EmployeeAverageSkill.getEasSkillId());
+    public void updateEmployeeAverageSkillDto(EmployeeAverageSkill employeeAverageSkill) {
+        this.easId = employeeAverageSkill.getEasId();
+        this.easEmployeeSkillLvl = employeeAverageSkill.getEasEmployeeSkillLvl();
+        this.easEerId.updateEmployeeEvaluationRelationDto(employeeAverageSkill.getEasEerId());
+        this.easSkillId.updateSkillDto(employeeAverageSkill.getEasSkillId());
     }
 
     public Long getEasId() {
