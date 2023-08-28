@@ -76,16 +76,18 @@ public class Job implements Serializable {
         this.jobState = jobState;
         this.jobVersion = jobVersion;
     }
+
     public Job(JobDto jobDto) {
         this.jobId = jobDto.getJobId();
         updateJob(jobDto);
     }
-    public void updateJob(JobDto jobDto){
+
+    public void updateJob(JobDto jobDto) {
         this.jobId = jobDto.getJobId();
         this.jobName = jobDto.getJobName();
         this.jobState = jobDto.getJobState();
     }
-    
+
     public Long getJobId() {
         return jobId;
     }
@@ -174,5 +176,5 @@ public class Job implements Serializable {
     public String toString() {
         return "com.mycompany.tareaws.model.Job[ jobId=" + jobId + " ]";
     }
-    
+
 }
