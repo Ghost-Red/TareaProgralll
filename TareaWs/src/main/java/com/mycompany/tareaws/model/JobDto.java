@@ -34,7 +34,6 @@ public class JobDto {
         this.jobName = job.getJobName();
         this.jobState = job.getJobState();
         this.jobComId.updateCompanyDto(job.getJobComId());
-        
     }
 
     public Long getJobId() {
