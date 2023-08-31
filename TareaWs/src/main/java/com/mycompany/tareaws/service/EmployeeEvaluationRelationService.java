@@ -41,7 +41,7 @@ public class EmployeeEvaluationRelationService {
             
             EmployeeEvaluationRelation employeeEvaluationRelation = (EmployeeEvaluationRelation) qryEmployeeEvaluationRelation.getSingleResult();
             EmployeeEvaluationRelationDto employeeEvaluationRelationDto = new EmployeeEvaluationRelationDto(employeeEvaluationRelation);
-            employeeEvaluationRelationDto.setEmployee(new EmployeeDto(employeeEvaluationRelation.getEerEmpId()));
+            employeeEvaluationRelationDto.setEmployee(new EmployeeDto(employeeEvaluationRelation.getEerid()));
             employeeEvaluationRelationDto.setEvaluationJobRelation( new EvaluationJobRelationDto(employeeEvaluationRelation.getEerEjrId()));
             
             return new Respuesta(true, CodigoRespuesta.CORRECTO, "", "", "EmployeeEvaluationRelation", employeeEvaluationRelationDto);

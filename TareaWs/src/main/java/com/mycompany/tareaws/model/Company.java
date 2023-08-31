@@ -65,7 +65,7 @@ public class Company implements Serializable {
     private Byte[] comEmailTemplateActivateUser;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "skillComId")
     private List<Skill> skillList;
-    @OneToMany(mappedBy = "empComId")
+    @OneToMany(mappedBy = "company")
     private List<Employee> employeeList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "evaComId")
     private List<Evaluation> evaluationList;

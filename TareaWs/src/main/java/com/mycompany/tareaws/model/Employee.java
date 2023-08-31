@@ -27,21 +27,21 @@ import jakarta.persistence.Version;
 @Table(name = "EMPLOYEE")
 @NamedQueries({
     @NamedQuery(name = "Employee.findAll", query = "SELECT e FROM Employee e"),
-    @NamedQuery(name = "Employee.findByEmpId", query = "SELECT e FROM Employee e WHERE e.empId = :empId"),
-    @NamedQuery(name = "Employee.findByEmpCedula", query = "SELECT e FROM Employee e WHERE e.empCedula = :empCedula"),
-    @NamedQuery(name = "Employee.findByEmpName", query = "SELECT e FROM Employee e WHERE e.empName = :empName"),
-    @NamedQuery(name = "Employee.findByEmpFirstLastname", query = "SELECT e FROM Employee e WHERE e.empFirstLastname = :empFirstLastname"),
-    @NamedQuery(name = "Employee.findByEmpSecondLastname", query = "SELECT e FROM Employee e WHERE e.empSecondLastname = :empSecondLastname"),
-    @NamedQuery(name = "Employee.findByEmpEmail", query = "SELECT e FROM Employee e WHERE e.empEmail = :empEmail"),
-    @NamedQuery(name = "Employee.findByEmpPassword", query = "SELECT e FROM Employee e WHERE e.empPassword = :empPassword"),
-    @NamedQuery(name = "Employee.findByEmpPhoneNumber", query = "SELECT e FROM Employee e WHERE e.empPhoneNumber = :empPhoneNumber"),
-    @NamedQuery(name = "Employee.findByEmpCellphoneNumber", query = "SELECT e FROM Employee e WHERE e.empCellphoneNumber = :empCellphoneNumber"),
-    @NamedQuery(name = "Employee.findByEmpAdminState", query = "SELECT e FROM Employee e WHERE e.empAdminState = :empAdminState"),
-    @NamedQuery(name = "Employee.findByEmpActivatedState", query = "SELECT e FROM Employee e WHERE e.empActivatedState = :empActivatedState"),
-    @NamedQuery(name = "Employee.findByEmpForgotPasswordState", query = "SELECT e FROM Employee e WHERE e.empForgotPasswordState = :empForgotPasswordState"),
-    @NamedQuery(name = "Employee.findByEmpVersion", query = "SELECT e FROM Employee e WHERE e.empVersion = :empVersion"),
-    @NamedQuery(name = "Employee.findByCedulaNameFirstLastName", query = "SELECT e FROM Employee e WHERE UPPER(e.empName) like :empName and UPPER(e.empCedula) like :empCedula and UPPER(e.empFirstLastname) like :empFirstLastName"),
-    @NamedQuery(name = "Employee.findByEmpEmailPassword", query = "SELECT e FROM Employee e WHERE e.empEmail = :empEmail and e.empPassword = :empPassword")})
+    @NamedQuery(name = "Employee.findByid", query = "SELECT e FROM Employee e WHERE e.id = :id"),
+    @NamedQuery(name = "Employee.findByidentification", query = "SELECT e FROM Employee e WHERE e.identification = :identification"),
+    @NamedQuery(name = "Employee.findByname", query = "SELECT e FROM Employee e WHERE e.name = :name"),
+    @NamedQuery(name = "Employee.findByfirstLastname", query = "SELECT e FROM Employee e WHERE e.firstLastname = :firstLastname"),
+    @NamedQuery(name = "Employee.findBysecondLastname", query = "SELECT e FROM Employee e WHERE e.secondLastname = :secondLastname"),
+    @NamedQuery(name = "Employee.findByemail", query = "SELECT e FROM Employee e WHERE e.email = :email"),
+    @NamedQuery(name = "Employee.findBypassword", query = "SELECT e FROM Employee e WHERE e.password = :password"),
+    @NamedQuery(name = "Employee.findByphoneNumber", query = "SELECT e FROM Employee e WHERE e.phoneNumber = :phoneNumber"),
+    @NamedQuery(name = "Employee.findBycellphoneNumber", query = "SELECT e FROM Employee e WHERE e.cellphoneNumber = :cellphoneNumber"),
+    @NamedQuery(name = "Employee.findByadminState", query = "SELECT e FROM Employee e WHERE e.adminState = :adminState"),
+    @NamedQuery(name = "Employee.findByactivatedState", query = "SELECT e FROM Employee e WHERE e.activatedState = :activatedState"),
+    @NamedQuery(name = "Employee.findByforgotPasswordState", query = "SELECT e FROM Employee e WHERE e.forgotPasswordState = :forgotPasswordState"),
+    @NamedQuery(name = "Employee.findByversion", query = "SELECT e FROM Employee e WHERE e.version = :version"),
+    @NamedQuery(name = "Employee.findByCedulaNameFirstLastName", query = "SELECT e FROM Employee e WHERE UPPER(e.name) like :name and UPPER(e.identification) like :identification and UPPER(e.firstLastname) like :firstLastname"),
+    @NamedQuery(name = "Employee.findByemailPassword", query = "SELECT e FROM Employee e WHERE e.email = :email and e.password = :password")})
 public class Employee implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -49,217 +49,217 @@ public class Employee implements Serializable {
     @Id
     @Basic(optional = false)
     @Column(name = "EMP_ID")
-    private Long empId;
+    private Long id;
     @Basic(optional = false)
     @Column(name = "EMP_CEDULA")
-    private String empCedula;
+    private String identification;
     @Basic(optional = false)
     @Column(name = "EMP_NAME")
-    private String empName;
+    private String name;
     @Basic(optional = false)
     @Column(name = "EMP_FIRST_LASTNAME")
-    private String empFirstLastname;
+    private String firstLastname;
     @Basic(optional = false)
     @Column(name = "EMP_SECOND_LASTNAME")
-    private String empSecondLastname;
+    private String secondLastname;
     @Basic(optional = false)
     @Column(name = "EMP_EMAIL")
-    private String empEmail;
+    private String email;
     @Basic(optional = false)
     @Column(name = "EMP_PASSWORD")
-    private String empPassword;
+    private String password;
     @Basic(optional = false)
     @Column(name = "EMP_PHONE_NUMBER")
-    private String empPhoneNumber;
+    private String phoneNumber;
     @Basic(optional = false)
     @Column(name = "EMP_CELLPHONE_NUMBER")
-    private String empCellphoneNumber;
+    private String cellphoneNumber;
     @Basic(optional = false)
     @Column(name = "EMP_ADMIN_STATE")
-    private String empAdminState;
+    private String adminState;
     @Basic(optional = false)
     @Column(name = "EMP_ACTIVATED_STATE")
-    private String empActivatedState;
+    private String activatedState;
     @Basic(optional = false)
     @Column(name = "EMP_FORGOT_PASSWORD_STATE")
-    private String empForgotPasswordState;
+    private String forgotPasswordState;
     @Version
     @Column(name = "EMP_VERSION")
-    private Long empVersion;
+    private Long version;
     @JoinColumn(name = "EMP_COM_ID", referencedColumnName = "COM_ID")
     @ManyToOne
-    private Company empComId;
+    private Company company;
     @JoinColumn(name = "EMP_JOB_ID", referencedColumnName = "JOB_ID")
     @ManyToOne
-    private Job empJobId;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "eerEmpId")
+    private Job job;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "eerid")
     private List<EmployeeEvaluationRelation> employeeEvaluationRelationList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "eeEmpId")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "eeid")
     private List<EmployeeEvaluatorRelation> employeeEvaluatorRelationList;
 
     public Employee() {
     }
 
-    public Employee(Long empId) {
-        this.empId = empId;
+    public Employee(Long id) {
+        this.id = id;
     }
 
-    public Employee(Long empId, String empCedula, String empName, String empFirstLastname, String empSecondLastname, String empEmail, String empPassword, String empPhoneNumber, String empCellphoneNumber, String empAdminState, String empActivatedState, String empForgotPasswordState, Long empVersion) {
-        this.empId = empId;
-        this.empCedula = empCedula;
-        this.empName = empName;
-        this.empFirstLastname = empFirstLastname;
-        this.empSecondLastname = empSecondLastname;
-        this.empEmail = empEmail;
-        this.empPassword = empPassword;
-        this.empPhoneNumber = empPhoneNumber;
-        this.empCellphoneNumber = empCellphoneNumber;
-        this.empAdminState = empAdminState;
-        this.empActivatedState = empActivatedState;
-        this.empForgotPasswordState = empForgotPasswordState;
-        this.empVersion = empVersion;
+    public Employee(Long id, String identification, String name, String firstLastname, String secondLastname, String email, String password, String phoneNumber, String cellphoneNumber, String adminState, String activatedState, String forgotPasswordState, Long version) {
+        this.id = id;
+        this.identification = identification;
+        this.name = name;
+        this.firstLastname = firstLastname;
+        this.secondLastname = secondLastname;
+        this.email = email;
+        this.password = password;
+        this.phoneNumber = phoneNumber;
+        this.cellphoneNumber = cellphoneNumber;
+        this.adminState = adminState;
+        this.activatedState = activatedState;
+        this.forgotPasswordState = forgotPasswordState;
+        this.version = version;
     }
 
     public Employee(EmployeeDto employee) {
-        this.empId = employee.getId();
+        this.id = employee.getId();
         updateEmployee(employee);
     }
 
     public void updateEmployee(EmployeeDto employee) {
-        this.empId = employee.getId();
-        this.empCedula = employee.getCedula();
-        this.empName = employee.getName();
-        this.empFirstLastname = employee.getFirstLastname();
-        this.empSecondLastname = employee.getSecondLastname();
-        this.empEmail = employee.getEmail();
-        this.empPassword = employee.getPassword();
-        this.empPhoneNumber = employee.getPhoneNumber();
-        this.empCellphoneNumber = employee.getCellphoneNumber();
-        this.empAdminState = employee.getAdminState();
-        this.empActivatedState = employee.getActivatedState();
-        this.empForgotPasswordState = employee.getForgotPasswordState();
-        this.empJobId.updateJob(employee.getJob());
-        this.empComId.updateCompany(employee.getCompany());
+        this.id = employee.getId();
+        this.identification = employee.getCedula();
+        this.name = employee.getName();
+        this.firstLastname = employee.getFirstLastname();
+        this.secondLastname = employee.getSecondLastname();
+        this.email = employee.getEmail();
+        this.password = employee.getPassword();
+        this.phoneNumber = employee.getPhoneNumber();
+        this.cellphoneNumber = employee.getCellphoneNumber();
+        this.adminState = employee.getAdminState();
+        this.activatedState = employee.getActivatedState();
+        this.forgotPasswordState = employee.getForgotPasswordState();
+        this.job.updateJob(employee.getJob());
+        this.company.updateCompany(employee.getCompany());
     }
 
-    public Long getEmpId() {
-        return empId;
+    public Long getid() {
+        return id;
     }
 
-    public void setEmpId(Long empId) {
-        this.empId = empId;
+    public void setid(Long id) {
+        this.id = id;
     }
 
-    public String getEmpCedula() {
-        return empCedula;
+    public String getidentification() {
+        return identification;
     }
 
-    public void setEmpCedula(String empCedula) {
-        this.empCedula = empCedula;
+    public void setidentification(String identification) {
+        this.identification = identification;
     }
 
-    public String getEmpName() {
-        return empName;
+    public String getname() {
+        return name;
     }
 
-    public void setEmpName(String empName) {
-        this.empName = empName;
+    public void setname(String name) {
+        this.name = name;
     }
 
-    public String getEmpFirstLastname() {
-        return empFirstLastname;
+    public String getfirstLastname() {
+        return firstLastname;
     }
 
-    public void setEmpFirstLastname(String empFirstLastname) {
-        this.empFirstLastname = empFirstLastname;
+    public void setfirstLastname(String firstLastname) {
+        this.firstLastname = firstLastname;
     }
 
-    public String getEmpSecondLastname() {
-        return empSecondLastname;
+    public String getsecondLastname() {
+        return secondLastname;
     }
 
-    public void setEmpSecondLastname(String empSecondLastname) {
-        this.empSecondLastname = empSecondLastname;
+    public void setsecondLastname(String secondLastname) {
+        this.secondLastname = secondLastname;
     }
 
-    public String getEmpEmail() {
-        return empEmail;
+    public String getemail() {
+        return email;
     }
 
-    public void setEmpEmail(String empEmail) {
-        this.empEmail = empEmail;
+    public void setemail(String email) {
+        this.email = email;
     }
 
-    public String getEmpPassword() {
-        return empPassword;
+    public String getpassword() {
+        return password;
     }
 
-    public void setEmpPassword(String empPassword) {
-        this.empPassword = empPassword;
+    public void setpassword(String password) {
+        this.password = password;
     }
 
-    public String getEmpPhoneNumber() {
-        return empPhoneNumber;
+    public String getphoneNumber() {
+        return phoneNumber;
     }
 
-    public void setEmpPhoneNumber(String empPhoneNumber) {
-        this.empPhoneNumber = empPhoneNumber;
+    public void setphoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
-    public String getEmpCellphoneNumber() {
-        return empCellphoneNumber;
+    public String getcellphoneNumber() {
+        return cellphoneNumber;
     }
 
-    public void setEmpCellphoneNumber(String empCellphoneNumber) {
-        this.empCellphoneNumber = empCellphoneNumber;
+    public void setcellphoneNumber(String cellphoneNumber) {
+        this.cellphoneNumber = cellphoneNumber;
     }
 
-    public String getEmpAdminState() {
-        return empAdminState;
+    public String getadminState() {
+        return adminState;
     }
 
-    public void setEmpAdminState(String empAdminState) {
-        this.empAdminState = empAdminState;
+    public void setadminState(String adminState) {
+        this.adminState = adminState;
     }
 
-    public String getEmpActivatedState() {
-        return empActivatedState;
+    public String getactivatedState() {
+        return activatedState;
     }
 
-    public void setEmpActivatedState(String empActivatedState) {
-        this.empActivatedState = empActivatedState;
+    public void setactivatedState(String activatedState) {
+        this.activatedState = activatedState;
     }
 
-    public String getEmpForgotPasswordState() {
-        return empForgotPasswordState;
+    public String getforgotPasswordState() {
+        return forgotPasswordState;
     }
 
-    public void setEmpForgotPasswordState(String empForgotPasswordState) {
-        this.empForgotPasswordState = empForgotPasswordState;
+    public void setforgotPasswordState(String forgotPasswordState) {
+        this.forgotPasswordState = forgotPasswordState;
     }
 
-    public Long getEmpVersion() {
-        return empVersion;
+    public Long getversion() {
+        return version;
     }
 
-    public void setEmpVersion(Long empVersion) {
-        this.empVersion = empVersion;
+    public void setversion(Long version) {
+        this.version = version;
     }
 
-    public Company getEmpComId() {
-        return empComId;
+    public Company getcompany() {
+        return company;
     }
 
-    public void setEmpComId(Company empComId) {
-        this.empComId = empComId;
+    public void setcompany(Company company) {
+        this.company = company;
     }
 
-    public Job getEmpJobId() {
-        return empJobId;
+    public Job getjob() {
+        return job;
     }
 
-    public void setEmpJobId(Job empJobId) {
-        this.empJobId = empJobId;
+    public void setjob(Job job) {
+        this.job = job;
     }
 
     public List<EmployeeEvaluationRelation> getEmployeeEvaluationRelationList() {
@@ -281,7 +281,7 @@ public class Employee implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (empId != null ? empId.hashCode() : 0);
+        hash += (id != null ? id.hashCode() : 0);
         return hash;
     }
 
@@ -292,7 +292,7 @@ public class Employee implements Serializable {
             return false;
         }
         Employee other = (Employee) object;
-        if ((this.empId == null && other.empId != null) || (this.empId != null && !this.empId.equals(other.empId))) {
+        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
         return true;
@@ -300,7 +300,7 @@ public class Employee implements Serializable {
 
     @Override
     public String toString() {
-        return "com.mycompany.tareaws.model.Employee[ empId=" + empId + " ]";
+        return "com.mycompany.tareaws.model.Employee[ id=" + id + " ]";
     }
 
 }

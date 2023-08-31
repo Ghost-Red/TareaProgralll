@@ -38,14 +38,14 @@ public class EmployeeService {
 
     public Respuesta validateUser(String email, String password) {
         try {
-            Query qryActivity = em.createNamedQuery("Employee.findByEmpEmailPassword", Employee.class);
-            qryActivity.setParameter("empEmail", email);
-            qryActivity.setParameter("empPassword", password);
+            Query qryActivity = em.createNamedQuery("Employee.findByemailPassword", Employee.class);
+            qryActivity.setParameter("email", email);
+            qryActivity.setParameter("password", password);
             
             Employee employee = (Employee)qryActivity.getSingleResult();
             EmployeeDto employeeDto = new EmployeeDto(employee);
-            employeeDto.setCompany(new CompanyDto(employee.getEmpComId()));
-            employeeDto.setJob(new JobDto(employee.getEmpJobId()));
+            employeeDto.setCompany(new CompanyDto(employee.getcompany()));
+            employeeDto.setJob(new JobDto(employee.getjob()));
             
             return new Respuesta(true, CodigoRespuesta.CORRECTO, "", "", "Employee", employeeDto);
 
@@ -61,17 +61,17 @@ public class EmployeeService {
     }
 
     /*
-    public EmployeeDto getEmployee(Long empId){
-            Query qryEmployee = em.createNamedQuery("Employee.findByEmpId", Employee.class);
-            qryEmployee.setParameter("empId", empId);
+    public EmployeeDto getEmployee(Long id){
+            Query qryEmployee = em.createNamedQuery("Employee.findByid", Employee.class);
+            qryEmployee.setParameter("id", id);
             EmployeeDto abc = new EmployeeDto((Employee) qryEmployee.getSingleResult());
             return abc;
     }
      */
     public Respuesta getEmployee(Long id) {
         try {
-            Query qryEmployee = em.createNamedQuery("Employee.findByEmpId", Employee.class);
-            qryEmployee.setParameter("empId", id);
+            Query qryEmployee = em.createNamedQuery("Employee.findByid", Employee.class);
+            qryEmployee.setParameter("id", id);
             return new Respuesta(true, CodigoRespuesta.CORRECTO, "", "", "Employee", new EmployeeDto((Employee) qryEmployee.getSingleResult()));
 
         } catch (NoResultException ex) {
@@ -88,9 +88,9 @@ public class EmployeeService {
     public Respuesta getEmployees(String cedula, String name, String firstLastName) {
         try {
             Query qryEmployee = em.createNamedQuery("Employee.findByCedulaNameFirstLastName", Employee.class);
-            qryEmployee.setParameter("empCedula", cedula);
-            qryEmployee.setParameter("empName", name);
-            qryEmployee.setParameter("empFirstLastName", firstLastName);
+            qryEmployee.setParameter("identification", cedula);
+            qryEmployee.setParameter("name", name);
+            qryEmployee.setParameter("firstLastname", firstLastName);
 
             List<Employee> employees = qryEmployee.getResultList();
             List<EmployeeDto> employeesDto = new ArrayList<>();

@@ -50,7 +50,7 @@ public class EmployeeEvaluatorRelation implements Serializable {
     private List<EESkillRelation> eESkillRelationList;
     @JoinColumn(name = "EE_EMP_ID", referencedColumnName = "EMP_ID")
     @ManyToOne(optional = false)
-    private Employee eeEmpId;
+    private Employee eeid;
     @JoinColumn(name = "EVA_EMPLOYEE_ID", referencedColumnName = "EER_ID")
     @ManyToOne(optional = false)
     private EmployeeEvaluationRelation evaEmployeeId;
@@ -67,13 +67,13 @@ public class EmployeeEvaluatorRelation implements Serializable {
         this.eeVersion = eeVersion;
     }
 
-    public EmployeeEvaluatorRelation(Long eeId, String eeRelationType, String eeFeedback, Long eeVersion, List<EESkillRelation> eESkillRelationList, Employee eeEmpId, EmployeeEvaluationRelation evaEmployeeId) {
+    public EmployeeEvaluatorRelation(Long eeId, String eeRelationType, String eeFeedback, Long eeVersion, List<EESkillRelation> eESkillRelationList, Employee eeid, EmployeeEvaluationRelation evaEmployeeId) {
         this.eeId = eeId;
         this.eeRelationType = eeRelationType;
         this.eeFeedback = eeFeedback;
         this.eeVersion = eeVersion;
         this.eESkillRelationList = eESkillRelationList;
-        this.eeEmpId = eeEmpId;
+        this.eeid = eeid;
         this.evaEmployeeId = evaEmployeeId;
     }
 
@@ -85,7 +85,7 @@ public class EmployeeEvaluatorRelation implements Serializable {
     public void updateEmployeeEvaluatorRelation(EmployeeEvaluatorRelationDto employeeEvaluatorRelationDto) {
         this.eeRelationType = employeeEvaluatorRelationDto.getRelationType();
         this.eeFeedback = employeeEvaluatorRelationDto.getFeedback();
-        this.eeEmpId.updateEmployee(employeeEvaluatorRelationDto.getEmployee());
+        this.eeid.updateEmployee(employeeEvaluatorRelationDto.getEmployee());
         this.evaEmployeeId.updateEmployeeEvaluationRelation(employeeEvaluatorRelationDto.getEmployeeEvaluationRelation());
     }
 
@@ -129,12 +129,12 @@ public class EmployeeEvaluatorRelation implements Serializable {
         this.eESkillRelationList = eESkillRelationList;
     }
 
-    public Employee getEeEmpId() {
-        return eeEmpId;
+    public Employee getEeid() {
+        return eeid;
     }
 
-    public void setEeEmpId(Employee eeEmpId) {
-        this.eeEmpId = eeEmpId;
+    public void setEeid(Employee eeid) {
+        this.eeid = eeid;
     }
 
     public EmployeeEvaluationRelation getEvaEmployeeId() {

@@ -26,7 +26,7 @@ public class EmployeeEvaluatorRelationDto {
         this.id = employeeEvaluatorRelation.getEeId();
         this.relationType = employeeEvaluatorRelation.getEeRelationType();
         this.feedback = employeeEvaluatorRelation.getEeFeedback();
-        this.employee = new EmployeeDto(employeeEvaluatorRelation.getEeEmpId());
+        this.employee = new EmployeeDto(employeeEvaluatorRelation.getEeid());
         this.employeeEvaluationRelation = new EmployeeEvaluationRelationDto(employeeEvaluatorRelation.getEvaEmployeeId());
     }
 
@@ -72,7 +72,7 @@ public class EmployeeEvaluatorRelationDto {
 
     @Override
     public String toString() {
-        return "EmployeeEvaluatorRelationDto{" + "eeId=" + id + ", eeRelationType=" + relationType + ", eeFeedback=" + feedback + ", eeEmpId=" + employee + ", evaEmployeeId=" + employeeEvaluationRelation + ", modificate=" + modificate + '}';
+        return "EmployeeEvaluatorRelationDto{" + "eeId=" + id + ", eeRelationType=" + relationType + ", eeFeedback=" + feedback + ", eeid=" + employee + ", evaEmployeeId=" + employeeEvaluationRelation + ", modificate=" + modificate + '}';
     }
 
 }

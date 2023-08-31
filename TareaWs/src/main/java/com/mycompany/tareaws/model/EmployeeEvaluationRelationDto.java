@@ -60,7 +60,7 @@ public class EmployeeEvaluationRelationDto {
 
     @Override
     public String toString() {
-        return "EmployeeEvaluationRelationDto{" + "eerId=" + id + ", eerEmployeeClasification=" + employeeClasification + ", eerEmpId=" + employee + ", eerEjrId=" + evaluationJobRelation + ", modificate=" + modificate + '}';
+        return "EmployeeEvaluationRelationDto{" + "eerId=" + id + ", eerEmployeeClasification=" + employeeClasification + ", eerid=" + employee + ", eerEjrId=" + evaluationJobRelation + ", modificate=" + modificate + '}';
     }
 
 }

@@ -45,7 +45,7 @@ public class EmployeeEvaluationRelation implements Serializable {
     private Long eerVersion;
     @JoinColumn(name = "EER_EMP_ID", referencedColumnName = "EMP_ID")
     @ManyToOne(optional = false)
-    private Employee eerEmpId;
+    private Employee eerid;
     @JoinColumn(name = "EER_EJR_ID", referencedColumnName = "EJR_ID")
     @ManyToOne
     private EvaluationJobRelation eerEjrId;
@@ -73,7 +73,7 @@ public class EmployeeEvaluationRelation implements Serializable {
     public void updateEmployeeEvaluationRelation(EmployeeEvaluationRelationDto employeeEvaluationRelationDto) {
         this.eerId = employeeEvaluationRelationDto.getId();
         this.eerEmployeeClasification = employeeEvaluationRelationDto.getEmployeeClasification();
-        this.eerEmpId.updateEmployee(employeeEvaluationRelationDto.getEmployee());
+        this.eerid.updateEmployee(employeeEvaluationRelationDto.getEmployee());
         this.eerEjrId.updateEvaluationJobRelation(employeeEvaluationRelationDto.getEvaluationJobRelation());
     }
 
@@ -101,12 +101,12 @@ public class EmployeeEvaluationRelation implements Serializable {
         this.eerVersion = eerVersion;
     }
 
-    public Employee getEerEmpId() {
-        return eerEmpId;
+    public Employee getEerid() {
+        return eerid;
     }
 
-    public void setEerEmpId(Employee eerEmpId) {
-        this.eerEmpId = eerEmpId;
+    public void setEerid(Employee eerid) {
+        this.eerid = eerid;
     }
 
     public EvaluationJobRelation getEerEjrId() {

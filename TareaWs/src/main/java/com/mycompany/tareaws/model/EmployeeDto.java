@@ -32,18 +32,18 @@ public class EmployeeDto {
 
     public EmployeeDto(Employee employee) {
         this();
-        this.id = employee.getEmpId();
-        this.cedula = employee.getEmpCedula();
-        this.name = employee.getEmpName();
-        this.firstLastname = employee.getEmpFirstLastname();
-        this.secondLastname = employee.getEmpSecondLastname();
-        this.email = employee.getEmpEmail();
-        this.password = employee.getEmpPassword();
-        this.phoneNumber = employee.getEmpPhoneNumber();
-        this.cellphoneNumber = employee.getEmpCellphoneNumber();
-        this.adminState = employee.getEmpAdminState();
-        this.activatedState = employee.getEmpActivatedState();
-        this.forgotPasswordState = employee.getEmpForgotPasswordState();
+        this.id = employee.getid();
+        this.cedula = employee.getidentification();
+        this.name = employee.getname();
+        this.firstLastname = employee.getfirstLastname();
+        this.secondLastname = employee.getsecondLastname();
+        this.email = employee.getemail();
+        this.password = employee.getpassword();
+        this.phoneNumber = employee.getphoneNumber();
+        this.cellphoneNumber = employee.getcellphoneNumber();
+        this.adminState = employee.getadminState();
+        this.activatedState = employee.getactivatedState();
+        this.forgotPasswordState = employee.getforgotPasswordState();
     }
 
     public Long getId() {
@@ -168,7 +168,7 @@ public class EmployeeDto {
 
     @Override
     public String toString() {
-        return "EmployeeDto{" + "empId=" + id + ", empCedula=" + cedula + ", empName=" + name + ", empFirstLastname=" + firstLastname + ", empSecondLastname=" + secondLastname + ", empEmail=" + email + ", empPassword=" + password + ", empPhoneNumber=" + phoneNumber + ", empCellphoneNumber=" + cellphoneNumber + ", empAdminState=" + adminState + ", empActivatedState=" + activatedState + ", empForgotPasswordState=" + forgotPasswordState/*+ ", company=" + company + ", job=" + job + ", modificate="*/ + modificate + '}';
+        return "EmployeeDto{" + "id=" + id + ", identification=" + cedula + ", name=" + name + ", firstLastname=" + firstLastname + ", secondLastname=" + secondLastname + ", email=" + email + ", password=" + password + ", phoneNumber=" + phoneNumber + ", cellphoneNumber=" + cellphoneNumber + ", adminState=" + adminState + ", activatedState=" + activatedState + ", forgotPasswordState=" + forgotPasswordState/*+ ", company=" + company + ", job=" + job + ", modificate="*/ + modificate + '}';
     }
 
 }

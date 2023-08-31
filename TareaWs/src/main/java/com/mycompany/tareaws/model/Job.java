@@ -57,7 +57,7 @@ public class Job implements Serializable {
     private List<Skill> skillList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "ejrJobId")
     private List<EvaluationJobRelation> evaluationJobRelationList;
-    @OneToMany(mappedBy = "empJobId")
+    @OneToMany(mappedBy = "job")
     private List<Employee> employeeList;
     @JoinColumn(name = "JOB_COM_ID", referencedColumnName = "COM_ID")
     @ManyToOne
