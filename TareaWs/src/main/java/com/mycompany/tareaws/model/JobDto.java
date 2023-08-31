@@ -27,14 +27,6 @@ public class JobDto {
         this.id = job.getId();
         this.name = job.getName();
         this.state = job.getJobState();
-        this.company = new CompanyDto(job.getJobComId());
-    }
-
-    public void updateJobDto(Job job) {
-        this.id = job.getJobId();
-        this.name = job.getJobName();
-        this.state = job.getJobState();
-        this.company.updateCompanyDto(job.getJobComId());
     }
 
     public Long getId() {

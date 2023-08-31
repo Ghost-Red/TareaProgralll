@@ -4,6 +4,7 @@
  */
 package com.mycompany.tareaws.service;
 
+import com.mycompany.tareaws.model.CompanyDto;
 import com.mycompany.tareaws.model.Evaluation;
 import com.mycompany.tareaws.model.EvaluationDto;
 import com.mycompany.tareaws.util.CodigoRespuesta;

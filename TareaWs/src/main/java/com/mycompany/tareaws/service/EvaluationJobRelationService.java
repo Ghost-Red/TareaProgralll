@@ -4,8 +4,10 @@
  */
 package com.mycompany.tareaws.service;
 
+import com.mycompany.tareaws.model.EvaluationDto;
 import com.mycompany.tareaws.model.EvaluationJobRelation;
 import com.mycompany.tareaws.model.EvaluationJobRelationDto;
+import com.mycompany.tareaws.model.JobDto;
 import com.mycompany.tareaws.util.CodigoRespuesta;
 import com.mycompany.tareaws.util.Respuesta;
 import jakarta.ejb.LocalBean;

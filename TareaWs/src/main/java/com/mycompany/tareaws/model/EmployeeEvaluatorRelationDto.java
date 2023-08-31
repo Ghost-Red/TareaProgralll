@@ -31,11 +31,9 @@ public class EmployeeEvaluatorRelationDto {
     }
 
     public void updateEmployeeEvaluatorRelationDto(EmployeeEvaluatorRelation employeeEvaluatorRelation) {
-        this.id = employeeEvaluatorRelation.getEeId();
-        this.relationType = employeeEvaluatorRelation.getEeRelationType();
-        this.feedback = employeeEvaluatorRelation.getEeFeedback();
-        this.employee.updateEmployeeDto(employeeEvaluatorRelation.getEeEmpId());
-        this.employeeEvaluationRelation.updateEmployeeEvaluationRelationDto(employeeEvaluatorRelation.getEvaEmployeeId());
+        this.id = employeeEvaluatorRelation.getId();
+        this.relationType = employeeEvaluatorRelation.getEmployeeEvaluatorRelationType();
+        this.feedback = employeeEvaluatorRelation.getFeedback();
     }
 
     public Long getId() {

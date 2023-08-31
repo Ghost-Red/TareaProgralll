@@ -22,22 +22,8 @@ public class EmployeeAverageSkillDto {
 
     public EmployeeAverageSkillDto(EmployeeAverageSkill employeeAverageSkill) {
         this();
-<<<<<<< HEAD
         this.id = employeeAverageSkill.getid();
         this.employeeSkillLvl = employeeAverageSkill.getskillAverageLvl();
-=======
-        this.id = employeeAverageSkill.getEasId();
-        this.employeeSkillLvl = employeeAverageSkill.getEasEmployeeSkillLvl();
-        this.employeeEvaluationRelation = new EmployeeEvaluationRelationDto(employeeAverageSkill.getEasEerId());
-        this.skill = new SkillDto(employeeAverageSkill.getEasSkillId());
-    }
-
-    public void updateEmployeeAverageSkillDto(EmployeeAverageSkill employeeAverageSkill) {
-        this.id = employeeAverageSkill.getEasId();
-        this.employeeSkillLvl = employeeAverageSkill.getEasEmployeeSkillLvl();
-        this.employeeEvaluationRelation.updateEmployeeEvaluationRelationDto(employeeAverageSkill.getEasEerId());
-        this.skill.updateSkillDto(employeeAverageSkill.getEasSkillId());
->>>>>>> parent of 41fcac5 (Se re-estructuraron los Dto y service)
     }
 
     public Long getId() {
