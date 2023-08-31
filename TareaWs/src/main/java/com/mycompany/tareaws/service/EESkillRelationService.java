@@ -37,12 +37,12 @@ public class EESkillRelationService {
 <<<<<<< HEAD
             Query qryEESkillRelation = em.createNamedQuery("EESkillRelation.findByid", EESkillRelation.class);
             qryEESkillRelation.setParameter("id", id);
-            
+
             EESkillRelation eESkillRelation = (EESkillRelation) qryEESkillRelation.getSingleResult();
             EESkillRelationDto eESkillRelationDto = new EESkillRelationDto(eESkillRelation);
-            eESkillRelationDto.setEmployeeEvaluatorRelation( new EmployeeEvaluatorRelationDto(eESkillRelation.getemployeeEvaluatorRelation()));
-            eESkillRelationDto.setSkill(new SkillDto(eESkillRelation.getevaluatedSkill()));
-            
+            eESkillRelationDto.setEmployeeEvaluatorRelation(new EmployeeEvaluatorRelationDto(eESkillRelation.getEmployeeEvaluatorRelation()));
+            eESkillRelationDto.setSkill(new SkillDto(eESkillRelation.getEvaluatedSkill()));
+
             return new Respuesta(true, CodigoRespuesta.CORRECTO, "", "", "EESkillRelation", eESkillRelationDto);
 =======
             Query qryEESkillRelation = em.createNamedQuery("EESkillRelation.findByEesId", EESkillRelation.class);

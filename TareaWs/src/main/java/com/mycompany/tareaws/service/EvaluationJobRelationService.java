@@ -34,10 +34,14 @@ public class EvaluationJobRelationService {
 
     public Respuesta getEvaluationJobRelation(Long id) {
         try {
-            Query qryEvaluationJobRelation = em.createNamedQuery("EvaluationJobRelation.findByEjrId", EvaluationJobRelation.class);
-            qryEvaluationJobRelation.setParameter("ejrId", id);
-            return new Respuesta(true, CodigoRespuesta.CORRECTO, "", "", "EvaluationJobRelation", new EvaluationJobRelationDto((EvaluationJobRelation) qryEvaluationJobRelation.getSingleResult()));
-
+            Query qryEvaluationJobRelation = em.createNamedQuery("EvaluationJobRelation.findByid", EvaluationJobRelation.class);
+            qryEvaluationJobRelation.setParameter("id", id);
+          
+            EvaluationJobRelation evaluationJobRelation = (EvaluationJobRelation) qryEvaluationJobRelation.getSingleResult();
+            EvaluationJobRelationDto evaluationJobRelationDto = new EvaluationJobRelationDto(evaluationJobRelation);
+            evaluationJobRelationDto.setEvaluation(new EvaluationDto(evaluationJobRelation.getEvaluation()));
+            evaluationJobRelationDto.setJob(new JobDto(evaluationJobRelation.getJob()));
+            return new Respuesta(true, CodigoRespuesta.CORRECTO, "", "", "EvaluationJobRelation", evaluationJobRelationDto);
         } catch (NoResultException ex) {
             return new Respuesta(false, CodigoRespuesta.ERROR_NOENCONTRADO, "No existe una EvaluationJobRelation con el código ingresado.", "getEvaluationJobRelation NoResultException");
         } catch (NonUniqueResultException ex) {

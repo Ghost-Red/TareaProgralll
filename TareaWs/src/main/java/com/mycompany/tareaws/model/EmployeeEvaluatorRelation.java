@@ -27,10 +27,10 @@ import jakarta.persistence.Version;
 @Table(name = "EMPLOYEE_EVALUATOR_RELATION")
 @NamedQueries({
     @NamedQuery(name = "EmployeeEvaluatorRelation.findAll", query = "SELECT e FROM EmployeeEvaluatorRelation e"),
-    @NamedQuery(name = "EmployeeEvaluatorRelation.findByEeId", query = "SELECT e FROM EmployeeEvaluatorRelation e WHERE e.eeId = :eeId"),
-    @NamedQuery(name = "EmployeeEvaluatorRelation.findByEeRelationType", query = "SELECT e FROM EmployeeEvaluatorRelation e WHERE e.eeRelationType = :eeRelationType"),
-    @NamedQuery(name = "EmployeeEvaluatorRelation.findByEeFeedback", query = "SELECT e FROM EmployeeEvaluatorRelation e WHERE e.eeFeedback = :eeFeedback"),
-    @NamedQuery(name = "EmployeeEvaluatorRelation.findByEeVersion", query = "SELECT e FROM EmployeeEvaluatorRelation e WHERE e.eeVersion = :eeVersion")})
+    @NamedQuery(name = "EmployeeEvaluatorRelation.findByid", query = "SELECT e FROM EmployeeEvaluatorRelation e WHERE e.id = :id"),
+    @NamedQuery(name = "EmployeeEvaluatorRelation.findByemployeeEvaluatorRelationType", query = "SELECT e FROM EmployeeEvaluatorRelation e WHERE e.employeeEvaluatorRelationType = :employeeEvaluatorRelationType"),
+    @NamedQuery(name = "EmployeeEvaluatorRelation.findByfeedback", query = "SELECT e FROM EmployeeEvaluatorRelation e WHERE e.feedback = :feedback"),
+    @NamedQuery(name = "EmployeeEvaluatorRelation.findByversion", query = "SELECT e FROM EmployeeEvaluatorRelation e WHERE e.version = :version")})
 public class EmployeeEvaluatorRelation implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -38,117 +38,117 @@ public class EmployeeEvaluatorRelation implements Serializable {
     @Id
     @Basic(optional = false)
     @Column(name = "EE_ID")
-    private Long eeId;
+    private Long id;
     @Column(name = "EE_RELATION_TYPE")
-    private String eeRelationType;
+    private String employeeEvaluatorRelationType;
     @Column(name = "EE_FEEDBACK")
-    private String eeFeedback;
+    private String feedback;
     @Version
     @Column(name = "EE_VERSION")
-    private Long eeVersion;
+    private Long version;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "employeeEvaluatorRelation")
-    private List<EESkillRelation> eESkillRelationList;
+    private List<EESkillRelation> skillsEvaluatedList;
     @JoinColumn(name = "EE_EMP_ID", referencedColumnName = "EMP_ID")
     @ManyToOne(optional = false)
-    private Employee eeid;
+    private Employee employeeEvaluator;
     @JoinColumn(name = "EVA_EMPLOYEE_ID", referencedColumnName = "EER_ID")
     @ManyToOne(optional = false)
-    private EmployeeEvaluationRelation evaEmployeeId;
+    private EmployeeEvaluationRelation employeeEvaluated;
 
     public EmployeeEvaluatorRelation() {
     }
 
-    public EmployeeEvaluatorRelation(Long eeId) {
-        this.eeId = eeId;
+    public EmployeeEvaluatorRelation(Long id) {
+        this.id = id;
     }
 
-    public EmployeeEvaluatorRelation(Long eeId, Long eeVersion) {
-        this.eeId = eeId;
-        this.eeVersion = eeVersion;
+    public EmployeeEvaluatorRelation(Long id, Long version) {
+        this.id = id;
+        this.version = version;
     }
 
-    public EmployeeEvaluatorRelation(Long eeId, String eeRelationType, String eeFeedback, Long eeVersion, List<EESkillRelation> eESkillRelationList, Employee eeid, EmployeeEvaluationRelation evaEmployeeId) {
-        this.eeId = eeId;
-        this.eeRelationType = eeRelationType;
-        this.eeFeedback = eeFeedback;
-        this.eeVersion = eeVersion;
-        this.eESkillRelationList = eESkillRelationList;
-        this.eeid = eeid;
-        this.evaEmployeeId = evaEmployeeId;
+    public EmployeeEvaluatorRelation(Long id, String employeeEvaluatorRelationType, String feedback, Long version, List<EESkillRelation> skillsEvaluatedList, Employee employeeEvaluator, EmployeeEvaluationRelation employeeEvaluated) {
+        this.id = id;
+        this.employeeEvaluatorRelationType = employeeEvaluatorRelationType;
+        this.feedback = feedback;
+        this.version = version;
+        this.skillsEvaluatedList = skillsEvaluatedList;
+        this.employeeEvaluator = employeeEvaluator;
+        this.employeeEvaluated = employeeEvaluated;
     }
 
     public EmployeeEvaluatorRelation(EmployeeEvaluatorRelationDto employeeEvaluatorRelationDto) {
-        this.eeId = employeeEvaluatorRelationDto.getId();
+        this.id = employeeEvaluatorRelationDto.getId();
         updateEmployeeEvaluatorRelation(employeeEvaluatorRelationDto);
     }
 
     public void updateEmployeeEvaluatorRelation(EmployeeEvaluatorRelationDto employeeEvaluatorRelationDto) {
-        this.eeRelationType = employeeEvaluatorRelationDto.getRelationType();
-        this.eeFeedback = employeeEvaluatorRelationDto.getFeedback();
-        this.eeid.updateEmployee(employeeEvaluatorRelationDto.getEmployee());
-        this.evaEmployeeId.updateEmployeeEvaluationRelation(employeeEvaluatorRelationDto.getEmployeeEvaluationRelation());
+        this.employeeEvaluatorRelationType = employeeEvaluatorRelationDto.getRelationType();
+        this.feedback = employeeEvaluatorRelationDto.getFeedback();
+        this.employeeEvaluator.updateEmployee(employeeEvaluatorRelationDto.getEmployee());
+        this.employeeEvaluated.updateEmployeeEvaluationRelation(employeeEvaluatorRelationDto.getEmployeeEvaluationRelation());
     }
 
-    public Long getEeId() {
-        return eeId;
+    public Long getId() {
+        return id;
     }
 
-    public void setEeId(Long eeId) {
-        this.eeId = eeId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public String getEeRelationType() {
-        return eeRelationType;
+    public String getEmployeeEvaluatorRelationType() {
+        return employeeEvaluatorRelationType;
     }
 
-    public void setEeRelationType(String eeRelationType) {
-        this.eeRelationType = eeRelationType;
+    public void setEmployeeEvaluatorRelationType(String employeeEvaluatorRelationType) {
+        this.employeeEvaluatorRelationType = employeeEvaluatorRelationType;
     }
 
-    public String getEeFeedback() {
-        return eeFeedback;
+    public String getFeedback() {
+        return feedback;
     }
 
-    public void setEeFeedback(String eeFeedback) {
-        this.eeFeedback = eeFeedback;
+    public void setFeedback(String feedback) {
+        this.feedback = feedback;
     }
 
-    public Long getEeVersion() {
-        return eeVersion;
+    public Long getVersion() {
+        return version;
     }
 
-    public void setEeVersion(Long eeVersion) {
-        this.eeVersion = eeVersion;
+    public void setVersion(Long version) {
+        this.version = version;
     }
 
-    public List<EESkillRelation> getEESkillRelationList() {
-        return eESkillRelationList;
+    public List<EESkillRelation> getSkillsEvaluatedList() {
+        return skillsEvaluatedList;
     }
 
-    public void setEESkillRelationList(List<EESkillRelation> eESkillRelationList) {
-        this.eESkillRelationList = eESkillRelationList;
+    public void setSkillsEvaluatedList(List<EESkillRelation> skillsEvaluatedList) {
+        this.skillsEvaluatedList = skillsEvaluatedList;
     }
 
-    public Employee getEeid() {
-        return eeid;
+    public Employee getEmployeeEvaluator() {
+        return employeeEvaluator;
     }
 
-    public void setEeid(Employee eeid) {
-        this.eeid = eeid;
+    public void setEmployeeEvaluator(Employee employeeEvaluator) {
+        this.employeeEvaluator = employeeEvaluator;
     }
 
-    public EmployeeEvaluationRelation getEvaEmployeeId() {
-        return evaEmployeeId;
+    public EmployeeEvaluationRelation getEmployeeEvaluated() {
+        return employeeEvaluated;
     }
 
-    public void setEvaEmployeeId(EmployeeEvaluationRelation evaEmployeeId) {
-        this.evaEmployeeId = evaEmployeeId;
+    public void setEmployeeEvaluated(EmployeeEvaluationRelation employeeEvaluated) {
+        this.employeeEvaluated = employeeEvaluated;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (eeId != null ? eeId.hashCode() : 0);
+        hash += (id != null ? id.hashCode() : 0);
         return hash;
     }
 
@@ -159,7 +159,7 @@ public class EmployeeEvaluatorRelation implements Serializable {
             return false;
         }
         EmployeeEvaluatorRelation other = (EmployeeEvaluatorRelation) object;
-        if ((this.eeId == null && other.eeId != null) || (this.eeId != null && !this.eeId.equals(other.eeId))) {
+        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
         return true;
@@ -167,7 +167,7 @@ public class EmployeeEvaluatorRelation implements Serializable {
 
     @Override
     public String toString() {
-        return "com.mycompany.tareaws.model.EmployeeEvaluatorRelation[ eeId=" + eeId + " ]";
+        return "com.mycompany.tareaws.model.EmployeeEvaluatorRelation[ id=" + id + " ]";
     }
 
 }

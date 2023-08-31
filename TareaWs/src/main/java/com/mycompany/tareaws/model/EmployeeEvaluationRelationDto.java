@@ -22,17 +22,9 @@ public class EmployeeEvaluationRelationDto {
 
     public EmployeeEvaluationRelationDto(EmployeeEvaluationRelation employeeEvaluationRelation) {
         this();
-        this.id = employeeEvaluationRelation.getEerId();
-        this.employeeClasification = employeeEvaluationRelation.getEerEmployeeClasification();
-        this.employee = new EmployeeDto(employeeEvaluationRelation.getEerEmpId());
-        this.evaluationJobRelation = new EvaluationJobRelationDto(employeeEvaluationRelation.getEerEjrId());
-    }
+        this.id = employeeEvaluationRelation.getId();
+        this.employeeClasification = employeeEvaluationRelation.getEmployeeClasification();
 
-    public void updateEmployeeEvaluationRelationDto(EmployeeEvaluationRelation employeeEvaluationRelation) {
-        this.id = employeeEvaluationRelation.getEerId();
-        this.employeeClasification = employeeEvaluationRelation.getEerEmployeeClasification();
-        this.employee.updateEmployeeDto(employeeEvaluationRelation.getEerEmpId());
-        this.evaluationJobRelation.updateEvaluationJobRelationDto(employeeEvaluationRelation.getEerEjrId());
     }
 
     public Long getId() {
@@ -69,7 +61,7 @@ public class EmployeeEvaluationRelationDto {
 
     @Override
     public String toString() {
-        return "EmployeeEvaluationRelationDto{" + "eerId=" + id + ", eerEmployeeClasification=" + employeeClasification + ", eerid=" + employee + ", eerEjrId=" + evaluationJobRelation + ", modificate=" + modificate + '}';
+        return "EmployeeEvaluationRelationDto{" + "id=" + id + ", employeeClasification=" + employeeClasification + ", id=" + employee + ", evaluationJobRelation=" + evaluationJobRelation + ", modificate=" + modificate + '}';
     }
 
 }

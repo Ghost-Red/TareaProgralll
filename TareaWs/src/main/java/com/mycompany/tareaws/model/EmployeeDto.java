@@ -32,52 +32,18 @@ public class EmployeeDto {
 
     public EmployeeDto(Employee employee) {
         this();
-<<<<<<< HEAD
-        this.id = employee.getid();
-        this.cedula = employee.getidentification();
-        this.name = employee.getname();
-        this.firstLastname = employee.getfirstLastname();
-        this.secondLastname = employee.getsecondLastname();
-        this.email = employee.getemail();
-        this.password = employee.getpassword();
-        this.phoneNumber = employee.getphoneNumber();
-        this.cellphoneNumber = employee.getcellphoneNumber();
-        this.adminState = employee.getadminState();
-        this.activatedState = employee.getactivatedState();
-        this.forgotPasswordState = employee.getforgotPasswordState();
-=======
-        this.id = employee.getEmpId();
-        this.cedula = employee.getEmpCedula();
-        this.name = employee.getEmpName();
-        this.firstLastname = employee.getEmpFirstLastname();
-        this.secondLastname = employee.getEmpSecondLastname();
-        this.email = employee.getEmpEmail();
-        this.password = employee.getEmpPassword();
-        this.phoneNumber = employee.getEmpPhoneNumber();
-        this.cellphoneNumber = employee.getEmpCellphoneNumber();
-        this.adminState = employee.getEmpAdminState();
-        this.activatedState = employee.getEmpActivatedState();
-        this.forgotPasswordState = employee.getEmpForgotPasswordState();
-        this.company = new CompanyDto(employee.getEmpComId());
-        this.job = new JobDto(employee.getEmpJobId());
-    }
-
-    public void updateEmployeeDto(Employee employee) {
-        this.id = employee.getEmpId();
-        this.cedula = employee.getEmpCedula();
-        this.name = employee.getEmpName();
-        this.firstLastname = employee.getEmpFirstLastname();
-        this.secondLastname = employee.getEmpSecondLastname();
-        this.email = employee.getEmpEmail();
-        this.password = employee.getEmpPassword();
-        this.phoneNumber = employee.getEmpPhoneNumber();
-        this.cellphoneNumber = employee.getEmpCellphoneNumber();
-        this.adminState = employee.getEmpAdminState();
-        this.activatedState = employee.getEmpActivatedState();
-        this.forgotPasswordState = employee.getEmpForgotPasswordState();
-        this.company.updateCompanyDto(employee.getEmpComId());
-        this.job.updateJobDto(employee.getEmpJobId());
->>>>>>> parent of 41fcac5 (Se re-estructuraron los Dto y service)
+        this.id = employee.getId();
+        this.cedula = employee.getIdentification();
+        this.name = employee.getName();
+        this.firstLastname = employee.getFirstLastname();
+        this.secondLastname = employee.getSecondLastname();
+        this.email = employee.getEmail();
+        this.password = employee.getPassword();
+        this.phoneNumber = employee.getPhoneNumber();
+        this.cellphoneNumber = employee.getCellphoneNumber();
+        this.adminState = employee.getAdminState();
+        this.activatedState = employee.getActivatedState();
+        this.forgotPasswordState = employee.getForgotPasswordState();
     }
 
     public Long getId() {

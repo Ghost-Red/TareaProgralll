@@ -70,43 +70,43 @@ public class EESkillRelation implements Serializable {
         this.evaluatedSkill.updateSkill(eESkillRelationDto.getSkill());
     }
 
-    public Long getid() {
+    public Long getId() {
         return id;
     }
 
-    public void setid(Long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public Long getskillClasification() {
+    public Long getSkillClasification() {
         return skillClasification;
     }
 
-    public void setskillClasification(Long skillClasification) {
+    public void setSkillClasification(Long skillClasification) {
         this.skillClasification = skillClasification;
     }
 
-    public Long getversion() {
+    public Long getVersion() {
         return version;
     }
 
-    public void setversion(Long version) {
+    public void setVersion(Long version) {
         this.version = version;
     }
 
-    public EmployeeEvaluatorRelation getemployeeEvaluatorRelation() {
+    public EmployeeEvaluatorRelation getEmployeeEvaluatorRelation() {
         return employeeEvaluatorRelation;
     }
 
-    public void setemployeeEvaluatorRelation(EmployeeEvaluatorRelation employeeEvaluatorRelation) {
+    public void setEmployeeEvaluatorRelation(EmployeeEvaluatorRelation employeeEvaluatorRelation) {
         this.employeeEvaluatorRelation = employeeEvaluatorRelation;
     }
 
-    public Skill getevaluatedSkill() {
+    public Skill getEvaluatedSkill() {
         return evaluatedSkill;
     }
 
-    public void setevaluatedSkill(Skill evaluatedSkill) {
+    public void setEvaluatedSkill(Skill evaluatedSkill) {
         this.evaluatedSkill = evaluatedSkill;
     }
 

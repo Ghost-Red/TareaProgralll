@@ -26,21 +26,11 @@ public class EvaluationDto {
 
     public EvaluationDto(Evaluation evaluation) {
         this();
-        this.id = evaluation.getEvaId();
-        this.title = evaluation.getEvaTitle();
-        this.startDate = evaluation.getEvaStartDate();
-        this.finalDate = evaluation.getEvaFinalDate();
-        this.state = evaluation.getEvaState();
-        this.company = new CompanyDto(evaluation.getEvaComId());
-    }
-
-    public void updateEvaluationDto(Evaluation evaluation) {
-        this.id = evaluation.getEvaId();
-        this.title = evaluation.getEvaTitle();
-        this.startDate = evaluation.getEvaStartDate();
-        this.finalDate = evaluation.getEvaFinalDate();
-        this.state = evaluation.getEvaState();
-        this.company.updateCompanyDto(evaluation.getEvaComId());
+        this.id = evaluation.getId();
+        this.title = evaluation.getTitle();
+        this.startDate = evaluation.getStartDate();
+        this.finalDate = evaluation.getFinalDate();
+        this.state = evaluation.getState();
     }
 
     public Long getId() {
@@ -93,7 +83,7 @@ public class EvaluationDto {
 
     @Override
     public String toString() {
-        return "EvaluationDto{" + "evaId=" + id + ", evaTitle=" + title + ", evaStartDate=" + startDate + ", evaFinalDate=" + finalDate + ", evaState=" + state + ", evaComId=" + company + ", modificate=" + modificate + '}';
+        return "EvaluationDto{" + "id=" + id + ", title=" + title + ", startDate=" + startDate + ", finalDate=" + finalDate + ", state=" + state + ", company=" + company + ", modificate=" + modificate + '}';
     }
 
 }

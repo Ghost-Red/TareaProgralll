@@ -92,9 +92,9 @@ public class Employee implements Serializable {
     @JoinColumn(name = "EMP_JOB_ID", referencedColumnName = "JOB_ID")
     @ManyToOne
     private Job job;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "eerid")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "employeeEvaluated")
     private List<EmployeeEvaluationRelation> employeeEvaluationRelationList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "eeid")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "employeeEvaluator")
     private List<EmployeeEvaluatorRelation> employeeEvaluatorRelationList;
 
     public Employee() {
@@ -142,123 +142,123 @@ public class Employee implements Serializable {
         this.company.updateCompany(employee.getCompany());
     }
 
-    public Long getid() {
+    public Long getId() {
         return id;
     }
 
-    public void setid(Long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public String getidentification() {
+    public String getIdentification() {
         return identification;
     }
 
-    public void setidentification(String identification) {
+    public void setIdentification(String identification) {
         this.identification = identification;
     }
 
-    public String getname() {
+    public String getName() {
         return name;
     }
 
-    public void setname(String name) {
+    public void setName(String name) {
         this.name = name;
     }
 
-    public String getfirstLastname() {
+    public String getFirstLastname() {
         return firstLastname;
     }
 
-    public void setfirstLastname(String firstLastname) {
+    public void setFirstLastname(String firstLastname) {
         this.firstLastname = firstLastname;
     }
 
-    public String getsecondLastname() {
+    public String getSecondLastname() {
         return secondLastname;
     }
 
-    public void setsecondLastname(String secondLastname) {
+    public void setSecondLastname(String secondLastname) {
         this.secondLastname = secondLastname;
     }
 
-    public String getemail() {
+    public String getEmail() {
         return email;
     }
 
-    public void setemail(String email) {
+    public void setEmail(String email) {
         this.email = email;
     }
 
-    public String getpassword() {
+    public String getPassword() {
         return password;
     }
 
-    public void setpassword(String password) {
+    public void setPassword(String password) {
         this.password = password;
     }
 
-    public String getphoneNumber() {
+    public String getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setphoneNumber(String phoneNumber) {
+    public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 
-    public String getcellphoneNumber() {
+    public String getCellphoneNumber() {
         return cellphoneNumber;
     }
 
-    public void setcellphoneNumber(String cellphoneNumber) {
+    public void setCellphoneNumber(String cellphoneNumber) {
         this.cellphoneNumber = cellphoneNumber;
     }
 
-    public String getadminState() {
+    public String getAdminState() {
         return adminState;
     }
 
-    public void setadminState(String adminState) {
+    public void setAdminState(String adminState) {
         this.adminState = adminState;
     }
 
-    public String getactivatedState() {
+    public String getActivatedState() {
         return activatedState;
     }
 
-    public void setactivatedState(String activatedState) {
+    public void setActivatedState(String activatedState) {
         this.activatedState = activatedState;
     }
 
-    public String getforgotPasswordState() {
+    public String getForgotPasswordState() {
         return forgotPasswordState;
     }
 
-    public void setforgotPasswordState(String forgotPasswordState) {
+    public void setForgotPasswordState(String forgotPasswordState) {
         this.forgotPasswordState = forgotPasswordState;
     }
 
-    public Long getversion() {
+    public Long getVersion() {
         return version;
     }
 
-    public void setversion(Long version) {
+    public void setVersion(Long version) {
         this.version = version;
     }
 
-    public Company getcompany() {
+    public Company getCompany() {
         return company;
     }
 
-    public void setcompany(Company company) {
+    public void setCompany(Company company) {
         this.company = company;
     }
 
-    public Job getjob() {
+    public Job getJob() {
         return job;
     }
 
-    public void setjob(Job job) {
+    public void setJob(Job job) {
         this.job = job;
     }
 

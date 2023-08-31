@@ -34,9 +34,15 @@ public class SkillService {
 
     public Respuesta getSkill(Long id) {
         try {
-            Query qrySkill = em.createNamedQuery("Skill.findBySkillId", Skill.class);
-            qrySkill.setParameter("skillId", id);
-            return new Respuesta(true, CodigoRespuesta.CORRECTO, "", "", "Skill", new SkillDto((Skill) qrySkill.getSingleResult()));
+            Query qrySkill = em.createNamedQuery("Skill.findByid", Skill.class);
+            qrySkill.setParameter("id", id);
+
+            Skill skill = (Skill) qrySkill.getSingleResult();
+            SkillDto skillDto = new SkillDto(skill);
+            skillDto.setCompany(new CompanyDto(skill.getCompany()));
+
+            return new Respuesta(true, CodigoRespuesta.CORRECTO, "", "", "Skill", skillDto);
+
 
         } catch (NoResultException ex) {
             return new Respuesta(false, CodigoRespuesta.ERROR_NOENCONTRADO, "No existe una skill con el código ingresado.", "getSkill NoResultException");

@@ -34,9 +34,13 @@ public class JobService {
 
     public Respuesta getJob(Long id) {
         try {
-            Query qryJob = em.createNamedQuery("Job.findByJobId", Job.class);
-            qryJob.setParameter("jobId", id);
-            return new Respuesta(true, CodigoRespuesta.CORRECTO, "", "", "Job", new JobDto((Job) qryJob.getSingleResult()));
+            Query qryJob = em.createNamedQuery("Job.findByid", Job.class);
+            qryJob.setParameter("id", id);
+
+            Job job = (Job) qryJob.getSingleResult();
+            JobDto jobDto = new JobDto(job);
+            jobDto.setCompany(new CompanyDto(job.getCompany()));
+            return new Respuesta(true, CodigoRespuesta.CORRECTO, "", "", "Job", jobDto);
         } catch (NoResultException ex) {
             return new Respuesta(false, CodigoRespuesta.ERROR_NOENCONTRADO, "No existe un puesto con el código ingresado.", "getJob NoResultException");
         } catch (NonUniqueResultException ex) {

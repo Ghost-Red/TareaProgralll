@@ -32,7 +32,6 @@ public class EmployeeController {
     public EmployeeDto getEmpleado(@WebParam(name = "id") Long id) {
         Respuesta res = employeeService.getEmployee(id);
         EmployeeDto abc = (EmployeeDto) res.getResultado("Employee");
-        //Response response = Response.ok(res.getResultado("Employee")).build();
         return abc;
     }
 

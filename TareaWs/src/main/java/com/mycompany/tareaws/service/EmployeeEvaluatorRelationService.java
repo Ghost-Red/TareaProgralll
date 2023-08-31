@@ -34,20 +34,13 @@ public class EmployeeEvaluatorRelationService {
 
     public Respuesta getEmployeeEvaluatorRelation(Long id) {
         try {
-            Query qryEmployeeEvaluatorRelation = em.createNamedQuery("EmployeeEvaluatorRelation.findByEeId", EmployeeEvaluatorRelation.class);
-            qryEmployeeEvaluatorRelation.setParameter("eeId", id);
-<<<<<<< HEAD
-            
+            Query qryEmployeeEvaluatorRelation = em.createNamedQuery("EmployeeEvaluatorRelation.findByid", EmployeeEvaluatorRelation.class);
+            qryEmployeeEvaluatorRelation.setParameter("id", id);
             EmployeeEvaluatorRelation employeeEvaluatorRelation = (EmployeeEvaluatorRelation) qryEmployeeEvaluatorRelation.getSingleResult();
             EmployeeEvaluatorRelationDto employeeEvaluatorRelationDto = new EmployeeEvaluatorRelationDto(employeeEvaluatorRelation);
-            employeeEvaluatorRelationDto.setEmployee(new EmployeeDto(employeeEvaluatorRelation.getEeid()));
-            employeeEvaluatorRelationDto.setEmployeeEvaluationRelation( new EmployeeEvaluationRelationDto(employeeEvaluatorRelation.getEvaEmployeeId()));
-            
+            employeeEvaluatorRelationDto.setEmployee(new EmployeeDto(employeeEvaluatorRelation.getEmployeeEvaluator()));
+            employeeEvaluatorRelationDto.setEmployeeEvaluationRelation(new EmployeeEvaluationRelationDto(employeeEvaluatorRelation.getEmployeeEvaluated()));
             return new Respuesta(true, CodigoRespuesta.CORRECTO, "", "", "EmployeeEvaluatorRelation", employeeEvaluatorRelationDto);
-=======
-            return new Respuesta(true, CodigoRespuesta.CORRECTO, "", "", "EmployeeEvaluatorRelation", new EmployeeEvaluatorRelationDto((EmployeeEvaluatorRelation) qryEmployeeEvaluatorRelation.getSingleResult()));
->>>>>>> parent of 41fcac5 (Se re-estructuraron los Dto y service)
-
         } catch (NoResultException ex) {
             return new Respuesta(false, CodigoRespuesta.ERROR_NOENCONTRADO, "No existe una EmployeeEvaluatorRelation con el código ingresado.", "getEmployeeEvaluatorRelation NoResultException");
         } catch (NonUniqueResultException ex) {

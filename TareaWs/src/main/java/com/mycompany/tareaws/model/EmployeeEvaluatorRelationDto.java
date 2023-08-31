@@ -23,11 +23,11 @@ public class EmployeeEvaluatorRelationDto {
 
     public EmployeeEvaluatorRelationDto(EmployeeEvaluatorRelation employeeEvaluatorRelation) {
         this();
-        this.id = employeeEvaluatorRelation.getEeId();
-        this.relationType = employeeEvaluatorRelation.getEeRelationType();
-        this.feedback = employeeEvaluatorRelation.getEeFeedback();
-        this.employee = new EmployeeDto(employeeEvaluatorRelation.getEeid());
-        this.employeeEvaluationRelation = new EmployeeEvaluationRelationDto(employeeEvaluatorRelation.getEvaEmployeeId());
+        this.id = employeeEvaluatorRelation.getId();
+        this.relationType = employeeEvaluatorRelation.getEmployeeEvaluatorRelationType();
+        this.feedback = employeeEvaluatorRelation.getFeedback();
+        this.employee = new EmployeeDto(employeeEvaluatorRelation.getEmployeeEvaluator());
+        this.employeeEvaluationRelation = new EmployeeEvaluationRelationDto(employeeEvaluatorRelation.getEmployeeEvaluated());
     }
 
     public void updateEmployeeEvaluatorRelationDto(EmployeeEvaluatorRelation employeeEvaluatorRelation) {
@@ -80,7 +80,7 @@ public class EmployeeEvaluatorRelationDto {
 
     @Override
     public String toString() {
-        return "EmployeeEvaluatorRelationDto{" + "eeId=" + id + ", eeRelationType=" + relationType + ", eeFeedback=" + feedback + ", eeid=" + employee + ", evaEmployeeId=" + employeeEvaluationRelation + ", modificate=" + modificate + '}';
+        return "EmployeeEvaluatorRelationDto{" + "id=" + id + ", employeeEvaluatorRelationType=" + relationType + ", feedback=" + feedback + ", id=" + employee + ", employeeEvaluated=" + employeeEvaluationRelation + ", modificate=" + modificate + '}';
     }
 
 }

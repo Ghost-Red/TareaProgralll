@@ -63,13 +63,13 @@ public class Company implements Serializable {
     @Lob
     @Column(name = "COM_EMAIL_TEMPLATE_ACTIVATE_USER")
     private Byte[] comEmailTemplateActivateUser;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "skillComId")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "company")
     private List<Skill> skillList;
     @OneToMany(mappedBy = "company")
     private List<Employee> employeeList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "evaComId")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "company")
     private List<Evaluation> evaluationList;
-    @OneToMany(mappedBy = "jobComId")
+    @OneToMany(mappedBy = "company")
     private List<Job> jobList;
 
     public Company() {
