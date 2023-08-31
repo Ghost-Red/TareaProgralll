@@ -22,7 +22,7 @@ public class EvaluationJobRelationDto {
 
     public EvaluationJobRelationDto(EvaluationJobRelation evaluationJobRelation) {
         this();
-        this.id = evaluationJobRelation.getEjrId();
+        this.id = evaluationJobRelation.getid();
     }
 
     public Long getId() {
@@ -51,7 +51,7 @@ public class EvaluationJobRelationDto {
 
     @Override
     public String toString() {
-        return "EvaluationJobRelationDto{" + "ejrId=" + id + ", ejrid=" + evaluation + ", ejrJobId=" + job + ", modificate=" + modificate + '}';
+        return "EvaluationJobRelationDto{" + "id=" + id + ", id=" + evaluation + ", job=" + job + ", modificate=" + modificate + '}';
     }
 
 }

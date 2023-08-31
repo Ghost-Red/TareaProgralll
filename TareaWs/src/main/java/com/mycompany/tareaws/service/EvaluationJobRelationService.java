@@ -36,13 +36,13 @@ public class EvaluationJobRelationService {
 
     public Respuesta getEvaluationJobRelation(Long id) {
         try {
-            Query qryEvaluationJobRelation = em.createNamedQuery("EvaluationJobRelation.findByEjrId", EvaluationJobRelation.class);
-            qryEvaluationJobRelation.setParameter("ejrId", id);
+            Query qryEvaluationJobRelation = em.createNamedQuery("EvaluationJobRelation.findByid", EvaluationJobRelation.class);
+            qryEvaluationJobRelation.setParameter("id", id);
             
             EvaluationJobRelation evaluationJobRelation = (EvaluationJobRelation) qryEvaluationJobRelation.getSingleResult();
             EvaluationJobRelationDto evaluationJobRelationDto = new EvaluationJobRelationDto(evaluationJobRelation);
-            evaluationJobRelationDto.setEvaluation(new EvaluationDto(evaluationJobRelation.getEjrid()));
-            evaluationJobRelationDto.setJob(new JobDto(evaluationJobRelation.getEjrJobId()));
+            evaluationJobRelationDto.setEvaluation(new EvaluationDto(evaluationJobRelation.getid()));
+            evaluationJobRelationDto.setJob(new JobDto(evaluationJobRelation.getjob()));
             
             return new Respuesta(true, CodigoRespuesta.CORRECTO, "", "", "EvaluationJobRelation", evaluationJobRelationDto);
 

@@ -59,7 +59,7 @@ public class Evaluation implements Serializable {
     @Version
     @Column(name = "EVA_VERSION")
     private Long version;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "ejrid")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "id")
     private List<EvaluationJobRelation> evaluationJobRelationList;
     @JoinColumn(name = "EVA_COM_ID", referencedColumnName = "COM_ID")
     @ManyToOne(optional = false)
