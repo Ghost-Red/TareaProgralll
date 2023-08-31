@@ -42,7 +42,6 @@ public class EmpleadoService {
     
     public Respuesta getEmpleado(Long id) {
         try {
-            //TODO
             Map<String,Object>parametros=new HashMap<>();
             parametros.put("id", id);
             
@@ -56,17 +55,27 @@ public class EmpleadoService {
             //return null;//new Respuesta(true, "", "", "Empleado", empleado);
         } catch (Exception ex) {
             Logger.getLogger(EmpleadoService.class.getName()).log(Level.SEVERE, "Error obteniendo el empleado [" + id + "]", ex);
-            return null;//new Respuesta(false, "Error obteniendo el empleado.", "getEmpleado " + ex.getMessage());
+            return new Respuesta(false, "Error obteniendo el empleado.", "getEmpleado " + ex.getMessage());
         }
     }
     
     public Respuesta getEmpleados(String cedula, String nombre, String pApellido) {
         try {
-            // TODO
-            return null;// new Respuesta(true, "", "", "Empleados", empleados);
+            Map<String,Object>parametros=new HashMap<>();
+            parametros.put("cedula", cedula);
+            parametros.put("nombre", nombre);
+            parametros.put("pApellido", pApellido);
+            Request request =new Request("EmpleadoController/empleados","/{cedula}/{nombre}/{pApellido}",parametros);
+            request.get();
+            if(request.isError()){
+                return new Respuesta(false,request.getError(),"");
+            }
+            EmpleadoDto empleadoDto =(EmpleadoDto)request.readEntity(EmpleadoDto.class);
+            return new Respuesta(true, "", "", "Empleado", empleadoDto);
+            //return null;// new Respuesta(true, "", "", "Empleados", empleados);
         } catch (Exception ex) {
-            Logger.getLogger(EmpleadoService.class.getName()).log(Level.SEVERE, "Error obteniendo empleados.", ex);
-            return null;//new Respuesta(false, "Error obteniendo empleados.", "getEmpleados " + ex.getMessage());
+            Logger.getLogger(EmpleadoService.class.getName()).log(Level.SEVERE, "Error obteniendo los empleados.", ex);
+            return new Respuesta(false, "Error obteniendo los empleados.", "getEmpleados " + ex.getMessage());
         }
     }
     
