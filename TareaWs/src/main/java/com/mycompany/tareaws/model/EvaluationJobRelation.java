@@ -41,7 +41,7 @@ public class EvaluationJobRelation implements Serializable {
     private Long ejrVersion;
     @JoinColumn(name = "EJR_EVA_ID", referencedColumnName = "EVA_ID")
     @ManyToOne(optional = false)
-    private Evaluation ejrEvaId;
+    private Evaluation ejrid;
     @JoinColumn(name = "EJR_JOB_ID", referencedColumnName = "JOB_ID")
     @ManyToOne(optional = false)
     private Job ejrJobId;
@@ -66,7 +66,7 @@ public class EvaluationJobRelation implements Serializable {
 
     public void updateEvaluationJobRelation(EvaluationJobRelationDto evaluationJobRelationDto) {
         this.ejrId = evaluationJobRelationDto.getId();
-        this.ejrEvaId.updateEvaluation(evaluationJobRelationDto.getEvaluation());
+        this.ejrid.updateEvaluation(evaluationJobRelationDto.getEvaluation());
         this.ejrJobId.updateJob(evaluationJobRelationDto.getJob());
     }
 
@@ -86,12 +86,12 @@ public class EvaluationJobRelation implements Serializable {
         this.ejrVersion = ejrVersion;
     }
 
-    public Evaluation getEjrEvaId() {
-        return ejrEvaId;
+    public Evaluation getEjrid() {
+        return ejrid;
     }
 
-    public void setEjrEvaId(Evaluation ejrEvaId) {
-        this.ejrEvaId = ejrEvaId;
+    public void setEjrid(Evaluation ejrid) {
+        this.ejrid = ejrid;
     }
 
     public Job getEjrJobId() {

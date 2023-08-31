@@ -51,7 +51,7 @@ public class EvaluationJobRelationDto {
 
     @Override
     public String toString() {
-        return "EvaluationJobRelationDto{" + "ejrId=" + id + ", ejrEvaId=" + evaluation + ", ejrJobId=" + job + ", modificate=" + modificate + '}';
+        return "EvaluationJobRelationDto{" + "ejrId=" + id + ", ejrid=" + evaluation + ", ejrJobId=" + job + ", modificate=" + modificate + '}';
     }
 
 }

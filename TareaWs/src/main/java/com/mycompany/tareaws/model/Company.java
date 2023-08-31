@@ -67,7 +67,7 @@ public class Company implements Serializable {
     private List<Skill> skillList;
     @OneToMany(mappedBy = "company")
     private List<Employee> employeeList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "evaComId")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "company")
     private List<Evaluation> evaluationList;
     @OneToMany(mappedBy = "jobComId")
     private List<Job> jobList;

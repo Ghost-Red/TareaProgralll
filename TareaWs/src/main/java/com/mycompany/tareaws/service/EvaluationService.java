@@ -37,11 +37,11 @@ public class EvaluationService {
 
     public Respuesta getEvaluation(Long id) {
         try {
-            Query qryEvaluation = em.createNamedQuery("Evaluation.findByEvaId", Evaluation.class);
-            qryEvaluation.setParameter("evaId", id);
+            Query qryEvaluation = em.createNamedQuery("Evaluation.findByid", Evaluation.class);
+            qryEvaluation.setParameter("id", id);
             Evaluation evaluation = (Evaluation) qryEvaluation.getSingleResult();
             EvaluationDto evaluationDto = new EvaluationDto(evaluation);
-            evaluationDto.setCompany(new CompanyDto(evaluation.getEvaComId()));
+            evaluationDto.setCompany(new CompanyDto(evaluation.getcompany()));
             
             return new Respuesta(true, CodigoRespuesta.CORRECTO, "", "", "Evaluation", evaluationDto);
 
