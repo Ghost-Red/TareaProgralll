@@ -22,8 +22,8 @@ public class EmployeeAverageSkillDto {
 
     public EmployeeAverageSkillDto(EmployeeAverageSkill employeeAverageSkill) {
         this();
-        this.id = employeeAverageSkill.getEasId();
-        this.employeeSkillLvl = employeeAverageSkill.getEasEmployeeSkillLvl();
+        this.id = employeeAverageSkill.getid();
+        this.employeeSkillLvl = employeeAverageSkill.getskillAverageLvl();
     }
 
     public Long getId() {
@@ -60,7 +60,7 @@ public class EmployeeAverageSkillDto {
 
     @Override
     public String toString() {
-        return "EmployeeAverageSkillDto{" + "easId=" + id + ", easEmployeeSkillLvl=" + employeeSkillLvl + ", easEerId=" + employeeEvaluationRelation + ", easSkillId=" + skill + ", modificate=" + modificate + '}';
+        return "EmployeeAverageSkillDto{" + "id=" + id + ", skillAverageLvl=" + employeeSkillLvl + ", employeeEvaluationRelation=" + employeeEvaluationRelation + ", skill=" + skill + ", modificate=" + modificate + '}';
     }
 
 }

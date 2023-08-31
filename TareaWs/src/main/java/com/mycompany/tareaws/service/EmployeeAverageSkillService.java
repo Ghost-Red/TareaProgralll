@@ -36,13 +36,13 @@ public class EmployeeAverageSkillService {
 
     public Respuesta getEmployeeAverageSkill(Long id) {
         try {
-            Query qryEmployeeAverageSkill = em.createNamedQuery("EmployeeAverageSkill.findByEasId", EmployeeAverageSkill.class);
-            qryEmployeeAverageSkill.setParameter("easId", id);
+            Query qryEmployeeAverageSkill = em.createNamedQuery("EmployeeAverageSkill.findByid", EmployeeAverageSkill.class);
+            qryEmployeeAverageSkill.setParameter("id", id);
             
             EmployeeAverageSkill employeeAverageSkill = (EmployeeAverageSkill) qryEmployeeAverageSkill.getSingleResult();
             EmployeeAverageSkillDto employeeAverageSkillDto = new EmployeeAverageSkillDto(employeeAverageSkill);
-            employeeAverageSkillDto.setEmployeeEvaluationRelation( new EmployeeEvaluationRelationDto(employeeAverageSkill.getEasEerId()));
-            employeeAverageSkillDto.setSkill( new SkillDto(employeeAverageSkill.getEasSkillId()));
+            employeeAverageSkillDto.setEmployeeEvaluationRelation( new EmployeeEvaluationRelationDto(employeeAverageSkill.getemployeeEvaluationRelation()));
+            employeeAverageSkillDto.setSkill( new SkillDto(employeeAverageSkill.getskill()));
             
             return new Respuesta(true, CodigoRespuesta.CORRECTO, "", "", "EmployeeAverageSkill", employeeAverageSkillDto);
 

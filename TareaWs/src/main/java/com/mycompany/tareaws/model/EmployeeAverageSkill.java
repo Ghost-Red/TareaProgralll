@@ -24,9 +24,9 @@ import jakarta.persistence.Version;
 @Table(name = "EMPLOYEE_AVERAGE_SKILL")
 @NamedQueries({
     @NamedQuery(name = "EmployeeAverageSkill.findAll", query = "SELECT e FROM EmployeeAverageSkill e"),
-    @NamedQuery(name = "EmployeeAverageSkill.findByEasId", query = "SELECT e FROM EmployeeAverageSkill e WHERE e.easId = :easId"),
-    @NamedQuery(name = "EmployeeAverageSkill.findByEasEmployeeSkillLvl", query = "SELECT e FROM EmployeeAverageSkill e WHERE e.easEmployeeSkillLvl = :easEmployeeSkillLvl"),
-    @NamedQuery(name = "EmployeeAverageSkill.findByEasVersion", query = "SELECT e FROM EmployeeAverageSkill e WHERE e.easVersion = :easVersion")})
+    @NamedQuery(name = "EmployeeAverageSkill.findByid", query = "SELECT e FROM EmployeeAverageSkill e WHERE e.id = :id"),
+    @NamedQuery(name = "EmployeeAverageSkill.findByskillAverageLvl", query = "SELECT e FROM EmployeeAverageSkill e WHERE e.skillAverageLvl = :skillAverageLvl"),
+    @NamedQuery(name = "EmployeeAverageSkill.findByversion", query = "SELECT e FROM EmployeeAverageSkill e WHERE e.version = :version")})
 public class EmployeeAverageSkill implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -34,29 +34,29 @@ public class EmployeeAverageSkill implements Serializable {
     @Id
     @Basic(optional = false)
     @Column(name = "EAS_ID")
-    private Long easId;
+    private Long id;
     @Column(name = "EAS_EMPLOYEE_SKILL_LVL")
-    private Long easEmployeeSkillLvl;
+    private Long skillAverageLvl;
     @Version
     @Column(name = "EAS_VERSION")
-    private Long easVersion;
+    private Long version;
     @JoinColumn(name = "EAS_EER_ID", referencedColumnName = "EER_ID")
     @ManyToOne(optional = false)
-    private EmployeeEvaluationRelation easEerId;
+    private EmployeeEvaluationRelation employeeEvaluationRelation;
     @JoinColumn(name = "EAS_SKILL_ID", referencedColumnName = "SKILL_ID")
     @ManyToOne(optional = false)
-    private Skill easSkillId;
+    private Skill skill;
 
     public EmployeeAverageSkill() {
     }
 
-    public EmployeeAverageSkill(Long easId) {
-        this.easId = easId;
+    public EmployeeAverageSkill(Long id) {
+        this.id = id;
     }
 
-    public EmployeeAverageSkill(Long easId, Long easVersion) {
-        this.easId = easId;
-        this.easVersion = easVersion;
+    public EmployeeAverageSkill(Long id, Long version) {
+        this.id = id;
+        this.version = version;
     }
 
     public EmployeeAverageSkill(EmployeeAverageSkillDto employeeAverageSkillDto) {
@@ -64,56 +64,56 @@ public class EmployeeAverageSkill implements Serializable {
     }
 
     public void updateEmployeeAverageSkill(EmployeeAverageSkillDto employeeAverageSkillDto) {
-        this.easId = employeeAverageSkillDto.getId();
-        this.easEmployeeSkillLvl = employeeAverageSkillDto.getEmployeeSkillLvl();
-        this.easEerId.updateEmployeeEvaluationRelation(employeeAverageSkillDto.getEmployeeEvaluationRelation());
-        this.easSkillId.updateSkill(employeeAverageSkillDto.getSkill());
+        this.id = employeeAverageSkillDto.getId();
+        this.skillAverageLvl = employeeAverageSkillDto.getEmployeeSkillLvl();
+        this.employeeEvaluationRelation.updateEmployeeEvaluationRelation(employeeAverageSkillDto.getEmployeeEvaluationRelation());
+        this.skill.updateSkill(employeeAverageSkillDto.getSkill());
     }
 
-    public Long getEasId() {
-        return easId;
+    public Long getid() {
+        return id;
     }
 
-    public void setEasId(Long easId) {
-        this.easId = easId;
+    public void setid(Long id) {
+        this.id = id;
     }
 
-    public Long getEasEmployeeSkillLvl() {
-        return easEmployeeSkillLvl;
+    public Long getskillAverageLvl() {
+        return skillAverageLvl;
     }
 
-    public void setEasEmployeeSkillLvl(Long easEmployeeSkillLvl) {
-        this.easEmployeeSkillLvl = easEmployeeSkillLvl;
+    public void setskillAverageLvl(Long skillAverageLvl) {
+        this.skillAverageLvl = skillAverageLvl;
     }
 
-    public Long getEasVersion() {
-        return easVersion;
+    public Long getversion() {
+        return version;
     }
 
-    public void setEasVersion(Long easVersion) {
-        this.easVersion = easVersion;
+    public void setversion(Long version) {
+        this.version = version;
     }
 
-    public EmployeeEvaluationRelation getEasEerId() {
-        return easEerId;
+    public EmployeeEvaluationRelation getemployeeEvaluationRelation() {
+        return employeeEvaluationRelation;
     }
 
-    public void setEasEerId(EmployeeEvaluationRelation easEerId) {
-        this.easEerId = easEerId;
+    public void setemployeeEvaluationRelation(EmployeeEvaluationRelation employeeEvaluationRelation) {
+        this.employeeEvaluationRelation = employeeEvaluationRelation;
     }
 
-    public Skill getEasSkillId() {
-        return easSkillId;
+    public Skill getskill() {
+        return skill;
     }
 
-    public void setEasSkillId(Skill easSkillId) {
-        this.easSkillId = easSkillId;
+    public void setskill(Skill skill) {
+        this.skill = skill;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (easId != null ? easId.hashCode() : 0);
+        hash += (id != null ? id.hashCode() : 0);
         return hash;
     }
 
@@ -124,7 +124,7 @@ public class EmployeeAverageSkill implements Serializable {
             return false;
         }
         EmployeeAverageSkill other = (EmployeeAverageSkill) object;
-        if ((this.easId == null && other.easId != null) || (this.easId != null && !this.easId.equals(other.easId))) {
+        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
         return true;
@@ -132,7 +132,7 @@ public class EmployeeAverageSkill implements Serializable {
 
     @Override
     public String toString() {
-        return "com.mycompany.tareaws.model.EmployeeAverageSkill[ easId=" + easId + " ]";
+        return "com.mycompany.tareaws.model.EmployeeAverageSkill[ id=" + id + " ]";
     }
 
 }

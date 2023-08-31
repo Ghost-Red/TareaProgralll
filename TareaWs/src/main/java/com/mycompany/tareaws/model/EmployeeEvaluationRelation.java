@@ -49,7 +49,7 @@ public class EmployeeEvaluationRelation implements Serializable {
     @JoinColumn(name = "EER_EJR_ID", referencedColumnName = "EJR_ID")
     @ManyToOne
     private EvaluationJobRelation eerEjrId;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "easEerId")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "employeeEvaluationRelation")
     private List<EmployeeAverageSkill> employeeAverageSkillList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "evaEmployeeId")
     private List<EmployeeEvaluatorRelation> employeeEvaluatorRelationList;

@@ -57,7 +57,7 @@ public class Skill implements Serializable {
     @JoinColumn(name = "SKILL_COM_ID", referencedColumnName = "COM_ID")
     @ManyToOne(optional = false)
     private Company skillComId;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "easSkillId")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "skill")
     private List<EmployeeAverageSkill> employeeAverageSkillList;
 
     public Skill() {
