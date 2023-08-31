@@ -4,7 +4,6 @@
  */
 package com.mycompany.tareaws.service;
 
-import com.mycompany.tareaws.model.CompanyDto;
 import com.mycompany.tareaws.model.Skill;
 import com.mycompany.tareaws.model.SkillDto;
 import com.mycompany.tareaws.util.CodigoRespuesta;
@@ -43,6 +42,7 @@ public class SkillService {
             skillDto.setCompany(new CompanyDto(skill.getCompany()));
 
             return new Respuesta(true, CodigoRespuesta.CORRECTO, "", "", "Skill", skillDto);
+
 
         } catch (NoResultException ex) {
             return new Respuesta(false, CodigoRespuesta.ERROR_NOENCONTRADO, "No existe una skill con el código ingresado.", "getSkill NoResultException");

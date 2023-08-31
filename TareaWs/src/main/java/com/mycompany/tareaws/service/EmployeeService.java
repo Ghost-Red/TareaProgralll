@@ -4,10 +4,8 @@
  */
 package com.mycompany.tareaws.service;
 
-import com.mycompany.tareaws.model.CompanyDto;
 import com.mycompany.tareaws.model.Employee;
 import com.mycompany.tareaws.model.EmployeeDto;
-import com.mycompany.tareaws.model.JobDto;
 import com.mycompany.tareaws.util.CodigoRespuesta;
 import com.mycompany.tareaws.util.Respuesta;
 import jakarta.ejb.LocalBean;
@@ -36,6 +34,7 @@ public class EmployeeService {
     @PersistenceContext(unitName = "TareaWsPU")
     private EntityManager em;
 
+  
     public Respuesta getEmployee(Long id) {
         try {
             Query qryEmployee = em.createNamedQuery("Employee.findByid", Employee.class);

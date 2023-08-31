@@ -4,7 +4,6 @@
  */
 package com.mycompany.tareaws.service;
 
-import com.mycompany.tareaws.model.CompanyDto;
 import com.mycompany.tareaws.model.Evaluation;
 import com.mycompany.tareaws.model.EvaluationDto;
 import com.mycompany.tareaws.util.CodigoRespuesta;
@@ -42,9 +41,7 @@ public class EvaluationService {
             Evaluation evaluation = (Evaluation) qryEvaluation.getSingleResult();
             EvaluationDto evaluationDto = new EvaluationDto(evaluation);
             evaluationDto.setCompany(new CompanyDto(evaluation.getcompany()));
-
             return new Respuesta(true, CodigoRespuesta.CORRECTO, "", "", "Evaluation", evaluationDto);
-
         } catch (NoResultException ex) {
             return new Respuesta(false, CodigoRespuesta.ERROR_NOENCONTRADO, "No existe una evaluacion con el código ingresado.", "getEvaluation NoResultException");
         } catch (NonUniqueResultException ex) {
