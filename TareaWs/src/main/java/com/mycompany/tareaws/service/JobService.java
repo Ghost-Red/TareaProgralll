@@ -32,10 +32,10 @@ public class JobService {
     @PersistenceContext(unitName = "TareaWsPU")
     private EntityManager em;
 
-    public Respuesta getJob(Long jobId) {
+    public Respuesta getJob(Long id) {
         try {
             Query qryJob = em.createNamedQuery("Job.findByJobId", Job.class);
-            qryJob.setParameter("jobId", jobId);
+            qryJob.setParameter("jobId", id);
             return new Respuesta(true, CodigoRespuesta.CORRECTO, "", "", "Job", new JobDto((Job) qryJob.getSingleResult()));
         } catch (NoResultException ex) {
             return new Respuesta(false, CodigoRespuesta.ERROR_NOENCONTRADO, "No existe un puesto con el código ingresado.", "getJob NoResultException");
@@ -51,8 +51,8 @@ public class JobService {
     public Respuesta saveJob(JobDto jobDto) {
         try {
             Job job;
-            if (jobDto.getJobId() != null && jobDto.getJobId() > 0) {
-                job = em.find(Job.class, jobDto.getJobId());
+            if (jobDto.getId() != null && jobDto.getId() > 0) {
+                job = em.find(Job.class, jobDto.getId());
                 if (job == null) {
                     return new Respuesta(false, CodigoRespuesta.ERROR_NOENCONTRADO, "No se encrontró el puesto a modificar.", "saveJob NoResultException");
                 }

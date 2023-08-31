@@ -10,10 +10,10 @@ package com.mycompany.tareaws.model;
  */
 public class EmployeeEvaluationRelationDto {
 
-    private Long eerId;
-    private Long eerEmployeeClasification;
-    private EmployeeDto eerEmpId;
-    private EvaluationJobRelationDto eerEjrId;
+    private Long id;
+    private Long employeeClasification;
+    private EmployeeDto employee;
+    private EvaluationJobRelationDto evaluationJobRelation;
     private boolean modificate;
 
     public EmployeeEvaluationRelationDto() {
@@ -22,54 +22,54 @@ public class EmployeeEvaluationRelationDto {
 
     public EmployeeEvaluationRelationDto(EmployeeEvaluationRelation employeeEvaluationRelation) {
         this();
-        this.eerId = employeeEvaluationRelation.getEerId();
-        this.eerEmployeeClasification = employeeEvaluationRelation.getEerEmployeeClasification();
-        this.eerEmpId = new EmployeeDto(employeeEvaluationRelation.getEerEmpId());
-        this.eerEjrId = new EvaluationJobRelationDto(employeeEvaluationRelation.getEerEjrId());
+        this.id = employeeEvaluationRelation.getEerId();
+        this.employeeClasification = employeeEvaluationRelation.getEerEmployeeClasification();
+        this.employee = new EmployeeDto(employeeEvaluationRelation.getEerEmpId());
+        this.evaluationJobRelation = new EvaluationJobRelationDto(employeeEvaluationRelation.getEerEjrId());
     }
 
     public void updateEmployeeEvaluationRelationDto(EmployeeEvaluationRelation employeeEvaluationRelation) {
-        this.eerId = employeeEvaluationRelation.getEerId();
-        this.eerEmployeeClasification = employeeEvaluationRelation.getEerEmployeeClasification();
-        this.eerEmpId.updateEmployeeDto(employeeEvaluationRelation.getEerEmpId());
-        this.eerEjrId.updateEvaluationJobRelationDto(employeeEvaluationRelation.getEerEjrId());
+        this.id = employeeEvaluationRelation.getEerId();
+        this.employeeClasification = employeeEvaluationRelation.getEerEmployeeClasification();
+        this.employee.updateEmployeeDto(employeeEvaluationRelation.getEerEmpId());
+        this.evaluationJobRelation.updateEvaluationJobRelationDto(employeeEvaluationRelation.getEerEjrId());
     }
 
-    public Long getEerId() {
-        return eerId;
+    public Long getId() {
+        return id;
     }
 
-    public void setEerId(Long eerId) {
-        this.eerId = eerId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public Long getEerEmployeeClasification() {
-        return eerEmployeeClasification;
+    public Long getEmployeeClasification() {
+        return employeeClasification;
     }
 
-    public void setEerEmployeeClasification(Long eerEmployeeClasification) {
-        this.eerEmployeeClasification = eerEmployeeClasification;
+    public void setEmployeeClasification(Long employeeClasification) {
+        this.employeeClasification = employeeClasification;
     }
 
-    public EmployeeDto getEerEmpId() {
-        return eerEmpId;
+    public EmployeeDto getEmployee() {
+        return employee;
     }
 
-    public void setEerEmpId(EmployeeDto eerEmpId) {
-        this.eerEmpId = eerEmpId;
+    public void setEmployee(EmployeeDto employee) {
+        this.employee = employee;
     }
 
-    public EvaluationJobRelationDto getEerEjrId() {
-        return eerEjrId;
+    public EvaluationJobRelationDto getEvaluationJobRelation() {
+        return evaluationJobRelation;
     }
 
-    public void setEerEjrId(EvaluationJobRelationDto eerEjrId) {
-        this.eerEjrId = eerEjrId;
+    public void setEvaluationJobRelation(EvaluationJobRelationDto evaluationJobRelation) {
+        this.evaluationJobRelation = evaluationJobRelation;
     }
 
     @Override
     public String toString() {
-        return "EmployeeEvaluationRelationDto{" + "eerId=" + eerId + ", eerEmployeeClasification=" + eerEmployeeClasification + ", eerEmpId=" + eerEmpId + ", eerEjrId=" + eerEjrId + ", modificate=" + modificate + '}';
+        return "EmployeeEvaluationRelationDto{" + "eerId=" + id + ", eerEmployeeClasification=" + employeeClasification + ", eerEmpId=" + employee + ", eerEjrId=" + evaluationJobRelation + ", modificate=" + modificate + '}';
     }
 
 }

@@ -10,20 +10,20 @@ package com.mycompany.tareaws.model;
  */
 public class EmployeeDto {
 
-    private Long empId;
-    private String empCedula;
-    private String empName;
-    private String empFirstLastname;
-    private String empSecondLastname;
-    private String empEmail;
-    private String empPassword;
-    private String empPhoneNumber;
-    private String empCellphoneNumber;
-    private String empAdminState;
-    private String empActivatedState;
-    private String empForgotPasswordState;
-    private CompanyDto empComId;
-    private JobDto empJobId;
+    private Long id;
+    private String cedula;
+    private String name;
+    private String firstLastname;
+    private String secondLastname;
+    private String email;
+    private String password;
+    private String phoneNumber;
+    private String cellphoneNumber;
+    private String adminState;
+    private String activatedState;
+    private String forgotPasswordState;
+    private CompanyDto company;
+    private JobDto job;
     private boolean modificate;
 
     public EmployeeDto() {
@@ -32,149 +32,149 @@ public class EmployeeDto {
 
     public EmployeeDto(Employee employee) {
         this();
-        this.empId = employee.getEmpId();
-        this.empCedula = employee.getEmpCedula();
-        this.empName = employee.getEmpName();
-        this.empFirstLastname = employee.getEmpFirstLastname();
-        this.empSecondLastname = employee.getEmpSecondLastname();
-        this.empEmail = employee.getEmpEmail();
-        this.empPassword = employee.getEmpPassword();
-        this.empPhoneNumber = employee.getEmpPhoneNumber();
-        this.empCellphoneNumber = employee.getEmpCellphoneNumber();
-        this.empAdminState = employee.getEmpAdminState();
-        this.empActivatedState = employee.getEmpActivatedState();
-        this.empForgotPasswordState = employee.getEmpForgotPasswordState();
-        this.empComId = new CompanyDto(employee.getEmpComId());
-        this.empJobId = new JobDto(employee.getEmpJobId());
+        this.id = employee.getEmpId();
+        this.cedula = employee.getEmpCedula();
+        this.name = employee.getEmpName();
+        this.firstLastname = employee.getEmpFirstLastname();
+        this.secondLastname = employee.getEmpSecondLastname();
+        this.email = employee.getEmpEmail();
+        this.password = employee.getEmpPassword();
+        this.phoneNumber = employee.getEmpPhoneNumber();
+        this.cellphoneNumber = employee.getEmpCellphoneNumber();
+        this.adminState = employee.getEmpAdminState();
+        this.activatedState = employee.getEmpActivatedState();
+        this.forgotPasswordState = employee.getEmpForgotPasswordState();
+        this.company = new CompanyDto(employee.getEmpComId());
+        this.job = new JobDto(employee.getEmpJobId());
     }
 
     public void updateEmployeeDto(Employee employee) {
-        this.empId = employee.getEmpId();
-        this.empCedula = employee.getEmpCedula();
-        this.empName = employee.getEmpName();
-        this.empFirstLastname = employee.getEmpFirstLastname();
-        this.empSecondLastname = employee.getEmpSecondLastname();
-        this.empEmail = employee.getEmpEmail();
-        this.empPassword = employee.getEmpPassword();
-        this.empPhoneNumber = employee.getEmpPhoneNumber();
-        this.empCellphoneNumber = employee.getEmpCellphoneNumber();
-        this.empAdminState = employee.getEmpAdminState();
-        this.empActivatedState = employee.getEmpActivatedState();
-        this.empForgotPasswordState = employee.getEmpForgotPasswordState();
-        this.empComId.updateCompanyDto(employee.getEmpComId());
-        this.empJobId.updateJobDto(employee.getEmpJobId());
+        this.id = employee.getEmpId();
+        this.cedula = employee.getEmpCedula();
+        this.name = employee.getEmpName();
+        this.firstLastname = employee.getEmpFirstLastname();
+        this.secondLastname = employee.getEmpSecondLastname();
+        this.email = employee.getEmpEmail();
+        this.password = employee.getEmpPassword();
+        this.phoneNumber = employee.getEmpPhoneNumber();
+        this.cellphoneNumber = employee.getEmpCellphoneNumber();
+        this.adminState = employee.getEmpAdminState();
+        this.activatedState = employee.getEmpActivatedState();
+        this.forgotPasswordState = employee.getEmpForgotPasswordState();
+        this.company.updateCompanyDto(employee.getEmpComId());
+        this.job.updateJobDto(employee.getEmpJobId());
     }
 
-    public Long getEmpId() {
-        return empId;
+    public Long getId() {
+        return id;
     }
 
-    public void setEmpId(Long empId) {
-        this.empId = empId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public String getEmpCedula() {
-        return empCedula;
+    public String getCedula() {
+        return cedula;
     }
 
-    public void setEmpCedula(String empCedula) {
-        this.empCedula = empCedula;
+    public void setCedula(String cedula) {
+        this.cedula = cedula;
     }
 
-    public String getEmpName() {
-        return empName;
+    public String getName() {
+        return name;
     }
 
-    public void setEmpName(String empName) {
-        this.empName = empName;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getEmpFirstLastname() {
-        return empFirstLastname;
+    public String getFirstLastname() {
+        return firstLastname;
     }
 
-    public void setEmpFirstLastname(String empFirstLastname) {
-        this.empFirstLastname = empFirstLastname;
+    public void setFirstLastname(String firstLastname) {
+        this.firstLastname = firstLastname;
     }
 
-    public String getEmpSecondLastname() {
-        return empSecondLastname;
+    public String getSecondLastname() {
+        return secondLastname;
     }
 
-    public void setEmpSecondLastname(String empSecondLastname) {
-        this.empSecondLastname = empSecondLastname;
+    public void setSecondLastname(String secondLastname) {
+        this.secondLastname = secondLastname;
     }
 
-    public String getEmpEmail() {
-        return empEmail;
+    public String getEmail() {
+        return email;
     }
 
-    public void setEmpEmail(String empEmail) {
-        this.empEmail = empEmail;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public String getEmpPassword() {
-        return empPassword;
+    public String getPassword() {
+        return password;
     }
 
-    public void setEmpPassword(String empPassword) {
-        this.empPassword = empPassword;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
-    public String getEmpPhoneNumber() {
-        return empPhoneNumber;
+    public String getPhoneNumber() {
+        return phoneNumber;
     }
 
-    public void setEmpPhoneNumber(String empPhoneNumber) {
-        this.empPhoneNumber = empPhoneNumber;
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
-    public String getEmpCellphoneNumber() {
-        return empCellphoneNumber;
+    public String getCellphoneNumber() {
+        return cellphoneNumber;
     }
 
-    public void setEmpCellphoneNumber(String empCellphoneNumber) {
-        this.empCellphoneNumber = empCellphoneNumber;
+    public void setCellphoneNumber(String cellphoneNumber) {
+        this.cellphoneNumber = cellphoneNumber;
     }
 
-    public String getEmpAdminState() {
-        return empAdminState;
+    public String getAdminState() {
+        return adminState;
     }
 
-    public void setEmpAdminState(String empAdminState) {
-        this.empAdminState = empAdminState;
+    public void setAdminState(String adminState) {
+        this.adminState = adminState;
     }
 
-    public String getEmpActivatedState() {
-        return empActivatedState;
+    public String getActivatedState() {
+        return activatedState;
     }
 
-    public void setEmpActivatedState(String empActivatedState) {
-        this.empActivatedState = empActivatedState;
+    public void setActivatedState(String activatedState) {
+        this.activatedState = activatedState;
     }
 
-    public String getEmpForgotPasswordState() {
-        return empForgotPasswordState;
+    public String getForgotPasswordState() {
+        return forgotPasswordState;
     }
 
-    public void setEmpForgotPasswordState(String empForgotPasswordState) {
-        this.empForgotPasswordState = empForgotPasswordState;
+    public void setForgotPasswordState(String forgotPasswordState) {
+        this.forgotPasswordState = forgotPasswordState;
     }
 
-    public CompanyDto getEmpComId() {
-        return empComId;
+    public CompanyDto getCompany() {
+        return company;
     }
 
-    public void setEmpComId(CompanyDto empComId) {
-        this.empComId = empComId;
+    public void setCompany(CompanyDto company) {
+        this.company = company;
     }
 
-    public JobDto getEmpJobId() {
-        return empJobId;
+    public JobDto getJob() {
+        return job;
     }
 
-    public void setEmpJobId(JobDto empJobId) {
-        this.empJobId = empJobId;
+    public void setJob(JobDto job) {
+        this.job = job;
     }
 
     public boolean isModificate() {
@@ -187,7 +187,7 @@ public class EmployeeDto {
 
     @Override
     public String toString() {
-        return "EmployeeDto{" + "empId=" + empId + ", empCedula=" + empCedula + ", empName=" + empName + ", empFirstLastname=" + empFirstLastname + ", empSecondLastname=" + empSecondLastname + ", empEmail=" + empEmail + ", empPassword=" + empPassword + ", empPhoneNumber=" + empPhoneNumber + ", empCellphoneNumber=" + empCellphoneNumber + ", empAdminState=" + empAdminState + ", empActivatedState=" + empActivatedState + ", empForgotPasswordState=" + empForgotPasswordState /*+ ", empComId=" + empComId + ", empJobId=" + empJobId + ", modificate="*/ + modificate + '}';
+        return "EmployeeDto{" + "empId=" + id + ", empCedula=" + cedula + ", empName=" + name + ", empFirstLastname=" + firstLastname + ", empSecondLastname=" + secondLastname + ", empEmail=" + email + ", empPassword=" + password + ", empPhoneNumber=" + phoneNumber + ", empCellphoneNumber=" + cellphoneNumber + ", empAdminState=" + adminState + ", empActivatedState=" + activatedState + ", empForgotPasswordState=" + forgotPasswordState/*+ ", company=" + company + ", job=" + job + ", modificate="*/ + modificate + '}';
     }
 
 }

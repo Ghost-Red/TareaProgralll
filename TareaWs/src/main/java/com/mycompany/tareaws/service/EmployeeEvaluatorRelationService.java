@@ -32,10 +32,10 @@ public class EmployeeEvaluatorRelationService {
     @PersistenceContext(unitName = "TareaWsPU")
     private EntityManager em;
 
-    public Respuesta getEmployeeEvaluatorRelation(Long eeId) {
+    public Respuesta getEmployeeEvaluatorRelation(Long id) {
         try {
             Query qryEmployeeEvaluatorRelation = em.createNamedQuery("EmployeeEvaluatorRelation.findByEeId", EmployeeEvaluatorRelation.class);
-            qryEmployeeEvaluatorRelation.setParameter("eeId", eeId);
+            qryEmployeeEvaluatorRelation.setParameter("eeId", id);
             return new Respuesta(true, CodigoRespuesta.CORRECTO, "", "", "EmployeeEvaluatorRelation", new EmployeeEvaluatorRelationDto((EmployeeEvaluatorRelation) qryEmployeeEvaluatorRelation.getSingleResult()));
 
         } catch (NoResultException ex) {
@@ -52,8 +52,8 @@ public class EmployeeEvaluatorRelationService {
     public Respuesta saveEmployeeEvaluatorRelation(EmployeeEvaluatorRelationDto employeeEvaluatorRelationDto) {
         try {
             EmployeeEvaluatorRelation employeeEvaluatorRelation;
-            if (employeeEvaluatorRelationDto.getEeId() != null && employeeEvaluatorRelationDto.getEeId() > 0) {
-                employeeEvaluatorRelation = em.find(EmployeeEvaluatorRelation.class, employeeEvaluatorRelationDto.getEeId());
+            if (employeeEvaluatorRelationDto.getId() != null && employeeEvaluatorRelationDto.getId() > 0) {
+                employeeEvaluatorRelation = em.find(EmployeeEvaluatorRelation.class, employeeEvaluatorRelationDto.getId());
                 if (employeeEvaluatorRelation == null) {
                     return new Respuesta(false, CodigoRespuesta.ERROR_NOENCONTRADO, "No se encrontró la EmployeeEvaluatorRelation a modificar.", "saveEmployeeEvaluatorRelation NoResultException");
                 }

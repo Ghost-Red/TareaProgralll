@@ -23,8 +23,8 @@ public class EmployeeEvaluatorRelationController {
     EmployeeEvaluatorRelationService employeeEvaluatorRelationService;
 
     @WebMethod(operationName = "getEmployeeEvaluatorRelation")
-    public EmployeeEvaluatorRelationDto getEmployeeEvaluatorRelation(@WebParam(name = "eeId") Long eeId) {
-        Respuesta res = employeeEvaluatorRelationService.getEmployeeEvaluatorRelation(eeId);
+    public EmployeeEvaluatorRelationDto getEmployeeEvaluatorRelation(@WebParam(name = "id") Long id) {
+        Respuesta res = employeeEvaluatorRelationService.getEmployeeEvaluatorRelation(id);
         return (EmployeeEvaluatorRelationDto) res.getResultado("EmployeeEvaluatorRelation");
     }
 }

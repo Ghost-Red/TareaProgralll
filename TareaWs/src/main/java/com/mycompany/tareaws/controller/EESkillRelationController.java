@@ -23,8 +23,8 @@ public class EESkillRelationController {
     EESkillRelationService eESkillRelationService;
 
     @WebMethod(operationName = "getEESkillRelation")
-    public EESkillRelationDto getEESkillRelation(@WebParam(name = "eesId") Long eESkillRelation) {
-        Respuesta res = eESkillRelationService.getEESkillRelation(eESkillRelation);
+    public EESkillRelationDto getEESkillRelation(@WebParam(name = "id") Long id) {
+        Respuesta res = eESkillRelationService.getEESkillRelation(id);
         return (EESkillRelationDto) res.getResultado("EESkillRelation");
     }
 }

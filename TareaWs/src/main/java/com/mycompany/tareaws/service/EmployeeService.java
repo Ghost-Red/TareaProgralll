@@ -61,10 +61,10 @@ public class EmployeeService {
             return abc;
     }
      */
-    public Respuesta getEmployee(Long empId) {
+    public Respuesta getEmployee(Long id) {
         try {
             Query qryEmployee = em.createNamedQuery("Employee.findByEmpId", Employee.class);
-            qryEmployee.setParameter("empId", empId);
+            qryEmployee.setParameter("empId", id);
             return new Respuesta(true, CodigoRespuesta.CORRECTO, "", "", "Employee", new EmployeeDto((Employee) qryEmployee.getSingleResult()));
 
         } catch (NoResultException ex) {
@@ -104,8 +104,8 @@ public class EmployeeService {
     public Respuesta saveEmployee(EmployeeDto employeeDto) {
         try {
             Employee empleado;
-            if (employeeDto.getEmpId() != null && employeeDto.getEmpId() > 0) {
-                empleado = em.find(Employee.class, employeeDto.getEmpId());
+            if (employeeDto.getId() != null && employeeDto.getId() > 0) {
+                empleado = em.find(Employee.class, employeeDto.getId());
                 if (empleado == null) {
                     return new Respuesta(false, CodigoRespuesta.ERROR_NOENCONTRADO, "No se encrontró el empleado a modificar.", "guardarEmpleado NoResultException");
                 }

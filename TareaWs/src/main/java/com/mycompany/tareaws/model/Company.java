@@ -91,18 +91,18 @@ public class Company implements Serializable {
     }
 
     public Company(CompanyDto company) {
-        this.comId = company.getComId();
+        this.comId = company.getId();
         updateCompany(company);
     }
 
     public void updateCompany(CompanyDto companyDto) {
-        this.comId = companyDto.getComId();
-        this.comName = companyDto.getComName();
-        this.comEmail = companyDto.getComEmail();
-        this.comLogo = companyDto.getComLogo();
-        this.comEmailTemplatePassword = companyDto.getComEmailTemplatePassword();
-        this.comTokenEmail = companyDto.getComTokenEmail();
-        this.comEmailTemplateActivateUser = companyDto.getComEmailTemplateActivateUser();
+        this.comId = companyDto.getId();
+        this.comName = companyDto.getName();
+        this.comEmail = companyDto.getEmail();
+        this.comLogo = companyDto.getLogo();
+        this.comEmailTemplatePassword = companyDto.getEmailTemplatePassword();
+        this.comTokenEmail = companyDto.getTokenEmail();
+        this.comEmailTemplateActivateUser = companyDto.getEmailTemplateActivateUser();
     }
 
     public Long getComId() {

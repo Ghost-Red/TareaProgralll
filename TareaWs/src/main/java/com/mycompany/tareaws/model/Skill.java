@@ -76,15 +76,15 @@ public class Skill implements Serializable {
     }
 
     public Skill(SkillDto skill) {
-        this.skillId = skill.getSkillId();
+        this.skillId = skill.getId();
         updateSkill(skill);
     }
 
     public void updateSkill(SkillDto skill) {
-        this.skillId = skill.getSkillId();
-        this.skillName = skill.getSkillName();
-        this.skillDescription = skill.getSkillDescription();
-        this.skillState = skill.getSkillState();
+        this.skillId = skill.getId();
+        this.skillName = skill.getName();
+        this.skillDescription = skill.getDescription();
+        this.skillState = skill.getState();
     }
 
     public Long getSkillId() {

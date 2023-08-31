@@ -65,9 +65,9 @@ public class EvaluationJobRelation implements Serializable {
     }
 
     public void updateEvaluationJobRelation(EvaluationJobRelationDto evaluationJobRelationDto) {
-        this.ejrId = evaluationJobRelationDto.getEjrId();
-        this.ejrEvaId.updateEvaluation(evaluationJobRelationDto.getEjrEvaId());
-        this.ejrJobId.updateJob(evaluationJobRelationDto.getEjrJobId());
+        this.ejrId = evaluationJobRelationDto.getId();
+        this.ejrEvaId.updateEvaluation(evaluationJobRelationDto.getEvaluation());
+        this.ejrJobId.updateJob(evaluationJobRelationDto.getJob());
     }
 
     public Long getEjrId() {

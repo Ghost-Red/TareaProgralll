@@ -64,10 +64,10 @@ public class EmployeeAverageSkill implements Serializable {
     }
 
     public void updateEmployeeAverageSkill(EmployeeAverageSkillDto employeeAverageSkillDto) {
-        this.easId = employeeAverageSkillDto.getEasId();
-        this.easEmployeeSkillLvl = employeeAverageSkillDto.getEasEmployeeSkillLvl();
-        this.easEerId.updateEmployeeEvaluationRelation(employeeAverageSkillDto.getEasEerId());
-        this.easSkillId.updateSkill(employeeAverageSkillDto.getEasSkillId());
+        this.easId = employeeAverageSkillDto.getId();
+        this.easEmployeeSkillLvl = employeeAverageSkillDto.getEmployeeSkillLvl();
+        this.easEerId.updateEmployeeEvaluationRelation(employeeAverageSkillDto.getEmployeeEvaluationRelation());
+        this.easSkillId.updateSkill(employeeAverageSkillDto.getSkill());
     }
 
     public Long getEasId() {

@@ -32,10 +32,10 @@ public class EvaluationJobRelationService {
     @PersistenceContext(unitName = "TareaWsPU")
     private EntityManager em;
 
-    public Respuesta getEvaluationJobRelation(Long ejrId) {
+    public Respuesta getEvaluationJobRelation(Long id) {
         try {
             Query qryEvaluationJobRelation = em.createNamedQuery("EvaluationJobRelation.findByEjrId", EvaluationJobRelation.class);
-            qryEvaluationJobRelation.setParameter("ejrId", ejrId);
+            qryEvaluationJobRelation.setParameter("ejrId", id);
             return new Respuesta(true, CodigoRespuesta.CORRECTO, "", "", "EvaluationJobRelation", new EvaluationJobRelationDto((EvaluationJobRelation) qryEvaluationJobRelation.getSingleResult()));
 
         } catch (NoResultException ex) {
@@ -52,8 +52,8 @@ public class EvaluationJobRelationService {
     public Respuesta saveEvaluationJobRelation(EvaluationJobRelationDto evaluationJobRelationDto) {
         try {
             EvaluationJobRelation evaluationJobRelation;
-            if (evaluationJobRelationDto.getEjrId() != null && evaluationJobRelationDto.getEjrId() > 0) {
-                evaluationJobRelation = em.find(EvaluationJobRelation.class, evaluationJobRelationDto.getEjrId());
+            if (evaluationJobRelationDto.getId() != null && evaluationJobRelationDto.getId() > 0) {
+                evaluationJobRelation = em.find(EvaluationJobRelation.class, evaluationJobRelationDto.getId());
                 if (evaluationJobRelation == null) {
                     return new Respuesta(false, CodigoRespuesta.ERROR_NOENCONTRADO, "No se encrontró la EvaluationJobRelation a modificar.", "saveEvaluationJobRelation NoResultException");
                 }

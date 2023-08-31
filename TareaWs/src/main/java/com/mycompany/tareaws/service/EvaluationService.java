@@ -34,10 +34,10 @@ public class EvaluationService {
     @PersistenceContext(unitName = "TareaWsPU")
     private EntityManager em;
 
-    public Respuesta getEvaluation(Long evaId) {
+    public Respuesta getEvaluation(Long id) {
         try {
             Query qryEvaluation = em.createNamedQuery("Evaluation.findByEvaId", Evaluation.class);
-            qryEvaluation.setParameter("evaId", evaId);
+            qryEvaluation.setParameter("evaId", id);
             return new Respuesta(true, CodigoRespuesta.CORRECTO, "", "", "Evaluation", new EvaluationDto((Evaluation) qryEvaluation.getSingleResult()));
 
         } catch (NoResultException ex) {
@@ -54,8 +54,8 @@ public class EvaluationService {
     public Respuesta saveEvaluation(EvaluationDto evaluationDto) {
         try {
             Evaluation evaluation;
-            if (evaluationDto.getEvaId() != null && evaluationDto.getEvaId() > 0) {
-                evaluation = em.find(Evaluation.class, evaluationDto.getEvaId());
+            if (evaluationDto.getId() != null && evaluationDto.getId() > 0) {
+                evaluation = em.find(Evaluation.class, evaluationDto.getId());
                 if (evaluation == null) {
                     return new Respuesta(false, CodigoRespuesta.ERROR_NOENCONTRADO, "No se encrontró la evaluacion a modificar.", "saveEvaluation NoResultException");
                 }

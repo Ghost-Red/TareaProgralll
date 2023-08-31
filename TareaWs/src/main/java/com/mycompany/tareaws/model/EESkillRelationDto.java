@@ -10,10 +10,10 @@ package com.mycompany.tareaws.model;
  */
 public class EESkillRelationDto {
 
-    private Long eesId;
-    private Long eesSkillClasification;
-    private EmployeeEvaluatorRelationDto eesEeId;
-    private SkillDto eesSkillId;
+    private Long id;
+    private Long skillClasification;
+    private EmployeeEvaluatorRelationDto employeeEvaluatorRelation;
+    private SkillDto skill;
     private boolean modificate;
 
     public EESkillRelationDto() {
@@ -22,54 +22,54 @@ public class EESkillRelationDto {
 
     public EESkillRelationDto(EESkillRelation eESkillRelation) {
         this();
-        this.eesId = eESkillRelation.getEesId();
-        this.eesSkillClasification = eESkillRelation.getEesSkillClasification();
-        this.eesEeId = new EmployeeEvaluatorRelationDto(eESkillRelation.getEesEeId());
-        this.eesSkillId = new SkillDto(eESkillRelation.getEesSkillId());
+        this.id = eESkillRelation.getEesId();
+        this.skillClasification = eESkillRelation.getEesSkillClasification();
+        this.employeeEvaluatorRelation = new EmployeeEvaluatorRelationDto(eESkillRelation.getEesEeId());
+        this.skill = new SkillDto(eESkillRelation.getEesSkillId());
     }
 
     public void updateEESkillRelationDto(EESkillRelation eESkillRelation) {
-        this.eesId = eESkillRelation.getEesId();
-        this.eesSkillClasification = eESkillRelation.getEesSkillClasification();
-        this.eesEeId.updateEmployeeEvaluatorRelationDto(eESkillRelation.getEesEeId());
-        this.eesSkillId.updateSkillDto(eESkillRelation.getEesSkillId());
+        this.id = eESkillRelation.getEesId();
+        this.skillClasification = eESkillRelation.getEesSkillClasification();
+        this.employeeEvaluatorRelation.updateEmployeeEvaluatorRelationDto(eESkillRelation.getEesEeId());
+        this.skill.updateSkillDto(eESkillRelation.getEesSkillId());
     }
 
-    public Long getEesId() {
-        return eesId;
+    public Long getId() {
+        return id;
     }
 
-    public void setEesId(Long eesId) {
-        this.eesId = eesId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public Long getEesSkillClasification() {
-        return eesSkillClasification;
+    public Long getSkillClasification() {
+        return skillClasification;
     }
 
-    public void setEesSkillClasification(Long eesSkillClasification) {
-        this.eesSkillClasification = eesSkillClasification;
+    public void setSkillClasification(Long skillClasification) {
+        this.skillClasification = skillClasification;
     }
 
-    public EmployeeEvaluatorRelationDto getEesEeId() {
-        return eesEeId;
+    public EmployeeEvaluatorRelationDto getEmployeeEvaluatorRelation() {
+        return employeeEvaluatorRelation;
     }
 
-    public void setEesEeId(EmployeeEvaluatorRelationDto eesEeId) {
-        this.eesEeId = eesEeId;
+    public void setEmployeeEvaluatorRelation(EmployeeEvaluatorRelationDto employeeEvaluatorRelation) {
+        this.employeeEvaluatorRelation = employeeEvaluatorRelation;
     }
 
-    public SkillDto getEesSkillId() {
-        return eesSkillId;
+    public SkillDto getSkill() {
+        return skill;
     }
 
-    public void setEesSkillId(SkillDto eesSkillId) {
-        this.eesSkillId = eesSkillId;
+    public void setSkill(SkillDto skill) {
+        this.skill = skill;
     }
 
     @Override
     public String toString() {
-        return "EESkillRelationDto{" + "eesId=" + eesId + ", eesSkillClasification=" + eesSkillClasification + ", eesEeId=" + eesEeId + ", eesSkillId=" + eesSkillId + ", modificate=" + modificate + '}';
+        return "EESkillRelationDto{" + "eesId=" + id + ", eesSkillClasification=" + skillClasification + ", eesEeId=" + employeeEvaluatorRelation + ", eesSkillId=" + skill + ", modificate=" + modificate + '}';
     }
 
 }

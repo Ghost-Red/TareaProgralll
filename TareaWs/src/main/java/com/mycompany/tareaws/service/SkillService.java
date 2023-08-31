@@ -32,10 +32,10 @@ public class SkillService {
     @PersistenceContext(unitName = "TareaWsPU")
     private EntityManager em;
 
-    public Respuesta getSkill(Long skillId) {
+    public Respuesta getSkill(Long id) {
         try {
             Query qrySkill = em.createNamedQuery("Skill.findBySkillId", Skill.class);
-            qrySkill.setParameter("skillId", skillId);
+            qrySkill.setParameter("skillId", id);
             return new Respuesta(true, CodigoRespuesta.CORRECTO, "", "", "Skill", new SkillDto((Skill) qrySkill.getSingleResult()));
 
         } catch (NoResultException ex) {
@@ -52,8 +52,8 @@ public class SkillService {
     public Respuesta saveSkill(SkillDto skillDto) {
         try {
             Skill skill;
-            if (skillDto.getSkillId() != null && skillDto.getSkillId() > 0) {
-                skill = em.find(Skill.class, skillDto.getSkillId());
+            if (skillDto.getId() != null && skillDto.getId() > 0) {
+                skill = em.find(Skill.class, skillDto.getId());
                 if (skill == null) {
                     return new Respuesta(false, CodigoRespuesta.ERROR_NOENCONTRADO, "No se encrontró la skill a modificar.", "saveSkill NoResultException");
                 }

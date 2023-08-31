@@ -23,8 +23,8 @@ public class EvaluationJobRelationController {
     EvaluationJobRelationService evaluationJobRelationService;
 
     @WebMethod(operationName = "getEvaluationJobRelation")
-    public EvaluationJobRelationDto getEvaluationJobRelation(@WebParam(name = "ejrId") Long ejrId) {
-        Respuesta res = evaluationJobRelationService.getEvaluationJobRelation(ejrId);
+    public EvaluationJobRelationDto getEvaluationJobRelation(@WebParam(name = "id") Long id) {
+        Respuesta res = evaluationJobRelationService.getEvaluationJobRelation(id);
         return (EvaluationJobRelationDto) res.getResultado("EvaluationJobRelation");
     }
 }

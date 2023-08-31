@@ -32,10 +32,10 @@ public class EmployeeAverageSkillService {
     @PersistenceContext(unitName = "TareaWsPU")
     private EntityManager em;
 
-    public Respuesta getEmployeeAverageSkill(Long easId) {
+    public Respuesta getEmployeeAverageSkill(Long id) {
         try {
             Query qryEmployeeAverageSkill = em.createNamedQuery("EmployeeAverageSkill.findByEasId", EmployeeAverageSkill.class);
-            qryEmployeeAverageSkill.setParameter("easId", easId);
+            qryEmployeeAverageSkill.setParameter("easId", id);
             return new Respuesta(true, CodigoRespuesta.CORRECTO, "", "", "EmployeeAverageSkill", new EmployeeAverageSkillDto((EmployeeAverageSkill) qryEmployeeAverageSkill.getSingleResult()));
 
         } catch (NoResultException ex) {
@@ -52,8 +52,8 @@ public class EmployeeAverageSkillService {
     public Respuesta saveEmployeeAverageSkill(EmployeeAverageSkillDto employeeAverageSkillDto) {
         try {
             EmployeeAverageSkill employeeAverageSkill;
-            if (employeeAverageSkillDto.getEasId() != null && employeeAverageSkillDto.getEasId() > 0) {
-                employeeAverageSkill = em.find(EmployeeAverageSkill.class, employeeAverageSkillDto.getEasId());
+            if (employeeAverageSkillDto.getId() != null && employeeAverageSkillDto.getId() > 0) {
+                employeeAverageSkill = em.find(EmployeeAverageSkill.class, employeeAverageSkillDto.getId());
                 if (employeeAverageSkill == null) {
                     return new Respuesta(false, CodigoRespuesta.ERROR_NOENCONTRADO, "No se encrontró la EmployeeAverageSkill a modificar.", "saveEmployeeAverageSkill NoResultException");
                 }

@@ -32,10 +32,10 @@ public class EESkillRelationService {
     @PersistenceContext(unitName = "TareaWsPU")
     private EntityManager em;
 
-    public Respuesta getEESkillRelation(Long eesId) {
+    public Respuesta getEESkillRelation(Long id) {
         try {
             Query qryEESkillRelation = em.createNamedQuery("EESkillRelation.findByEesId", EESkillRelation.class);
-            qryEESkillRelation.setParameter("eesId", eesId);
+            qryEESkillRelation.setParameter("eesId", id);
             return new Respuesta(true, CodigoRespuesta.CORRECTO, "", "", "EESkillRelation", new EESkillRelationDto((EESkillRelation) qryEESkillRelation.getSingleResult()));
 
         } catch (NoResultException ex) {
@@ -52,8 +52,8 @@ public class EESkillRelationService {
     public Respuesta saveEESkillRelation(EESkillRelationDto eESkillRelationDto) {
         try {
             EESkillRelation eESkillRelation;
-            if (eESkillRelationDto.getEesId() != null && eESkillRelationDto.getEesId() > 0) {
-                eESkillRelation = em.find(EESkillRelation.class, eESkillRelationDto.getEesId());
+            if (eESkillRelationDto.getId() != null && eESkillRelationDto.getId() > 0) {
+                eESkillRelation = em.find(EESkillRelation.class, eESkillRelationDto.getId());
                 if (eESkillRelation == null) {
                     return new Respuesta(false, CodigoRespuesta.ERROR_NOENCONTRADO, "No se encrontró la EESkillRelation a modificar.", "saveEESkillRelation NoResultException");
                 }

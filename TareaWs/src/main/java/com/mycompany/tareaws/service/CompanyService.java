@@ -32,10 +32,10 @@ public class CompanyService {
     @PersistenceContext(unitName = "TareaWsPU")
     private EntityManager em;
 
-    public Respuesta getCompany(Long comId) {
+    public Respuesta getCompany(Long id) {
         try {
             Query qryCompany = em.createNamedQuery("Company.findByComId", Company.class);
-            qryCompany.setParameter("comId", comId);
+            qryCompany.setParameter("comId", id);
             return new Respuesta(true, CodigoRespuesta.CORRECTO, "", "", "Company", new CompanyDto((Company) qryCompany.getSingleResult()));
 
         } catch (NoResultException ex) {
@@ -52,8 +52,8 @@ public class CompanyService {
     public Respuesta saveCompany(CompanyDto companyDto) {
         try {
             Company company;
-            if (companyDto.getComId() != null && companyDto.getComId() > 0) {
-                company = em.find(Company.class, companyDto.getComId());
+            if (companyDto.getId() != null && companyDto.getId() > 0) {
+                company = em.find(Company.class, companyDto.getId());
                 if (company == null) {
                     return new Respuesta(false, CodigoRespuesta.ERROR_NOENCONTRADO, "No se encrontró la compañia a modificar.", "saveCompany NoResultException");
                 }

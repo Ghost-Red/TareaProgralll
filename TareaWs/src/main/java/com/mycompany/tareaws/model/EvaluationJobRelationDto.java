@@ -10,9 +10,9 @@ package com.mycompany.tareaws.model;
  */
 public class EvaluationJobRelationDto {
 
-    private Long ejrId;
-    private EvaluationDto ejrEvaId;
-    private JobDto ejrJobId;
+    private Long id;
+    private EvaluationDto evaluation;
+    private JobDto job;
 
     private boolean modificate;
 
@@ -22,44 +22,44 @@ public class EvaluationJobRelationDto {
 
     public EvaluationJobRelationDto(EvaluationJobRelation evaluationJobRelation) {
         this();
-        this.ejrId = evaluationJobRelation.getEjrId();
-        this.ejrEvaId = new EvaluationDto(evaluationJobRelation.getEjrEvaId());
-        this.ejrJobId = new JobDto(evaluationJobRelation.getEjrJobId());
+        this.id = evaluationJobRelation.getEjrId();
+        this.evaluation = new EvaluationDto(evaluationJobRelation.getEjrEvaId());
+        this.job = new JobDto(evaluationJobRelation.getEjrJobId());
     }
 
     public void updateEvaluationJobRelationDto(EvaluationJobRelation evaluationJobRelation) {
-        this.ejrId = evaluationJobRelation.getEjrId();
-        this.ejrEvaId.updateEvaluationDto(evaluationJobRelation.getEjrEvaId());
-        this.ejrJobId.updateJobDto(evaluationJobRelation.getEjrJobId());
+        this.id = evaluationJobRelation.getEjrId();
+        this.evaluation.updateEvaluationDto(evaluationJobRelation.getEjrEvaId());
+        this.job.updateJobDto(evaluationJobRelation.getEjrJobId());
     }
 
-    public Long getEjrId() {
-        return ejrId;
+    public Long getId() {
+        return id;
     }
 
-    public void setEjrId(Long ejrId) {
-        this.ejrId = ejrId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public EvaluationDto getEjrEvaId() {
-        return ejrEvaId;
+    public EvaluationDto getEvaluation() {
+        return evaluation;
     }
 
-    public void setEjrEvaId(EvaluationDto ejrEvaId) {
-        this.ejrEvaId = ejrEvaId;
+    public void setEvaluation(EvaluationDto evaluation) {
+        this.evaluation = evaluation;
     }
 
-    public JobDto getEjrJobId() {
-        return ejrJobId;
+    public JobDto getJob() {
+        return job;
     }
 
-    public void setEjrJobId(JobDto ejrJobId) {
-        this.ejrJobId = ejrJobId;
+    public void setJob(JobDto job) {
+        this.job = job;
     }
 
     @Override
     public String toString() {
-        return "EvaluationJobRelationDto{" + "ejrId=" + ejrId + ", ejrEvaId=" + ejrEvaId + ", ejrJobId=" + ejrJobId + ", modificate=" + modificate + '}';
+        return "EvaluationJobRelationDto{" + "ejrId=" + id + ", ejrEvaId=" + evaluation + ", ejrJobId=" + job + ", modificate=" + modificate + '}';
     }
 
 }

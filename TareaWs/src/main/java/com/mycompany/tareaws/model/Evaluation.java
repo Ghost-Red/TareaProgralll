@@ -80,17 +80,17 @@ public class Evaluation implements Serializable {
     }
 
     public Evaluation(EvaluationDto evaluation) {
-        this.evaId = evaluation.getEvaId();
+        this.evaId = evaluation.getId();
         updateEvaluation(evaluation);
     }
 
     public void updateEvaluation(EvaluationDto evaluation) {
-        this.evaId = evaluation.getEvaId();
-        this.evaTitle = evaluation.getEvaTitle();
-        this.evaStartDate = evaluation.getEvaStartDate();
-        this.evaFinalDate = evaluation.getEvaFinalDate();
-        this.evaState = evaluation.getEvaState();
-        this.evaComId.updateCompany(evaluation.getEvaComId());
+        this.evaId = evaluation.getId();
+        this.evaTitle = evaluation.getTitle();
+        this.evaStartDate = evaluation.getStartDate();
+        this.evaFinalDate = evaluation.getFinalDate();
+        this.evaState = evaluation.getState();
+        this.evaComId.updateCompany(evaluation.getCompany());
     }
 
     public Long getEvaId() {

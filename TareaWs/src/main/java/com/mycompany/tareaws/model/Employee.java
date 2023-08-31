@@ -121,25 +121,25 @@ public class Employee implements Serializable {
     }
 
     public Employee(EmployeeDto employee) {
-        this.empId = employee.getEmpId();
+        this.empId = employee.getId();
         updateEmployee(employee);
     }
 
     public void updateEmployee(EmployeeDto employee) {
-        this.empId = employee.getEmpId();
-        this.empCedula = employee.getEmpCedula();
-        this.empName = employee.getEmpName();
-        this.empFirstLastname = employee.getEmpFirstLastname();
-        this.empSecondLastname = employee.getEmpSecondLastname();
-        this.empEmail = employee.getEmpEmail();
-        this.empPassword = employee.getEmpPassword();
-        this.empPhoneNumber = employee.getEmpPhoneNumber();
-        this.empCellphoneNumber = employee.getEmpCellphoneNumber();
-        this.empAdminState = employee.getEmpAdminState();
-        this.empActivatedState = employee.getEmpActivatedState();
-        this.empForgotPasswordState = employee.getEmpForgotPasswordState();
-        this.empJobId.updateJob(employee.getEmpJobId());
-        this.empComId.updateCompany(employee.getEmpComId());
+        this.empId = employee.getId();
+        this.empCedula = employee.getCedula();
+        this.empName = employee.getName();
+        this.empFirstLastname = employee.getFirstLastname();
+        this.empSecondLastname = employee.getSecondLastname();
+        this.empEmail = employee.getEmail();
+        this.empPassword = employee.getPassword();
+        this.empPhoneNumber = employee.getPhoneNumber();
+        this.empCellphoneNumber = employee.getCellphoneNumber();
+        this.empAdminState = employee.getAdminState();
+        this.empActivatedState = employee.getActivatedState();
+        this.empForgotPasswordState = employee.getForgotPasswordState();
+        this.empJobId.updateJob(employee.getJob());
+        this.empComId.updateCompany(employee.getCompany());
     }
 
     public Long getEmpId() {
