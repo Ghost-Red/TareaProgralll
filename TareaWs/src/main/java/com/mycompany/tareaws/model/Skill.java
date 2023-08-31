@@ -28,11 +28,11 @@ import jakarta.persistence.Version;
 @Table(name = "SKILL")
 @NamedQueries({
     @NamedQuery(name = "Skill.findAll", query = "SELECT s FROM Skill s"),
-    @NamedQuery(name = "Skill.findBySkillId", query = "SELECT s FROM Skill s WHERE s.skillId = :skillId"),
-    @NamedQuery(name = "Skill.findBySkillVersion", query = "SELECT s FROM Skill s WHERE s.skillVersion = :skillVersion"),
-    @NamedQuery(name = "Skill.findBySkillName", query = "SELECT s FROM Skill s WHERE s.skillName = :skillName"),
-    @NamedQuery(name = "Skill.findBySkillDescription", query = "SELECT s FROM Skill s WHERE s.skillDescription = :skillDescription"),
-    @NamedQuery(name = "Skill.findBySkillState", query = "SELECT s FROM Skill s WHERE s.skillState = :skillState")})
+    @NamedQuery(name = "Skill.findByid", query = "SELECT s FROM Skill s WHERE s.id = :id"),
+    @NamedQuery(name = "Skill.findByversion", query = "SELECT s FROM Skill s WHERE s.version = :version"),
+    @NamedQuery(name = "Skill.findByname", query = "SELECT s FROM Skill s WHERE s.name = :name"),
+    @NamedQuery(name = "Skill.findBydescription", query = "SELECT s FROM Skill s WHERE s.description = :description"),
+    @NamedQuery(name = "Skill.findBystate", query = "SELECT s FROM Skill s WHERE s.state = :state")})
 public class Skill implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -40,91 +40,91 @@ public class Skill implements Serializable {
     @Id
     @Basic(optional = false)
     @Column(name = "SKILL_ID")
-    private Long skillId;
+    private Long id;
     @Version
     @Column(name = "SKILL_VERSION")
-    private Long skillVersion;
+    private Long version;
     @Column(name = "SKILL_NAME")
-    private String skillName;
+    private String name;
     @Column(name = "SKILL_DESCRIPTION")
-    private String skillDescription;
+    private String description;
     @Column(name = "SKILL_STATE")
-    private String skillState;
+    private String state;
     @ManyToMany(mappedBy = "skillList")
     private List<Job> jobList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "evaluatedSkill")
     private List<EESkillRelation> skillsEvaluatedList;
     @JoinColumn(name = "SKILL_COM_ID", referencedColumnName = "COM_ID")
     @ManyToOne(optional = false)
-    private Company skillComId;
+    private Company company;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "skill")
     private List<EmployeeAverageSkill> employeeAverageSkillList;
 
     public Skill() {
     }
 
-    public Skill(Long skillId) {
-        this.skillId = skillId;
+    public Skill(Long id) {
+        this.id = id;
     }
 
-    public Skill(Long skillId, Long skillVersion, String skillName, String skillDescription, String skillState) {
-        this.skillId = skillId;
-        this.skillVersion = skillVersion;
-        this.skillName = skillName;
-        this.skillDescription = skillDescription;
-        this.skillState = skillState;
+    public Skill(Long id, Long version, String name, String description, String state) {
+        this.id = id;
+        this.version = version;
+        this.name = name;
+        this.description = description;
+        this.state = state;
     }
 
     public Skill(SkillDto skill) {
-        this.skillId = skill.getId();
+        this.id = skill.getId();
         updateSkill(skill);
     }
 
     public void updateSkill(SkillDto skill) {
-        this.skillId = skill.getId();
-        this.skillName = skill.getName();
-        this.skillDescription = skill.getDescription();
-        this.skillState = skill.getState();
+        this.id = skill.getId();
+        this.name = skill.getName();
+        this.description = skill.getDescription();
+        this.state = skill.getState();
     }
 
-    public Long getSkillId() {
-        return skillId;
+    public Long getid() {
+        return id;
     }
 
-    public void setSkillId(Long skillId) {
-        this.skillId = skillId;
+    public void setid(Long id) {
+        this.id = id;
     }
 
-    public Long getSkillVersion() {
-        return skillVersion;
+    public Long getversion() {
+        return version;
     }
 
-    public void setSkillVersion(Long skillVersion) {
-        this.skillVersion = skillVersion;
+    public void setversion(Long version) {
+        this.version = version;
     }
 
-    public String getSkillName() {
-        return skillName;
+    public String getname() {
+        return name;
     }
 
-    public void setSkillName(String skillName) {
-        this.skillName = skillName;
+    public void setname(String name) {
+        this.name = name;
     }
 
-    public String getSkillDescription() {
-        return skillDescription;
+    public String getdescription() {
+        return description;
     }
 
-    public void setSkillDescription(String skillDescription) {
-        this.skillDescription = skillDescription;
+    public void setdescription(String description) {
+        this.description = description;
     }
 
-    public String getSkillState() {
-        return skillState;
+    public String getstate() {
+        return state;
     }
 
-    public void setSkillState(String skillState) {
-        this.skillState = skillState;
+    public void setstate(String state) {
+        this.state = state;
     }
 
     public List<Job> getJobList() {
@@ -143,12 +143,12 @@ public class Skill implements Serializable {
         this.skillsEvaluatedList = skillsEvaluatedList;
     }
 
-    public Company getSkillComId() {
-        return skillComId;
+    public Company getcompany() {
+        return company;
     }
 
-    public void setSkillComId(Company skillComId) {
-        this.skillComId = skillComId;
+    public void setcompany(Company company) {
+        this.company = company;
     }
 
     public List<EmployeeAverageSkill> getEmployeeAverageSkillList() {
@@ -162,7 +162,7 @@ public class Skill implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (skillId != null ? skillId.hashCode() : 0);
+        hash += (id != null ? id.hashCode() : 0);
         return hash;
     }
 
@@ -173,7 +173,7 @@ public class Skill implements Serializable {
             return false;
         }
         Skill other = (Skill) object;
-        if ((this.skillId == null && other.skillId != null) || (this.skillId != null && !this.skillId.equals(other.skillId))) {
+        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
         return true;
@@ -181,7 +181,7 @@ public class Skill implements Serializable {
 
     @Override
     public String toString() {
-        return "com.mycompany.tareaws.model.Skill[ skillId=" + skillId + " ]";
+        return "com.mycompany.tareaws.model.Skill[ id=" + id + " ]";
     }
 
 }

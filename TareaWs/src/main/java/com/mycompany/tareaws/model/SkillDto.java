@@ -23,10 +23,10 @@ public class SkillDto {
 
     public SkillDto(Skill skill) {
         this();
-        this.id = skill.getSkillId();
-        this.name = skill.getSkillName();
-        this.description = skill.getSkillDescription();
-        this.state = skill.getSkillState();
+        this.id = skill.getid();
+        this.name = skill.getname();
+        this.description = skill.getdescription();
+        this.state = skill.getstate();
     }
 
     public Long getId() {
@@ -71,7 +71,7 @@ public class SkillDto {
 
     @Override
     public String toString() {
-        return "SkillDto{" + "skillId=" + id + ", skillName=" + name + ", skillDescription=" + description + ", skillState=" + state + ", skillComId=" + company + ", modificate=" + modificate + '}';
+        return "SkillDto{" + "id=" + id + ", name=" + name + ", description=" + description + ", state=" + state + ", company=" + company + ", modificate=" + modificate + '}';
     }
 
 }
