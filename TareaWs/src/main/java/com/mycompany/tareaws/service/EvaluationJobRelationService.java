@@ -41,7 +41,7 @@ public class EvaluationJobRelationService {
             
             EvaluationJobRelation evaluationJobRelation = (EvaluationJobRelation) qryEvaluationJobRelation.getSingleResult();
             EvaluationJobRelationDto evaluationJobRelationDto = new EvaluationJobRelationDto(evaluationJobRelation);
-            evaluationJobRelationDto.setEvaluation(new EvaluationDto(evaluationJobRelation.getid()));
+            evaluationJobRelationDto.setEvaluation(new EvaluationDto(evaluationJobRelation.getEvaluation()));
             evaluationJobRelationDto.setJob(new JobDto(evaluationJobRelation.getjob()));
             
             return new Respuesta(true, CodigoRespuesta.CORRECTO, "", "", "EvaluationJobRelation", evaluationJobRelationDto);

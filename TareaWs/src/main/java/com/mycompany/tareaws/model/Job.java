@@ -29,10 +29,10 @@ import jakarta.persistence.Version;
 @Table(name = "JOB")
 @NamedQueries({
     @NamedQuery(name = "Job.findAll", query = "SELECT j FROM Job j"),
-    @NamedQuery(name = "Job.findByJobId", query = "SELECT j FROM Job j WHERE j.jobId = :jobId"),
-    @NamedQuery(name = "Job.findByJobName", query = "SELECT j FROM Job j WHERE j.jobName = :jobName"),
+    @NamedQuery(name = "Job.findByid", query = "SELECT j FROM Job j WHERE j.id = :id"),
+    @NamedQuery(name = "Job.findByname", query = "SELECT j FROM Job j WHERE j.name = :name"),
     @NamedQuery(name = "Job.findByJobState", query = "SELECT j FROM Job j WHERE j.jobState = :jobState"),
-    @NamedQuery(name = "Job.findByJobVersion", query = "SELECT j FROM Job j WHERE j.jobVersion = :jobVersion")})
+    @NamedQuery(name = "Job.findByversion", query = "SELECT j FROM Job j WHERE j.version = :version")})
 public class Job implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -40,16 +40,16 @@ public class Job implements Serializable {
     @Id
     @Basic(optional = false)
     @Column(name = "JOB_ID")
-    private Long jobId;
+    private Long id;
     @Basic(optional = false)
     @Column(name = "JOB_NAME")
-    private String jobName;
+    private String name;
     @Basic(optional = false)
     @Column(name = "JOB_STATE")
     private String jobState;
     @Version
     @Column(name = "JOB_VERSION")
-    private Long jobVersion;
+    private Long version;
     @JoinTable(name = "JOB_SKILL_RELATION", joinColumns = {
         @JoinColumn(name = "JOB_ID", referencedColumnName = "JOB_ID")}, inverseJoinColumns = {
         @JoinColumn(name = "SKILL_ID", referencedColumnName = "SKILL_ID")})
@@ -61,47 +61,47 @@ public class Job implements Serializable {
     private List<Employee> employeeList;
     @JoinColumn(name = "JOB_COM_ID", referencedColumnName = "COM_ID")
     @ManyToOne
-    private Company jobComId;
+    private Company company;
 
     public Job() {
     }
 
-    public Job(Long jobId) {
-        this.jobId = jobId;
+    public Job(Long id) {
+        this.id = id;
     }
 
-    public Job(Long jobId, String jobName, String jobState, Long jobVersion) {
-        this.jobId = jobId;
-        this.jobName = jobName;
+    public Job(Long id, String name, String jobState, Long version) {
+        this.id = id;
+        this.name = name;
         this.jobState = jobState;
-        this.jobVersion = jobVersion;
+        this.version = version;
     }
 
     public Job(JobDto jobDto) {
-        this.jobId = jobDto.getId();
+        this.id = jobDto.getId();
         updateJob(jobDto);
     }
 
     public void updateJob(JobDto jobDto) {
-        this.jobId = jobDto.getId();
-        this.jobName = jobDto.getName();
+        this.id = jobDto.getId();
+        this.name = jobDto.getName();
         this.jobState = jobDto.getState();
     }
 
-    public Long getJobId() {
-        return jobId;
+    public Long getid() {
+        return id;
     }
 
-    public void setJobId(Long jobId) {
-        this.jobId = jobId;
+    public void setid(Long id) {
+        this.id = id;
     }
 
-    public String getJobName() {
-        return jobName;
+    public String getname() {
+        return name;
     }
 
-    public void setJobName(String jobName) {
-        this.jobName = jobName;
+    public void setname(String name) {
+        this.name = name;
     }
 
     public String getJobState() {
@@ -112,12 +112,12 @@ public class Job implements Serializable {
         this.jobState = jobState;
     }
 
-    public Long getJobVersion() {
-        return jobVersion;
+    public Long getversion() {
+        return version;
     }
 
-    public void setJobVersion(Long jobVersion) {
-        this.jobVersion = jobVersion;
+    public void setversion(Long version) {
+        this.version = version;
     }
 
     public List<Skill> getSkillList() {
@@ -144,18 +144,18 @@ public class Job implements Serializable {
         this.employeeList = employeeList;
     }
 
-    public Company getJobComId() {
-        return jobComId;
+    public Company getcompany() {
+        return company;
     }
 
-    public void setJobComId(Company jobComId) {
-        this.jobComId = jobComId;
+    public void setcompany(Company company) {
+        this.company = company;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (jobId != null ? jobId.hashCode() : 0);
+        hash += (id != null ? id.hashCode() : 0);
         return hash;
     }
 
@@ -166,7 +166,7 @@ public class Job implements Serializable {
             return false;
         }
         Job other = (Job) object;
-        if ((this.jobId == null && other.jobId != null) || (this.jobId != null && !this.jobId.equals(other.jobId))) {
+        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
         return true;
@@ -174,7 +174,7 @@ public class Job implements Serializable {
 
     @Override
     public String toString() {
-        return "com.mycompany.tareaws.model.Job[ jobId=" + jobId + " ]";
+        return "com.mycompany.tareaws.model.Job[ id=" + id + " ]";
     }
 
 }

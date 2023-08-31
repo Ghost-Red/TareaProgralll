@@ -35,12 +35,12 @@ public class JobService {
 
     public Respuesta getJob(Long id) {
         try {
-            Query qryJob = em.createNamedQuery("Job.findByJobId", Job.class);
-            qryJob.setParameter("jobId", id);
+            Query qryJob = em.createNamedQuery("Job.findByid", Job.class);
+            qryJob.setParameter("id", id);
             
             Job job = (Job) qryJob.getSingleResult();
             JobDto jobDto = new JobDto(job);
-            jobDto.setCompany( new CompanyDto(job.getJobComId()));
+            jobDto.setCompany( new CompanyDto(job.getcompany()));
             
             return new Respuesta(true, CodigoRespuesta.CORRECTO, "", "", "Job", jobDto);
         } catch (NoResultException ex) {

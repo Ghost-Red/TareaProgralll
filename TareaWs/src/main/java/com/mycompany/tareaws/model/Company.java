@@ -69,7 +69,7 @@ public class Company implements Serializable {
     private List<Employee> employeeList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "company")
     private List<Evaluation> evaluationList;
-    @OneToMany(mappedBy = "jobComId")
+    @OneToMany(mappedBy = "company")
     private List<Job> jobList;
 
     public Company() {

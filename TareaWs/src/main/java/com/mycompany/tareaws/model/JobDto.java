@@ -24,8 +24,8 @@ public class JobDto {
 
     public JobDto(Job job) {
         this();
-        this.id = job.getJobId();
-        this.name = job.getJobName();
+        this.id = job.getid();
+        this.name = job.getname();
         this.state = job.getJobState();
     }
 
@@ -63,7 +63,7 @@ public class JobDto {
 
     @Override
     public String toString() {
-        return "JobDto{" + "jobId=" + id + ", jobName=" + name + ", jobState=" + state + ", jobComId=" + company + ", modificate=" + modificate + '}';
+        return "JobDto{" + "id=" + id + ", name=" + name + ", jobState=" + state + ", company=" + company + ", modificate=" + modificate + '}';
     }
 
 }
