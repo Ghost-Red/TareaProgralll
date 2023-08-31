@@ -53,7 +53,7 @@ public class Skill implements Serializable {
     @ManyToMany(mappedBy = "skillList")
     private List<Job> jobList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "evaluatedSkill")
-    private List<EESkillRelation> eESkillRelationList;
+    private List<EESkillRelation> skillsEvaluatedList;
     @JoinColumn(name = "SKILL_COM_ID", referencedColumnName = "COM_ID")
     @ManyToOne(optional = false)
     private Company skillComId;
@@ -135,12 +135,12 @@ public class Skill implements Serializable {
         this.jobList = jobList;
     }
 
-    public List<EESkillRelation> getEESkillRelationList() {
-        return eESkillRelationList;
+    public List<EESkillRelation> getskillsEvaluatedList() {
+        return skillsEvaluatedList;
     }
 
-    public void setEESkillRelationList(List<EESkillRelation> eESkillRelationList) {
-        this.eESkillRelationList = eESkillRelationList;
+    public void setskillsEvaluatedList(List<EESkillRelation> skillsEvaluatedList) {
+        this.skillsEvaluatedList = skillsEvaluatedList;
     }
 
     public Company getSkillComId() {

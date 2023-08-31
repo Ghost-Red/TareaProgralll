@@ -36,13 +36,13 @@ public class EmployeeEvaluatorRelationService {
 
     public Respuesta getEmployeeEvaluatorRelation(Long id) {
         try {
-            Query qryEmployeeEvaluatorRelation = em.createNamedQuery("EmployeeEvaluatorRelation.findByEeId", EmployeeEvaluatorRelation.class);
-            qryEmployeeEvaluatorRelation.setParameter("eeId", id);
+            Query qryEmployeeEvaluatorRelation = em.createNamedQuery("EmployeeEvaluatorRelation.findByid", EmployeeEvaluatorRelation.class);
+            qryEmployeeEvaluatorRelation.setParameter("id", id);
             
             EmployeeEvaluatorRelation employeeEvaluatorRelation = (EmployeeEvaluatorRelation) qryEmployeeEvaluatorRelation.getSingleResult();
             EmployeeEvaluatorRelationDto employeeEvaluatorRelationDto = new EmployeeEvaluatorRelationDto(employeeEvaluatorRelation);
-            employeeEvaluatorRelationDto.setEmployee(new EmployeeDto(employeeEvaluatorRelation.getEeid()));
-            employeeEvaluatorRelationDto.setEmployeeEvaluationRelation( new EmployeeEvaluationRelationDto(employeeEvaluatorRelation.getEvaEmployeeId()));
+            employeeEvaluatorRelationDto.setEmployee(new EmployeeDto(employeeEvaluatorRelation.getEmployeeEvaluator()));
+            employeeEvaluatorRelationDto.setEmployeeEvaluationRelation( new EmployeeEvaluationRelationDto(employeeEvaluatorRelation.getemployeeEvaluated()));
             
             return new Respuesta(true, CodigoRespuesta.CORRECTO, "", "", "EmployeeEvaluatorRelation", employeeEvaluatorRelationDto);
 

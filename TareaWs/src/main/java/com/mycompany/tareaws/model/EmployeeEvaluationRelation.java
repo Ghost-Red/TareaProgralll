@@ -51,7 +51,7 @@ public class EmployeeEvaluationRelation implements Serializable {
     private EvaluationJobRelation evaluationJobRelation;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "employeeEvaluationRelation")
     private List<EmployeeAverageSkill> employeeAverageSkillList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "evaEmployeeId")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "employeeEvaluated")
     private List<EmployeeEvaluatorRelation> employeeEvaluatorRelationList;
 
     public EmployeeEvaluationRelation() {
