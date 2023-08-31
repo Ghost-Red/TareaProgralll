@@ -22,8 +22,8 @@ public class EESkillRelationDto {
 
     public EESkillRelationDto(EESkillRelation eESkillRelation) {
         this();
-        this.id = eESkillRelation.getEesId();
-        this.skillClasification = eESkillRelation.getEesSkillClasification();
+        this.id = eESkillRelation.getid();
+        this.skillClasification = eESkillRelation.getskillClasification();
     }
 
     public Long getId() {
@@ -60,7 +60,7 @@ public class EESkillRelationDto {
 
     @Override
     public String toString() {
-        return "EESkillRelationDto{" + "eesId=" + id + ", eesSkillClasification=" + skillClasification + ", eesEeId=" + employeeEvaluatorRelation + ", eesSkillId=" + skill + ", modificate=" + modificate + '}';
+        return "EESkillRelationDto{" + "id=" + id + ", skillClasification=" + skillClasification + ", employeeEvaluatorRelation=" + employeeEvaluatorRelation + ", evaluatedSkill=" + skill + ", modificate=" + modificate + '}';
     }
 
 }

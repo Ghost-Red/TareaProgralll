@@ -46,7 +46,7 @@ public class EmployeeEvaluatorRelation implements Serializable {
     @Version
     @Column(name = "EE_VERSION")
     private Long eeVersion;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "eesEeId")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "employeeEvaluatorRelation")
     private List<EESkillRelation> eESkillRelationList;
     @JoinColumn(name = "EE_EMP_ID", referencedColumnName = "EMP_ID")
     @ManyToOne(optional = false)

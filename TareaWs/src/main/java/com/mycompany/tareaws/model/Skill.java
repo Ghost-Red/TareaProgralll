@@ -52,7 +52,7 @@ public class Skill implements Serializable {
     private String skillState;
     @ManyToMany(mappedBy = "skillList")
     private List<Job> jobList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "eesSkillId")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "evaluatedSkill")
     private List<EESkillRelation> eESkillRelationList;
     @JoinColumn(name = "SKILL_COM_ID", referencedColumnName = "COM_ID")
     @ManyToOne(optional = false)
