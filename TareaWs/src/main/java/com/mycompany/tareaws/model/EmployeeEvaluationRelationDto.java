@@ -23,7 +23,7 @@ public class EmployeeEvaluationRelationDto {
     public EmployeeEvaluationRelationDto(EmployeeEvaluationRelation employeeEvaluationRelation) {
         this();
         this.id = employeeEvaluationRelation.getid();
-        this.employeeClasification = employeeEvaluationRelation.getEerEmployeeClasification();
+        this.employeeClasification = employeeEvaluationRelation.getemployeeClasification();
     }
 
     public Long getId() {
@@ -60,7 +60,7 @@ public class EmployeeEvaluationRelationDto {
 
     @Override
     public String toString() {
-        return "EmployeeEvaluationRelationDto{" + "id=" + id + ", eerEmployeeClasification=" + employeeClasification + ", id=" + employee + ", evaluationJobRelation=" + evaluationJobRelation + ", modificate=" + modificate + '}';
+        return "EmployeeEvaluationRelationDto{" + "id=" + id + ", employeeClasification=" + employeeClasification + ", id=" + employee + ", evaluationJobRelation=" + evaluationJobRelation + ", modificate=" + modificate + '}';
     }
 
 }
