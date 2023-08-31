@@ -24,15 +24,6 @@ public class EmployeeEvaluationRelationDto {
         this();
         this.id = employeeEvaluationRelation.getEerId();
         this.employeeClasification = employeeEvaluationRelation.getEerEmployeeClasification();
-        this.employee = new EmployeeDto(employeeEvaluationRelation.getEerEmpId());
-        this.evaluationJobRelation = new EvaluationJobRelationDto(employeeEvaluationRelation.getEerEjrId());
-    }
-
-    public void updateEmployeeEvaluationRelationDto(EmployeeEvaluationRelation employeeEvaluationRelation) {
-        this.id = employeeEvaluationRelation.getEerId();
-        this.employeeClasification = employeeEvaluationRelation.getEerEmployeeClasification();
-        this.employee.updateEmployeeDto(employeeEvaluationRelation.getEerEmpId());
-        this.evaluationJobRelation.updateEvaluationJobRelationDto(employeeEvaluationRelation.getEerEjrId());
     }
 
     public Long getId() {

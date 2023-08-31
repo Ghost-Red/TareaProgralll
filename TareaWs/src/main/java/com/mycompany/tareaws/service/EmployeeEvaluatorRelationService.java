@@ -4,6 +4,8 @@
  */
 package com.mycompany.tareaws.service;
 
+import com.mycompany.tareaws.model.EmployeeDto;
+import com.mycompany.tareaws.model.EmployeeEvaluationRelationDto;
 import com.mycompany.tareaws.model.EmployeeEvaluatorRelation;
 import com.mycompany.tareaws.model.EmployeeEvaluatorRelationDto;
 import com.mycompany.tareaws.util.CodigoRespuesta;
@@ -36,7 +38,13 @@ public class EmployeeEvaluatorRelationService {
         try {
             Query qryEmployeeEvaluatorRelation = em.createNamedQuery("EmployeeEvaluatorRelation.findByEeId", EmployeeEvaluatorRelation.class);
             qryEmployeeEvaluatorRelation.setParameter("eeId", id);
-            return new Respuesta(true, CodigoRespuesta.CORRECTO, "", "", "EmployeeEvaluatorRelation", new EmployeeEvaluatorRelationDto((EmployeeEvaluatorRelation) qryEmployeeEvaluatorRelation.getSingleResult()));
+            
+            EmployeeEvaluatorRelation employeeEvaluatorRelation = (EmployeeEvaluatorRelation) qryEmployeeEvaluatorRelation.getSingleResult();
+            EmployeeEvaluatorRelationDto employeeEvaluatorRelationDto = new EmployeeEvaluatorRelationDto(employeeEvaluatorRelation);
+            employeeEvaluatorRelationDto.setEmployee(new EmployeeDto(employeeEvaluatorRelation.getEeEmpId()));
+            employeeEvaluatorRelationDto.setEmployeeEvaluationRelation( new EmployeeEvaluationRelationDto(employeeEvaluatorRelation.getEvaEmployeeId()));
+            
+            return new Respuesta(true, CodigoRespuesta.CORRECTO, "", "", "EmployeeEvaluatorRelation", employeeEvaluatorRelationDto);
 
         } catch (NoResultException ex) {
             return new Respuesta(false, CodigoRespuesta.ERROR_NOENCONTRADO, "No existe una EmployeeEvaluatorRelation con el código ingresado.", "getEmployeeEvaluatorRelation NoResultException");

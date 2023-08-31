@@ -34,16 +34,6 @@ public class CompanyDto {
         this.emailTemplateActivateUser = company.getComEmailTemplateActivateUser();
     }
 
-    public void updateCompanyDto(Company company) {
-        this.id = company.getComId();
-        this.name = company.getComName();
-        this.email = company.getComEmail();
-        this.logo = company.getComLogo();
-        this.emailTemplatePassword = company.getComEmailTemplatePassword();
-        this.tokenEmail = company.getComTokenEmail();
-        this.emailTemplateActivateUser = company.getComEmailTemplateActivateUser();
-    }
-
     public Long getId() {
         return id;
     }

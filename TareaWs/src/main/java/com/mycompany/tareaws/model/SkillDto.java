@@ -27,15 +27,6 @@ public class SkillDto {
         this.name = skill.getSkillName();
         this.description = skill.getSkillDescription();
         this.state = skill.getSkillState();
-        this.company = new CompanyDto(skill.getSkillComId());
-    }
-
-    public void updateSkillDto(Skill skill) {
-        this.id = skill.getSkillId();
-        this.name = skill.getSkillName();
-        this.description = skill.getSkillDescription();
-        this.state = skill.getSkillState();
-        this.company.updateCompanyDto(skill.getSkillComId());
     }
 
     public Long getId() {

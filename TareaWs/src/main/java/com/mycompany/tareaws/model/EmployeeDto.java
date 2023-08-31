@@ -44,25 +44,6 @@ public class EmployeeDto {
         this.adminState = employee.getEmpAdminState();
         this.activatedState = employee.getEmpActivatedState();
         this.forgotPasswordState = employee.getEmpForgotPasswordState();
-        this.company = new CompanyDto(employee.getEmpComId());
-        this.job = new JobDto(employee.getEmpJobId());
-    }
-
-    public void updateEmployeeDto(Employee employee) {
-        this.id = employee.getEmpId();
-        this.cedula = employee.getEmpCedula();
-        this.name = employee.getEmpName();
-        this.firstLastname = employee.getEmpFirstLastname();
-        this.secondLastname = employee.getEmpSecondLastname();
-        this.email = employee.getEmpEmail();
-        this.password = employee.getEmpPassword();
-        this.phoneNumber = employee.getEmpPhoneNumber();
-        this.cellphoneNumber = employee.getEmpCellphoneNumber();
-        this.adminState = employee.getEmpAdminState();
-        this.activatedState = employee.getEmpActivatedState();
-        this.forgotPasswordState = employee.getEmpForgotPasswordState();
-        this.company.updateCompanyDto(employee.getEmpComId());
-        this.job.updateJobDto(employee.getEmpJobId());
     }
 
     public Long getId() {

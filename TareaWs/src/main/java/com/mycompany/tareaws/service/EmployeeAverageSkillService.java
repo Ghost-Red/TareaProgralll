@@ -6,6 +6,8 @@ package com.mycompany.tareaws.service;
 
 import com.mycompany.tareaws.model.EmployeeAverageSkill;
 import com.mycompany.tareaws.model.EmployeeAverageSkillDto;
+import com.mycompany.tareaws.model.EmployeeEvaluationRelationDto;
+import com.mycompany.tareaws.model.SkillDto;
 import com.mycompany.tareaws.util.CodigoRespuesta;
 import com.mycompany.tareaws.util.Respuesta;
 import jakarta.ejb.LocalBean;
@@ -36,7 +38,13 @@ public class EmployeeAverageSkillService {
         try {
             Query qryEmployeeAverageSkill = em.createNamedQuery("EmployeeAverageSkill.findByEasId", EmployeeAverageSkill.class);
             qryEmployeeAverageSkill.setParameter("easId", id);
-            return new Respuesta(true, CodigoRespuesta.CORRECTO, "", "", "EmployeeAverageSkill", new EmployeeAverageSkillDto((EmployeeAverageSkill) qryEmployeeAverageSkill.getSingleResult()));
+            
+            EmployeeAverageSkill employeeAverageSkill = (EmployeeAverageSkill) qryEmployeeAverageSkill.getSingleResult();
+            EmployeeAverageSkillDto employeeAverageSkillDto = new EmployeeAverageSkillDto(employeeAverageSkill);
+            employeeAverageSkillDto.setEmployeeEvaluationRelation( new EmployeeEvaluationRelationDto(employeeAverageSkill.getEasEerId()));
+            employeeAverageSkillDto.setSkill( new SkillDto(employeeAverageSkill.getEasSkillId()));
+            
+            return new Respuesta(true, CodigoRespuesta.CORRECTO, "", "", "EmployeeAverageSkill", employeeAverageSkillDto);
 
         } catch (NoResultException ex) {
             return new Respuesta(false, CodigoRespuesta.ERROR_NOENCONTRADO, "No existe una EmployeeAverageSkill con el código ingresado.", "getEmployeeAverageSkill NoResultException");

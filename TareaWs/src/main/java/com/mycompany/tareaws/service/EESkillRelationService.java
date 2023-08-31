@@ -6,6 +6,8 @@ package com.mycompany.tareaws.service;
 
 import com.mycompany.tareaws.model.EESkillRelation;
 import com.mycompany.tareaws.model.EESkillRelationDto;
+import com.mycompany.tareaws.model.EmployeeEvaluatorRelationDto;
+import com.mycompany.tareaws.model.SkillDto;
 import com.mycompany.tareaws.util.CodigoRespuesta;
 import com.mycompany.tareaws.util.Respuesta;
 import jakarta.ejb.LocalBean;
@@ -36,7 +38,13 @@ public class EESkillRelationService {
         try {
             Query qryEESkillRelation = em.createNamedQuery("EESkillRelation.findByEesId", EESkillRelation.class);
             qryEESkillRelation.setParameter("eesId", id);
-            return new Respuesta(true, CodigoRespuesta.CORRECTO, "", "", "EESkillRelation", new EESkillRelationDto((EESkillRelation) qryEESkillRelation.getSingleResult()));
+            
+            EESkillRelation eESkillRelation = (EESkillRelation) qryEESkillRelation.getSingleResult();
+            EESkillRelationDto eESkillRelationDto = new EESkillRelationDto(eESkillRelation);
+            eESkillRelationDto.setEmployeeEvaluatorRelation( new EmployeeEvaluatorRelationDto(eESkillRelation.getEesEeId()));
+            eESkillRelationDto.setSkill(new SkillDto(eESkillRelation.getEesSkillId()));
+            
+            return new Respuesta(true, CodigoRespuesta.CORRECTO, "", "", "EESkillRelation", eESkillRelationDto);
 
         } catch (NoResultException ex) {
             return new Respuesta(false, CodigoRespuesta.ERROR_NOENCONTRADO, "No existe una EESkillRelation con el código ingresado.", "getEESkillRelation NoResultException");

@@ -4,8 +4,10 @@
  */
 package com.mycompany.tareaws.service;
 
+import com.mycompany.tareaws.model.CompanyDto;
 import com.mycompany.tareaws.model.Employee;
 import com.mycompany.tareaws.model.EmployeeDto;
+import com.mycompany.tareaws.model.JobDto;
 import com.mycompany.tareaws.util.CodigoRespuesta;
 import com.mycompany.tareaws.util.Respuesta;
 import jakarta.ejb.LocalBean;
@@ -39,8 +41,13 @@ public class EmployeeService {
             Query qryActivity = em.createNamedQuery("Employee.findByEmpEmailPassword", Employee.class);
             qryActivity.setParameter("empEmail", email);
             qryActivity.setParameter("empPassword", password);
-
-            return new Respuesta(true, CodigoRespuesta.CORRECTO, "", "", "Employee", new EmployeeDto((Employee) qryActivity.getSingleResult()));
+            
+            Employee employee = (Employee)qryActivity.getSingleResult();
+            EmployeeDto employeeDto = new EmployeeDto(employee);
+            employeeDto.setCompany(new CompanyDto(employee.getEmpComId()));
+            employeeDto.setJob(new JobDto(employee.getEmpJobId()));
+            
+            return new Respuesta(true, CodigoRespuesta.CORRECTO, "", "", "Employee", employeeDto);
 
         } catch (NoResultException ex) {
             return new Respuesta(false, CodigoRespuesta.ERROR_NOENCONTRADO, "No existe un usuario con las credenciales ingresadas.", "validarUsuario NoResultException");

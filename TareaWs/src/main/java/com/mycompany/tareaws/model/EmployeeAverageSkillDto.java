@@ -24,15 +24,6 @@ public class EmployeeAverageSkillDto {
         this();
         this.id = employeeAverageSkill.getEasId();
         this.employeeSkillLvl = employeeAverageSkill.getEasEmployeeSkillLvl();
-        this.employeeEvaluationRelation = new EmployeeEvaluationRelationDto(employeeAverageSkill.getEasEerId());
-        this.skill = new SkillDto(employeeAverageSkill.getEasSkillId());
-    }
-
-    public void updateEmployeeAverageSkillDto(EmployeeAverageSkill employeeAverageSkill) {
-        this.id = employeeAverageSkill.getEasId();
-        this.employeeSkillLvl = employeeAverageSkill.getEasEmployeeSkillLvl();
-        this.employeeEvaluationRelation.updateEmployeeEvaluationRelationDto(employeeAverageSkill.getEasEerId());
-        this.skill.updateSkillDto(employeeAverageSkill.getEasSkillId());
     }
 
     public Long getId() {
