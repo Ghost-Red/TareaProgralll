@@ -45,7 +45,7 @@ public class EvaluationJobRelation implements Serializable {
     @JoinColumn(name = "EJR_JOB_ID", referencedColumnName = "JOB_ID")
     @ManyToOne(optional = false)
     private Job ejrJobId;
-    @OneToMany(mappedBy = "eerEjrId")
+    @OneToMany(mappedBy = "evaluationJobRelation")
     private List<EmployeeEvaluationRelation> employeeEvaluationRelationList;
 
     public EvaluationJobRelation() {

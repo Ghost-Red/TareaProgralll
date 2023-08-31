@@ -27,7 +27,7 @@ import jakarta.persistence.Version;
 @Table(name = "EMPLOYEE_EVALUATION_RELATION")
 @NamedQueries({
     @NamedQuery(name = "EmployeeEvaluationRelation.findAll", query = "SELECT e FROM EmployeeEvaluationRelation e"),
-    @NamedQuery(name = "EmployeeEvaluationRelation.findByEerId", query = "SELECT e FROM EmployeeEvaluationRelation e WHERE e.eerId = :eerId"),
+    @NamedQuery(name = "EmployeeEvaluationRelation.findByid", query = "SELECT e FROM EmployeeEvaluationRelation e WHERE e.id = :id"),
     @NamedQuery(name = "EmployeeEvaluationRelation.findByEerEmployeeClasification", query = "SELECT e FROM EmployeeEvaluationRelation e WHERE e.eerEmployeeClasification = :eerEmployeeClasification"),
     @NamedQuery(name = "EmployeeEvaluationRelation.findByEerVersion", query = "SELECT e FROM EmployeeEvaluationRelation e WHERE e.eerVersion = :eerVersion")})
 public class EmployeeEvaluationRelation implements Serializable {
@@ -37,7 +37,7 @@ public class EmployeeEvaluationRelation implements Serializable {
     @Id
     @Basic(optional = false)
     @Column(name = "EER_ID")
-    private Long eerId;
+    private Long id;
     @Column(name = "EER_EMPLOYEE_CLASIFICATION")
     private Long eerEmployeeClasification;
     @Version
@@ -45,10 +45,10 @@ public class EmployeeEvaluationRelation implements Serializable {
     private Long eerVersion;
     @JoinColumn(name = "EER_EMP_ID", referencedColumnName = "EMP_ID")
     @ManyToOne(optional = false)
-    private Employee eerid;
+    private Employee employeeEvaluated;
     @JoinColumn(name = "EER_EJR_ID", referencedColumnName = "EJR_ID")
     @ManyToOne
-    private EvaluationJobRelation eerEjrId;
+    private EvaluationJobRelation evaluationJobRelation;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "employeeEvaluationRelation")
     private List<EmployeeAverageSkill> employeeAverageSkillList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "evaEmployeeId")
@@ -57,12 +57,12 @@ public class EmployeeEvaluationRelation implements Serializable {
     public EmployeeEvaluationRelation() {
     }
 
-    public EmployeeEvaluationRelation(Long eerId) {
-        this.eerId = eerId;
+    public EmployeeEvaluationRelation(Long id) {
+        this.id = id;
     }
 
-    public EmployeeEvaluationRelation(Long eerId, Long eerVersion) {
-        this.eerId = eerId;
+    public EmployeeEvaluationRelation(Long id, Long eerVersion) {
+        this.id = id;
         this.eerVersion = eerVersion;
     }
 
@@ -71,18 +71,18 @@ public class EmployeeEvaluationRelation implements Serializable {
     }
 
     public void updateEmployeeEvaluationRelation(EmployeeEvaluationRelationDto employeeEvaluationRelationDto) {
-        this.eerId = employeeEvaluationRelationDto.getId();
+        this.id = employeeEvaluationRelationDto.getId();
         this.eerEmployeeClasification = employeeEvaluationRelationDto.getEmployeeClasification();
-        this.eerid.updateEmployee(employeeEvaluationRelationDto.getEmployee());
-        this.eerEjrId.updateEvaluationJobRelation(employeeEvaluationRelationDto.getEvaluationJobRelation());
+        this.employeeEvaluated.updateEmployee(employeeEvaluationRelationDto.getEmployee());
+        this.evaluationJobRelation.updateEvaluationJobRelation(employeeEvaluationRelationDto.getEvaluationJobRelation());
     }
 
-    public Long getEerId() {
-        return eerId;
+    public Long getid() {
+        return id;
     }
 
-    public void setEerId(Long eerId) {
-        this.eerId = eerId;
+    public void setid(Long id) {
+        this.id = id;
     }
 
     public Long getEerEmployeeClasification() {
@@ -101,20 +101,20 @@ public class EmployeeEvaluationRelation implements Serializable {
         this.eerVersion = eerVersion;
     }
 
-    public Employee getEerid() {
-        return eerid;
+    public Employee getEmployeeEvaluated() {
+        return employeeEvaluated;
     }
 
-    public void setEerid(Employee eerid) {
-        this.eerid = eerid;
+    public void setId(Employee employeeEvaluated) {
+        this.employeeEvaluated = employeeEvaluated;
     }
 
-    public EvaluationJobRelation getEerEjrId() {
-        return eerEjrId;
+    public EvaluationJobRelation getevaluationJobRelation() {
+        return evaluationJobRelation;
     }
 
-    public void setEerEjrId(EvaluationJobRelation eerEjrId) {
-        this.eerEjrId = eerEjrId;
+    public void setevaluationJobRelation(EvaluationJobRelation evaluationJobRelation) {
+        this.evaluationJobRelation = evaluationJobRelation;
     }
 
     public List<EmployeeAverageSkill> getEmployeeAverageSkillList() {
@@ -136,7 +136,7 @@ public class EmployeeEvaluationRelation implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (eerId != null ? eerId.hashCode() : 0);
+        hash += (id != null ? id.hashCode() : 0);
         return hash;
     }
 
@@ -147,7 +147,7 @@ public class EmployeeEvaluationRelation implements Serializable {
             return false;
         }
         EmployeeEvaluationRelation other = (EmployeeEvaluationRelation) object;
-        if ((this.eerId == null && other.eerId != null) || (this.eerId != null && !this.eerId.equals(other.eerId))) {
+        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
         return true;
@@ -155,7 +155,7 @@ public class EmployeeEvaluationRelation implements Serializable {
 
     @Override
     public String toString() {
-        return "com.mycompany.tareaws.model.EmployeeEvaluationRelation[ eerId=" + eerId + " ]";
+        return "com.mycompany.tareaws.model.EmployeeEvaluationRelation[ id=" + id + " ]";
     }
 
 }
