@@ -34,37 +34,10 @@ public class EmployeeService {
     @PersistenceContext(unitName = "TareaWsPU")
     private EntityManager em;
 
-    public Respuesta validateUser(String email, String password) {
+    public Respuesta getEmployee(Long id) {
         try {
-            Query qryActivity = em.createNamedQuery("Employee.findByEmpEmailPassword", Employee.class);
-            qryActivity.setParameter("empEmail", email);
-            qryActivity.setParameter("empPassword", password);
-
-            return new Respuesta(true, CodigoRespuesta.CORRECTO, "", "", "Employee", new EmployeeDto((Employee) qryActivity.getSingleResult()));
-
-        } catch (NoResultException ex) {
-            return new Respuesta(false, CodigoRespuesta.ERROR_NOENCONTRADO, "No existe un usuario con las credenciales ingresadas.", "validarUsuario NoResultException");
-        } catch (NonUniqueResultException ex) {
-            LOG.log(Level.SEVERE, "Ocurrio un error al consultar el usuario.", ex);
-            return new Respuesta(false, CodigoRespuesta.ERROR_INTERNO, "Ocurrio un error al consultar el usuario.", "validarUsuario NonUniqueResultException");
-        } catch (Exception ex) {
-            LOG.log(Level.SEVERE, "Ocurrio un error al consultar el usuario.", ex);
-            return new Respuesta(false, CodigoRespuesta.ERROR_INTERNO, "Ocurrio un error al consultar el usuario.", "validarUsuario " + ex.getMessage());
-        }
-    }
-
-    /*
-    public EmployeeDto getEmployee(Long empId){
-            Query qryEmployee = em.createNamedQuery("Employee.findByEmpId", Employee.class);
-            qryEmployee.setParameter("empId", empId);
-            EmployeeDto abc = new EmployeeDto((Employee) qryEmployee.getSingleResult());
-            return abc;
-    }
-     */
-    public Respuesta getEmployee(Long empId) {
-        try {
-            Query qryEmployee = em.createNamedQuery("Employee.findByEmpId", Employee.class);
-            qryEmployee.setParameter("empId", empId);
+            Query qryEmployee = em.createNamedQuery("Employee.findById", Employee.class);
+            qryEmployee.setParameter("id", id);
             return new Respuesta(true, CodigoRespuesta.CORRECTO, "", "", "Employee", new EmployeeDto((Employee) qryEmployee.getSingleResult()));
 
         } catch (NoResultException ex) {
@@ -78,34 +51,11 @@ public class EmployeeService {
         }
     }
 
-    public Respuesta getEmployees(String cedula, String name, String firstLastName) {
-        try {
-            Query qryEmployee = em.createNamedQuery("Employee.findByCedulaNameFirstLastName", Employee.class);
-            qryEmployee.setParameter("empCedula", cedula);
-            qryEmployee.setParameter("empName", name);
-            qryEmployee.setParameter("empFirstLastName", firstLastName);
-
-            List<Employee> employees = qryEmployee.getResultList();
-            List<EmployeeDto> employeesDto = new ArrayList<>();
-            for (Employee empleado : employees) {
-                employeesDto.add(new EmployeeDto(empleado));
-            }
-
-            return new Respuesta(true, CodigoRespuesta.CORRECTO, "", "", "Empleados", employeesDto);
-
-        } catch (NoResultException ex) {
-            return new Respuesta(false, CodigoRespuesta.ERROR_NOENCONTRADO, "No existen empleados con los criterios ingresados.", "getEmpleados NoResultException");
-        } catch (Exception ex) {
-            LOG.log(Level.SEVERE, "Ocurrio un error al consultar el empleado.", ex);
-            return new Respuesta(false, CodigoRespuesta.ERROR_INTERNO, "Ocurrio un error al consultar el empleado.", "getEmpleado " + ex.getMessage());
-        }
-    }
-
     public Respuesta saveEmployee(EmployeeDto employeeDto) {
         try {
             Employee empleado;
-            if (employeeDto.getEmpId() != null && employeeDto.getEmpId() > 0) {
-                empleado = em.find(Employee.class, employeeDto.getEmpId());
+            if (employeeDto.getId() != null && employeeDto.getId() > 0) {
+                empleado = em.find(Employee.class, employeeDto.getId());
                 if (empleado == null) {
                     return new Respuesta(false, CodigoRespuesta.ERROR_NOENCONTRADO, "No se encrontró el empleado a modificar.", "guardarEmpleado NoResultException");
                 }

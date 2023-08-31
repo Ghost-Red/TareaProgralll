@@ -10,11 +10,11 @@ package com.mycompany.tareaws.model;
  */
 public class SkillDto {
 
-    private Long skillId;
-    private String skillName;
-    private String skillDescription;
-    private String skillState;
-    private CompanyDto skillComId;
+    private Long id;
+    private String name;
+    private String description;
+    private String state;
+    private CompanyDto company;
     private boolean modificate;
 
     public SkillDto() {
@@ -23,64 +23,55 @@ public class SkillDto {
 
     public SkillDto(Skill skill) {
         this();
-        this.skillId = skill.getSkillId();
-        this.skillName = skill.getSkillName();
-        this.skillDescription = skill.getSkillDescription();
-        this.skillState = skill.getSkillState();
-        this.skillComId = new CompanyDto(skill.getSkillComId());
+        this.id = skill.getId();
+        this.name = skill.getName();
+        this.description = skill.getDescription();
+        this.state = skill.getState();
     }
 
-    public void updateSkillDto(Skill skill) {
-        this.skillId = skill.getSkillId();
-        this.skillName = skill.getSkillName();
-        this.skillDescription = skill.getSkillDescription();
-        this.skillState = skill.getSkillState();
-        this.skillComId.updateCompanyDto(skill.getSkillComId());
+    public Long getId() {
+        return id;
     }
 
-    public Long getSkillId() {
-        return skillId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public void setSkillId(Long skillId) {
-        this.skillId = skillId;
+    public String getName() {
+        return name;
     }
 
-    public String getSkillName() {
-        return skillName;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public void setSkillName(String skillName) {
-        this.skillName = skillName;
+    public String getDescription() {
+        return description;
     }
 
-    public String getSkillDescription() {
-        return skillDescription;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    public void setSkillDescription(String skillDescription) {
-        this.skillDescription = skillDescription;
+    public String getState() {
+        return state;
     }
 
-    public String getSkillState() {
-        return skillState;
+    public void setState(String state) {
+        this.state = state;
     }
 
-    public void setSkillState(String skillState) {
-        this.skillState = skillState;
+    public CompanyDto getCompany() {
+        return company;
     }
 
-    public CompanyDto getSkillComId() {
-        return skillComId;
-    }
-
-    public void setSkillComId(CompanyDto skillComId) {
-        this.skillComId = skillComId;
+    public void setCompany(CompanyDto company) {
+        this.company = company;
     }
 
     @Override
     public String toString() {
-        return "SkillDto{" + "skillId=" + skillId + ", skillName=" + skillName + ", skillDescription=" + skillDescription + ", skillState=" + skillState + ", skillComId=" + skillComId + ", modificate=" + modificate + '}';
+        return "SkillDto{" + "id=" + id + ", name=" + name + ", description=" + description + ", state=" + state + ", company=" + company + ", modificate=" + modificate + '}';
     }
 
 }

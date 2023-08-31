@@ -4,6 +4,7 @@
  */
 package com.mycompany.tareaws.service;
 
+import com.mycompany.tareaws.model.CompanyDto;
 import com.mycompany.tareaws.model.Skill;
 import com.mycompany.tareaws.model.SkillDto;
 import com.mycompany.tareaws.util.CodigoRespuesta;
@@ -32,11 +33,16 @@ public class SkillService {
     @PersistenceContext(unitName = "TareaWsPU")
     private EntityManager em;
 
-    public Respuesta getSkill(Long skillId) {
+    public Respuesta getSkill(Long id) {
         try {
-            Query qrySkill = em.createNamedQuery("Skill.findBySkillId", Skill.class);
-            qrySkill.setParameter("skillId", skillId);
-            return new Respuesta(true, CodigoRespuesta.CORRECTO, "", "", "Skill", new SkillDto((Skill) qrySkill.getSingleResult()));
+            Query qrySkill = em.createNamedQuery("Skill.findById", Skill.class);
+            qrySkill.setParameter("id", id);
+
+            Skill skill = (Skill) qrySkill.getSingleResult();
+            SkillDto skillDto = new SkillDto(skill);
+            skillDto.setCompany(new CompanyDto(skill.getCompany()));
+
+            return new Respuesta(true, CodigoRespuesta.CORRECTO, "", "", "Skill", skillDto);
 
         } catch (NoResultException ex) {
             return new Respuesta(false, CodigoRespuesta.ERROR_NOENCONTRADO, "No existe una skill con el código ingresado.", "getSkill NoResultException");
@@ -52,8 +58,8 @@ public class SkillService {
     public Respuesta saveSkill(SkillDto skillDto) {
         try {
             Skill skill;
-            if (skillDto.getSkillId() != null && skillDto.getSkillId() > 0) {
-                skill = em.find(Skill.class, skillDto.getSkillId());
+            if (skillDto.getId() != null && skillDto.getId() > 0) {
+                skill = em.find(Skill.class, skillDto.getId());
                 if (skill == null) {
                     return new Respuesta(false, CodigoRespuesta.ERROR_NOENCONTRADO, "No se encrontró la skill a modificar.", "saveSkill NoResultException");
                 }

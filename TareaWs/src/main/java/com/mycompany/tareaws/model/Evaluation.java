@@ -30,12 +30,12 @@ import jakarta.persistence.Version;
 @Table(name = "EVALUATION")
 @NamedQueries({
     @NamedQuery(name = "Evaluation.findAll", query = "SELECT e FROM Evaluation e"),
-    @NamedQuery(name = "Evaluation.findByEvaId", query = "SELECT e FROM Evaluation e WHERE e.evaId = :evaId"),
-    @NamedQuery(name = "Evaluation.findByEvaTitle", query = "SELECT e FROM Evaluation e WHERE e.evaTitle = :evaTitle"),
-    @NamedQuery(name = "Evaluation.findByEvaStartDate", query = "SELECT e FROM Evaluation e WHERE e.evaStartDate = :evaStartDate"),
-    @NamedQuery(name = "Evaluation.findByEvaFinalDate", query = "SELECT e FROM Evaluation e WHERE e.evaFinalDate = :evaFinalDate"),
-    @NamedQuery(name = "Evaluation.findByEvaState", query = "SELECT e FROM Evaluation e WHERE e.evaState = :evaState"),
-    @NamedQuery(name = "Evaluation.findByEvaVersion", query = "SELECT e FROM Evaluation e WHERE e.evaVersion = :evaVersion")})
+    @NamedQuery(name = "Evaluation.findById", query = "SELECT e FROM Evaluation e WHERE e.id = :id"),
+    @NamedQuery(name = "Evaluation.findByTitle", query = "SELECT e FROM Evaluation e WHERE e.title = :title"),
+    @NamedQuery(name = "Evaluation.findByStartDate", query = "SELECT e FROM Evaluation e WHERE e.startDate = :startDate"),
+    @NamedQuery(name = "Evaluation.findByFinalDate", query = "SELECT e FROM Evaluation e WHERE e.finalDate = :finalDate"),
+    @NamedQuery(name = "Evaluation.findByState", query = "SELECT e FROM Evaluation e WHERE e.state = :state"),
+    @NamedQuery(name = "Evaluation.findByVersion", query = "SELECT e FROM Evaluation e WHERE e.version = :version")})
 public class Evaluation implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -43,102 +43,110 @@ public class Evaluation implements Serializable {
     @Id
     @Basic(optional = false)
     @Column(name = "EVA_ID")
-    private Long evaId;
+    private Long id;
     @Basic(optional = false)
     @Column(name = "EVA_TITLE")
-    private String evaTitle;
+    private String title;
     @Column(name = "EVA_START_DATE")
     @Temporal(TemporalType.TIMESTAMP)
-    private Date evaStartDate;
+    private Date startDate;
     @Column(name = "EVA_FINAL_DATE")
     @Temporal(TemporalType.TIMESTAMP)
-    private Date evaFinalDate;
+    private Date finalDate;
     @Basic(optional = false)
     @Column(name = "EVA_STATE")
-    private String evaState;
+    private String state;
     @Version
     @Column(name = "EVA_VERSION")
-    private Long evaVersion;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "ejrEvaId")
+    private Long version;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "evaluation")
     private List<EvaluationJobRelation> evaluationJobRelationList;
     @JoinColumn(name = "EVA_COM_ID", referencedColumnName = "COM_ID")
     @ManyToOne(optional = false)
-    private Company evaComId;
+    private Company company;
 
     public Evaluation() {
     }
 
-    public Evaluation(Long evaId) {
-        this.evaId = evaId;
+    public Evaluation(Long id) {
+        this.id = id;
     }
 
-    public Evaluation(Long evaId, String evaTitle, String evaState, Long evaVersion) {
-        this.evaId = evaId;
-        this.evaTitle = evaTitle;
-        this.evaState = evaState;
-        this.evaVersion = evaVersion;
+    public Evaluation(Long id, String title, String state, Long version) {
+        this.id = id;
+        this.title = title;
+        this.state = state;
+        this.version = version;
     }
 
     public Evaluation(EvaluationDto evaluation) {
-        this.evaId = evaluation.getEvaId();
+        this.id = evaluation.getId();
         updateEvaluation(evaluation);
     }
 
     public void updateEvaluation(EvaluationDto evaluation) {
-        this.evaId = evaluation.getEvaId();
-        this.evaTitle = evaluation.getEvaTitle();
-        this.evaStartDate = evaluation.getEvaStartDate();
-        this.evaFinalDate = evaluation.getEvaFinalDate();
-        this.evaState = evaluation.getEvaState();
-        this.evaComId.updateCompany(evaluation.getEvaComId());
+        this.id = evaluation.getId();
+        this.title = evaluation.getTitle();
+        this.startDate = evaluation.getStartDate();
+        this.finalDate = evaluation.getFinalDate();
+        this.state = evaluation.getState();
+        this.company.updateCompany(evaluation.getCompany());
     }
 
-    public Long getEvaId() {
-        return evaId;
+    public Long getId() {
+        return id;
     }
 
-    public void setEvaId(Long evaId) {
-        this.evaId = evaId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public String getEvaTitle() {
-        return evaTitle;
+    public String getTitle() {
+        return title;
     }
 
-    public void setEvaTitle(String evaTitle) {
-        this.evaTitle = evaTitle;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
-    public Date getEvaStartDate() {
-        return evaStartDate;
+    public Date getStartDate() {
+        return startDate;
     }
 
-    public void setEvaStartDate(Date evaStartDate) {
-        this.evaStartDate = evaStartDate;
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
     }
 
-    public Date getEvaFinalDate() {
-        return evaFinalDate;
+    public Date getFinalDate() {
+        return finalDate;
     }
 
-    public void setEvaFinalDate(Date evaFinalDate) {
-        this.evaFinalDate = evaFinalDate;
+    public void setFinalDate(Date finalDate) {
+        this.finalDate = finalDate;
     }
 
-    public String getEvaState() {
-        return evaState;
+    public String getState() {
+        return state;
     }
 
-    public void setEvaState(String evaState) {
-        this.evaState = evaState;
+    public void setState(String state) {
+        this.state = state;
     }
 
-    public Long getEvaVersion() {
-        return evaVersion;
+    public Long getVersion() {
+        return version;
     }
 
-    public void setEvaVersion(Long evaVersion) {
-        this.evaVersion = evaVersion;
+    public void setVersion(Long version) {
+        this.version = version;
+    }
+
+    public Company getCompany() {
+        return company;
+    }
+
+    public void setCompany(Company company) {
+        this.company = company;
     }
 
     public List<EvaluationJobRelation> getEvaluationJobRelationList() {
@@ -149,18 +157,18 @@ public class Evaluation implements Serializable {
         this.evaluationJobRelationList = evaluationJobRelationList;
     }
 
-    public Company getEvaComId() {
-        return evaComId;
+    public Company getcompany() {
+        return company;
     }
 
-    public void setEvaComId(Company evaComId) {
-        this.evaComId = evaComId;
+    public void setcompany(Company company) {
+        this.company = company;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (evaId != null ? evaId.hashCode() : 0);
+        hash += (id != null ? id.hashCode() : 0);
         return hash;
     }
 
@@ -171,7 +179,7 @@ public class Evaluation implements Serializable {
             return false;
         }
         Evaluation other = (Evaluation) object;
-        if ((this.evaId == null && other.evaId != null) || (this.evaId != null && !this.evaId.equals(other.evaId))) {
+        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
         return true;
@@ -179,7 +187,7 @@ public class Evaluation implements Serializable {
 
     @Override
     public String toString() {
-        return "com.mycompany.tareaws.model.Evaluation[ evaId=" + evaId + " ]";
+        return "com.mycompany.tareaws.model.Evaluation[ id=" + id + " ]";
     }
 
 }

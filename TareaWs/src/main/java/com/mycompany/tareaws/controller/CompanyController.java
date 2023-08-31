@@ -23,8 +23,8 @@ public class CompanyController {
     CompanyService companyService;
 
     @WebMethod(operationName = "getCompany")
-    public CompanyDto getCompany(@WebParam(name = "comId") Long comId) {
-        Respuesta res = companyService.getCompany(comId);
+    public CompanyDto getCompany(@WebParam(name = "id") Long id) {
+        Respuesta res = companyService.getCompany(id);
         return (CompanyDto) res.getResultado("Company");
     }
 }

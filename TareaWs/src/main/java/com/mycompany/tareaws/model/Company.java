@@ -26,11 +26,11 @@ import java.io.Serializable;
 @Table(name = "COMPANY")
 @NamedQueries({
     @NamedQuery(name = "Company.findAll", query = "SELECT c FROM Company c"),
-    @NamedQuery(name = "Company.findByComId", query = "SELECT c FROM Company c WHERE c.comId = :comId"),
-    @NamedQuery(name = "Company.findByComName", query = "SELECT c FROM Company c WHERE c.comName = :comName"),
-    @NamedQuery(name = "Company.findByComEmail", query = "SELECT c FROM Company c WHERE c.comEmail = :comEmail"),
-    @NamedQuery(name = "Company.findByComTokenEmail", query = "SELECT c FROM Company c WHERE c.comTokenEmail = :comTokenEmail"),
-    @NamedQuery(name = "Company.findByComVersion", query = "SELECT c FROM Company c WHERE c.comVersion = :comVersion")})
+    @NamedQuery(name = "Company.findById", query = "SELECT c FROM Company c WHERE c.id = :id"),
+    @NamedQuery(name = "Company.findByName", query = "SELECT c FROM Company c WHERE c.name = :name"),
+    @NamedQuery(name = "Company.findByEmail", query = "SELECT c FROM Company c WHERE c.email = :email"),
+    @NamedQuery(name = "Company.findByTokenEmail", query = "SELECT c FROM Company c WHERE c.tokenEmail = :tokenEmail"),
+    @NamedQuery(name = "Company.findByVersion", query = "SELECT c FROM Company c WHERE c.version = :version")})
 public class Company implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -38,135 +38,135 @@ public class Company implements Serializable {
     @Id
     @Basic(optional = false)
     @Column(name = "COM_ID")
-    private Long comId;
+    private Long id;
     @Basic(optional = false)
     @Column(name = "COM_NAME")
-    private String comName;
+    private String name;
     @Basic(optional = false)
     @Column(name = "COM_EMAIL")
-    private String comEmail;
+    private String email;
     @Basic(optional = false)
     @Lob
     @Column(name = "COM_LOGO")
-    private Byte[] comLogo;
+    private Byte[] logo;
     @Basic(optional = false)
     @Lob
     @Column(name = "COM_EMAIL_TEMPLATE_PASSWORD")
-    private Byte[] comEmailTemplatePassword;
+    private Byte[] emailTemplatePassword;
     @Basic(optional = false)
     @Column(name = "COM_TOKEN_EMAIL")
-    private String comTokenEmail;
+    private String tokenEmail;
     @Version
     @Column(name = "COM_VERSION")
-    private Long comVersion;
+    private Long version;
     @Basic(optional = false)
     @Lob
     @Column(name = "COM_EMAIL_TEMPLATE_ACTIVATE_USER")
-    private Byte[] comEmailTemplateActivateUser;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "skillComId")
+    private Byte[] emailTemplateActivateUser;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "company")
     private List<Skill> skillList;
-    @OneToMany(mappedBy = "empComId")
+    @OneToMany(mappedBy = "company")
     private List<Employee> employeeList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "evaComId")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "company")
     private List<Evaluation> evaluationList;
-    @OneToMany(mappedBy = "jobComId")
+    @OneToMany(mappedBy = "company")
     private List<Job> jobList;
 
     public Company() {
     }
 
-    public Company(Long comId) {
-        this.comId = comId;
+    public Company(Long id) {
+        this.id = id;
     }
 
-    public Company(Long comId, String comName, String comEmail, Byte[] comLogo, Byte[] comEmailTemplatePassword, String comTokenEmail, Long comVersion, Byte[] comEmailTemplateActivateUser) {
-        this.comId = comId;
-        this.comName = comName;
-        this.comEmail = comEmail;
-        this.comLogo = comLogo;
-        this.comEmailTemplatePassword = comEmailTemplatePassword;
-        this.comTokenEmail = comTokenEmail;
-        this.comVersion = comVersion;
-        this.comEmailTemplateActivateUser = comEmailTemplateActivateUser;
+    public Company(Long id, String name, String email, Byte[] logo, Byte[] emailTemplatePassword, String tokenEmail, Long version, Byte[] emailTemplateActivateUser) {
+        this.id = id;
+        this.name = name;
+        this.email = email;
+        this.logo = logo;
+        this.emailTemplatePassword = emailTemplatePassword;
+        this.tokenEmail = tokenEmail;
+        this.version = version;
+        this.emailTemplateActivateUser = emailTemplateActivateUser;
     }
 
     public Company(CompanyDto company) {
-        this.comId = company.getComId();
+        this.id = company.getId();
         updateCompany(company);
     }
 
     public void updateCompany(CompanyDto companyDto) {
-        this.comId = companyDto.getComId();
-        this.comName = companyDto.getComName();
-        this.comEmail = companyDto.getComEmail();
-        this.comLogo = companyDto.getComLogo();
-        this.comEmailTemplatePassword = companyDto.getComEmailTemplatePassword();
-        this.comTokenEmail = companyDto.getComTokenEmail();
-        this.comEmailTemplateActivateUser = companyDto.getComEmailTemplateActivateUser();
+        this.id = companyDto.getId();
+        this.name = companyDto.getName();
+        this.email = companyDto.getEmail();
+        this.logo = companyDto.getLogo();
+        this.emailTemplatePassword = companyDto.getEmailTemplatePassword();
+        this.tokenEmail = companyDto.getTokenEmail();
+        this.emailTemplateActivateUser = companyDto.getEmailTemplateActivateUser();
     }
 
-    public Long getComId() {
-        return comId;
+    public Long getId() {
+        return id;
     }
 
-    public void setComId(Long comId) {
-        this.comId = comId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public String getComName() {
-        return comName;
+    public String getName() {
+        return name;
     }
 
-    public void setComName(String comName) {
-        this.comName = comName;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getComEmail() {
-        return comEmail;
+    public String getEmail() {
+        return email;
     }
 
-    public void setComEmail(String comEmail) {
-        this.comEmail = comEmail;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public Byte[] getComLogo() {
-        return comLogo;
+    public Byte[] getLogo() {
+        return logo;
     }
 
-    public void setComLogo(Byte[] comLogo) {
-        this.comLogo = comLogo;
+    public void setLogo(Byte[] logo) {
+        this.logo = logo;
     }
 
-    public Byte[] getComEmailTemplatePassword() {
-        return comEmailTemplatePassword;
+    public Byte[] getEmailTemplatePassword() {
+        return emailTemplatePassword;
     }
 
-    public void setComEmailTemplatePassword(Byte[] comEmailTemplatePassword) {
-        this.comEmailTemplatePassword = comEmailTemplatePassword;
+    public void setEmailTemplatePassword(Byte[] emailTemplatePassword) {
+        this.emailTemplatePassword = emailTemplatePassword;
     }
 
-    public String getComTokenEmail() {
-        return comTokenEmail;
+    public String getTokenEmail() {
+        return tokenEmail;
     }
 
-    public void setComTokenEmail(String comTokenEmail) {
-        this.comTokenEmail = comTokenEmail;
+    public void setTokenEmail(String tokenEmail) {
+        this.tokenEmail = tokenEmail;
     }
 
-    public Long getComVersion() {
-        return comVersion;
+    public Long getVersion() {
+        return version;
     }
 
-    public void setComVersion(Long comVersion) {
-        this.comVersion = comVersion;
+    public void setVersion(Long version) {
+        this.version = version;
     }
 
-    public Byte[] getComEmailTemplateActivateUser() {
-        return comEmailTemplateActivateUser;
+    public Byte[] getEmailTemplateActivateUser() {
+        return emailTemplateActivateUser;
     }
 
-    public void setComEmailTemplateActivateUser(Byte[] comEmailTemplateActivateUser) {
-        this.comEmailTemplateActivateUser = comEmailTemplateActivateUser;
+    public void setEmailTemplateActivateUser(Byte[] emailTemplateActivateUser) {
+        this.emailTemplateActivateUser = emailTemplateActivateUser;
     }
 
     public List<Skill> getSkillList() {
@@ -204,7 +204,7 @@ public class Company implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (comId != null ? comId.hashCode() : 0);
+        hash += (id != null ? id.hashCode() : 0);
         return hash;
     }
 
@@ -215,7 +215,7 @@ public class Company implements Serializable {
             return false;
         }
         Company other = (Company) object;
-        if ((this.comId == null && other.comId != null) || (this.comId != null && !this.comId.equals(other.comId))) {
+        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
         return true;
@@ -223,7 +223,7 @@ public class Company implements Serializable {
 
     @Override
     public String toString() {
-        return "com.mycompany.tareaws.model.Company[ comId=" + comId + " ]";
+        return "com.mycompany.tareaws.model.Company[ id=" + id + " ]";
     }
 
 }

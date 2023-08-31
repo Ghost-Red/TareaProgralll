@@ -12,12 +12,12 @@ import java.util.Date;
  */
 public class EvaluationDto {
 
-    private Long evaId;
-    private String evaTitle;
-    private Date evaStartDate;
-    private Date evaFinalDate;
-    private String evaState;
-    private CompanyDto evaComId;
+    private Long id;
+    private String title;
+    private Date startDate;
+    private Date finalDate;
+    private String state;
+    private CompanyDto company;
     private boolean modificate;
 
     public EvaluationDto() {
@@ -26,74 +26,64 @@ public class EvaluationDto {
 
     public EvaluationDto(Evaluation evaluation) {
         this();
-        this.evaId = evaluation.getEvaId();
-        this.evaTitle = evaluation.getEvaTitle();
-        this.evaStartDate = evaluation.getEvaStartDate();
-        this.evaFinalDate = evaluation.getEvaFinalDate();
-        this.evaState = evaluation.getEvaState();
-        this.evaComId = new CompanyDto(evaluation.getEvaComId());
+        this.id = evaluation.getId();
+        this.title = evaluation.getTitle();
+        this.startDate = evaluation.getStartDate();
+        this.finalDate = evaluation.getFinalDate();
+        this.state = evaluation.getState();
     }
 
-    public void updateEvaluationDto(Evaluation evaluation) {
-        this.evaId = evaluation.getEvaId();
-        this.evaTitle = evaluation.getEvaTitle();
-        this.evaStartDate = evaluation.getEvaStartDate();
-        this.evaFinalDate = evaluation.getEvaFinalDate();
-        this.evaState = evaluation.getEvaState();
-        this.evaComId.updateCompanyDto(evaluation.getEvaComId());
+    public Long getId() {
+        return id;
     }
 
-    public Long getEvaId() {
-        return evaId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public void setEvaId(Long evaId) {
-        this.evaId = evaId;
+    public String getTitle() {
+        return title;
     }
 
-    public String getEvaTitle() {
-        return evaTitle;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
-    public void setEvaTitle(String evaTitle) {
-        this.evaTitle = evaTitle;
+    public Date getStartDate() {
+        return startDate;
     }
 
-    public Date getEvaStartDate() {
-        return evaStartDate;
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
     }
 
-    public void setEvaStartDate(Date evaStartDate) {
-        this.evaStartDate = evaStartDate;
+    public Date getFinalDate() {
+        return finalDate;
     }
 
-    public Date getEvaFinalDate() {
-        return evaFinalDate;
+    public void setFinalDate(Date finalDate) {
+        this.finalDate = finalDate;
     }
 
-    public void setEvaFinalDate(Date evaFinalDate) {
-        this.evaFinalDate = evaFinalDate;
+    public String getState() {
+        return state;
     }
 
-    public String getEvaState() {
-        return evaState;
+    public void setState(String state) {
+        this.state = state;
     }
 
-    public void setEvaState(String evaState) {
-        this.evaState = evaState;
+    public CompanyDto getCompany() {
+        return company;
     }
 
-    public CompanyDto getEvaComId() {
-        return evaComId;
-    }
-
-    public void setEvaComId(CompanyDto evaComId) {
-        this.evaComId = evaComId;
+    public void setCompany(CompanyDto company) {
+        this.company = company;
     }
 
     @Override
     public String toString() {
-        return "EvaluationDto{" + "evaId=" + evaId + ", evaTitle=" + evaTitle + ", evaStartDate=" + evaStartDate + ", evaFinalDate=" + evaFinalDate + ", evaState=" + evaState + ", evaComId=" + evaComId + ", modificate=" + modificate + '}';
+        return "EvaluationDto{" + "id=" + id + ", title=" + title + ", startDate=" + startDate + ", finalDate=" + finalDate + ", state=" + state + ", company=" + company + ", modificate=" + modificate + '}';
     }
 
 }

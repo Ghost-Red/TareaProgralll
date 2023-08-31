@@ -4,6 +4,7 @@
  */
 package com.mycompany.tareaws.service;
 
+import com.mycompany.tareaws.model.CompanyDto;
 import com.mycompany.tareaws.model.Evaluation;
 import com.mycompany.tareaws.model.EvaluationDto;
 import com.mycompany.tareaws.util.CodigoRespuesta;
@@ -34,12 +35,14 @@ public class EvaluationService {
     @PersistenceContext(unitName = "TareaWsPU")
     private EntityManager em;
 
-    public Respuesta getEvaluation(Long evaId) {
+    public Respuesta getEvaluation(Long id) {
         try {
-            Query qryEvaluation = em.createNamedQuery("Evaluation.findByEvaId", Evaluation.class);
-            qryEvaluation.setParameter("evaId", evaId);
-            return new Respuesta(true, CodigoRespuesta.CORRECTO, "", "", "Evaluation", new EvaluationDto((Evaluation) qryEvaluation.getSingleResult()));
-
+            Query qryEvaluation = em.createNamedQuery("Evaluation.findById", Evaluation.class);
+            qryEvaluation.setParameter("id", id);
+            Evaluation evaluation = (Evaluation) qryEvaluation.getSingleResult();
+            EvaluationDto evaluationDto = new EvaluationDto(evaluation);
+            evaluationDto.setCompany(new CompanyDto(evaluation.getcompany()));
+            return new Respuesta(true, CodigoRespuesta.CORRECTO, "", "", "Evaluation", evaluationDto);
         } catch (NoResultException ex) {
             return new Respuesta(false, CodigoRespuesta.ERROR_NOENCONTRADO, "No existe una evaluacion con el código ingresado.", "getEvaluation NoResultException");
         } catch (NonUniqueResultException ex) {
@@ -54,8 +57,8 @@ public class EvaluationService {
     public Respuesta saveEvaluation(EvaluationDto evaluationDto) {
         try {
             Evaluation evaluation;
-            if (evaluationDto.getEvaId() != null && evaluationDto.getEvaId() > 0) {
-                evaluation = em.find(Evaluation.class, evaluationDto.getEvaId());
+            if (evaluationDto.getId() != null && evaluationDto.getId() > 0) {
+                evaluation = em.find(Evaluation.class, evaluationDto.getId());
                 if (evaluation == null) {
                     return new Respuesta(false, CodigoRespuesta.ERROR_NOENCONTRADO, "No se encrontró la evaluacion a modificar.", "saveEvaluation NoResultException");
                 }

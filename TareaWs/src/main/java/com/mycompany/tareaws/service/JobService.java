@@ -4,6 +4,7 @@
  */
 package com.mycompany.tareaws.service;
 
+import com.mycompany.tareaws.model.CompanyDto;
 import com.mycompany.tareaws.model.Job;
 import com.mycompany.tareaws.model.JobDto;
 import com.mycompany.tareaws.util.CodigoRespuesta;
@@ -32,11 +33,15 @@ public class JobService {
     @PersistenceContext(unitName = "TareaWsPU")
     private EntityManager em;
 
-    public Respuesta getJob(Long jobId) {
+    public Respuesta getJob(Long id) {
         try {
-            Query qryJob = em.createNamedQuery("Job.findByJobId", Job.class);
-            qryJob.setParameter("jobId", jobId);
-            return new Respuesta(true, CodigoRespuesta.CORRECTO, "", "", "Job", new JobDto((Job) qryJob.getSingleResult()));
+            Query qryJob = em.createNamedQuery("Job.findById", Job.class);
+            qryJob.setParameter("id", id);
+
+            Job job = (Job) qryJob.getSingleResult();
+            JobDto jobDto = new JobDto(job);
+            jobDto.setCompany(new CompanyDto(job.getCompany()));
+            return new Respuesta(true, CodigoRespuesta.CORRECTO, "", "", "Job", jobDto);
         } catch (NoResultException ex) {
             return new Respuesta(false, CodigoRespuesta.ERROR_NOENCONTRADO, "No existe un puesto con el código ingresado.", "getJob NoResultException");
         } catch (NonUniqueResultException ex) {
@@ -51,8 +56,8 @@ public class JobService {
     public Respuesta saveJob(JobDto jobDto) {
         try {
             Job job;
-            if (jobDto.getJobId() != null && jobDto.getJobId() > 0) {
-                job = em.find(Job.class, jobDto.getJobId());
+            if (jobDto.getId() != null && jobDto.getId() > 0) {
+                job = em.find(Job.class, jobDto.getId());
                 if (job == null) {
                     return new Respuesta(false, CodigoRespuesta.ERROR_NOENCONTRADO, "No se encrontró el puesto a modificar.", "saveJob NoResultException");
                 }

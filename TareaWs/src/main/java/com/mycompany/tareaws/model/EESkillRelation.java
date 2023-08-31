@@ -24,9 +24,9 @@ import jakarta.persistence.Version;
 @Table(name = "EE_SKILL_RELATION")
 @NamedQueries({
     @NamedQuery(name = "EESkillRelation.findAll", query = "SELECT e FROM EESkillRelation e"),
-    @NamedQuery(name = "EESkillRelation.findByEesId", query = "SELECT e FROM EESkillRelation e WHERE e.eesId = :eesId"),
-    @NamedQuery(name = "EESkillRelation.findByEesSkillClasification", query = "SELECT e FROM EESkillRelation e WHERE e.eesSkillClasification = :eesSkillClasification"),
-    @NamedQuery(name = "EESkillRelation.findByEesVersion", query = "SELECT e FROM EESkillRelation e WHERE e.eesVersion = :eesVersion")})
+    @NamedQuery(name = "EESkillRelation.findById", query = "SELECT e FROM EESkillRelation e WHERE e.id = :id"),
+    @NamedQuery(name = "EESkillRelation.findBySkillClasification", query = "SELECT e FROM EESkillRelation e WHERE e.skillClasification = :skillClasification"),
+    @NamedQuery(name = "EESkillRelation.findByVersion", query = "SELECT e FROM EESkillRelation e WHERE e.version = :version")})
 public class EESkillRelation implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -34,29 +34,29 @@ public class EESkillRelation implements Serializable {
     @Id
     @Basic(optional = false)
     @Column(name = "EES_ID")
-    private Long eesId;
+    private Long id;
     @Column(name = "EES_SKILL_CLASIFICATION")
-    private Long eesSkillClasification;
+    private Long skillClasification;
     @Version
     @Column(name = "EES_VERSION")
-    private Long eesVersion;
+    private Long version;
     @JoinColumn(name = "EES_EE_ID", referencedColumnName = "EE_ID")
     @ManyToOne(optional = false)
-    private EmployeeEvaluatorRelation eesEeId;
+    private EmployeeEvaluatorRelation employeeEvaluatorRelation;
     @JoinColumn(name = "EES_SKILL_ID", referencedColumnName = "SKILL_ID")
     @ManyToOne(optional = false)
-    private Skill eesSkillId;
+    private Skill evaluatedSkill;
 
     public EESkillRelation() {
     }
 
-    public EESkillRelation(Long eesId) {
-        this.eesId = eesId;
+    public EESkillRelation(Long id) {
+        this.id = id;
     }
 
-    public EESkillRelation(Long eesId, Long eesVersion) {
-        this.eesId = eesId;
-        this.eesVersion = eesVersion;
+    public EESkillRelation(Long id, Long version) {
+        this.id = id;
+        this.version = version;
     }
 
     public EESkillRelation(EESkillRelationDto eESkillRelationDto) {
@@ -64,56 +64,56 @@ public class EESkillRelation implements Serializable {
     }
 
     public void updateEESkillRelation(EESkillRelationDto eESkillRelationDto) {
-        this.eesId = eESkillRelationDto.getEesId();
-        this.eesSkillClasification = eESkillRelationDto.getEesSkillClasification();
-        this.eesEeId.updateEmployeeEvaluatorRelation(eESkillRelationDto.getEesEeId());
-        this.eesSkillId.updateSkill(eESkillRelationDto.getEesSkillId());
+        this.id = eESkillRelationDto.getId();
+        this.skillClasification = eESkillRelationDto.getSkillClasification();
+        this.employeeEvaluatorRelation.updateEmployeeEvaluatorRelation(eESkillRelationDto.getEmployeeEvaluatorRelation());
+        this.evaluatedSkill.updateSkill(eESkillRelationDto.getEvaluatedSkill());
     }
 
-    public Long getEesId() {
-        return eesId;
+    public Long getId() {
+        return id;
     }
 
-    public void setEesId(Long eesId) {
-        this.eesId = eesId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public Long getEesSkillClasification() {
-        return eesSkillClasification;
+    public Long getSkillClasification() {
+        return skillClasification;
     }
 
-    public void setEesSkillClasification(Long eesSkillClasification) {
-        this.eesSkillClasification = eesSkillClasification;
+    public void setSkillClasification(Long skillClasification) {
+        this.skillClasification = skillClasification;
     }
 
-    public Long getEesVersion() {
-        return eesVersion;
+    public Long getVersion() {
+        return version;
     }
 
-    public void setEesVersion(Long eesVersion) {
-        this.eesVersion = eesVersion;
+    public void setVersion(Long version) {
+        this.version = version;
     }
 
-    public EmployeeEvaluatorRelation getEesEeId() {
-        return eesEeId;
+    public EmployeeEvaluatorRelation getEmployeeEvaluatorRelation() {
+        return employeeEvaluatorRelation;
     }
 
-    public void setEesEeId(EmployeeEvaluatorRelation eesEeId) {
-        this.eesEeId = eesEeId;
+    public void setEmployeeEvaluatorRelation(EmployeeEvaluatorRelation employeeEvaluatorRelation) {
+        this.employeeEvaluatorRelation = employeeEvaluatorRelation;
     }
 
-    public Skill getEesSkillId() {
-        return eesSkillId;
+    public Skill getEvaluatedSkill() {
+        return evaluatedSkill;
     }
 
-    public void setEesSkillId(Skill eesSkillId) {
-        this.eesSkillId = eesSkillId;
+    public void setEvaluatedSkill(Skill evaluatedSkill) {
+        this.evaluatedSkill = evaluatedSkill;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (eesId != null ? eesId.hashCode() : 0);
+        hash += (id != null ? id.hashCode() : 0);
         return hash;
     }
 
@@ -124,7 +124,7 @@ public class EESkillRelation implements Serializable {
             return false;
         }
         EESkillRelation other = (EESkillRelation) object;
-        if ((this.eesId == null && other.eesId != null) || (this.eesId != null && !this.eesId.equals(other.eesId))) {
+        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
         return true;
@@ -132,7 +132,7 @@ public class EESkillRelation implements Serializable {
 
     @Override
     public String toString() {
-        return "com.mycompany.tareaws.model.EESkillRelation[ eesId=" + eesId + " ]";
+        return "com.mycompany.tareaws.model.EESkillRelation[ id=" + id + " ]";
     }
 
 }

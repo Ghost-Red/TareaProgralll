@@ -23,8 +23,8 @@ public class SkillController {
     SkillService skillService;
 
     @WebMethod(operationName = "getSkill")
-    public SkillDto getSkill(@WebParam(name = "skillId") Long skillId) {
-        Respuesta res = skillService.getSkill(skillId);
+    public SkillDto getSkill(@WebParam(name = "id") Long id) {
+        Respuesta res = skillService.getSkill(id);
         return (SkillDto) res.getResultado("Skill");
     }
 }

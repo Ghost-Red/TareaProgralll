@@ -23,8 +23,8 @@ public class EvaluationController {
     EvaluationService evaluationService;
 
     @WebMethod(operationName = "getEvaluation")
-    public EvaluationDto getEvaluation(@WebParam(name = "evaId") Long evaId) {
-        Respuesta res = evaluationService.getEvaluation(evaId);
+    public EvaluationDto getEvaluation(@WebParam(name = "id") Long id) {
+        Respuesta res = evaluationService.getEvaluation(id);
         return (EvaluationDto) res.getResultado("Evaluation");
     }
 }

@@ -26,8 +26,8 @@ import jakarta.persistence.Version;
 @Table(name = "EVALUATION_JOB_RELATION")
 @NamedQueries({
     @NamedQuery(name = "EvaluationJobRelation.findAll", query = "SELECT e FROM EvaluationJobRelation e"),
-    @NamedQuery(name = "EvaluationJobRelation.findByEjrId", query = "SELECT e FROM EvaluationJobRelation e WHERE e.ejrId = :ejrId"),
-    @NamedQuery(name = "EvaluationJobRelation.findByEjrVersion", query = "SELECT e FROM EvaluationJobRelation e WHERE e.ejrVersion = :ejrVersion")})
+    @NamedQuery(name = "EvaluationJobRelation.findById", query = "SELECT e FROM EvaluationJobRelation e WHERE e.id = :id"),
+    @NamedQuery(name = "EvaluationJobRelation.findByVersion", query = "SELECT e FROM EvaluationJobRelation e WHERE e.version = :version")})
 public class EvaluationJobRelation implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -35,29 +35,29 @@ public class EvaluationJobRelation implements Serializable {
     @Id
     @Basic(optional = false)
     @Column(name = "EJR_ID")
-    private Long ejrId;
+    private Long id;
     @Version
     @Column(name = "EJR_VERSION")
-    private Long ejrVersion;
+    private Long version;
     @JoinColumn(name = "EJR_EVA_ID", referencedColumnName = "EVA_ID")
     @ManyToOne(optional = false)
-    private Evaluation ejrEvaId;
+    private Evaluation evaluation;
     @JoinColumn(name = "EJR_JOB_ID", referencedColumnName = "JOB_ID")
     @ManyToOne(optional = false)
-    private Job ejrJobId;
-    @OneToMany(mappedBy = "eerEjrId")
+    private Job job;
+    @OneToMany(mappedBy = "evaluationJobRelation")
     private List<EmployeeEvaluationRelation> employeeEvaluationRelationList;
 
     public EvaluationJobRelation() {
     }
 
-    public EvaluationJobRelation(Long ejrId) {
-        this.ejrId = ejrId;
+    public EvaluationJobRelation(Long id) {
+        this.id = id;
     }
 
-    public EvaluationJobRelation(Long ejrId, Long ejrVersion) {
-        this.ejrId = ejrId;
-        this.ejrVersion = ejrVersion;
+    public EvaluationJobRelation(Long id, Long version) {
+        this.id = id;
+        this.version = version;
     }
 
     public EvaluationJobRelation(EvaluationJobRelationDto evaluationJobRelationDto) {
@@ -65,41 +65,41 @@ public class EvaluationJobRelation implements Serializable {
     }
 
     public void updateEvaluationJobRelation(EvaluationJobRelationDto evaluationJobRelationDto) {
-        this.ejrId = evaluationJobRelationDto.getEjrId();
-        this.ejrEvaId.updateEvaluation(evaluationJobRelationDto.getEjrEvaId());
-        this.ejrJobId.updateJob(evaluationJobRelationDto.getEjrJobId());
+        this.id = evaluationJobRelationDto.getId();
+        this.evaluation.updateEvaluation(evaluationJobRelationDto.getEvaluation());
+        this.job.updateJob(evaluationJobRelationDto.getJob());
     }
 
-    public Long getEjrId() {
-        return ejrId;
+    public Long getId() {
+        return id;
     }
 
-    public void setEjrId(Long ejrId) {
-        this.ejrId = ejrId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public Long getEjrVersion() {
-        return ejrVersion;
+    public Long getVersion() {
+        return version;
     }
 
-    public void setEjrVersion(Long ejrVersion) {
-        this.ejrVersion = ejrVersion;
+    public void setVersion(Long version) {
+        this.version = version;
     }
 
-    public Evaluation getEjrEvaId() {
-        return ejrEvaId;
+    public Evaluation getEvaluation() {
+        return evaluation;
     }
 
-    public void setEjrEvaId(Evaluation ejrEvaId) {
-        this.ejrEvaId = ejrEvaId;
+    public void setEvaluation(Evaluation evaluation) {
+        this.evaluation = evaluation;
     }
 
-    public Job getEjrJobId() {
-        return ejrJobId;
+    public Job getJob() {
+        return job;
     }
 
-    public void setEjrJobId(Job ejrJobId) {
-        this.ejrJobId = ejrJobId;
+    public void setJob(Job job) {
+        this.job = job;
     }
 
     public List<EmployeeEvaluationRelation> getEmployeeEvaluationRelationList() {
@@ -113,7 +113,7 @@ public class EvaluationJobRelation implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (ejrId != null ? ejrId.hashCode() : 0);
+        hash += (id != null ? id.hashCode() : 0);
         return hash;
     }
 
@@ -124,7 +124,7 @@ public class EvaluationJobRelation implements Serializable {
             return false;
         }
         EvaluationJobRelation other = (EvaluationJobRelation) object;
-        if ((this.ejrId == null && other.ejrId != null) || (this.ejrId != null && !this.ejrId.equals(other.ejrId))) {
+        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
         return true;
@@ -132,7 +132,7 @@ public class EvaluationJobRelation implements Serializable {
 
     @Override
     public String toString() {
-        return "com.mycompany.tareaws.model.EvaluationJobRelation[ ejrId=" + ejrId + " ]";
+        return "com.mycompany.tareaws.model.EvaluationJobRelation[ id=" + id + " ]";
     }
 
 }

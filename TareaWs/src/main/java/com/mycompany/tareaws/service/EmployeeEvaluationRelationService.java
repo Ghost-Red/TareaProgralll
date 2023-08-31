@@ -4,8 +4,10 @@
  */
 package com.mycompany.tareaws.service;
 
+import com.mycompany.tareaws.model.EmployeeDto;
 import com.mycompany.tareaws.model.EmployeeEvaluationRelation;
 import com.mycompany.tareaws.model.EmployeeEvaluationRelationDto;
+import com.mycompany.tareaws.model.EvaluationJobRelationDto;
 import com.mycompany.tareaws.util.CodigoRespuesta;
 import com.mycompany.tareaws.util.Respuesta;
 import jakarta.ejb.LocalBean;
@@ -32,12 +34,15 @@ public class EmployeeEvaluationRelationService {
     @PersistenceContext(unitName = "TareaWsPU")
     private EntityManager em;
 
-    public Respuesta getEmployeeEvaluationRelation(Long eerId) {
+    public Respuesta getEmployeeEvaluationRelation(Long id) {
         try {
-            Query qryEmployeeEvaluationRelation = em.createNamedQuery("EmployeeEvaluationRelation.findByEerId", EmployeeEvaluationRelation.class);
-            qryEmployeeEvaluationRelation.setParameter("eerId", eerId);
-            return new Respuesta(true, CodigoRespuesta.CORRECTO, "", "", "EmployeeEvaluationRelation", new EmployeeEvaluationRelationDto((EmployeeEvaluationRelation) qryEmployeeEvaluationRelation.getSingleResult()));
-
+            Query qryEmployeeEvaluationRelation = em.createNamedQuery("EmployeeEvaluationRelation.findById", EmployeeEvaluationRelation.class);
+            qryEmployeeEvaluationRelation.setParameter("id", id);
+            EmployeeEvaluationRelation employeeEvaluationRelation = (EmployeeEvaluationRelation) qryEmployeeEvaluationRelation.getSingleResult();
+            EmployeeEvaluationRelationDto employeeEvaluationRelationDto = new EmployeeEvaluationRelationDto(employeeEvaluationRelation);
+            employeeEvaluationRelationDto.setEmployeeEvaluated(new EmployeeDto(employeeEvaluationRelation.getEmployeeEvaluated()));
+            employeeEvaluationRelationDto.setEvaluationJobRelation(new EvaluationJobRelationDto(employeeEvaluationRelation.getEvaluationJobRelation()));
+            return new Respuesta(true, CodigoRespuesta.CORRECTO, "", "", "EmployeeEvaluationRelation", employeeEvaluationRelationDto);
         } catch (NoResultException ex) {
             return new Respuesta(false, CodigoRespuesta.ERROR_NOENCONTRADO, "No existe una EmployeeEvaluationRelation con el código ingresado.", "getEmployeeEvaluationRelation NoResultException");
         } catch (NonUniqueResultException ex) {
@@ -52,8 +57,8 @@ public class EmployeeEvaluationRelationService {
     public Respuesta saveEmployeeEvaluationRelation(EmployeeEvaluationRelationDto employeeEvaluationRelationDto) {
         try {
             EmployeeEvaluationRelation employeeEvaluationRelation;
-            if (employeeEvaluationRelationDto.getEerId() != null && employeeEvaluationRelationDto.getEerId() > 0) {
-                employeeEvaluationRelation = em.find(EmployeeEvaluationRelation.class, employeeEvaluationRelationDto.getEerId());
+            if (employeeEvaluationRelationDto.getId() != null && employeeEvaluationRelationDto.getId() > 0) {
+                employeeEvaluationRelation = em.find(EmployeeEvaluationRelation.class, employeeEvaluationRelationDto.getId());
                 if (employeeEvaluationRelation == null) {
                     return new Respuesta(false, CodigoRespuesta.ERROR_NOENCONTRADO, "No se encrontró la EmployeeEvaluationRelation a modificar.", "saveEmployeeEvaluationRelation NoResultException");
                 }

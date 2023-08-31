@@ -10,10 +10,10 @@ package com.mycompany.tareaws.model;
  */
 public class EmployeeAverageSkillDto {
 
-    private Long easId;
-    private Long easEmployeeSkillLvl;
-    private EmployeeEvaluationRelationDto easEerId;
-    private SkillDto easSkillId;
+    private Long id;
+    private Long employeeSkillLvl;
+    private EmployeeEvaluationRelationDto employeeEvaluationRelation;
+    private SkillDto skill;
     private boolean modificate;
 
     public EmployeeAverageSkillDto() {
@@ -22,54 +22,45 @@ public class EmployeeAverageSkillDto {
 
     public EmployeeAverageSkillDto(EmployeeAverageSkill employeeAverageSkill) {
         this();
-        this.easId = employeeAverageSkill.getEasId();
-        this.easEmployeeSkillLvl = employeeAverageSkill.getEasEmployeeSkillLvl();
-        this.easEerId = new EmployeeEvaluationRelationDto(employeeAverageSkill.getEasEerId());
-        this.easSkillId = new SkillDto(employeeAverageSkill.getEasSkillId());
+        this.id = employeeAverageSkill.getid();
+        this.employeeSkillLvl = employeeAverageSkill.getskillAverageLvl();
     }
 
-    public void updateEmployeeAverageSkillDto(EmployeeAverageSkill employeeAverageSkill) {
-        this.easId = employeeAverageSkill.getEasId();
-        this.easEmployeeSkillLvl = employeeAverageSkill.getEasEmployeeSkillLvl();
-        this.easEerId.updateEmployeeEvaluationRelationDto(employeeAverageSkill.getEasEerId());
-        this.easSkillId.updateSkillDto(employeeAverageSkill.getEasSkillId());
+    public Long getId() {
+        return id;
     }
 
-    public Long getEasId() {
-        return easId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public void setEasId(Long easId) {
-        this.easId = easId;
+    public Long getEmployeeSkillLvl() {
+        return employeeSkillLvl;
     }
 
-    public Long getEasEmployeeSkillLvl() {
-        return easEmployeeSkillLvl;
+    public void setEmployeeSkillLvl(Long employeeSkillLvl) {
+        this.employeeSkillLvl = employeeSkillLvl;
     }
 
-    public void setEasEmployeeSkillLvl(Long easEmployeeSkillLvl) {
-        this.easEmployeeSkillLvl = easEmployeeSkillLvl;
+    public EmployeeEvaluationRelationDto getEmployeeEvaluationRelation() {
+        return employeeEvaluationRelation;
     }
 
-    public EmployeeEvaluationRelationDto getEasEerId() {
-        return easEerId;
+    public void setEmployeeEvaluationRelation(EmployeeEvaluationRelationDto employeeEvaluationRelation) {
+        this.employeeEvaluationRelation = employeeEvaluationRelation;
     }
 
-    public void setEasEerId(EmployeeEvaluationRelationDto easEerId) {
-        this.easEerId = easEerId;
+    public SkillDto getSkill() {
+        return skill;
     }
 
-    public SkillDto getEasSkillId() {
-        return easSkillId;
-    }
-
-    public void setEasSkillId(SkillDto easSkillId) {
-        this.easSkillId = easSkillId;
+    public void setSkill(SkillDto skill) {
+        this.skill = skill;
     }
 
     @Override
     public String toString() {
-        return "EmployeeAverageSkillDto{" + "easId=" + easId + ", easEmployeeSkillLvl=" + easEmployeeSkillLvl + ", easEerId=" + easEerId + ", easSkillId=" + easSkillId + ", modificate=" + modificate + '}';
+        return "EmployeeAverageSkillDto{" + "id=" + id + ", skillAverageLvl=" + employeeSkillLvl + ", employeeEvaluationRelation=" + employeeEvaluationRelation + ", skill=" + skill + ", modificate=" + modificate + '}';
     }
 
 }

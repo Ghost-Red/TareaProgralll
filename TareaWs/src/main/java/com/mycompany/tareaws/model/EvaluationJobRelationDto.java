@@ -10,9 +10,9 @@ package com.mycompany.tareaws.model;
  */
 public class EvaluationJobRelationDto {
 
-    private Long ejrId;
-    private EvaluationDto ejrEvaId;
-    private JobDto ejrJobId;
+    private Long id;
+    private EvaluationDto evaluation;
+    private JobDto job;
 
     private boolean modificate;
 
@@ -22,44 +22,36 @@ public class EvaluationJobRelationDto {
 
     public EvaluationJobRelationDto(EvaluationJobRelation evaluationJobRelation) {
         this();
-        this.ejrId = evaluationJobRelation.getEjrId();
-        this.ejrEvaId = new EvaluationDto(evaluationJobRelation.getEjrEvaId());
-        this.ejrJobId = new JobDto(evaluationJobRelation.getEjrJobId());
+        this.id = evaluationJobRelation.getId();
     }
 
-    public void updateEvaluationJobRelationDto(EvaluationJobRelation evaluationJobRelation) {
-        this.ejrId = evaluationJobRelation.getEjrId();
-        this.ejrEvaId.updateEvaluationDto(evaluationJobRelation.getEjrEvaId());
-        this.ejrJobId.updateJobDto(evaluationJobRelation.getEjrJobId());
+    public Long getId() {
+        return id;
     }
 
-    public Long getEjrId() {
-        return ejrId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public void setEjrId(Long ejrId) {
-        this.ejrId = ejrId;
+    public EvaluationDto getEvaluation() {
+        return evaluation;
     }
 
-    public EvaluationDto getEjrEvaId() {
-        return ejrEvaId;
+    public void setEvaluation(EvaluationDto evaluation) {
+        this.evaluation = evaluation;
     }
 
-    public void setEjrEvaId(EvaluationDto ejrEvaId) {
-        this.ejrEvaId = ejrEvaId;
+    public JobDto getJob() {
+        return job;
     }
 
-    public JobDto getEjrJobId() {
-        return ejrJobId;
-    }
-
-    public void setEjrJobId(JobDto ejrJobId) {
-        this.ejrJobId = ejrJobId;
+    public void setJob(JobDto job) {
+        this.job = job;
     }
 
     @Override
     public String toString() {
-        return "EvaluationJobRelationDto{" + "ejrId=" + ejrId + ", ejrEvaId=" + ejrEvaId + ", ejrJobId=" + ejrJobId + ", modificate=" + modificate + '}';
+        return "EvaluationJobRelationDto{" + "id=" + id + ", id=" + evaluation + ", job=" + job + ", modificate=" + modificate + '}';
     }
 
 }

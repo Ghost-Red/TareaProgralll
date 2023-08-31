@@ -10,11 +10,11 @@ package com.mycompany.tareaws.model;
  */
 public class EmployeeEvaluatorRelationDto {
 
-    private Long eeId;
-    private String eeRelationType;
-    private String eeFeedback;
-    private EmployeeDto eeEmpId;
-    private EmployeeEvaluationRelationDto evaEmployeeId;
+    private Long id;
+    private String employeeEvaluatorRelationType;
+    private String feedback;
+    private EmployeeDto employeeEvaluator;
+    private EmployeeEvaluationRelationDto employeeEvaluated;
     private boolean modificate;
 
     public EmployeeEvaluatorRelationDto() {
@@ -23,64 +23,62 @@ public class EmployeeEvaluatorRelationDto {
 
     public EmployeeEvaluatorRelationDto(EmployeeEvaluatorRelation employeeEvaluatorRelation) {
         this();
-        this.eeId = employeeEvaluatorRelation.getEeId();
-        this.eeRelationType = employeeEvaluatorRelation.getEeRelationType();
-        this.eeFeedback = employeeEvaluatorRelation.getEeFeedback();
-        this.eeEmpId = new EmployeeDto(employeeEvaluatorRelation.getEeEmpId());
-        this.evaEmployeeId = new EmployeeEvaluationRelationDto(employeeEvaluatorRelation.getEvaEmployeeId());
+        this.id = employeeEvaluatorRelation.getId();
+        this.employeeEvaluatorRelationType = employeeEvaluatorRelation.getEmployeeEvaluatorRelationType();
+        this.feedback = employeeEvaluatorRelation.getFeedback();
+        this.employeeEvaluator = new EmployeeDto(employeeEvaluatorRelation.getEmployeeEvaluator());
+        this.employeeEvaluated = new EmployeeEvaluationRelationDto(employeeEvaluatorRelation.getEmployeeEvaluated());
     }
 
     public void updateEmployeeEvaluatorRelationDto(EmployeeEvaluatorRelation employeeEvaluatorRelation) {
-        this.eeId = employeeEvaluatorRelation.getEeId();
-        this.eeRelationType = employeeEvaluatorRelation.getEeRelationType();
-        this.eeFeedback = employeeEvaluatorRelation.getEeFeedback();
-        this.eeEmpId.updateEmployeeDto(employeeEvaluatorRelation.getEeEmpId());
-        this.evaEmployeeId.updateEmployeeEvaluationRelationDto(employeeEvaluatorRelation.getEvaEmployeeId());
+        this.id = employeeEvaluatorRelation.getId();
+        this.employeeEvaluatorRelationType = employeeEvaluatorRelation.getEmployeeEvaluatorRelationType();
+        this.feedback = employeeEvaluatorRelation.getFeedback();
     }
 
-    public Long getEeId() {
-        return eeId;
+    public Long getId() {
+        return id;
     }
 
-    public void setEeId(Long eeId) {
-        this.eeId = eeId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public String getEeRelationType() {
-        return eeRelationType;
+    public String getEmployeeEvaluatorRelationType() {
+        return employeeEvaluatorRelationType;
     }
 
-    public void setEeRelationType(String eeRelationType) {
-        this.eeRelationType = eeRelationType;
+    public void setEmployeeEvaluatorRelationType(String employeeEvaluatorRelationType) {
+        this.employeeEvaluatorRelationType = employeeEvaluatorRelationType;
     }
 
-    public String getEeFeedback() {
-        return eeFeedback;
+    public String getFeedback() {
+        return feedback;
     }
 
-    public void setEeFeedback(String eeFeedback) {
-        this.eeFeedback = eeFeedback;
+    public void setFeedback(String feedback) {
+        this.feedback = feedback;
     }
 
-    public EmployeeDto getEeEmpId() {
-        return eeEmpId;
+    public EmployeeDto getEmployeeEvaluator() {
+        return employeeEvaluator;
     }
 
-    public void setEeEmpId(EmployeeDto eeEmpId) {
-        this.eeEmpId = eeEmpId;
+    public void setEmployeeEvaluator(EmployeeDto employeeEvaluator) {
+        this.employeeEvaluator = employeeEvaluator;
     }
 
-    public EmployeeEvaluationRelationDto getEvaEmployeeId() {
-        return evaEmployeeId;
+    public EmployeeEvaluationRelationDto getEmployeeEvaluated() {
+        return employeeEvaluated;
     }
 
-    public void setEvaEmployeeId(EmployeeEvaluationRelationDto evaEmployeeId) {
-        this.evaEmployeeId = evaEmployeeId;
+    public void setEmployeeEvaluated(EmployeeEvaluationRelationDto employeeEvaluated) {
+        this.employeeEvaluated = employeeEvaluated;
     }
 
     @Override
     public String toString() {
-        return "EmployeeEvaluatorRelationDto{" + "eeId=" + eeId + ", eeRelationType=" + eeRelationType + ", eeFeedback=" + eeFeedback + ", eeEmpId=" + eeEmpId + ", evaEmployeeId=" + evaEmployeeId + ", modificate=" + modificate + '}';
+        return "EmployeeEvaluatorRelationDto{" + "id=" + id + ", employeeEvaluatorRelationType=" + employeeEvaluatorRelationType + ", feedback=" + feedback + ", id=" + employeeEvaluator + ", employeeEvaluated=" + employeeEvaluated + ", modificate=" + modificate + '}';
     }
 
 }

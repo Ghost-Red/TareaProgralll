@@ -23,8 +23,8 @@ public class EmployeeAverageSkillController {
     EmployeeAverageSkillService employeeAverageSkillService;
 
     @WebMethod(operationName = "getEmployeeAverageSkill")
-    public EmployeeAverageSkillDto getEmployeeAverageSkill(@WebParam(name = "easId") Long easId) {
-        Respuesta res = employeeAverageSkillService.getEmployeeAverageSkill(easId);
+    public EmployeeAverageSkillDto getEmployeeAverageSkill(@WebParam(name = "id") Long id) {
+        Respuesta res = employeeAverageSkillService.getEmployeeAverageSkill(id);
         return (EmployeeAverageSkillDto) res.getResultado("EmployeeAverageSkill");
     }
 }

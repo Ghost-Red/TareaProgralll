@@ -12,10 +12,10 @@ import java.util.List;
  */
 public class JobDto {
 
-    private Long jobId;
-    private String jobName;
-    private String jobState;
-    private CompanyDto jobComId;
+    private Long id;
+    private String name;
+    private String state;
+    private CompanyDto company;
     private boolean modificate;
 
     public JobDto() {
@@ -24,54 +24,46 @@ public class JobDto {
 
     public JobDto(Job job) {
         this();
-        this.jobId = job.getJobId();
-        this.jobName = job.getJobName();
-        this.jobState = job.getJobState();
-        this.jobComId = new CompanyDto(job.getJobComId());
+        this.id = job.getId();
+        this.name = job.getName();
+        this.state = job.getState();
     }
 
-    public void updateJobDto(Job job) {
-        this.jobId = job.getJobId();
-        this.jobName = job.getJobName();
-        this.jobState = job.getJobState();
-        this.jobComId.updateCompanyDto(job.getJobComId());
+    public Long getId() {
+        return id;
     }
 
-    public Long getJobId() {
-        return jobId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public void setJobId(Long jobId) {
-        this.jobId = jobId;
+    public String getName() {
+        return name;
     }
 
-    public String getJobName() {
-        return jobName;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public void setJobName(String jobName) {
-        this.jobName = jobName;
+    public String getState() {
+        return state;
     }
 
-    public String getJobState() {
-        return jobState;
+    public void setState(String state) {
+        this.state = state;
     }
 
-    public void setJobState(String jobState) {
-        this.jobState = jobState;
+    public CompanyDto getCompany() {
+        return company;
     }
 
-    public CompanyDto getJobComId() {
-        return jobComId;
-    }
-
-    public void setJobComId(CompanyDto jobComId) {
-        this.jobComId = jobComId;
+    public void setCompany(CompanyDto company) {
+        this.company = company;
     }
 
     @Override
     public String toString() {
-        return "JobDto{" + "jobId=" + jobId + ", jobName=" + jobName + ", jobState=" + jobState + ", jobComId=" + jobComId + ", modificate=" + modificate + '}';
+        return "JobDto{" + "id=" + id + ", name=" + name + ", state=" + state + ", company=" + company + ", modificate=" + modificate + '}';
     }
 
 }

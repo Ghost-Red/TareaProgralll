@@ -6,6 +6,8 @@ package com.mycompany.tareaws.service;
 
 import com.mycompany.tareaws.model.EESkillRelation;
 import com.mycompany.tareaws.model.EESkillRelationDto;
+import com.mycompany.tareaws.model.EmployeeEvaluatorRelationDto;
+import com.mycompany.tareaws.model.SkillDto;
 import com.mycompany.tareaws.util.CodigoRespuesta;
 import com.mycompany.tareaws.util.Respuesta;
 import jakarta.ejb.LocalBean;
@@ -32,12 +34,15 @@ public class EESkillRelationService {
     @PersistenceContext(unitName = "TareaWsPU")
     private EntityManager em;
 
-    public Respuesta getEESkillRelation(Long eesId) {
+    public Respuesta getEESkillRelation(Long id) {
         try {
-            Query qryEESkillRelation = em.createNamedQuery("EESkillRelation.findByEesId", EESkillRelation.class);
-            qryEESkillRelation.setParameter("eesId", eesId);
-            return new Respuesta(true, CodigoRespuesta.CORRECTO, "", "", "EESkillRelation", new EESkillRelationDto((EESkillRelation) qryEESkillRelation.getSingleResult()));
-
+            Query qryEESkillRelation = em.createNamedQuery("EESkillRelation.findById", EESkillRelation.class);
+            qryEESkillRelation.setParameter("id", id);
+            EESkillRelation eESkillRelation = (EESkillRelation) qryEESkillRelation.getSingleResult();
+            EESkillRelationDto eESkillRelationDto = new EESkillRelationDto(eESkillRelation);
+            eESkillRelationDto.setEmployeeEvaluatorRelation(new EmployeeEvaluatorRelationDto(eESkillRelation.getEmployeeEvaluatorRelation()));
+            eESkillRelationDto.setEvaluatedSkill(new SkillDto(eESkillRelation.getEvaluatedSkill()));
+            return new Respuesta(true, CodigoRespuesta.CORRECTO, "", "", "EESkillRelation", eESkillRelationDto);
         } catch (NoResultException ex) {
             return new Respuesta(false, CodigoRespuesta.ERROR_NOENCONTRADO, "No existe una EESkillRelation con el código ingresado.", "getEESkillRelation NoResultException");
         } catch (NonUniqueResultException ex) {
@@ -52,8 +57,8 @@ public class EESkillRelationService {
     public Respuesta saveEESkillRelation(EESkillRelationDto eESkillRelationDto) {
         try {
             EESkillRelation eESkillRelation;
-            if (eESkillRelationDto.getEesId() != null && eESkillRelationDto.getEesId() > 0) {
-                eESkillRelation = em.find(EESkillRelation.class, eESkillRelationDto.getEesId());
+            if (eESkillRelationDto.getId() != null && eESkillRelationDto.getId() > 0) {
+                eESkillRelation = em.find(EESkillRelation.class, eESkillRelationDto.getId());
                 if (eESkillRelation == null) {
                     return new Respuesta(false, CodigoRespuesta.ERROR_NOENCONTRADO, "No se encrontró la EESkillRelation a modificar.", "saveEESkillRelation NoResultException");
                 }

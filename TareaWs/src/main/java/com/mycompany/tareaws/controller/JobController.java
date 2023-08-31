@@ -23,8 +23,8 @@ public class JobController {
     JobService jobService;
 
     @WebMethod(operationName = "getJob")
-    public JobDto getJob(@WebParam(name = "jobId") Long jobId) {
-        Respuesta res = jobService.getJob(jobId);
+    public JobDto getJob(@WebParam(name = "id") Long id) {
+        Respuesta res = jobService.getJob(id);
         return (JobDto) res.getResultado("Job");
     }
 }
