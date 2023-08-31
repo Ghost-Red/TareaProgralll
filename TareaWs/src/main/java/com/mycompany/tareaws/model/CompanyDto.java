@@ -25,23 +25,23 @@ public class CompanyDto {
 
     public CompanyDto(Company company) {
         this();
-        this.id = company.getComId();
-        this.name = company.getComName();
-        this.email = company.getComEmail();
-        this.logo = company.getComLogo();
-        this.emailTemplatePassword = company.getComEmailTemplatePassword();
-        this.tokenEmail = company.getComTokenEmail();
-        this.emailTemplateActivateUser = company.getComEmailTemplateActivateUser();
+        this.id = company.getId();
+        this.name = company.getName();
+        this.email = company.getEmail();
+        this.logo = company.getLogo();
+        this.emailTemplatePassword = company.getEmailTemplatePassword();
+        this.tokenEmail = company.getTokenEmail();
+        this.emailTemplateActivateUser = company.getEmailTemplateActivateUser();
     }
 
     public void updateCompanyDto(Company company) {
-        this.id = company.getComId();
-        this.name = company.getComName();
-        this.email = company.getComEmail();
-        this.logo = company.getComLogo();
-        this.emailTemplatePassword = company.getComEmailTemplatePassword();
-        this.tokenEmail = company.getComTokenEmail();
-        this.emailTemplateActivateUser = company.getComEmailTemplateActivateUser();
+        this.id = company.getId();
+        this.name = company.getName();
+        this.email = company.getEmail();
+        this.logo = company.getLogo();
+        this.emailTemplatePassword = company.getEmailTemplatePassword();
+        this.tokenEmail = company.getTokenEmail();
+        this.emailTemplateActivateUser = company.getEmailTemplateActivateUser();
     }
 
     public Long getId() {
@@ -110,7 +110,7 @@ public class CompanyDto {
 
     @Override
     public String toString() {
-        return "CompanyDto{" + "comId=" + id + ", comName=" + name + ", comEmail=" + email + ", comLogo=" + logo + ", comEmailTemplatePassword=" + emailTemplatePassword + ", comTokenEmail=" + tokenEmail + ", comEmailTemplateActivateUser=" + emailTemplateActivateUser + ", modificate=" + modificate + '}';
+        return "CompanyDto{" + "id=" + id + ", name=" + name + ", email=" + email + ", logo=" + logo + ", emailTemplatePassword=" + emailTemplatePassword + ", tokenEmail=" + tokenEmail + ", emailTemplateActivateUser=" + emailTemplateActivateUser + ", modificate=" + modificate + '}';
     }
 
 }

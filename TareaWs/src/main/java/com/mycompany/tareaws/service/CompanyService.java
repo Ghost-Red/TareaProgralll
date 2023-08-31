@@ -34,8 +34,8 @@ public class CompanyService {
 
     public Respuesta getCompany(Long id) {
         try {
-            Query qryCompany = em.createNamedQuery("Company.findByComId", Company.class);
-            qryCompany.setParameter("comId", id);
+            Query qryCompany = em.createNamedQuery("Company.findById", Company.class);
+            qryCompany.setParameter("id", id);
             return new Respuesta(true, CodigoRespuesta.CORRECTO, "", "", "Company", new CompanyDto((Company) qryCompany.getSingleResult()));
 
         } catch (NoResultException ex) {

@@ -34,7 +34,6 @@ public class EmployeeService {
     @PersistenceContext(unitName = "TareaWsPU")
     private EntityManager em;
 
-  
     public Respuesta getEmployee(Long id) {
         try {
             Query qryEmployee = em.createNamedQuery("Employee.findById", Employee.class);

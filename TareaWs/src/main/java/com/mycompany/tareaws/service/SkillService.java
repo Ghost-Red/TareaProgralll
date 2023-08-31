@@ -44,7 +44,6 @@ public class SkillService {
 
             return new Respuesta(true, CodigoRespuesta.CORRECTO, "", "", "Skill", skillDto);
 
-
         } catch (NoResultException ex) {
             return new Respuesta(false, CodigoRespuesta.ERROR_NOENCONTRADO, "No existe una skill con el código ingresado.", "getSkill NoResultException");
         } catch (NonUniqueResultException ex) {

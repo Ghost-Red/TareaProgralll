@@ -38,7 +38,7 @@ public class EvaluationJobRelationService {
         try {
             Query qryEvaluationJobRelation = em.createNamedQuery("EvaluationJobRelation.findById", EvaluationJobRelation.class);
             qryEvaluationJobRelation.setParameter("id", id);
-          
+
             EvaluationJobRelation evaluationJobRelation = (EvaluationJobRelation) qryEvaluationJobRelation.getSingleResult();
             EvaluationJobRelationDto evaluationJobRelationDto = new EvaluationJobRelationDto(evaluationJobRelation);
             evaluationJobRelationDto.setEvaluation(new EvaluationDto(evaluationJobRelation.getEvaluation()));
