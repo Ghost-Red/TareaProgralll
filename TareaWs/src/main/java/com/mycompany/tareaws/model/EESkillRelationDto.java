@@ -22,8 +22,22 @@ public class EESkillRelationDto {
 
     public EESkillRelationDto(EESkillRelation eESkillRelation) {
         this();
+<<<<<<< HEAD
         this.id = eESkillRelation.getid();
         this.skillClasification = eESkillRelation.getskillClasification();
+=======
+        this.id = eESkillRelation.getEesId();
+        this.skillClasification = eESkillRelation.getEesSkillClasification();
+        this.employeeEvaluatorRelation = new EmployeeEvaluatorRelationDto(eESkillRelation.getEesEeId());
+        this.skill = new SkillDto(eESkillRelation.getEesSkillId());
+    }
+
+    public void updateEESkillRelationDto(EESkillRelation eESkillRelation) {
+        this.id = eESkillRelation.getEesId();
+        this.skillClasification = eESkillRelation.getEesSkillClasification();
+        this.employeeEvaluatorRelation.updateEmployeeEvaluatorRelationDto(eESkillRelation.getEesEeId());
+        this.skill.updateSkillDto(eESkillRelation.getEesSkillId());
+>>>>>>> parent of 41fcac5 (Se re-estructuraron los Dto y service)
     }
 
     public Long getId() {

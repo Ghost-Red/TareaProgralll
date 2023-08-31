@@ -4,10 +4,8 @@
  */
 package com.mycompany.tareaws.service;
 
-import com.mycompany.tareaws.model.CompanyDto;
 import com.mycompany.tareaws.model.Employee;
 import com.mycompany.tareaws.model.EmployeeDto;
-import com.mycompany.tareaws.model.JobDto;
 import com.mycompany.tareaws.util.CodigoRespuesta;
 import com.mycompany.tareaws.util.Respuesta;
 import jakarta.ejb.LocalBean;
@@ -38,6 +36,7 @@ public class EmployeeService {
 
     public Respuesta validateUser(String email, String password) {
         try {
+<<<<<<< HEAD
             Query qryActivity = em.createNamedQuery("Employee.findByemailPassword", Employee.class);
             qryActivity.setParameter("email", email);
             qryActivity.setParameter("password", password);
@@ -48,6 +47,13 @@ public class EmployeeService {
             employeeDto.setJob(new JobDto(employee.getjob()));
             
             return new Respuesta(true, CodigoRespuesta.CORRECTO, "", "", "Employee", employeeDto);
+=======
+            Query qryActivity = em.createNamedQuery("Employee.findByEmpEmailPassword", Employee.class);
+            qryActivity.setParameter("empEmail", email);
+            qryActivity.setParameter("empPassword", password);
+
+            return new Respuesta(true, CodigoRespuesta.CORRECTO, "", "", "Employee", new EmployeeDto((Employee) qryActivity.getSingleResult()));
+>>>>>>> parent of 41fcac5 (Se re-estructuraron los Dto y service)
 
         } catch (NoResultException ex) {
             return new Respuesta(false, CodigoRespuesta.ERROR_NOENCONTRADO, "No existe un usuario con las credenciales ingresadas.", "validarUsuario NoResultException");

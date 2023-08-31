@@ -4,7 +4,6 @@
  */
 package com.mycompany.tareaws.service;
 
-import com.mycompany.tareaws.model.CompanyDto;
 import com.mycompany.tareaws.model.Job;
 import com.mycompany.tareaws.model.JobDto;
 import com.mycompany.tareaws.util.CodigoRespuesta;
@@ -37,12 +36,7 @@ public class JobService {
         try {
             Query qryJob = em.createNamedQuery("Job.findByJobId", Job.class);
             qryJob.setParameter("jobId", id);
-            
-            Job job = (Job) qryJob.getSingleResult();
-            JobDto jobDto = new JobDto(job);
-            jobDto.setCompany( new CompanyDto(job.getJobComId()));
-            
-            return new Respuesta(true, CodigoRespuesta.CORRECTO, "", "", "Job", jobDto);
+            return new Respuesta(true, CodigoRespuesta.CORRECTO, "", "", "Job", new JobDto((Job) qryJob.getSingleResult()));
         } catch (NoResultException ex) {
             return new Respuesta(false, CodigoRespuesta.ERROR_NOENCONTRADO, "No existe un puesto con el código ingresado.", "getJob NoResultException");
         } catch (NonUniqueResultException ex) {

@@ -31,6 +31,16 @@ public class EvaluationDto {
         this.startDate = evaluation.getEvaStartDate();
         this.finalDate = evaluation.getEvaFinalDate();
         this.state = evaluation.getEvaState();
+        this.company = new CompanyDto(evaluation.getEvaComId());
+    }
+
+    public void updateEvaluationDto(Evaluation evaluation) {
+        this.id = evaluation.getEvaId();
+        this.title = evaluation.getEvaTitle();
+        this.startDate = evaluation.getEvaStartDate();
+        this.finalDate = evaluation.getEvaFinalDate();
+        this.state = evaluation.getEvaState();
+        this.company.updateCompanyDto(evaluation.getEvaComId());
     }
 
     public Long getId() {

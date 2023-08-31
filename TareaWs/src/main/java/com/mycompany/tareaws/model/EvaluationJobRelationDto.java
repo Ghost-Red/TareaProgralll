@@ -23,6 +23,14 @@ public class EvaluationJobRelationDto {
     public EvaluationJobRelationDto(EvaluationJobRelation evaluationJobRelation) {
         this();
         this.id = evaluationJobRelation.getEjrId();
+        this.evaluation = new EvaluationDto(evaluationJobRelation.getEjrEvaId());
+        this.job = new JobDto(evaluationJobRelation.getEjrJobId());
+    }
+
+    public void updateEvaluationJobRelationDto(EvaluationJobRelation evaluationJobRelation) {
+        this.id = evaluationJobRelation.getEjrId();
+        this.evaluation.updateEvaluationDto(evaluationJobRelation.getEjrEvaId());
+        this.job.updateJobDto(evaluationJobRelation.getEjrJobId());
     }
 
     public Long getId() {
