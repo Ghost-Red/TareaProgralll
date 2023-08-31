@@ -36,12 +36,12 @@ public class EmployeeEvaluatorRelationService {
 
     public Respuesta getEmployeeEvaluatorRelation(Long id) {
         try {
-            Query qryEmployeeEvaluatorRelation = em.createNamedQuery("EmployeeEvaluatorRelation.findByid", EmployeeEvaluatorRelation.class);
+            Query qryEmployeeEvaluatorRelation = em.createNamedQuery("EmployeeEvaluatorRelation.findById", EmployeeEvaluatorRelation.class);
             qryEmployeeEvaluatorRelation.setParameter("id", id);
             EmployeeEvaluatorRelation employeeEvaluatorRelation = (EmployeeEvaluatorRelation) qryEmployeeEvaluatorRelation.getSingleResult();
             EmployeeEvaluatorRelationDto employeeEvaluatorRelationDto = new EmployeeEvaluatorRelationDto(employeeEvaluatorRelation);
-            employeeEvaluatorRelationDto.setEmployee(new EmployeeDto(employeeEvaluatorRelation.getEmployeeEvaluator()));
-            employeeEvaluatorRelationDto.setEmployeeEvaluationRelation(new EmployeeEvaluationRelationDto(employeeEvaluatorRelation.getEmployeeEvaluated()));
+            employeeEvaluatorRelationDto.setEmployeeEvaluator(new EmployeeDto(employeeEvaluatorRelation.getEmployeeEvaluator()));
+            employeeEvaluatorRelationDto.setEmployeeEvaluated(new EmployeeEvaluationRelationDto(employeeEvaluatorRelation.getEmployeeEvaluated()));
             return new Respuesta(true, CodigoRespuesta.CORRECTO, "", "", "EmployeeEvaluatorRelation", employeeEvaluatorRelationDto);
         } catch (NoResultException ex) {
             return new Respuesta(false, CodigoRespuesta.ERROR_NOENCONTRADO, "No existe una EmployeeEvaluatorRelation con el código ingresado.", "getEmployeeEvaluatorRelation NoResultException");

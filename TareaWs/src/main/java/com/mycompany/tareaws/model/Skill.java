@@ -28,11 +28,11 @@ import jakarta.persistence.Version;
 @Table(name = "SKILL")
 @NamedQueries({
     @NamedQuery(name = "Skill.findAll", query = "SELECT s FROM Skill s"),
-    @NamedQuery(name = "Skill.findByid", query = "SELECT s FROM Skill s WHERE s.id = :id"),
-    @NamedQuery(name = "Skill.findByversion", query = "SELECT s FROM Skill s WHERE s.version = :version"),
-    @NamedQuery(name = "Skill.findByname", query = "SELECT s FROM Skill s WHERE s.name = :name"),
-    @NamedQuery(name = "Skill.findBydescription", query = "SELECT s FROM Skill s WHERE s.description = :description"),
-    @NamedQuery(name = "Skill.findBystate", query = "SELECT s FROM Skill s WHERE s.state = :state")})
+    @NamedQuery(name = "Skill.findById", query = "SELECT s FROM Skill s WHERE s.id = :id"),
+    @NamedQuery(name = "Skill.findByVersion", query = "SELECT s FROM Skill s WHERE s.version = :version"),
+    @NamedQuery(name = "Skill.findByName", query = "SELECT s FROM Skill s WHERE s.name = :name"),
+    @NamedQuery(name = "Skill.findByDescription", query = "SELECT s FROM Skill s WHERE s.description = :description"),
+    @NamedQuery(name = "Skill.findByState", query = "SELECT s FROM Skill s WHERE s.state = :state")})
 public class Skill implements Serializable {
 
     private static final long serialVersionUID = 1L;

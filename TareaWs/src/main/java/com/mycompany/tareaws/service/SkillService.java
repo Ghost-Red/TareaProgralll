@@ -35,7 +35,7 @@ public class SkillService {
 
     public Respuesta getSkill(Long id) {
         try {
-            Query qrySkill = em.createNamedQuery("Skill.findByid", Skill.class);
+            Query qrySkill = em.createNamedQuery("Skill.findById", Skill.class);
             qrySkill.setParameter("id", id);
 
             Skill skill = (Skill) qrySkill.getSingleResult();

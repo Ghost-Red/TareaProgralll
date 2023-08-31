@@ -27,9 +27,9 @@ import jakarta.persistence.Version;
 @Table(name = "EMPLOYEE_EVALUATION_RELATION")
 @NamedQueries({
     @NamedQuery(name = "EmployeeEvaluationRelation.findAll", query = "SELECT e FROM EmployeeEvaluationRelation e"),
-    @NamedQuery(name = "EmployeeEvaluationRelation.findByid", query = "SELECT e FROM EmployeeEvaluationRelation e WHERE e.id = :id"),
-    @NamedQuery(name = "EmployeeEvaluationRelation.findByemployeeClasification", query = "SELECT e FROM EmployeeEvaluationRelation e WHERE e.employeeClasification = :employeeClasification"),
-    @NamedQuery(name = "EmployeeEvaluationRelation.findByversion", query = "SELECT e FROM EmployeeEvaluationRelation e WHERE e.version = :version")})
+    @NamedQuery(name = "EmployeeEvaluationRelation.findById", query = "SELECT e FROM EmployeeEvaluationRelation e WHERE e.id = :id"),
+    @NamedQuery(name = "EmployeeEvaluationRelation.findByEmployeeClasification", query = "SELECT e FROM EmployeeEvaluationRelation e WHERE e.employeeClasification = :employeeClasification"),
+    @NamedQuery(name = "EmployeeEvaluationRelation.findByVersion", query = "SELECT e FROM EmployeeEvaluationRelation e WHERE e.version = :version")})
 public class EmployeeEvaluationRelation implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -73,7 +73,7 @@ public class EmployeeEvaluationRelation implements Serializable {
     public void updateEmployeeEvaluationRelation(EmployeeEvaluationRelationDto employeeEvaluationRelationDto) {
         this.id = employeeEvaluationRelationDto.getId();
         this.employeeClasification = employeeEvaluationRelationDto.getEmployeeClasification();
-        this.employeeEvaluated.updateEmployee(employeeEvaluationRelationDto.getEmployee());
+        this.employeeEvaluated.updateEmployee(employeeEvaluationRelationDto.getEmployeeEvaluated());
         this.evaluationJobRelation.updateEvaluationJobRelation(employeeEvaluationRelationDto.getEvaluationJobRelation());
     }
 

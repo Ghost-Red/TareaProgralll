@@ -11,7 +11,7 @@ package com.mycompany.tareaws.model;
 public class EmployeeDto {
 
     private Long id;
-    private String cedula;
+    private String identification;
     private String name;
     private String firstLastname;
     private String secondLastname;
@@ -33,7 +33,7 @@ public class EmployeeDto {
     public EmployeeDto(Employee employee) {
         this();
         this.id = employee.getId();
-        this.cedula = employee.getIdentification();
+        this.identification = employee.getIdentification();
         this.name = employee.getName();
         this.firstLastname = employee.getFirstLastname();
         this.secondLastname = employee.getSecondLastname();
@@ -54,12 +54,12 @@ public class EmployeeDto {
         this.id = id;
     }
 
-    public String getCedula() {
-        return cedula;
+    public String getIdentification() {
+        return identification;
     }
 
-    public void setCedula(String cedula) {
-        this.cedula = cedula;
+    public void setIdentification(String identification) {
+        this.identification = identification;
     }
 
     public String getName() {
@@ -168,7 +168,7 @@ public class EmployeeDto {
 
     @Override
     public String toString() {
-        return "EmployeeDto{" + "id=" + id + ", identification=" + cedula + ", name=" + name + ", firstLastname=" + firstLastname + ", secondLastname=" + secondLastname + ", email=" + email + ", password=" + password + ", phoneNumber=" + phoneNumber + ", cellphoneNumber=" + cellphoneNumber + ", adminState=" + adminState + ", activatedState=" + activatedState + ", forgotPasswordState=" + forgotPasswordState/*+ ", company=" + company + ", job=" + job + ", modificate="*/ + modificate + '}';
+        return "EmployeeDto{" + "id=" + id + ", identification=" + identification + ", name=" + name + ", firstLastname=" + firstLastname + ", secondLastname=" + secondLastname + ", email=" + email + ", password=" + password + ", phoneNumber=" + phoneNumber + ", cellphoneNumber=" + cellphoneNumber + ", adminState=" + adminState + ", activatedState=" + activatedState + ", forgotPasswordState=" + forgotPasswordState/*+ ", company=" + company + ", job=" + job + ", modificate="*/ + modificate + '}';
     }
 
 }

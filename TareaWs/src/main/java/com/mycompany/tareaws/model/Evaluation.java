@@ -30,12 +30,12 @@ import jakarta.persistence.Version;
 @Table(name = "EVALUATION")
 @NamedQueries({
     @NamedQuery(name = "Evaluation.findAll", query = "SELECT e FROM Evaluation e"),
-    @NamedQuery(name = "Evaluation.findByid", query = "SELECT e FROM Evaluation e WHERE e.id = :id"),
-    @NamedQuery(name = "Evaluation.findBytitle", query = "SELECT e FROM Evaluation e WHERE e.title = :title"),
-    @NamedQuery(name = "Evaluation.findBystartDate", query = "SELECT e FROM Evaluation e WHERE e.startDate = :startDate"),
-    @NamedQuery(name = "Evaluation.findByfinalDate", query = "SELECT e FROM Evaluation e WHERE e.finalDate = :finalDate"),
-    @NamedQuery(name = "Evaluation.findBystate", query = "SELECT e FROM Evaluation e WHERE e.state = :state"),
-    @NamedQuery(name = "Evaluation.findByversion", query = "SELECT e FROM Evaluation e WHERE e.version = :version")})
+    @NamedQuery(name = "Evaluation.findById", query = "SELECT e FROM Evaluation e WHERE e.id = :id"),
+    @NamedQuery(name = "Evaluation.findByTitle", query = "SELECT e FROM Evaluation e WHERE e.title = :title"),
+    @NamedQuery(name = "Evaluation.findByStartDate", query = "SELECT e FROM Evaluation e WHERE e.startDate = :startDate"),
+    @NamedQuery(name = "Evaluation.findByFinalDate", query = "SELECT e FROM Evaluation e WHERE e.finalDate = :finalDate"),
+    @NamedQuery(name = "Evaluation.findByState", query = "SELECT e FROM Evaluation e WHERE e.state = :state"),
+    @NamedQuery(name = "Evaluation.findByVersion", query = "SELECT e FROM Evaluation e WHERE e.version = :version")})
 public class Evaluation implements Serializable {
 
     private static final long serialVersionUID = 1L;

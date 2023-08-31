@@ -26,8 +26,8 @@ import jakarta.persistence.Version;
 @Table(name = "EVALUATION_JOB_RELATION")
 @NamedQueries({
     @NamedQuery(name = "EvaluationJobRelation.findAll", query = "SELECT e FROM EvaluationJobRelation e"),
-    @NamedQuery(name = "EvaluationJobRelation.findByid", query = "SELECT e FROM EvaluationJobRelation e WHERE e.id = :id"),
-    @NamedQuery(name = "EvaluationJobRelation.findByversion", query = "SELECT e FROM EvaluationJobRelation e WHERE e.version = :version")})
+    @NamedQuery(name = "EvaluationJobRelation.findById", query = "SELECT e FROM EvaluationJobRelation e WHERE e.id = :id"),
+    @NamedQuery(name = "EvaluationJobRelation.findByVersion", query = "SELECT e FROM EvaluationJobRelation e WHERE e.version = :version")})
 public class EvaluationJobRelation implements Serializable {
 
     private static final long serialVersionUID = 1L;

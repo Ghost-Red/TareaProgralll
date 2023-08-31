@@ -24,9 +24,9 @@ import jakarta.persistence.Version;
 @Table(name = "EMPLOYEE_AVERAGE_SKILL")
 @NamedQueries({
     @NamedQuery(name = "EmployeeAverageSkill.findAll", query = "SELECT e FROM EmployeeAverageSkill e"),
-    @NamedQuery(name = "EmployeeAverageSkill.findByid", query = "SELECT e FROM EmployeeAverageSkill e WHERE e.id = :id"),
-    @NamedQuery(name = "EmployeeAverageSkill.findByskillAverageLvl", query = "SELECT e FROM EmployeeAverageSkill e WHERE e.skillAverageLvl = :skillAverageLvl"),
-    @NamedQuery(name = "EmployeeAverageSkill.findByversion", query = "SELECT e FROM EmployeeAverageSkill e WHERE e.version = :version")})
+    @NamedQuery(name = "EmployeeAverageSkill.findById", query = "SELECT e FROM EmployeeAverageSkill e WHERE e.id = :id"),
+    @NamedQuery(name = "EmployeeAverageSkill.findBySkillAverageLvl", query = "SELECT e FROM EmployeeAverageSkill e WHERE e.skillAverageLvl = :skillAverageLvl"),
+    @NamedQuery(name = "EmployeeAverageSkill.findByVersion", query = "SELECT e FROM EmployeeAverageSkill e WHERE e.version = :version")})
 public class EmployeeAverageSkill implements Serializable {
 
     private static final long serialVersionUID = 1L;

@@ -12,7 +12,7 @@ public class EmployeeEvaluationRelationDto {
 
     private Long id;
     private Long employeeClasification;
-    private EmployeeDto employee;
+    private EmployeeDto employeeEvaluated;
     private EvaluationJobRelationDto evaluationJobRelation;
     private boolean modificate;
 
@@ -43,12 +43,12 @@ public class EmployeeEvaluationRelationDto {
         this.employeeClasification = employeeClasification;
     }
 
-    public EmployeeDto getEmployee() {
-        return employee;
+    public EmployeeDto getEmployeeEvaluated() {
+        return employeeEvaluated;
     }
 
-    public void setEmployee(EmployeeDto employee) {
-        this.employee = employee;
+    public void setEmployeeEvaluated(EmployeeDto employeeEvaluated) {
+        this.employeeEvaluated = employeeEvaluated;
     }
 
     public EvaluationJobRelationDto getEvaluationJobRelation() {
@@ -61,7 +61,7 @@ public class EmployeeEvaluationRelationDto {
 
     @Override
     public String toString() {
-        return "EmployeeEvaluationRelationDto{" + "id=" + id + ", employeeClasification=" + employeeClasification + ", id=" + employee + ", evaluationJobRelation=" + evaluationJobRelation + ", modificate=" + modificate + '}';
+        return "EmployeeEvaluationRelationDto{" + "id=" + id + ", employeeClasification=" + employeeClasification + ", id=" + employeeEvaluated + ", evaluationJobRelation=" + evaluationJobRelation + ", modificate=" + modificate + '}';
     }
 
 }

@@ -36,7 +36,7 @@ public class EmployeeAverageSkillService {
 
     public Respuesta getEmployeeAverageSkill(Long id) {
         try {
-            Query qryEmployeeAverageSkill = em.createNamedQuery("EmployeeAverageSkill.findByid", EmployeeAverageSkill.class);
+            Query qryEmployeeAverageSkill = em.createNamedQuery("EmployeeAverageSkill.findById", EmployeeAverageSkill.class);
             qryEmployeeAverageSkill.setParameter("id", id);
 
             EmployeeAverageSkill employeeAverageSkill = (EmployeeAverageSkill) qryEmployeeAverageSkill.getSingleResult();

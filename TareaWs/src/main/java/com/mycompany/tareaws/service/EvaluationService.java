@@ -37,7 +37,7 @@ public class EvaluationService {
 
     public Respuesta getEvaluation(Long id) {
         try {
-            Query qryEvaluation = em.createNamedQuery("Evaluation.findByid", Evaluation.class);
+            Query qryEvaluation = em.createNamedQuery("Evaluation.findById", Evaluation.class);
             qryEvaluation.setParameter("id", id);
             Evaluation evaluation = (Evaluation) qryEvaluation.getSingleResult();
             EvaluationDto evaluationDto = new EvaluationDto(evaluation);

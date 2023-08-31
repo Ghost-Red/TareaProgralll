@@ -29,10 +29,10 @@ import jakarta.persistence.Version;
 @Table(name = "JOB")
 @NamedQueries({
     @NamedQuery(name = "Job.findAll", query = "SELECT j FROM Job j"),
-    @NamedQuery(name = "Job.findByid", query = "SELECT j FROM Job j WHERE j.id = :id"),
-    @NamedQuery(name = "Job.findByname", query = "SELECT j FROM Job j WHERE j.name = :name"),
-    @NamedQuery(name = "Job.findByJobState", query = "SELECT j FROM Job j WHERE j.jobState = :jobState"),
-    @NamedQuery(name = "Job.findByversion", query = "SELECT j FROM Job j WHERE j.version = :version")})
+    @NamedQuery(name = "Job.findById", query = "SELECT j FROM Job j WHERE j.id = :id"),
+    @NamedQuery(name = "Job.findByName", query = "SELECT j FROM Job j WHERE j.name = :name"),
+    @NamedQuery(name = "Job.findByState", query = "SELECT j FROM Job j WHERE j.state = :state"),
+    @NamedQuery(name = "Job.findByVersion", query = "SELECT j FROM Job j WHERE j.version = :version")})
 public class Job implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -46,7 +46,7 @@ public class Job implements Serializable {
     private String name;
     @Basic(optional = false)
     @Column(name = "JOB_STATE")
-    private String jobState;
+    private String state;
     @Version
     @Column(name = "JOB_VERSION")
     private Long version;
@@ -70,10 +70,10 @@ public class Job implements Serializable {
         this.id = id;
     }
 
-    public Job(Long id, String name, String jobState, Long version) {
+    public Job(Long id, String name, String state, Long version) {
         this.id = id;
         this.name = name;
-        this.jobState = jobState;
+        this.state = state;
         this.version = version;
     }
 
@@ -85,7 +85,7 @@ public class Job implements Serializable {
     public void updateJob(JobDto jobDto) {
         this.id = jobDto.getId();
         this.name = jobDto.getName();
-        this.jobState = jobDto.getState();
+        this.state = jobDto.getState();
     }
 
     public Long getId() {
@@ -104,12 +104,12 @@ public class Job implements Serializable {
         this.name = name;
     }
 
-    public String getJobState() {
-        return jobState;
+    public String getState() {
+        return state;
     }
 
-    public void setJobState(String jobState) {
-        this.jobState = jobState;
+    public void setState(String state) {
+        this.state = state;
     }
 
     public Long getVersion() {

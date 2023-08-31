@@ -35,7 +35,7 @@ public class JobService {
 
     public Respuesta getJob(Long id) {
         try {
-            Query qryJob = em.createNamedQuery("Job.findByid", Job.class);
+            Query qryJob = em.createNamedQuery("Job.findById", Job.class);
             qryJob.setParameter("id", id);
 
             Job job = (Job) qryJob.getSingleResult();

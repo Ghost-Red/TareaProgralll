@@ -27,10 +27,10 @@ import jakarta.persistence.Version;
 @Table(name = "EMPLOYEE_EVALUATOR_RELATION")
 @NamedQueries({
     @NamedQuery(name = "EmployeeEvaluatorRelation.findAll", query = "SELECT e FROM EmployeeEvaluatorRelation e"),
-    @NamedQuery(name = "EmployeeEvaluatorRelation.findByid", query = "SELECT e FROM EmployeeEvaluatorRelation e WHERE e.id = :id"),
-    @NamedQuery(name = "EmployeeEvaluatorRelation.findByemployeeEvaluatorRelationType", query = "SELECT e FROM EmployeeEvaluatorRelation e WHERE e.employeeEvaluatorRelationType = :employeeEvaluatorRelationType"),
-    @NamedQuery(name = "EmployeeEvaluatorRelation.findByfeedback", query = "SELECT e FROM EmployeeEvaluatorRelation e WHERE e.feedback = :feedback"),
-    @NamedQuery(name = "EmployeeEvaluatorRelation.findByversion", query = "SELECT e FROM EmployeeEvaluatorRelation e WHERE e.version = :version")})
+    @NamedQuery(name = "EmployeeEvaluatorRelation.findById", query = "SELECT e FROM EmployeeEvaluatorRelation e WHERE e.id = :id"),
+    @NamedQuery(name = "EmployeeEvaluatorRelation.findByEmployeeEvaluatorRelationType", query = "SELECT e FROM EmployeeEvaluatorRelation e WHERE e.employeeEvaluatorRelationType = :employeeEvaluatorRelationType"),
+    @NamedQuery(name = "EmployeeEvaluatorRelation.findByFeedback", query = "SELECT e FROM EmployeeEvaluatorRelation e WHERE e.feedback = :feedback"),
+    @NamedQuery(name = "EmployeeEvaluatorRelation.findByVersion", query = "SELECT e FROM EmployeeEvaluatorRelation e WHERE e.version = :version")})
 public class EmployeeEvaluatorRelation implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -83,10 +83,10 @@ public class EmployeeEvaluatorRelation implements Serializable {
     }
 
     public void updateEmployeeEvaluatorRelation(EmployeeEvaluatorRelationDto employeeEvaluatorRelationDto) {
-        this.employeeEvaluatorRelationType = employeeEvaluatorRelationDto.getRelationType();
+        this.employeeEvaluatorRelationType = employeeEvaluatorRelationDto.getEmployeeEvaluatorRelationType();
         this.feedback = employeeEvaluatorRelationDto.getFeedback();
-        this.employeeEvaluator.updateEmployee(employeeEvaluatorRelationDto.getEmployee());
-        this.employeeEvaluated.updateEmployeeEvaluationRelation(employeeEvaluatorRelationDto.getEmployeeEvaluationRelation());
+        this.employeeEvaluator.updateEmployee(employeeEvaluatorRelationDto.getEmployeeEvaluator());
+        this.employeeEvaluated.updateEmployeeEvaluationRelation(employeeEvaluatorRelationDto.getEmployeeEvaluated());
     }
 
     public Long getId() {

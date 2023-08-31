@@ -27,21 +27,21 @@ import jakarta.persistence.Version;
 @Table(name = "EMPLOYEE")
 @NamedQueries({
     @NamedQuery(name = "Employee.findAll", query = "SELECT e FROM Employee e"),
-    @NamedQuery(name = "Employee.findByid", query = "SELECT e FROM Employee e WHERE e.id = :id"),
-    @NamedQuery(name = "Employee.findByidentification", query = "SELECT e FROM Employee e WHERE e.identification = :identification"),
-    @NamedQuery(name = "Employee.findByname", query = "SELECT e FROM Employee e WHERE e.name = :name"),
-    @NamedQuery(name = "Employee.findByfirstLastname", query = "SELECT e FROM Employee e WHERE e.firstLastname = :firstLastname"),
-    @NamedQuery(name = "Employee.findBysecondLastname", query = "SELECT e FROM Employee e WHERE e.secondLastname = :secondLastname"),
-    @NamedQuery(name = "Employee.findByemail", query = "SELECT e FROM Employee e WHERE e.email = :email"),
-    @NamedQuery(name = "Employee.findBypassword", query = "SELECT e FROM Employee e WHERE e.password = :password"),
-    @NamedQuery(name = "Employee.findByphoneNumber", query = "SELECT e FROM Employee e WHERE e.phoneNumber = :phoneNumber"),
-    @NamedQuery(name = "Employee.findBycellphoneNumber", query = "SELECT e FROM Employee e WHERE e.cellphoneNumber = :cellphoneNumber"),
-    @NamedQuery(name = "Employee.findByadminState", query = "SELECT e FROM Employee e WHERE e.adminState = :adminState"),
-    @NamedQuery(name = "Employee.findByactivatedState", query = "SELECT e FROM Employee e WHERE e.activatedState = :activatedState"),
-    @NamedQuery(name = "Employee.findByforgotPasswordState", query = "SELECT e FROM Employee e WHERE e.forgotPasswordState = :forgotPasswordState"),
-    @NamedQuery(name = "Employee.findByversion", query = "SELECT e FROM Employee e WHERE e.version = :version"),
+    @NamedQuery(name = "Employee.findById", query = "SELECT e FROM Employee e WHERE e.id = :id"),
+    @NamedQuery(name = "Employee.findByIdentification", query = "SELECT e FROM Employee e WHERE e.identification = :identification"),
+    @NamedQuery(name = "Employee.findByName", query = "SELECT e FROM Employee e WHERE e.name = :name"),
+    @NamedQuery(name = "Employee.findByFirstLastname", query = "SELECT e FROM Employee e WHERE e.firstLastname = :firstLastname"),
+    @NamedQuery(name = "Employee.findBySecondLastname", query = "SELECT e FROM Employee e WHERE e.secondLastname = :secondLastname"),
+    @NamedQuery(name = "Employee.findByEmail", query = "SELECT e FROM Employee e WHERE e.email = :email"),
+    @NamedQuery(name = "Employee.findByPassword", query = "SELECT e FROM Employee e WHERE e.password = :password"),
+    @NamedQuery(name = "Employee.findByPhoneNumber", query = "SELECT e FROM Employee e WHERE e.phoneNumber = :phoneNumber"),
+    @NamedQuery(name = "Employee.findByCellphoneNumber", query = "SELECT e FROM Employee e WHERE e.cellphoneNumber = :cellphoneNumber"),
+    @NamedQuery(name = "Employee.findByAdminState", query = "SELECT e FROM Employee e WHERE e.adminState = :adminState"),
+    @NamedQuery(name = "Employee.findByActivatedState", query = "SELECT e FROM Employee e WHERE e.activatedState = :activatedState"),
+    @NamedQuery(name = "Employee.findByForgotPasswordState", query = "SELECT e FROM Employee e WHERE e.forgotPasswordState = :forgotPasswordState"),
+    @NamedQuery(name = "Employee.findByVersion", query = "SELECT e FROM Employee e WHERE e.version = :version"),
     @NamedQuery(name = "Employee.findByCedulaNameFirstLastName", query = "SELECT e FROM Employee e WHERE UPPER(e.name) like :name and UPPER(e.identification) like :identification and UPPER(e.firstLastname) like :firstLastname"),
-    @NamedQuery(name = "Employee.findByemailPassword", query = "SELECT e FROM Employee e WHERE e.email = :email and e.password = :password")})
+    @NamedQuery(name = "Employee.findByEmailPassword", query = "SELECT e FROM Employee e WHERE e.email = :email and e.password = :password")})
 public class Employee implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -127,7 +127,7 @@ public class Employee implements Serializable {
 
     public void updateEmployee(EmployeeDto employee) {
         this.id = employee.getId();
-        this.identification = employee.getCedula();
+        this.identification = employee.getIdentification();
         this.name = employee.getName();
         this.firstLastname = employee.getFirstLastname();
         this.secondLastname = employee.getSecondLastname();

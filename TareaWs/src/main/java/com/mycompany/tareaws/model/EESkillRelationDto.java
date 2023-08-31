@@ -13,7 +13,7 @@ public class EESkillRelationDto {
     private Long id;
     private Long skillClasification;
     private EmployeeEvaluatorRelationDto employeeEvaluatorRelation;
-    private SkillDto skill;
+    private SkillDto evaluatedSkill;
     private boolean modificate;
 
     public EESkillRelationDto() {
@@ -50,17 +50,17 @@ public class EESkillRelationDto {
         this.employeeEvaluatorRelation = employeeEvaluatorRelation;
     }
 
-    public SkillDto getSkill() {
-        return skill;
+    public SkillDto getEvaluatedSkill() {
+        return evaluatedSkill;
     }
 
-    public void setSkill(SkillDto skill) {
-        this.skill = skill;
+    public void setEvaluatedSkill(SkillDto evaluatedSkill) {
+        this.evaluatedSkill = evaluatedSkill;
     }
 
     @Override
     public String toString() {
-        return "EESkillRelationDto{" + "id=" + id + ", skillClasification=" + skillClasification + ", employeeEvaluatorRelation=" + employeeEvaluatorRelation + ", evaluatedSkill=" + skill + ", modificate=" + modificate + '}';
+        return "EESkillRelationDto{" + "id=" + id + ", skillClasification=" + skillClasification + ", employeeEvaluatorRelation=" + employeeEvaluatorRelation + ", evaluatedSkill=" + evaluatedSkill + ", modificate=" + modificate + '}';
     }
 
 }

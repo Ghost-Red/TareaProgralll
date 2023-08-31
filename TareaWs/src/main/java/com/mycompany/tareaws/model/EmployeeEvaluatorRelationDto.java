@@ -11,10 +11,10 @@ package com.mycompany.tareaws.model;
 public class EmployeeEvaluatorRelationDto {
 
     private Long id;
-    private String relationType;
+    private String employeeEvaluatorRelationType;
     private String feedback;
-    private EmployeeDto employee;
-    private EmployeeEvaluationRelationDto employeeEvaluationRelation;
+    private EmployeeDto employeeEvaluator;
+    private EmployeeEvaluationRelationDto employeeEvaluated;
     private boolean modificate;
 
     public EmployeeEvaluatorRelationDto() {
@@ -24,15 +24,15 @@ public class EmployeeEvaluatorRelationDto {
     public EmployeeEvaluatorRelationDto(EmployeeEvaluatorRelation employeeEvaluatorRelation) {
         this();
         this.id = employeeEvaluatorRelation.getId();
-        this.relationType = employeeEvaluatorRelation.getEmployeeEvaluatorRelationType();
+        this.employeeEvaluatorRelationType = employeeEvaluatorRelation.getEmployeeEvaluatorRelationType();
         this.feedback = employeeEvaluatorRelation.getFeedback();
-        this.employee = new EmployeeDto(employeeEvaluatorRelation.getEmployeeEvaluator());
-        this.employeeEvaluationRelation = new EmployeeEvaluationRelationDto(employeeEvaluatorRelation.getEmployeeEvaluated());
+        this.employeeEvaluator = new EmployeeDto(employeeEvaluatorRelation.getEmployeeEvaluator());
+        this.employeeEvaluated = new EmployeeEvaluationRelationDto(employeeEvaluatorRelation.getEmployeeEvaluated());
     }
 
     public void updateEmployeeEvaluatorRelationDto(EmployeeEvaluatorRelation employeeEvaluatorRelation) {
         this.id = employeeEvaluatorRelation.getId();
-        this.relationType = employeeEvaluatorRelation.getEmployeeEvaluatorRelationType();
+        this.employeeEvaluatorRelationType = employeeEvaluatorRelation.getEmployeeEvaluatorRelationType();
         this.feedback = employeeEvaluatorRelation.getFeedback();
     }
 
@@ -44,12 +44,12 @@ public class EmployeeEvaluatorRelationDto {
         this.id = id;
     }
 
-    public String getRelationType() {
-        return relationType;
+    public String getEmployeeEvaluatorRelationType() {
+        return employeeEvaluatorRelationType;
     }
 
-    public void setRelationType(String relationType) {
-        this.relationType = relationType;
+    public void setEmployeeEvaluatorRelationType(String employeeEvaluatorRelationType) {
+        this.employeeEvaluatorRelationType = employeeEvaluatorRelationType;
     }
 
     public String getFeedback() {
@@ -60,25 +60,25 @@ public class EmployeeEvaluatorRelationDto {
         this.feedback = feedback;
     }
 
-    public EmployeeDto getEmployee() {
-        return employee;
+    public EmployeeDto getEmployeeEvaluator() {
+        return employeeEvaluator;
     }
 
-    public void setEmployee(EmployeeDto employee) {
-        this.employee = employee;
+    public void setEmployeeEvaluator(EmployeeDto employeeEvaluator) {
+        this.employeeEvaluator = employeeEvaluator;
     }
 
-    public EmployeeEvaluationRelationDto getEmployeeEvaluationRelation() {
-        return employeeEvaluationRelation;
+    public EmployeeEvaluationRelationDto getEmployeeEvaluated() {
+        return employeeEvaluated;
     }
 
-    public void setEmployeeEvaluationRelation(EmployeeEvaluationRelationDto employeeEvaluationRelation) {
-        this.employeeEvaluationRelation = employeeEvaluationRelation;
+    public void setEmployeeEvaluated(EmployeeEvaluationRelationDto employeeEvaluated) {
+        this.employeeEvaluated = employeeEvaluated;
     }
 
     @Override
     public String toString() {
-        return "EmployeeEvaluatorRelationDto{" + "id=" + id + ", employeeEvaluatorRelationType=" + relationType + ", feedback=" + feedback + ", id=" + employee + ", employeeEvaluated=" + employeeEvaluationRelation + ", modificate=" + modificate + '}';
+        return "EmployeeEvaluatorRelationDto{" + "id=" + id + ", employeeEvaluatorRelationType=" + employeeEvaluatorRelationType + ", feedback=" + feedback + ", id=" + employeeEvaluator + ", employeeEvaluated=" + employeeEvaluated + ", modificate=" + modificate + '}';
     }
 
 }

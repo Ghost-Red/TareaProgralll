@@ -36,11 +36,11 @@ public class EmployeeEvaluationRelationService {
 
     public Respuesta getEmployeeEvaluationRelation(Long id) {
         try {
-            Query qryEmployeeEvaluationRelation = em.createNamedQuery("EmployeeEvaluationRelation.findByid", EmployeeEvaluationRelation.class);
+            Query qryEmployeeEvaluationRelation = em.createNamedQuery("EmployeeEvaluationRelation.findById", EmployeeEvaluationRelation.class);
             qryEmployeeEvaluationRelation.setParameter("id", id);
             EmployeeEvaluationRelation employeeEvaluationRelation = (EmployeeEvaluationRelation) qryEmployeeEvaluationRelation.getSingleResult();
             EmployeeEvaluationRelationDto employeeEvaluationRelationDto = new EmployeeEvaluationRelationDto(employeeEvaluationRelation);
-            employeeEvaluationRelationDto.setEmployee(new EmployeeDto(employeeEvaluationRelation.getEmployeeEvaluated()));
+            employeeEvaluationRelationDto.setEmployeeEvaluated(new EmployeeDto(employeeEvaluationRelation.getEmployeeEvaluated()));
             employeeEvaluationRelationDto.setEvaluationJobRelation(new EvaluationJobRelationDto(employeeEvaluationRelation.getEvaluationJobRelation()));
             return new Respuesta(true, CodigoRespuesta.CORRECTO, "", "", "EmployeeEvaluationRelation", employeeEvaluationRelationDto);
         } catch (NoResultException ex) {

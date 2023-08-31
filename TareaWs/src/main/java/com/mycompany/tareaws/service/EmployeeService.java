@@ -37,7 +37,7 @@ public class EmployeeService {
   
     public Respuesta getEmployee(Long id) {
         try {
-            Query qryEmployee = em.createNamedQuery("Employee.findByid", Employee.class);
+            Query qryEmployee = em.createNamedQuery("Employee.findById", Employee.class);
             qryEmployee.setParameter("id", id);
             return new Respuesta(true, CodigoRespuesta.CORRECTO, "", "", "Employee", new EmployeeDto((Employee) qryEmployee.getSingleResult()));
 

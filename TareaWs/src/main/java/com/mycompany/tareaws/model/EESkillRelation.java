@@ -24,9 +24,9 @@ import jakarta.persistence.Version;
 @Table(name = "EE_SKILL_RELATION")
 @NamedQueries({
     @NamedQuery(name = "EESkillRelation.findAll", query = "SELECT e FROM EESkillRelation e"),
-    @NamedQuery(name = "EESkillRelation.findByid", query = "SELECT e FROM EESkillRelation e WHERE e.id = :id"),
-    @NamedQuery(name = "EESkillRelation.findByskillClasification", query = "SELECT e FROM EESkillRelation e WHERE e.skillClasification = :skillClasification"),
-    @NamedQuery(name = "EESkillRelation.findByversion", query = "SELECT e FROM EESkillRelation e WHERE e.version = :version")})
+    @NamedQuery(name = "EESkillRelation.findById", query = "SELECT e FROM EESkillRelation e WHERE e.id = :id"),
+    @NamedQuery(name = "EESkillRelation.findBySkillClasification", query = "SELECT e FROM EESkillRelation e WHERE e.skillClasification = :skillClasification"),
+    @NamedQuery(name = "EESkillRelation.findByVersion", query = "SELECT e FROM EESkillRelation e WHERE e.version = :version")})
 public class EESkillRelation implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -67,7 +67,7 @@ public class EESkillRelation implements Serializable {
         this.id = eESkillRelationDto.getId();
         this.skillClasification = eESkillRelationDto.getSkillClasification();
         this.employeeEvaluatorRelation.updateEmployeeEvaluatorRelation(eESkillRelationDto.getEmployeeEvaluatorRelation());
-        this.evaluatedSkill.updateSkill(eESkillRelationDto.getSkill());
+        this.evaluatedSkill.updateSkill(eESkillRelationDto.getEvaluatedSkill());
     }
 
     public Long getId() {
