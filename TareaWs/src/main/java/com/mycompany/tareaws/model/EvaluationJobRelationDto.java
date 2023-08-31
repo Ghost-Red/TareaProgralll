@@ -22,7 +22,7 @@ public class EvaluationJobRelationDto {
 
     public EvaluationJobRelationDto(EvaluationJobRelation evaluationJobRelation) {
         this();
-        this.id = evaluationJobRelation.getid();
+        this.id = evaluationJobRelation.getId();
     }
 
     public Long getId() {

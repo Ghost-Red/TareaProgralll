@@ -38,12 +38,12 @@ public class EvaluationJobRelationService {
         try {
             Query qryEvaluationJobRelation = em.createNamedQuery("EvaluationJobRelation.findByid", EvaluationJobRelation.class);
             qryEvaluationJobRelation.setParameter("id", id);
-            
+
             EvaluationJobRelation evaluationJobRelation = (EvaluationJobRelation) qryEvaluationJobRelation.getSingleResult();
             EvaluationJobRelationDto evaluationJobRelationDto = new EvaluationJobRelationDto(evaluationJobRelation);
             evaluationJobRelationDto.setEvaluation(new EvaluationDto(evaluationJobRelation.getEvaluation()));
-            evaluationJobRelationDto.setJob(new JobDto(evaluationJobRelation.getjob()));
-            
+            evaluationJobRelationDto.setJob(new JobDto(evaluationJobRelation.getJob()));
+
             return new Respuesta(true, CodigoRespuesta.CORRECTO, "", "", "EvaluationJobRelation", evaluationJobRelationDto);
 
         } catch (NoResultException ex) {

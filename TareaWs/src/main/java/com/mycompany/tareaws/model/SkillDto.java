@@ -23,10 +23,10 @@ public class SkillDto {
 
     public SkillDto(Skill skill) {
         this();
-        this.id = skill.getid();
-        this.name = skill.getname();
-        this.description = skill.getdescription();
-        this.state = skill.getstate();
+        this.id = skill.getId();
+        this.name = skill.getName();
+        this.description = skill.getDescription();
+        this.state = skill.getState();
     }
 
     public Long getId() {

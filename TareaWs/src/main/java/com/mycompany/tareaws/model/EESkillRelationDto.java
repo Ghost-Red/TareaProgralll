@@ -22,8 +22,8 @@ public class EESkillRelationDto {
 
     public EESkillRelationDto(EESkillRelation eESkillRelation) {
         this();
-        this.id = eESkillRelation.getid();
-        this.skillClasification = eESkillRelation.getskillClasification();
+        this.id = eESkillRelation.getId();
+        this.skillClasification = eESkillRelation.getSkillClasification();
     }
 
     public Long getId() {

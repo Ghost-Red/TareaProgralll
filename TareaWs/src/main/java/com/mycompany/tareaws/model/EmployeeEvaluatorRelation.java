@@ -89,43 +89,43 @@ public class EmployeeEvaluatorRelation implements Serializable {
         this.employeeEvaluated.updateEmployeeEvaluationRelation(employeeEvaluatorRelationDto.getEmployeeEvaluationRelation());
     }
 
-    public Long getid() {
+    public Long getId() {
         return id;
     }
 
-    public void setid(Long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public String getemployeeEvaluatorRelationType() {
+    public String getEmployeeEvaluatorRelationType() {
         return employeeEvaluatorRelationType;
     }
 
-    public void setemployeeEvaluatorRelationType(String employeeEvaluatorRelationType) {
+    public void setEmployeeEvaluatorRelationType(String employeeEvaluatorRelationType) {
         this.employeeEvaluatorRelationType = employeeEvaluatorRelationType;
     }
 
-    public String getfeedback() {
+    public String getFeedback() {
         return feedback;
     }
 
-    public void setfeedback(String feedback) {
+    public void setFeedback(String feedback) {
         this.feedback = feedback;
     }
 
-    public Long getversion() {
+    public Long getVersion() {
         return version;
     }
 
-    public void setversion(Long version) {
+    public void setVersion(Long version) {
         this.version = version;
     }
 
-    public List<EESkillRelation> getskillsEvaluatedList() {
+    public List<EESkillRelation> getSkillsEvaluatedList() {
         return skillsEvaluatedList;
     }
 
-    public void setskillsEvaluatedList(List<EESkillRelation> skillsEvaluatedList) {
+    public void setSkillsEvaluatedList(List<EESkillRelation> skillsEvaluatedList) {
         this.skillsEvaluatedList = skillsEvaluatedList;
     }
 
@@ -133,15 +133,15 @@ public class EmployeeEvaluatorRelation implements Serializable {
         return employeeEvaluator;
     }
 
-    public void setid(Employee employeeEvaluator) {
+    public void setEmployeeEvaluator(Employee employeeEvaluator) {
         this.employeeEvaluator = employeeEvaluator;
     }
 
-    public EmployeeEvaluationRelation getemployeeEvaluated() {
+    public EmployeeEvaluationRelation getEmployeeEvaluated() {
         return employeeEvaluated;
     }
 
-    public void setemployeeEvaluated(EmployeeEvaluationRelation employeeEvaluated) {
+    public void setEmployeeEvaluated(EmployeeEvaluationRelation employeeEvaluated) {
         this.employeeEvaluated = employeeEvaluated;
     }
 

@@ -87,43 +87,43 @@ public class Skill implements Serializable {
         this.state = skill.getState();
     }
 
-    public Long getid() {
+    public Long getId() {
         return id;
     }
 
-    public void setid(Long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public Long getversion() {
+    public Long getVersion() {
         return version;
     }
 
-    public void setversion(Long version) {
+    public void setVersion(Long version) {
         this.version = version;
     }
 
-    public String getname() {
+    public String getName() {
         return name;
     }
 
-    public void setname(String name) {
+    public void setName(String name) {
         this.name = name;
     }
 
-    public String getdescription() {
+    public String getDescription() {
         return description;
     }
 
-    public void setdescription(String description) {
+    public void setDescription(String description) {
         this.description = description;
     }
 
-    public String getstate() {
+    public String getState() {
         return state;
     }
 
-    public void setstate(String state) {
+    public void setState(String state) {
         this.state = state;
     }
 
@@ -135,19 +135,19 @@ public class Skill implements Serializable {
         this.jobList = jobList;
     }
 
-    public List<EESkillRelation> getskillsEvaluatedList() {
+    public List<EESkillRelation> getSkillsEvaluatedList() {
         return skillsEvaluatedList;
     }
 
-    public void setskillsEvaluatedList(List<EESkillRelation> skillsEvaluatedList) {
+    public void setSkillsEvaluatedList(List<EESkillRelation> skillsEvaluatedList) {
         this.skillsEvaluatedList = skillsEvaluatedList;
     }
 
-    public Company getcompany() {
+    public Company getCompany() {
         return company;
     }
 
-    public void setcompany(Company company) {
+    public void setCompany(Company company) {
         this.company = company;
     }
 

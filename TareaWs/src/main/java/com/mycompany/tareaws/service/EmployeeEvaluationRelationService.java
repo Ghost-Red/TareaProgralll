@@ -38,14 +38,14 @@ public class EmployeeEvaluationRelationService {
         try {
             Query qryEmployeeEvaluationRelation = em.createNamedQuery("EmployeeEvaluationRelation.findByid", EmployeeEvaluationRelation.class);
             qryEmployeeEvaluationRelation.setParameter("id", id);
-            
+
             EmployeeEvaluationRelation employeeEvaluationRelation = (EmployeeEvaluationRelation) qryEmployeeEvaluationRelation.getSingleResult();
             EmployeeEvaluationRelationDto employeeEvaluationRelationDto = new EmployeeEvaluationRelationDto(employeeEvaluationRelation);
             employeeEvaluationRelationDto.setEmployee(new EmployeeDto(employeeEvaluationRelation.getEmployeeEvaluated()));
-            employeeEvaluationRelationDto.setEvaluationJobRelation( new EvaluationJobRelationDto(employeeEvaluationRelation.getevaluationJobRelation()));
-            
+            employeeEvaluationRelationDto.setEvaluationJobRelation(new EvaluationJobRelationDto(employeeEvaluationRelation.getEvaluationJobRelation()));
+
             return new Respuesta(true, CodigoRespuesta.CORRECTO, "", "", "EmployeeEvaluationRelation", employeeEvaluationRelationDto);
-            
+
         } catch (NoResultException ex) {
             return new Respuesta(false, CodigoRespuesta.ERROR_NOENCONTRADO, "No existe una EmployeeEvaluationRelation con el código ingresado.", "getEmployeeEvaluationRelation NoResultException");
         } catch (NonUniqueResultException ex) {

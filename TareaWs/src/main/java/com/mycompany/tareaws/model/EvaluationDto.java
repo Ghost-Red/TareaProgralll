@@ -26,11 +26,11 @@ public class EvaluationDto {
 
     public EvaluationDto(Evaluation evaluation) {
         this();
-        this.id = evaluation.getid();
-        this.title = evaluation.gettitle();
-        this.startDate = evaluation.getstartDate();
-        this.finalDate = evaluation.getfinalDate();
-        this.state = evaluation.getstate();
+        this.id = evaluation.getId();
+        this.title = evaluation.getTitle();
+        this.startDate = evaluation.getStartDate();
+        this.finalDate = evaluation.getFinalDate();
+        this.state = evaluation.getState();
     }
 
     public Long getId() {

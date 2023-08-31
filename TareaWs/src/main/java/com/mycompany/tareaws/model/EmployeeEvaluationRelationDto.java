@@ -22,8 +22,8 @@ public class EmployeeEvaluationRelationDto {
 
     public EmployeeEvaluationRelationDto(EmployeeEvaluationRelation employeeEvaluationRelation) {
         this();
-        this.id = employeeEvaluationRelation.getid();
-        this.employeeClasification = employeeEvaluationRelation.getemployeeClasification();
+        this.id = employeeEvaluationRelation.getId();
+        this.employeeClasification = employeeEvaluationRelation.getEmployeeClasification();
     }
 
     public Long getId() {

@@ -37,11 +37,11 @@ public class SkillService {
         try {
             Query qrySkill = em.createNamedQuery("Skill.findByid", Skill.class);
             qrySkill.setParameter("id", id);
-            
+
             Skill skill = (Skill) qrySkill.getSingleResult();
             SkillDto skillDto = new SkillDto(skill);
-            skillDto.setCompany(new CompanyDto(skill.getcompany()));
-            
+            skillDto.setCompany(new CompanyDto(skill.getCompany()));
+
             return new Respuesta(true, CodigoRespuesta.CORRECTO, "", "", "Skill", skillDto);
 
         } catch (NoResultException ex) {

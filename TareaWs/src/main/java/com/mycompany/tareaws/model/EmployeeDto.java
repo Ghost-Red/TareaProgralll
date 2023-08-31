@@ -32,18 +32,18 @@ public class EmployeeDto {
 
     public EmployeeDto(Employee employee) {
         this();
-        this.id = employee.getid();
-        this.cedula = employee.getidentification();
-        this.name = employee.getname();
-        this.firstLastname = employee.getfirstLastname();
-        this.secondLastname = employee.getsecondLastname();
-        this.email = employee.getemail();
-        this.password = employee.getpassword();
-        this.phoneNumber = employee.getphoneNumber();
-        this.cellphoneNumber = employee.getcellphoneNumber();
-        this.adminState = employee.getadminState();
-        this.activatedState = employee.getactivatedState();
-        this.forgotPasswordState = employee.getforgotPasswordState();
+        this.id = employee.getId();
+        this.cedula = employee.getIdentification();
+        this.name = employee.getName();
+        this.firstLastname = employee.getFirstLastname();
+        this.secondLastname = employee.getSecondLastname();
+        this.email = employee.getEmail();
+        this.password = employee.getPassword();
+        this.phoneNumber = employee.getPhoneNumber();
+        this.cellphoneNumber = employee.getCellphoneNumber();
+        this.adminState = employee.getAdminState();
+        this.activatedState = employee.getActivatedState();
+        this.forgotPasswordState = employee.getForgotPasswordState();
     }
 
     public Long getId() {

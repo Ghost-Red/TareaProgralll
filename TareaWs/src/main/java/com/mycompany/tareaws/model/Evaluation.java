@@ -59,7 +59,7 @@ public class Evaluation implements Serializable {
     @Version
     @Column(name = "EVA_VERSION")
     private Long version;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "id")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "evaluation")
     private List<EvaluationJobRelation> evaluationJobRelationList;
     @JoinColumn(name = "EVA_COM_ID", referencedColumnName = "COM_ID")
     @ManyToOne(optional = false)
@@ -93,52 +93,60 @@ public class Evaluation implements Serializable {
         this.company.updateCompany(evaluation.getCompany());
     }
 
-    public Long getid() {
+    public Long getId() {
         return id;
     }
 
-    public void setid(Long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public String gettitle() {
+    public String getTitle() {
         return title;
     }
 
-    public void settitle(String title) {
+    public void setTitle(String title) {
         this.title = title;
     }
 
-    public Date getstartDate() {
+    public Date getStartDate() {
         return startDate;
     }
 
-    public void setstartDate(Date startDate) {
+    public void setStartDate(Date startDate) {
         this.startDate = startDate;
     }
 
-    public Date getfinalDate() {
+    public Date getFinalDate() {
         return finalDate;
     }
 
-    public void setfinalDate(Date finalDate) {
+    public void setFinalDate(Date finalDate) {
         this.finalDate = finalDate;
     }
 
-    public String getstate() {
+    public String getState() {
         return state;
     }
 
-    public void setstate(String state) {
+    public void setState(String state) {
         this.state = state;
     }
 
-    public Long getversion() {
+    public Long getVersion() {
         return version;
     }
 
-    public void setversion(Long version) {
+    public void setVersion(Long version) {
         this.version = version;
+    }
+
+    public Company getCompany() {
+        return company;
+    }
+
+    public void setCompany(Company company) {
+        this.company = company;
     }
 
     public List<EvaluationJobRelation> getEvaluationJobRelationList() {

@@ -42,7 +42,7 @@ public class EvaluationService {
             Evaluation evaluation = (Evaluation) qryEvaluation.getSingleResult();
             EvaluationDto evaluationDto = new EvaluationDto(evaluation);
             evaluationDto.setCompany(new CompanyDto(evaluation.getcompany()));
-            
+
             return new Respuesta(true, CodigoRespuesta.CORRECTO, "", "", "Evaluation", evaluationDto);
 
         } catch (NoResultException ex) {

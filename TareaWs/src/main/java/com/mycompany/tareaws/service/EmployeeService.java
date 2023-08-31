@@ -36,38 +36,6 @@ public class EmployeeService {
     @PersistenceContext(unitName = "TareaWsPU")
     private EntityManager em;
 
-    public Respuesta validateUser(String email, String password) {
-        try {
-            Query qryActivity = em.createNamedQuery("Employee.findByemailPassword", Employee.class);
-            qryActivity.setParameter("email", email);
-            qryActivity.setParameter("password", password);
-            
-            Employee employee = (Employee)qryActivity.getSingleResult();
-            EmployeeDto employeeDto = new EmployeeDto(employee);
-            employeeDto.setCompany(new CompanyDto(employee.getcompany()));
-            employeeDto.setJob(new JobDto(employee.getjob()));
-            
-            return new Respuesta(true, CodigoRespuesta.CORRECTO, "", "", "Employee", employeeDto);
-
-        } catch (NoResultException ex) {
-            return new Respuesta(false, CodigoRespuesta.ERROR_NOENCONTRADO, "No existe un usuario con las credenciales ingresadas.", "validarUsuario NoResultException");
-        } catch (NonUniqueResultException ex) {
-            LOG.log(Level.SEVERE, "Ocurrio un error al consultar el usuario.", ex);
-            return new Respuesta(false, CodigoRespuesta.ERROR_INTERNO, "Ocurrio un error al consultar el usuario.", "validarUsuario NonUniqueResultException");
-        } catch (Exception ex) {
-            LOG.log(Level.SEVERE, "Ocurrio un error al consultar el usuario.", ex);
-            return new Respuesta(false, CodigoRespuesta.ERROR_INTERNO, "Ocurrio un error al consultar el usuario.", "validarUsuario " + ex.getMessage());
-        }
-    }
-
-    /*
-    public EmployeeDto getEmployee(Long id){
-            Query qryEmployee = em.createNamedQuery("Employee.findByid", Employee.class);
-            qryEmployee.setParameter("id", id);
-            EmployeeDto abc = new EmployeeDto((Employee) qryEmployee.getSingleResult());
-            return abc;
-    }
-     */
     public Respuesta getEmployee(Long id) {
         try {
             Query qryEmployee = em.createNamedQuery("Employee.findByid", Employee.class);
@@ -82,29 +50,6 @@ public class EmployeeService {
         } catch (Exception ex) {
             LOG.log(Level.SEVERE, "Ocurrio un error al consultar el empleado.", ex);
             return new Respuesta(false, CodigoRespuesta.ERROR_INTERNO, "Ocurrio un error al consultar el empleado.", "getEmployee " + ex.getMessage());
-        }
-    }
-
-    public Respuesta getEmployees(String cedula, String name, String firstLastName) {
-        try {
-            Query qryEmployee = em.createNamedQuery("Employee.findByCedulaNameFirstLastName", Employee.class);
-            qryEmployee.setParameter("identification", cedula);
-            qryEmployee.setParameter("name", name);
-            qryEmployee.setParameter("firstLastname", firstLastName);
-
-            List<Employee> employees = qryEmployee.getResultList();
-            List<EmployeeDto> employeesDto = new ArrayList<>();
-            for (Employee empleado : employees) {
-                employeesDto.add(new EmployeeDto(empleado));
-            }
-
-            return new Respuesta(true, CodigoRespuesta.CORRECTO, "", "", "Empleados", employeesDto);
-
-        } catch (NoResultException ex) {
-            return new Respuesta(false, CodigoRespuesta.ERROR_NOENCONTRADO, "No existen empleados con los criterios ingresados.", "getEmpleados NoResultException");
-        } catch (Exception ex) {
-            LOG.log(Level.SEVERE, "Ocurrio un error al consultar el empleado.", ex);
-            return new Respuesta(false, CodigoRespuesta.ERROR_INTERNO, "Ocurrio un error al consultar el empleado.", "getEmpleado " + ex.getMessage());
         }
     }
 

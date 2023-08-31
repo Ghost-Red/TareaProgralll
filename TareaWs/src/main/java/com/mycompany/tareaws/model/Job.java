@@ -88,19 +88,19 @@ public class Job implements Serializable {
         this.jobState = jobDto.getState();
     }
 
-    public Long getid() {
+    public Long getId() {
         return id;
     }
 
-    public void setid(Long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public String getname() {
+    public String getName() {
         return name;
     }
 
-    public void setname(String name) {
+    public void setName(String name) {
         this.name = name;
     }
 
@@ -112,11 +112,11 @@ public class Job implements Serializable {
         this.jobState = jobState;
     }
 
-    public Long getversion() {
+    public Long getVersion() {
         return version;
     }
 
-    public void setversion(Long version) {
+    public void setVersion(Long version) {
         this.version = version;
     }
 
@@ -144,11 +144,11 @@ public class Job implements Serializable {
         this.employeeList = employeeList;
     }
 
-    public Company getcompany() {
+    public Company getCompany() {
         return company;
     }
 
-    public void setcompany(Company company) {
+    public void setCompany(Company company) {
         this.company = company;
     }
 

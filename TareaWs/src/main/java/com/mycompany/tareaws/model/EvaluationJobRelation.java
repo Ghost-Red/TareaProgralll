@@ -70,19 +70,19 @@ public class EvaluationJobRelation implements Serializable {
         this.job.updateJob(evaluationJobRelationDto.getJob());
     }
 
-    public Long getid() {
+    public Long getId() {
         return id;
     }
 
-    public void setid(Long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public Long getversion() {
+    public Long getVersion() {
         return version;
     }
 
-    public void setversion(Long version) {
+    public void setVersion(Long version) {
         this.version = version;
     }
 
@@ -90,15 +90,15 @@ public class EvaluationJobRelation implements Serializable {
         return evaluation;
     }
 
-    public void setid(Evaluation evaluation) {
+    public void setEvaluation(Evaluation evaluation) {
         this.evaluation = evaluation;
     }
 
-    public Job getjob() {
+    public Job getJob() {
         return job;
     }
 
-    public void setjob(Job job) {
+    public void setJob(Job job) {
         this.job = job;
     }
 

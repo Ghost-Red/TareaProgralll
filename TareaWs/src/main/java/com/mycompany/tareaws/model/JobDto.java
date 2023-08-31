@@ -24,8 +24,8 @@ public class JobDto {
 
     public JobDto(Job job) {
         this();
-        this.id = job.getid();
-        this.name = job.getname();
+        this.id = job.getId();
+        this.name = job.getName();
         this.state = job.getJobState();
     }
 

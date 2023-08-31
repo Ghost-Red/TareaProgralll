@@ -77,27 +77,27 @@ public class EmployeeEvaluationRelation implements Serializable {
         this.evaluationJobRelation.updateEvaluationJobRelation(employeeEvaluationRelationDto.getEvaluationJobRelation());
     }
 
-    public Long getid() {
+    public Long getId() {
         return id;
     }
 
-    public void setid(Long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public Long getemployeeClasification() {
+    public Long getEmployeeClasification() {
         return employeeClasification;
     }
 
-    public void setemployeeClasification(Long employeeClasification) {
+    public void setEmployeeClasification(Long employeeClasification) {
         this.employeeClasification = employeeClasification;
     }
 
-    public Long getversion() {
+    public Long getVersion() {
         return version;
     }
 
-    public void setversion(Long version) {
+    public void setVersion(Long version) {
         this.version = version;
     }
 
@@ -105,15 +105,15 @@ public class EmployeeEvaluationRelation implements Serializable {
         return employeeEvaluated;
     }
 
-    public void setId(Employee employeeEvaluated) {
+    public void setEmployeeEvaluated(Employee employeeEvaluated) {
         this.employeeEvaluated = employeeEvaluated;
     }
 
-    public EvaluationJobRelation getevaluationJobRelation() {
+    public EvaluationJobRelation getEvaluationJobRelation() {
         return evaluationJobRelation;
     }
 
-    public void setevaluationJobRelation(EvaluationJobRelation evaluationJobRelation) {
+    public void setEvaluationJobRelation(EvaluationJobRelation evaluationJobRelation) {
         this.evaluationJobRelation = evaluationJobRelation;
     }
 
