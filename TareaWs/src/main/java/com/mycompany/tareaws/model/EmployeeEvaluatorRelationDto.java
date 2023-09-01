@@ -30,12 +30,6 @@ public class EmployeeEvaluatorRelationDto {
         this.employeeEvaluated = new EmployeeEvaluationRelationDto(employeeEvaluatorRelation.getEmployeeEvaluated());
     }
 
-    public void updateEmployeeEvaluatorRelationDto(EmployeeEvaluatorRelation employeeEvaluatorRelation) {
-        this.id = employeeEvaluatorRelation.getId();
-        this.employeeEvaluatorRelationType = employeeEvaluatorRelation.getEmployeeEvaluatorRelationType();
-        this.feedback = employeeEvaluatorRelation.getFeedback();
-    }
-
     public Long getId() {
         return id;
     }
