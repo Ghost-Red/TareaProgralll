@@ -27,4 +27,15 @@ public class EvaluationJobRelationController {
         Respuesta res = evaluationJobRelationService.getEvaluationJobRelation(id);
         return (EvaluationJobRelationDto) res.getResultado("EvaluationJobRelation");
     }
+    @WebMethod(operationName = "saveEvaluationJobRelation")
+    public EvaluationJobRelationDto saveEvaluationJobRelation(EvaluationJobRelationDto evaluationJobRelation){
+        Respuesta res = evaluationJobRelationService.saveEvaluationJobRelation(evaluationJobRelation);
+        return (EvaluationJobRelationDto) res.getResultado("EvaluationJobRelation");
+    }
+    
+    @WebMethod(operationName = "deleteEvaluationJobRelation")
+    public EvaluationJobRelationDto deleteEvaluationJobRelation(@WebParam(name = "id") Long id){
+        Respuesta res = evaluationJobRelationService.deleteEvaluationJobRelation(id);
+        return (EvaluationJobRelationDto) res.getResultado("EvaluationJobRelation");
+    }
 }

@@ -27,4 +27,15 @@ public class EESkillRelationController {
         Respuesta res = eESkillRelationService.getEESkillRelation(id);
         return (EESkillRelationDto) res.getResultado("EESkillRelation");
     }
+    @WebMethod(operationName = "saveEESkillRelation")
+    public EESkillRelationDto saveEESkillRelation(EESkillRelationDto eESkillRelation){
+        Respuesta res = eESkillRelationService.saveEESkillRelation(eESkillRelation);
+        return (EESkillRelationDto) res.getResultado("EESkillRelationDto");
+    }
+    
+    @WebMethod(operationName = "deleteEESkillRelation")
+    public EESkillRelationDto deleteEESkillRelation(@WebParam(name = "id") Long id){
+        Respuesta res = eESkillRelationService.deleteEESkillRelation(id);
+        return (EESkillRelationDto) res.getResultado("EESkillRelationDto");
+    }
 }

@@ -11,7 +11,6 @@ import jakarta.ejb.EJB;
 import jakarta.jws.WebService;
 import jakarta.jws.WebMethod;
 import jakarta.jws.WebParam;
-import jakarta.ws.rs.core.Response;
 
 /**
  *
@@ -19,20 +18,23 @@ import jakarta.ws.rs.core.Response;
  */
 @WebService(serviceName = "EmployeeController")
 public class EmployeeController {
-
-    @WebMethod(operationName = "getMensaje")
-    public String getMensaje(@WebParam(name = "code") String code) {
-        String a = "Este webservice funciona" + code;
-        return a;
-    }
     @EJB
     EmployeeService employeeService;
 
-    @WebMethod(operationName = "getEmpleado")
-    public EmployeeDto getEmpleado(@WebParam(name = "id") Long id) {
+    @WebMethod(operationName = "getEmployee")
+    public EmployeeDto getEmployee(@WebParam(name = "id") Long id) {
         Respuesta res = employeeService.getEmployee(id);
-        EmployeeDto abc = (EmployeeDto) res.getResultado("Employee");
-        return abc;
+        return (EmployeeDto) res.getResultado("Employee");
     }
-
+    @WebMethod(operationName = "saveEmployee")
+    public EmployeeDto saveEmployee(EmployeeDto employee){
+        Respuesta res = employeeService.saveEmployee(employee);
+        return (EmployeeDto) res.getResultado("Employee");
+    }
+    
+    @WebMethod(operationName = "deleteEmployee")
+    public EmployeeDto deleteEmployee(@WebParam(name = "id") Long id){
+        Respuesta res = employeeService.deleteEmployee(id);
+        return (EmployeeDto) res.getResultado("Employee");
+    }
 }
