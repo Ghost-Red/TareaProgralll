@@ -30,12 +30,12 @@ public class EmployeeAverageSkillController {
     @WebMethod(operationName = "saveEmployeeAverageSkill")
     public EmployeeAverageSkillDto saveEmployeeAverageSkill(EmployeeAverageSkillDto employeeAverageSkill){
         Respuesta res = employeeAverageSkillService.saveEmployeeAverageSkill(employeeAverageSkill);
-        return (EmployeeAverageSkillDto) res.getResultado("company");
+        return (EmployeeAverageSkillDto) res.getResultado("EmployeeAverageSkill");
     }
     
     @WebMethod(operationName = "deleteEmployeeAverageSkill")
     public EmployeeAverageSkillDto deleteEmployeeAverageSkill(@WebParam(name = "id") Long id){
         Respuesta res = employeeAverageSkillService.deleteEmployeeAverageSkill(id);
-        return (EmployeeAverageSkillDto) res.getResultado("company");
+        return (EmployeeAverageSkillDto) res.getResultado("EmployeeAverageSkill");
     }
 }

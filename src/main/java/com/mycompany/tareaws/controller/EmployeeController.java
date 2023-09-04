@@ -29,12 +29,12 @@ public class EmployeeController {
     @WebMethod(operationName = "saveEmployee")
     public EmployeeDto saveEmployee(EmployeeDto employee){
         Respuesta res = employeeService.saveEmployee(employee);
-        return (EmployeeDto) res.getResultado("employee");
+        return (EmployeeDto) res.getResultado("Employee");
     }
     
     @WebMethod(operationName = "deleteEmployee")
     public EmployeeDto deleteEmployee(@WebParam(name = "id") Long id){
         Respuesta res = employeeService.deleteEmployee(id);
-        return (EmployeeDto) res.getResultado("employee");
+        return (EmployeeDto) res.getResultado("Employee");
     }
 }

@@ -31,12 +31,12 @@ public class CompanyController {
     @WebMethod(operationName = "saveCompany")
     public CompanyDto saveCompany(CompanyDto company){
         Respuesta res = companyService.saveCompany(company);
-        return (CompanyDto) res.getResultado("company");
+        return (CompanyDto) res.getResultado("Company");
     }
     
     @WebMethod(operationName = "deleteCompany")
     public CompanyDto deleteCompany(@WebParam(name = "id") Long id){
         Respuesta res = companyService.deleteCompany(id);
-        return (CompanyDto) res.getResultado("company");
+        return (CompanyDto) res.getResultado("Company");
     }
 }
