@@ -4,6 +4,9 @@
  */
 package com.mycompany.tareaws.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author Progralll
@@ -18,9 +21,16 @@ public class CompanyDto {
     private String tokenEmail;
     private Byte[] emailTemplateActivateUser;
     private boolean modificate;
+    
+    private List<EmployeeDto> employeeList;
+    private List<EvaluationDto> evaluationList;
+    private List<JobDto> jobList;
 
     public CompanyDto() {
         modificate = false;
+        employeeList = new ArrayList<>();
+        evaluationList = new ArrayList<>();
+        jobList = new ArrayList<>();
     }
 
     public CompanyDto(Company company) {
@@ -33,7 +43,41 @@ public class CompanyDto {
         this.tokenEmail = company.getTokenEmail();
         this.emailTemplateActivateUser = company.getEmailTemplateActivateUser();
     }
+    public void setForeignAtributes(Company company){
+        setEmployeeList(company.getEmployeeList());
+        setEvaluationList(company.getEvaluationList());
+        setJobList(company.getJobList());
+    }
 
+    public List<EmployeeDto> getEmployeeList() {
+        return employeeList;
+    }
+
+    public void setEmployeeList(List<Employee> employeeList) {
+        for (Employee employee : employeeList){
+            this.employeeList.add(new EmployeeDto(employee));
+        }
+    }
+
+    public List<EvaluationDto> getEvaluationList() {
+        return evaluationList;
+    }
+
+    public void setEvaluationList(List<Evaluation> evaluationList) {
+        for (Evaluation evaluation : evaluationList){
+            this.evaluationList.add(new EvaluationDto(evaluation));
+        }
+    }
+
+    public List<JobDto> getJobList() {
+        return jobList;
+    }
+
+    public void setJobList(List<Job> jobList) {
+        for (Job job : jobList){
+            this.jobList.add(new JobDto(job));
+        }
+    }
     public Long getId() {
         return id;
     }

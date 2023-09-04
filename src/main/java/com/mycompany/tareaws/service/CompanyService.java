@@ -36,7 +36,10 @@ public class CompanyService {
         try {
             Query qryCompany = em.createNamedQuery("Company.findById", Company.class);
             qryCompany.setParameter("id", id);
-            return new Respuesta(true, CodigoRespuesta.CORRECTO, "", "", "Company", new CompanyDto((Company) qryCompany.getSingleResult()));
+            Company company = (Company) qryCompany.getSingleResult();
+            CompanyDto companyDto = new CompanyDto(company);
+            companyDto.setForeignAtributes(company);
+            return new Respuesta(true, CodigoRespuesta.CORRECTO, "", "", "Company", companyDto);
 
         } catch (NoResultException ex) {
             return new Respuesta(false, CodigoRespuesta.ERROR_NOENCONTRADO, "No existe una compañia con el código ingresado.", "getCompany NoResultException");
