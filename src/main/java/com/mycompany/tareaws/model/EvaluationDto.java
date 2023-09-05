@@ -4,7 +4,9 @@
  */
 package com.mycompany.tareaws.model;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  *
@@ -19,9 +21,11 @@ public class EvaluationDto {
     private String state;
     private CompanyDto company;
     private boolean modificate;
-
+    private List<EvaluationJobRelationDto> evaluationJobRelationList;
+    
     public EvaluationDto() {
         modificate = false;
+        evaluationJobRelationList= new ArrayList<>();
     }
 
     public EvaluationDto(Evaluation evaluation) {
@@ -32,7 +36,18 @@ public class EvaluationDto {
         this.finalDate = evaluation.getFinalDate();
         this.state = evaluation.getState();
     }
-
+    public void setForeignAtributes(Evaluation evaluation){
+        setEvaluationJobRelationList(evaluation.getEvaluationJobRelationList());
+    }
+    public List<EvaluationJobRelationDto> getEvaluationJobRelationList() {
+        return evaluationJobRelationList;
+    }
+    public void setEvaluationJobRelationList(List<EvaluationJobRelation> evaluationJobRelationList) {
+        for(EvaluationJobRelation evaluationJobRelation : evaluationJobRelationList){
+            this.evaluationJobRelationList.add(new EvaluationJobRelationDto(evaluationJobRelation));
+        }
+    }
+    
     public Long getId() {
         return id;
     }
