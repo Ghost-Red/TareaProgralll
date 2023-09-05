@@ -4,6 +4,9 @@
  */
 package com.mycompany.tareaws.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author james
@@ -16,9 +19,11 @@ public class EmployeeEvaluatorRelationDto {
     private EmployeeDto employeeEvaluator;
     private EmployeeEvaluationRelationDto employeeEvaluated;
     private boolean modificate;
-
+    private List<EESkillRelationDto> skillsEvaluatedList;
+    
     public EmployeeEvaluatorRelationDto() {
         modificate = false;
+        skillsEvaluatedList= new ArrayList<>();
     }
 
     public EmployeeEvaluatorRelationDto(EmployeeEvaluatorRelation employeeEvaluatorRelation) {
@@ -29,6 +34,21 @@ public class EmployeeEvaluatorRelationDto {
         this.employeeEvaluator = new EmployeeDto(employeeEvaluatorRelation.getEmployeeEvaluator());
         this.employeeEvaluated = new EmployeeEvaluationRelationDto(employeeEvaluatorRelation.getEmployeeEvaluated());
     }
+    
+    public void setForeignAtributes(EmployeeEvaluatorRelation employeeEvaluatorRelation){
+        setSkillsEvaluatedList(employeeEvaluatorRelation.getSkillsEvaluatedList());
+    }
+    public List<EESkillRelationDto> getSkillsEvaluatedList() {
+        return skillsEvaluatedList;
+    }
+
+    public void setSkillsEvaluatedList(List<EESkillRelation> skillsEvaluatedList) {
+        for (EESkillRelation eeSkillRelation : skillsEvaluatedList){
+            this.skillsEvaluatedList.add(new EESkillRelationDto(eeSkillRelation));
+        }
+    }
+    
+    
 
     public Long getId() {
         return id;
