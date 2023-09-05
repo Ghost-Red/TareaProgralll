@@ -4,6 +4,9 @@
  */
 package com.mycompany.tareaws.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author james
@@ -15,9 +18,25 @@ public class EvaluationJobRelationDto {
     private JobDto job;
 
     private boolean modificate;
-
+    private List<EmployeeEvaluationRelationDto> employeeEvaluationRelationList;
+    
     public EvaluationJobRelationDto() {
         modificate = false;
+        employeeEvaluationRelationList=new ArrayList<>();
+    }
+
+    public List<EmployeeEvaluationRelationDto> getEmployeeEvaluationRelationList() {
+        return employeeEvaluationRelationList;
+    }
+
+    public void setEmployeeEvaluationRelationList(List<EmployeeEvaluationRelation> employeeEvaluationRelationList) {
+        for (EmployeeEvaluationRelation employeeEvaluationRelation : employeeEvaluationRelationList){
+            this.employeeEvaluationRelationList.add(new EmployeeEvaluationRelationDto(employeeEvaluationRelation));
+        }
+    }
+    
+    public void setForeignAtributes(EvaluationJobRelation evaluationJobRelation){
+        setEmployeeEvaluationRelationList(evaluationJobRelation.getEmployeeEvaluationRelationList());
     }
 
     public EvaluationJobRelationDto(EvaluationJobRelation evaluationJobRelation) {

@@ -38,7 +38,7 @@ public class EmployeeEvaluationRelationDto {
          setEmployeeAverageSkillList(employeeEvaluationRelation.getEmployeeAverageSkillList());
          setEmployeeEvaluatorRelationList(employeeEvaluationRelation.getEmployeeEvaluatorRelationList());
      }
-
+     
     public List<EmployeeAverageSkillDto> getEmployeeAverageSkillList() {
         return employeeAverageSkillList;
     }
