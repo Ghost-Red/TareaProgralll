@@ -25,12 +25,14 @@ public class CompanyDto {
     private List<EmployeeDto> employeeList;
     private List<EvaluationDto> evaluationList;
     private List<JobDto> jobList;
-
+    private List<SkillDto> skillList;
+    
     public CompanyDto() {
         modificate = false;
         employeeList = new ArrayList<>();
         evaluationList = new ArrayList<>();
         jobList = new ArrayList<>();
+        skillList=new ArrayList<>();
     }
 
     public CompanyDto(Company company) {
@@ -47,6 +49,17 @@ public class CompanyDto {
         setEmployeeList(company.getEmployeeList());
         setEvaluationList(company.getEvaluationList());
         setJobList(company.getJobList());
+        setSkillList(company.getSkillList());
+    }
+    
+    public List<SkillDto> getSkillList() {
+        return skillList;
+    }
+
+    public void setSkillList(List<Skill> skillList) {
+        for (Skill skill : skillList){
+            this.skillList.add(new SkillDto(skill));
+        }
     }
 
     public List<EmployeeDto> getEmployeeList() {
