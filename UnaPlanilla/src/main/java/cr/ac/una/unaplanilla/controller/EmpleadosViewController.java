@@ -250,7 +250,7 @@ public class EmpleadosViewController extends Controller implements Initializable
             nuevoEmpleado();
         }
     }
-
+    
     @FXML
     private void onActionBtnGuardar(ActionEvent event) {
         try {

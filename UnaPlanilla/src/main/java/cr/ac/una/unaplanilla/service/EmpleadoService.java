@@ -72,21 +72,33 @@ public class EmpleadoService {
     
     public Respuesta guardarEmpleado(EmpleadoDto empleado) {
         try {
-            // TODO
-            return null;//new Respuesta(true, "", "", "Empleado", empleadoDto);
+            Request request = new Request("EmpleadoController/saveEmpleado");
+            request.post(empleado);
+            if (request.isError()) {
+                return new Respuesta(false, request.getError(), "");
+            }
+            EmpleadoDto empleadoDto = (EmpleadoDto) request.readEntity(EmpleadoDto.class);
+            return new Respuesta(true, "", "", "Empleado", empleadoDto);
         } catch (Exception ex) {
-            Logger.getLogger(EmpleadoService.class.getName()).log(Level.SEVERE, "Error guardando el empleado.", ex);
-            return null;//new Respuesta(false, "Error guardando el empleado.", "guardarEmpleado " + ex.getMessage());
+            Logger.getLogger(EmpleadoService.class.getName()).log(Level.SEVERE, "Error obteniendo el empleado", ex);
+            return null;
         }
     }
     
     public Respuesta eliminarEmpleado(Long id) {
         try {
-            //TODO
-            return null;//new Respuesta(true, "", "");
+            Map<String, Object> parametros = new HashMap<>();
+            parametros.put("id", id);
+            Request request = new Request("EmpleadoController/eliminarEmpleado", "/{id}", parametros);
+            request.get();
+            if (request.isError()) {
+                return new Respuesta(false, request.getError(), "");
+            }
+            EmpleadoDto empleadoDto = (EmpleadoDto) request.readEntity(EmpleadoDto.class);
+            return new Respuesta(true, "", "", "Empleado", empleadoDto);
         } catch (Exception ex) {
-            Logger.getLogger(EmpleadoService.class.getName()).log(Level.SEVERE, "Error eliminando el empleado.", ex);
-            return null;//new Respuesta(false, "Error eliminando el empleado.", "eliminarEmpleado " + ex.getMessage());
+            Logger.getLogger(EmpleadoService.class.getName()).log(Level.SEVERE, "Error obteniendo el empleado [" + id + "]", ex);
+            return null;
         }
     }
 }
