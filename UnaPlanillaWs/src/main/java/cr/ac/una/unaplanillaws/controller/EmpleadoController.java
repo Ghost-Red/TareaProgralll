@@ -8,6 +8,7 @@ import cr.ac.una.unaplanillaws.model.EmpleadoDto;
 import cr.ac.una.unaplanillaws.service.EmpleadoService;
 import cr.ac.una.unaplanillaws.util.CodigoRespuesta;
 import cr.ac.una.unaplanillaws.util.Respuesta;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.ejb.EJB;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.DELETE;
@@ -29,6 +30,7 @@ import java.util.logging.Logger;
  * @author james
  */
 @Path("/EmpleadoController")
+@Tag(name = "Empleados", description = "Operaciones sobre empleados")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 public class EmpleadoController {
@@ -70,32 +72,31 @@ public class EmpleadoController {
 
     
     @POST
-    @Path("/empleado")
-    public Response guardarEmpleado(EmpleadoDto empleadoDto){
-        try{
-        Respuesta res= empleadoService.guardarEmpleado(empleadoDto);
-        if(!res.getEstado()){
-            return Response.status(res.getCodigoRespuesta().getValue()).entity(res.getMensaje()).build();
-        }
-        return Response.ok(res.getResultado("Empleado")).build();
-        }catch(Exception ex){
+    @Path("/saveEmpleado")
+    public Response guardarEmpleado(EmpleadoDto empleadoDto) {
+        try {
+            Respuesta res = empleadoService.guardarEmpleado(empleadoDto);
+            if (!res.getEstado()) {
+                return Response.status(res.getCodigoRespuesta().getValue()).entity(res.getMensaje()).build();
+            }
+            return Response.ok(res.getResultado("Empleado")).build();
+        } catch (Exception ex) {
             Logger.getLogger(EmpleadoController.class.getName()).log(Level.SEVERE, null, ex);
-            return Response.status(CodigoRespuesta.ERROR_INTERNO.getValue()).entity("Error guardando el empleado").build();
+            return Response.status(CodigoRespuesta.ERROR_INTERNO.getValue()).entity("Error obteniendo el empleado").build();
         }
     }
-    @DELETE
-    @Path("/empleado/{id}")
-    
-    public Response eliminarEmpleado(@PathParam("id")Long id){
-        try{
-        Respuesta res= empleadoService.eliminarEmpleado(id);
-        if(!res.getEstado()){
-            return Response.status(res.getCodigoRespuesta().getValue()).entity(res.getMensaje()).build();
-        }
-        return Response.ok(res.getResultado("Empleado")).build();
-        }catch(Exception ex){
+    @GET
+    @Path("/eliminarEmpleado/{id}")
+    public Response eliminarEmpleado(@PathParam("id") Long id) {
+        try {
+            Respuesta res = empleadoService.eliminarEmpleado(id);
+            if (!res.getEstado()) {
+                return Response.status(res.getCodigoRespuesta().getValue()).entity(res.getMensaje()).build();
+            }
+            return Response.ok(res.getResultado("Empleado")).build();
+        } catch (Exception ex) {
             Logger.getLogger(EmpleadoController.class.getName()).log(Level.SEVERE, null, ex);
-            return Response.status(CodigoRespuesta.ERROR_INTERNO.getValue()).entity("Error eliminando el empleado").build();
+            return Response.status(CodigoRespuesta.ERROR_INTERNO.getValue()).entity("Error obteniendo el empleado").build();
         }
     }
     @GET
