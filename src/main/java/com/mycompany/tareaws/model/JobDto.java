@@ -4,6 +4,7 @@
  */
 package com.mycompany.tareaws.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -17,9 +18,14 @@ public class JobDto {
     private String state;
     private CompanyDto company;
     private boolean modificate;
-
+    private List<SkillDto> skillList;
+    private List<EvaluationJobRelationDto> evaluationJobRelationList;
+    private List<EmployeeDto> employeeList;
     public JobDto() {
         modificate = false;
+        skillList= new ArrayList<>();
+        evaluationJobRelationList= new ArrayList<>();
+        employeeList= new ArrayList<>();
     }
 
     public JobDto(Job job) {
@@ -28,7 +34,42 @@ public class JobDto {
         this.name = job.getName();
         this.state = job.getState();
     }
+    public void setForeignAtributes(Job job){
+        setSkillList(job.getSkillList());
+        setEvaluationJobRelationList(job.getEvaluationJobRelationList());
+        setEmployeeList(job.getEmployeeList());
+    }
 
+    public List<SkillDto> getSkillList() {
+        return skillList;
+    }
+
+    public void setSkillList(List<Skill> skillList) {
+        for (Skill skill : skillList){
+            this.skillList.add(new SkillDto(skill));
+        }
+    }
+
+    public List<EvaluationJobRelationDto> getEvaluationJobRelationList() {
+        return evaluationJobRelationList;
+    }
+
+    public void setEvaluationJobRelationList(List<EvaluationJobRelation> evaluationJobRelationList) {
+        for (EvaluationJobRelation evaluationJobRelation : evaluationJobRelationList){
+            this.evaluationJobRelationList.add(new EvaluationJobRelationDto(evaluationJobRelation));
+        }
+    }
+
+    public List<EmployeeDto> getEmployeeList() {
+        return employeeList;
+    }
+
+    public void setEmployeeList(List<Employee> employeeList) {
+        for (Employee employee : employeeList){
+            this.employeeList.add(new EmployeeDto(employee));
+        }
+    }
+    
     public Long getId() {
         return id;
     }
