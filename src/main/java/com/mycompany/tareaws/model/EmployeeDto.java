@@ -4,6 +4,9 @@
  */
 package com.mycompany.tareaws.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author grana
@@ -25,11 +28,41 @@ public class EmployeeDto {
     private CompanyDto company;
     private JobDto job;
     private boolean modificate;
-
+    
+    private List<EmployeeEvaluationRelationDto> employeeEvaluationRelationList;
+    private List<EmployeeEvaluatorRelationDto> employeeEvaluatorRelationList;
+    
     public EmployeeDto() {
         modificate = false;
+        employeeEvaluatorRelationList=new ArrayList<>();
+        employeeEvaluatorRelationList=new ArrayList<>();
+    }
+    
+    public void setForeignAtributes(Employee employee){
+        setEmployeeEvaluationRelationList(employee.getEmployeeEvaluationRelationList());
+        setEmployeeEvaluatorRelationList(employee.getEmployeeEvaluatorRelationList());
     }
 
+    public List<EmployeeEvaluationRelationDto> getEmployeeEvaluationRelationList() {
+        return employeeEvaluationRelationList;
+    }
+
+    public void setEmployeeEvaluationRelationList(List<EmployeeEvaluationRelation> employeeEvaluationRelationList) {
+        for (EmployeeEvaluationRelation employeeEvaluationRelation : employeeEvaluationRelationList){
+            this.employeeEvaluationRelationList.add(new EmployeeEvaluationRelationDto(employeeEvaluationRelation));
+        }
+    }
+
+    public List<EmployeeEvaluatorRelationDto> getEmployeeEvaluatorRelationList() {
+        return employeeEvaluatorRelationList;
+    }
+
+    public void setEmployeeEvaluatorRelationList(List<EmployeeEvaluatorRelation> employeeEvaluatorRelationList) {
+        for (EmployeeEvaluatorRelation employeeEvaluatorRelation : employeeEvaluatorRelationList){
+        this.employeeEvaluatorRelationList.add(new EmployeeEvaluatorRelationDto(employeeEvaluatorRelation));
+        }
+    }
+    
     public EmployeeDto(Employee employee) {
         this();
         this.id = employee.getId();

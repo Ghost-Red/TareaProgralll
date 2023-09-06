@@ -4,6 +4,9 @@
  */
 package com.mycompany.tareaws.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author james
@@ -16,9 +19,15 @@ public class SkillDto {
     private String state;
     private CompanyDto company;
     private boolean modificate;
-
+    private List<JobDto> jobList;  
+    private List<EESkillRelationDto> skillsEvaluatedList;
+    private List<EmployeeAverageSkillDto> employeeAverageSkillList;
+    
     public SkillDto() {
         modificate = false;
+        jobList= new ArrayList<>();
+        skillsEvaluatedList= new ArrayList<>();
+        employeeAverageSkillList= new ArrayList<>();
     }
 
     public SkillDto(Skill skill) {
@@ -28,7 +37,42 @@ public class SkillDto {
         this.description = skill.getDescription();
         this.state = skill.getState();
     }
+    public void setForeignAtributes(Skill skill){
+        setJobList(skill.getJobList());
+        setSkillsEvaluatedList(skill.getSkillsEvaluatedList());
+        setEmployeeAverageSkillList(skill.getEmployeeAverageSkillList());
+    }
 
+    public List<JobDto> getJobList() {
+        return jobList;
+    }
+
+    public void setJobList(List<Job> jobList) {
+        for (Job job : jobList){
+            this.jobList.add(new JobDto(job));
+        }
+    }
+
+    public List<EESkillRelationDto> getSkillsEvaluatedList() {
+        return skillsEvaluatedList;
+    }
+
+    public void setSkillsEvaluatedList(List<EESkillRelation> skillsEvaluatedList) {
+        for (EESkillRelation eeSkillRelation : skillsEvaluatedList){
+            this.skillsEvaluatedList.add(new EESkillRelationDto(eeSkillRelation));
+        }
+    }
+
+    public List<EmployeeAverageSkillDto> getEmployeeAverageSkillList() {
+        return employeeAverageSkillList;
+    }
+
+    public void setEmployeeAverageSkillList(List<EmployeeAverageSkill> employeeAverageSkillList) {
+        for (EmployeeAverageSkill employeeAverageSkill : employeeAverageSkillList){
+            this.employeeAverageSkillList.add(new EmployeeAverageSkillDto(employeeAverageSkill));
+        }
+    }
+    
     public Long getId() {
         return id;
     }

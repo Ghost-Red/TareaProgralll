@@ -4,6 +4,9 @@
  */
 package com.mycompany.tareaws.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author james
@@ -16,8 +19,13 @@ public class EmployeeEvaluationRelationDto {
     private EvaluationJobRelationDto evaluationJobRelation;
     private boolean modificate;
 
+    private List<EmployeeAverageSkillDto> employeeAverageSkillList;
+    private List<EmployeeEvaluatorRelationDto> employeeEvaluatorRelationList;
+    
     public EmployeeEvaluationRelationDto() {
         modificate = false;
+        employeeAverageSkillList= new ArrayList<>();
+        employeeEvaluatorRelationList= new ArrayList<>();
     }
 
     public EmployeeEvaluationRelationDto(EmployeeEvaluationRelation employeeEvaluationRelation) {
@@ -26,7 +34,31 @@ public class EmployeeEvaluationRelationDto {
         this.employeeClasification = employeeEvaluationRelation.getEmployeeClasification();
 
     }
+     public void setForeignAtributes(EmployeeEvaluationRelation employeeEvaluationRelation){
+         setEmployeeAverageSkillList(employeeEvaluationRelation.getEmployeeAverageSkillList());
+         setEmployeeEvaluatorRelationList(employeeEvaluationRelation.getEmployeeEvaluatorRelationList());
+     }
+     
+    public List<EmployeeAverageSkillDto> getEmployeeAverageSkillList() {
+        return employeeAverageSkillList;
+    }
 
+    public void setEmployeeAverageSkillList(List<EmployeeAverageSkill> employeeAverageSkillList) {
+        for (EmployeeAverageSkill employeeAverageSkill : employeeAverageSkillList){
+            this.employeeAverageSkillList.add(new EmployeeAverageSkillDto(employeeAverageSkill));
+        }
+    }
+
+    public List<EmployeeEvaluatorRelationDto> getEmployeeEvaluatorRelationList() {
+        return employeeEvaluatorRelationList;
+    }
+
+    public void setEmployeeEvaluatorRelationList(List<EmployeeEvaluatorRelation> employeeEvaluatorRelationList) {
+        for (EmployeeEvaluatorRelation employeeEvaluatorRelation : employeeEvaluatorRelationList){
+            this.employeeEvaluatorRelationList.add(new EmployeeEvaluatorRelationDto(employeeEvaluatorRelation));
+        }
+    }
+     
     public Long getId() {
         return id;
     }
