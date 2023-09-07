@@ -41,7 +41,7 @@ public class EvaluationService {
             qryEvaluation.setParameter("id", id);
             Evaluation evaluation = (Evaluation) qryEvaluation.getSingleResult();
             EvaluationDto evaluationDto = new EvaluationDto(evaluation);
-            evaluationDto.setCompany(new CompanyDto(evaluation.getcompany()));
+            evaluationDto.setForeignAtributes(evaluation);
             return new Respuesta(true, CodigoRespuesta.CORRECTO, "", "", "Evaluation", evaluationDto);
         } catch (NoResultException ex) {
             return new Respuesta(false, CodigoRespuesta.ERROR_NOENCONTRADO, "No existe una evaluacion con el código ingresado.", "getEvaluation NoResultException");

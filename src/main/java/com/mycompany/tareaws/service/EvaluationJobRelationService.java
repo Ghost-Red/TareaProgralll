@@ -41,8 +41,7 @@ public class EvaluationJobRelationService {
 
             EvaluationJobRelation evaluationJobRelation = (EvaluationJobRelation) qryEvaluationJobRelation.getSingleResult();
             EvaluationJobRelationDto evaluationJobRelationDto = new EvaluationJobRelationDto(evaluationJobRelation);
-            evaluationJobRelationDto.setEvaluation(new EvaluationDto(evaluationJobRelation.getEvaluation()));
-            evaluationJobRelationDto.setJob(new JobDto(evaluationJobRelation.getJob()));
+            evaluationJobRelationDto.setForeignAtributes(evaluationJobRelation);
             return new Respuesta(true, CodigoRespuesta.CORRECTO, "", "", "EvaluationJobRelation", evaluationJobRelationDto);
         } catch (NoResultException ex) {
             return new Respuesta(false, CodigoRespuesta.ERROR_NOENCONTRADO, "No existe una EvaluationJobRelation con el código ingresado.", "getEvaluationJobRelation NoResultException");

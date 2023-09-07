@@ -16,13 +16,20 @@ public class EvaluationJobRelationDto {
     private Long id;
     private EvaluationDto evaluation;
     private JobDto job;
-
-    private boolean modificate;
     private List<EmployeeEvaluationRelationDto> employeeEvaluationRelationList;
-    
+    private boolean modificate;
+
     public EvaluationJobRelationDto() {
         modificate = false;
-        employeeEvaluationRelationList=new ArrayList<>();
+        evaluation = new EvaluationDto();
+        job = new JobDto();
+        employeeEvaluationRelationList = new ArrayList<>();
+    }
+
+    public void setForeignAtributes(EvaluationJobRelation evaluationJobRelation) {
+        evaluation = new EvaluationDto(evaluationJobRelation.getEvaluation());
+        job = new JobDto(evaluationJobRelation.getJob());
+        setEmployeeEvaluationRelationList(evaluationJobRelation.getEmployeeEvaluationRelationList());
     }
 
     public List<EmployeeEvaluationRelationDto> getEmployeeEvaluationRelationList() {
@@ -30,13 +37,9 @@ public class EvaluationJobRelationDto {
     }
 
     public void setEmployeeEvaluationRelationList(List<EmployeeEvaluationRelation> employeeEvaluationRelationList) {
-        for (EmployeeEvaluationRelation employeeEvaluationRelation : employeeEvaluationRelationList){
+        for (EmployeeEvaluationRelation employeeEvaluationRelation : employeeEvaluationRelationList) {
             this.employeeEvaluationRelationList.add(new EmployeeEvaluationRelationDto(employeeEvaluationRelation));
         }
-    }
-    
-    public void setForeignAtributes(EvaluationJobRelation evaluationJobRelation){
-        setEmployeeEvaluationRelationList(evaluationJobRelation.getEmployeeEvaluationRelationList());
     }
 
     public EvaluationJobRelationDto(EvaluationJobRelation evaluationJobRelation) {

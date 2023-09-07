@@ -17,12 +17,14 @@ public class JobDto {
     private String name;
     private String state;
     private CompanyDto company;
-    private boolean modificate;
     private List<SkillDto> skillList;
     private List<EvaluationJobRelationDto> evaluationJobRelationList;
     private List<EmployeeDto> employeeList;
+    private boolean modificate;
+    
     public JobDto() {
         modificate = false;
+        company = new CompanyDto();
         skillList= new ArrayList<>();
         evaluationJobRelationList= new ArrayList<>();
         employeeList= new ArrayList<>();
@@ -35,6 +37,7 @@ public class JobDto {
         this.state = job.getState();
     }
     public void setForeignAtributes(Job job){
+        company = new CompanyDto(job.getCompany());
         setSkillList(job.getSkillList());
         setEvaluationJobRelationList(job.getEvaluationJobRelationList());
         setEmployeeList(job.getEmployeeList());
