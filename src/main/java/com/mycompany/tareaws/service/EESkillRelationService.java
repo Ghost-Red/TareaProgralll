@@ -40,8 +40,7 @@ public class EESkillRelationService {
             qryEESkillRelation.setParameter("id", id);
             EESkillRelation eESkillRelation = (EESkillRelation) qryEESkillRelation.getSingleResult();
             EESkillRelationDto eESkillRelationDto = new EESkillRelationDto(eESkillRelation);
-            eESkillRelationDto.setEmployeeEvaluatorRelation(new EmployeeEvaluatorRelationDto(eESkillRelation.getEmployeeEvaluatorRelation()));
-            eESkillRelationDto.setEvaluatedSkill(new SkillDto(eESkillRelation.getEvaluatedSkill()));
+            eESkillRelationDto.setForeignAtributes(eESkillRelation);
             return new Respuesta(true, CodigoRespuesta.CORRECTO, "", "", "EESkillRelation", eESkillRelationDto);
         } catch (NoResultException ex) {
             return new Respuesta(false, CodigoRespuesta.ERROR_NOENCONTRADO, "No existe una EESkillRelation con el código ingresado.", "getEESkillRelation NoResultException");

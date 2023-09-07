@@ -18,13 +18,14 @@ public class SkillDto {
     private String description;
     private String state;
     private CompanyDto company;
-    private boolean modificate;
     private List<JobDto> jobList;  
     private List<EESkillRelationDto> skillsEvaluatedList;
     private List<EmployeeAverageSkillDto> employeeAverageSkillList;
+    private boolean modificate;
     
     public SkillDto() {
         modificate = false;
+        company = new CompanyDto();
         jobList= new ArrayList<>();
         skillsEvaluatedList= new ArrayList<>();
         employeeAverageSkillList= new ArrayList<>();
@@ -38,6 +39,7 @@ public class SkillDto {
         this.state = skill.getState();
     }
     public void setForeignAtributes(Skill skill){
+        company = new CompanyDto(skill.getCompany());
         setJobList(skill.getJobList());
         setSkillsEvaluatedList(skill.getSkillsEvaluatedList());
         setEmployeeAverageSkillList(skill.getEmployeeAverageSkillList());

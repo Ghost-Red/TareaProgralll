@@ -157,14 +157,6 @@ public class Evaluation implements Serializable {
         this.evaluationJobRelationList = evaluationJobRelationList;
     }
 
-    public Company getcompany() {
-        return company;
-    }
-
-    public void setcompany(Company company) {
-        this.company = company;
-    }
-
     @Override
     public int hashCode() {
         int hash = 0;

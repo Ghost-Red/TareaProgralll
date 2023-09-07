@@ -40,7 +40,7 @@ public class SkillService {
 
             Skill skill = (Skill) qrySkill.getSingleResult();
             SkillDto skillDto = new SkillDto(skill);
-            skillDto.setCompany(new CompanyDto(skill.getCompany()));
+            skillDto.setForeignAtributes(skill);
 
             return new Respuesta(true, CodigoRespuesta.CORRECTO, "", "", "Skill", skillDto);
 

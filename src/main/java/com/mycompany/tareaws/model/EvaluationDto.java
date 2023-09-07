@@ -20,11 +20,12 @@ public class EvaluationDto {
     private Date finalDate;
     private String state;
     private CompanyDto company;
-    private boolean modificate;
     private List<EvaluationJobRelationDto> evaluationJobRelationList;
+    private boolean modificate;
     
     public EvaluationDto() {
         modificate = false;
+        company = new CompanyDto();
         evaluationJobRelationList= new ArrayList<>();
     }
 
@@ -37,6 +38,7 @@ public class EvaluationDto {
         this.state = evaluation.getState();
     }
     public void setForeignAtributes(Evaluation evaluation){
+        company = new CompanyDto(evaluation.getCompany());
         setEvaluationJobRelationList(evaluation.getEvaluationJobRelationList());
     }
     public List<EvaluationJobRelationDto> getEvaluationJobRelationList() {

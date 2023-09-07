@@ -41,9 +41,7 @@ public class EmployeeAverageSkillService {
 
             EmployeeAverageSkill employeeAverageSkill = (EmployeeAverageSkill) qryEmployeeAverageSkill.getSingleResult();
             EmployeeAverageSkillDto employeeAverageSkillDto = new EmployeeAverageSkillDto(employeeAverageSkill);
-            employeeAverageSkillDto.setEmployeeEvaluationRelation(new EmployeeEvaluationRelationDto(employeeAverageSkill.getemployeeEvaluationRelation()));
-            employeeAverageSkillDto.setSkill(new SkillDto(employeeAverageSkill.getskill()));
-
+            employeeAverageSkillDto.setForeignAtributes(employeeAverageSkill);
             return new Respuesta(true, CodigoRespuesta.CORRECTO, "", "", "EmployeeAverageSkill", employeeAverageSkillDto);
         } catch (NoResultException ex) {
             return new Respuesta(false, CodigoRespuesta.ERROR_NOENCONTRADO, "No existe una EmployeeAverageSkill con el código ingresado.", "getEmployeeAverageSkill NoResultException");

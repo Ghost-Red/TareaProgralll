@@ -21,18 +21,18 @@ public class CompanyDto {
     private String tokenEmail;
     private Byte[] emailTemplateActivateUser;
     private boolean modificate;
-    
+
     private List<EmployeeDto> employeeList;
     private List<EvaluationDto> evaluationList;
     private List<JobDto> jobList;
     private List<SkillDto> skillList;
-    
+
     public CompanyDto() {
         modificate = false;
         employeeList = new ArrayList<>();
         evaluationList = new ArrayList<>();
         jobList = new ArrayList<>();
-        skillList=new ArrayList<>();
+        skillList = new ArrayList<>();
     }
 
     public CompanyDto(Company company) {
@@ -45,19 +45,20 @@ public class CompanyDto {
         this.tokenEmail = company.getTokenEmail();
         this.emailTemplateActivateUser = company.getEmailTemplateActivateUser();
     }
-    public void setForeignAtributes(Company company){
+
+    public void setForeignAtributes(Company company) {
         setEmployeeList(company.getEmployeeList());
         setEvaluationList(company.getEvaluationList());
         setJobList(company.getJobList());
         setSkillList(company.getSkillList());
     }
-    
+
     public List<SkillDto> getSkillList() {
         return skillList;
     }
 
     public void setSkillList(List<Skill> skillList) {
-        for (Skill skill : skillList){
+        for (Skill skill : skillList) {
             this.skillList.add(new SkillDto(skill));
         }
     }
@@ -67,7 +68,7 @@ public class CompanyDto {
     }
 
     public void setEmployeeList(List<Employee> employeeList) {
-        for (Employee employee : employeeList){
+        for (Employee employee : employeeList) {
             this.employeeList.add(new EmployeeDto(employee));
         }
     }
@@ -77,7 +78,7 @@ public class CompanyDto {
     }
 
     public void setEvaluationList(List<Evaluation> evaluationList) {
-        for (Evaluation evaluation : evaluationList){
+        for (Evaluation evaluation : evaluationList) {
             this.evaluationList.add(new EvaluationDto(evaluation));
         }
     }
@@ -87,10 +88,11 @@ public class CompanyDto {
     }
 
     public void setJobList(List<Job> jobList) {
-        for (Job job : jobList){
+        for (Job job : jobList) {
             this.jobList.add(new JobDto(job));
         }
     }
+
     public Long getId() {
         return id;
     }
