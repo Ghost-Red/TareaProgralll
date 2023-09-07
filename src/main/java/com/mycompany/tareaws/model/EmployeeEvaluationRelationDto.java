@@ -24,6 +24,8 @@ public class EmployeeEvaluationRelationDto {
     
     public EmployeeEvaluationRelationDto() {
         modificate = false;
+        employeeEvaluated = new EmployeeDto();
+        evaluationJobRelation = new EvaluationJobRelationDto();
         employeeAverageSkillList= new ArrayList<>();
         employeeEvaluatorRelationList= new ArrayList<>();
     }
@@ -35,6 +37,8 @@ public class EmployeeEvaluationRelationDto {
 
     }
      public void setForeignAtributes(EmployeeEvaluationRelation employeeEvaluationRelation){
+         evaluationJobRelation = new EvaluationJobRelationDto(employeeEvaluationRelation.getEvaluationJobRelation());
+         employeeEvaluated = new EmployeeDto(employeeEvaluationRelation.getEmployeeEvaluated());
          setEmployeeAverageSkillList(employeeEvaluationRelation.getEmployeeAverageSkillList());
          setEmployeeEvaluatorRelationList(employeeEvaluationRelation.getEmployeeEvaluatorRelationList());
      }

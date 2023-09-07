@@ -40,8 +40,7 @@ public class EmployeeEvaluatorRelationService {
             qryEmployeeEvaluatorRelation.setParameter("id", id);
             EmployeeEvaluatorRelation employeeEvaluatorRelation = (EmployeeEvaluatorRelation) qryEmployeeEvaluatorRelation.getSingleResult();
             EmployeeEvaluatorRelationDto employeeEvaluatorRelationDto = new EmployeeEvaluatorRelationDto(employeeEvaluatorRelation);
-            employeeEvaluatorRelationDto.setEmployeeEvaluator(new EmployeeDto(employeeEvaluatorRelation.getEmployeeEvaluator()));
-            employeeEvaluatorRelationDto.setEmployeeEvaluated(new EmployeeEvaluationRelationDto(employeeEvaluatorRelation.getEmployeeEvaluated()));
+            employeeEvaluatorRelationDto.setForeignAtributes(employeeEvaluatorRelation);
             return new Respuesta(true, CodigoRespuesta.CORRECTO, "", "", "EmployeeEvaluatorRelation", employeeEvaluatorRelationDto);
         } catch (NoResultException ex) {
             return new Respuesta(false, CodigoRespuesta.ERROR_NOENCONTRADO, "No existe una EmployeeEvaluatorRelation con el código ingresado.", "getEmployeeEvaluatorRelation NoResultException");

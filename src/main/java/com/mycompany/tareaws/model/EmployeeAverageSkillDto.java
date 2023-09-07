@@ -18,12 +18,19 @@ public class EmployeeAverageSkillDto {
 
     public EmployeeAverageSkillDto() {
         modificate = false;
+        employeeEvaluationRelation = new EmployeeEvaluationRelationDto();
+        skill = new SkillDto();
     }
 
     public EmployeeAverageSkillDto(EmployeeAverageSkill employeeAverageSkill) {
         this();
         this.id = employeeAverageSkill.getid();
         this.employeeSkillLvl = employeeAverageSkill.getskillAverageLvl();
+    }
+    
+    public void setForeignAtributes(EmployeeAverageSkill employeeAverageSkill){
+        employeeEvaluationRelation = new EmployeeEvaluationRelationDto(employeeAverageSkill.getemployeeEvaluationRelation());
+        skill = new SkillDto(employeeAverageSkill.getskill());
     }
 
     public Long getId() {

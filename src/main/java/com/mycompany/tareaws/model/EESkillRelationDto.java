@@ -18,12 +18,18 @@ public class EESkillRelationDto {
 
     public EESkillRelationDto() {
         modificate = false;
+        employeeEvaluatorRelation = new EmployeeEvaluatorRelationDto();
+        evaluatedSkill = new SkillDto();
     }
 
     public EESkillRelationDto(EESkillRelation eESkillRelation) {
         this();
         this.id = eESkillRelation.getId();
         this.skillClasification = eESkillRelation.getSkillClasification();
+    }
+    public void setForeignAtributes(EESkillRelation eESkillRelation){
+        employeeEvaluatorRelation = new EmployeeEvaluatorRelationDto(eESkillRelation.getEmployeeEvaluatorRelation());
+        evaluatedSkill = new SkillDto(eESkillRelation.getEvaluatedSkill());
     }
 
     public Long getId() {

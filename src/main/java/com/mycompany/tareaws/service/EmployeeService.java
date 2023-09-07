@@ -38,7 +38,10 @@ public class EmployeeService {
         try {
             Query qryEmployee = em.createNamedQuery("Employee.findById", Employee.class);
             qryEmployee.setParameter("id", id);
-            return new Respuesta(true, CodigoRespuesta.CORRECTO, "", "", "Employee", new EmployeeDto((Employee) qryEmployee.getSingleResult()));
+            Employee employee = (Employee) qryEmployee.getSingleResult();
+            EmployeeDto employeeDto = new EmployeeDto(employee);
+            employeeDto.setForeignAtributes(employee);
+            return new Respuesta(true, CodigoRespuesta.CORRECTO, "", "", "Employee", employeeDto);
 
         } catch (NoResultException ex) {
             return new Respuesta(false, CodigoRespuesta.ERROR_NOENCONTRADO, "No existe un empleado con el código ingresado.", "getEmployee NoResultException");
