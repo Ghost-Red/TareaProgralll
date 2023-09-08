@@ -40,6 +40,7 @@ public class SkillDto {
     }
     public void setForeignAtributes(Skill skill){
         company = new CompanyDto(skill.getCompany());
+        company.setForeignAtributes(skill.getCompany());
         setJobList(skill.getJobList());
         setSkillsEvaluatedList(skill.getSkillsEvaluatedList());
         setEmployeeAverageSkillList(skill.getEmployeeAverageSkillList());

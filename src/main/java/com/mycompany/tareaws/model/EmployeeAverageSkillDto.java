@@ -30,7 +30,9 @@ public class EmployeeAverageSkillDto {
     
     public void setForeignAtributes(EmployeeAverageSkill employeeAverageSkill){
         employeeEvaluationRelation = new EmployeeEvaluationRelationDto(employeeAverageSkill.getemployeeEvaluationRelation());
+        employeeEvaluationRelation.setForeignAtributes(employeeAverageSkill.getemployeeEvaluationRelation());
         skill = new SkillDto(employeeAverageSkill.getskill());
+        skill.setForeignAtributes(employeeAverageSkill.getskill());
     }
 
     public Long getId() {

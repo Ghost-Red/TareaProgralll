@@ -29,7 +29,9 @@ public class EESkillRelationDto {
     }
     public void setForeignAtributes(EESkillRelation eESkillRelation){
         employeeEvaluatorRelation = new EmployeeEvaluatorRelationDto(eESkillRelation.getEmployeeEvaluatorRelation());
+        employeeEvaluatorRelation.setForeignAtributes(eESkillRelation.getEmployeeEvaluatorRelation());
         evaluatedSkill = new SkillDto(eESkillRelation.getEvaluatedSkill());
+        evaluatedSkill.setForeignAtributes(eESkillRelation.getEvaluatedSkill());
     }
 
     public Long getId() {

@@ -38,7 +38,9 @@ public class EmployeeEvaluationRelationDto {
     }
      public void setForeignAtributes(EmployeeEvaluationRelation employeeEvaluationRelation){
          evaluationJobRelation = new EvaluationJobRelationDto(employeeEvaluationRelation.getEvaluationJobRelation());
+         evaluationJobRelation.setForeignAtributes(employeeEvaluationRelation.getEvaluationJobRelation());
          employeeEvaluated = new EmployeeDto(employeeEvaluationRelation.getEmployeeEvaluated());
+         employeeEvaluated.setForeignAtributes(employeeEvaluationRelation.getEmployeeEvaluated());
          setEmployeeAverageSkillList(employeeEvaluationRelation.getEmployeeAverageSkillList());
          setEmployeeEvaluatorRelationList(employeeEvaluationRelation.getEmployeeEvaluatorRelationList());
      }
