@@ -38,6 +38,7 @@ public class JobDto {
     }
     public void setForeignAtributes(Job job){
         company = new CompanyDto(job.getCompany());
+        company.setForeignAtributes(job.getCompany());
         setSkillList(job.getSkillList());
         setEvaluationJobRelationList(job.getEvaluationJobRelationList());
         setEmployeeList(job.getEmployeeList());
