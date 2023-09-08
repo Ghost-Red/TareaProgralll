@@ -70,43 +70,43 @@ public class EmployeeAverageSkill implements Serializable {
         this.skill.updateSkill(employeeAverageSkillDto.getSkill());
     }
 
-    public Long getid() {
+    public Long getId() {
         return id;
     }
 
-    public void setid(Long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public Long getskillAverageLvl() {
+    public Long getSkillAverageLvl() {
         return skillAverageLvl;
     }
 
-    public void setskillAverageLvl(Long skillAverageLvl) {
+    public void setSkillAverageLvl(Long skillAverageLvl) {
         this.skillAverageLvl = skillAverageLvl;
     }
 
-    public Long getversion() {
+    public Long getVersion() {
         return version;
     }
 
-    public void setversion(Long version) {
+    public void setVersion(Long version) {
         this.version = version;
     }
 
-    public EmployeeEvaluationRelation getemployeeEvaluationRelation() {
+    public EmployeeEvaluationRelation getEmployeeEvaluationRelation() {
         return employeeEvaluationRelation;
     }
 
-    public void setemployeeEvaluationRelation(EmployeeEvaluationRelation employeeEvaluationRelation) {
+    public void setEmployeeEvaluationRelation(EmployeeEvaluationRelation employeeEvaluationRelation) {
         this.employeeEvaluationRelation = employeeEvaluationRelation;
     }
 
-    public Skill getskill() {
+    public Skill getSkill() {
         return skill;
     }
 
-    public void setskill(Skill skill) {
+    public void setSkill(Skill skill) {
         this.skill = skill;
     }
 
@@ -132,7 +132,9 @@ public class EmployeeAverageSkill implements Serializable {
 
     @Override
     public String toString() {
-        return "com.mycompany.tareaws.model.EmployeeAverageSkill[ id=" + id + " ]";
+        return "EmployeeAverageSkill{" + "id=" + id + ", skillAverageLvl=" + skillAverageLvl + ", version=" + version + ", employeeEvaluationRelation=" + employeeEvaluationRelation + ", skill=" + skill + '}';
     }
+
+
 
 }

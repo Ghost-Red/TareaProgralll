@@ -4,6 +4,7 @@
  */
 package com.mycompany.tareaws.model;
 
+import jakarta.xml.bind.annotation.XmlElement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,17 +19,18 @@ public class SkillDto {
     private String description;
     private String state;
     private CompanyDto company;
-    private List<JobDto> jobList;  
+    private boolean modificate;
+
+    private List<JobDto> jobList;
     private List<EESkillRelationDto> skillsEvaluatedList;
     private List<EmployeeAverageSkillDto> employeeAverageSkillList;
-    private boolean modificate;
-    
+
     public SkillDto() {
         modificate = false;
         company = new CompanyDto();
-        jobList= new ArrayList<>();
-        skillsEvaluatedList= new ArrayList<>();
-        employeeAverageSkillList= new ArrayList<>();
+        jobList = new ArrayList<>();
+        skillsEvaluatedList = new ArrayList<>();
+        employeeAverageSkillList = new ArrayList<>();
     }
 
     public SkillDto(Skill skill) {
@@ -38,7 +40,8 @@ public class SkillDto {
         this.description = skill.getDescription();
         this.state = skill.getState();
     }
-    public void setForeignAtributes(Skill skill){
+
+    public void setForeignAtributes(Skill skill) {
         company = new CompanyDto(skill.getCompany());
         company.setForeignAtributes(skill.getCompany());
         setJobList(skill.getJobList());
@@ -46,36 +49,40 @@ public class SkillDto {
         setEmployeeAverageSkillList(skill.getEmployeeAverageSkillList());
     }
 
+    @XmlElement(name = "jobList")
     public List<JobDto> getJobList() {
         return jobList;
     }
 
     public void setJobList(List<Job> jobList) {
-        for (Job job : jobList){
+        for (Job job : jobList) {
             this.jobList.add(new JobDto(job));
         }
     }
 
+    @XmlElement(name = "skillsEvaluatedList")
     public List<EESkillRelationDto> getSkillsEvaluatedList() {
         return skillsEvaluatedList;
     }
 
     public void setSkillsEvaluatedList(List<EESkillRelation> skillsEvaluatedList) {
-        for (EESkillRelation eeSkillRelation : skillsEvaluatedList){
+        for (EESkillRelation eeSkillRelation : skillsEvaluatedList) {
             this.skillsEvaluatedList.add(new EESkillRelationDto(eeSkillRelation));
         }
     }
 
+    @XmlElement(name = "employeeAverageSkillList")
     public List<EmployeeAverageSkillDto> getEmployeeAverageSkillList() {
         return employeeAverageSkillList;
     }
 
     public void setEmployeeAverageSkillList(List<EmployeeAverageSkill> employeeAverageSkillList) {
-        for (EmployeeAverageSkill employeeAverageSkill : employeeAverageSkillList){
+        for (EmployeeAverageSkill employeeAverageSkill : employeeAverageSkillList) {
             this.employeeAverageSkillList.add(new EmployeeAverageSkillDto(employeeAverageSkill));
         }
     }
-    
+
+    @XmlElement(name = "id")
     public Long getId() {
         return id;
     }
@@ -84,6 +91,7 @@ public class SkillDto {
         this.id = id;
     }
 
+    @XmlElement(name = "name")
     public String getName() {
         return name;
     }
@@ -92,6 +100,7 @@ public class SkillDto {
         this.name = name;
     }
 
+    @XmlElement(name = "description")
     public String getDescription() {
         return description;
     }
@@ -100,6 +109,7 @@ public class SkillDto {
         this.description = description;
     }
 
+    @XmlElement(name = "state")
     public String getState() {
         return state;
     }
@@ -108,6 +118,7 @@ public class SkillDto {
         this.state = state;
     }
 
+    @XmlElement(name = "company")
     public CompanyDto getCompany() {
         return company;
     }
@@ -116,9 +127,17 @@ public class SkillDto {
         this.company = company;
     }
 
+    @XmlElement(name = "modificate")
+    public boolean isModificate() {
+        return modificate;
+    }
+
+    public void setModificate(boolean modificate) {
+        this.modificate = modificate;
+    }
+
     @Override
     public String toString() {
         return "SkillDto{" + "id=" + id + ", name=" + name + ", description=" + description + ", state=" + state + ", company=" + company + ", modificate=" + modificate + '}';
     }
-
 }

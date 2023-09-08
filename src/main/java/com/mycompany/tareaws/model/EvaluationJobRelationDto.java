@@ -4,6 +4,8 @@
  */
 package com.mycompany.tareaws.model;
 
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlRootElement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,13 +13,15 @@ import java.util.List;
  *
  * @author james
  */
+@XmlRootElement
 public class EvaluationJobRelationDto {
 
     private Long id;
     private EvaluationDto evaluation;
     private JobDto job;
-    private List<EmployeeEvaluationRelationDto> employeeEvaluationRelationList;
     private boolean modificate;
+
+    private List<EmployeeEvaluationRelationDto> employeeEvaluationRelationList;
 
     public EvaluationJobRelationDto() {
         modificate = false;
@@ -34,6 +38,7 @@ public class EvaluationJobRelationDto {
         setEmployeeEvaluationRelationList(evaluationJobRelation.getEmployeeEvaluationRelationList());
     }
 
+    @XmlElement(name = "employeeEvaluationRelationList")
     public List<EmployeeEvaluationRelationDto> getEmployeeEvaluationRelationList() {
         return employeeEvaluationRelationList;
     }
@@ -49,6 +54,7 @@ public class EvaluationJobRelationDto {
         this.id = evaluationJobRelation.getId();
     }
 
+    @XmlElement(name = "id")
     public Long getId() {
         return id;
     }
@@ -57,6 +63,7 @@ public class EvaluationJobRelationDto {
         this.id = id;
     }
 
+    @XmlElement(name = "evaluation")
     public EvaluationDto getEvaluation() {
         return evaluation;
     }
@@ -65,6 +72,7 @@ public class EvaluationJobRelationDto {
         this.evaluation = evaluation;
     }
 
+    @XmlElement(name = "job")
     public JobDto getJob() {
         return job;
     }
@@ -75,7 +83,6 @@ public class EvaluationJobRelationDto {
 
     @Override
     public String toString() {
-        return "EvaluationJobRelationDto{" + "id=" + id + ", id=" + evaluation + ", job=" + job + ", modificate=" + modificate + '}';
+        return "EvaluationJobRelationDto{" + "id=" + id + ", evaluation=" + evaluation + ", job=" + job + ", modificate=" + modificate + '}';
     }
-
 }

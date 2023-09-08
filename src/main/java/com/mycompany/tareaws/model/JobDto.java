@@ -4,6 +4,7 @@
  */
 package com.mycompany.tareaws.model;
 
+import jakarta.xml.bind.annotation.XmlElement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,17 +18,18 @@ public class JobDto {
     private String name;
     private String state;
     private CompanyDto company;
+    private boolean modificate;
+
     private List<SkillDto> skillList;
     private List<EvaluationJobRelationDto> evaluationJobRelationList;
     private List<EmployeeDto> employeeList;
-    private boolean modificate;
-    
+
     public JobDto() {
         modificate = false;
         company = new CompanyDto();
-        skillList= new ArrayList<>();
-        evaluationJobRelationList= new ArrayList<>();
-        employeeList= new ArrayList<>();
+        skillList = new ArrayList<>();
+        evaluationJobRelationList = new ArrayList<>();
+        employeeList = new ArrayList<>();
     }
 
     public JobDto(Job job) {
@@ -36,7 +38,8 @@ public class JobDto {
         this.name = job.getName();
         this.state = job.getState();
     }
-    public void setForeignAtributes(Job job){
+
+    public void setForeignAtributes(Job job) {
         company = new CompanyDto(job.getCompany());
         company.setForeignAtributes(job.getCompany());
         setSkillList(job.getSkillList());
@@ -44,36 +47,40 @@ public class JobDto {
         setEmployeeList(job.getEmployeeList());
     }
 
+    @XmlElement(name = "skillList")
     public List<SkillDto> getSkillList() {
         return skillList;
     }
 
     public void setSkillList(List<Skill> skillList) {
-        for (Skill skill : skillList){
+        for (Skill skill : skillList) {
             this.skillList.add(new SkillDto(skill));
         }
     }
 
+    @XmlElement(name = "evaluationJobRelationList")
     public List<EvaluationJobRelationDto> getEvaluationJobRelationList() {
         return evaluationJobRelationList;
     }
 
     public void setEvaluationJobRelationList(List<EvaluationJobRelation> evaluationJobRelationList) {
-        for (EvaluationJobRelation evaluationJobRelation : evaluationJobRelationList){
+        for (EvaluationJobRelation evaluationJobRelation : evaluationJobRelationList) {
             this.evaluationJobRelationList.add(new EvaluationJobRelationDto(evaluationJobRelation));
         }
     }
 
+    @XmlElement(name = "employeeList")
     public List<EmployeeDto> getEmployeeList() {
         return employeeList;
     }
 
     public void setEmployeeList(List<Employee> employeeList) {
-        for (Employee employee : employeeList){
+        for (Employee employee : employeeList) {
             this.employeeList.add(new EmployeeDto(employee));
         }
     }
-    
+
+    @XmlElement(name = "id")
     public Long getId() {
         return id;
     }
@@ -82,6 +89,7 @@ public class JobDto {
         this.id = id;
     }
 
+    @XmlElement(name = "name")
     public String getName() {
         return name;
     }
@@ -90,6 +98,7 @@ public class JobDto {
         this.name = name;
     }
 
+    @XmlElement(name = "state")
     public String getState() {
         return state;
     }
@@ -98,6 +107,7 @@ public class JobDto {
         this.state = state;
     }
 
+    @XmlElement(name = "company")
     public CompanyDto getCompany() {
         return company;
     }
@@ -106,9 +116,17 @@ public class JobDto {
         this.company = company;
     }
 
+    @XmlElement(name = "modificate")
+    public boolean isModificate() {
+        return modificate;
+    }
+
+    public void setModificate(boolean modificate) {
+        this.modificate = modificate;
+    }
+
     @Override
     public String toString() {
         return "JobDto{" + "id=" + id + ", name=" + name + ", state=" + state + ", company=" + company + ", modificate=" + modificate + '}';
     }
-
 }

@@ -4,6 +4,8 @@
  */
 package com.mycompany.tareaws.model;
 
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlRootElement;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -12,6 +14,7 @@ import java.util.List;
  *
  * @author james
  */
+@XmlRootElement
 public class EvaluationDto {
 
     private Long id;
@@ -20,13 +23,14 @@ public class EvaluationDto {
     private Date finalDate;
     private String state;
     private CompanyDto company;
-    private List<EvaluationJobRelationDto> evaluationJobRelationList;
     private boolean modificate;
-    
+
+    private List<EvaluationJobRelationDto> evaluationJobRelationList;
+
     public EvaluationDto() {
         modificate = false;
         company = new CompanyDto();
-        evaluationJobRelationList= new ArrayList<>();
+        evaluationJobRelationList = new ArrayList<>();
     }
 
     public EvaluationDto(Evaluation evaluation) {
@@ -37,20 +41,25 @@ public class EvaluationDto {
         this.finalDate = evaluation.getFinalDate();
         this.state = evaluation.getState();
     }
-    public void setForeignAtributes(Evaluation evaluation){
+
+    public void setForeignAtributes(Evaluation evaluation) {
         company = new CompanyDto(evaluation.getCompany());
         company.setForeignAtributes(evaluation.getCompany());
         setEvaluationJobRelationList(evaluation.getEvaluationJobRelationList());
     }
+
+    @XmlElement(name = "evaluationJobRelationList")
     public List<EvaluationJobRelationDto> getEvaluationJobRelationList() {
         return evaluationJobRelationList;
     }
+
     public void setEvaluationJobRelationList(List<EvaluationJobRelation> evaluationJobRelationList) {
-        for(EvaluationJobRelation evaluationJobRelation : evaluationJobRelationList){
+        for (EvaluationJobRelation evaluationJobRelation : evaluationJobRelationList) {
             this.evaluationJobRelationList.add(new EvaluationJobRelationDto(evaluationJobRelation));
         }
     }
-    
+
+    @XmlElement(name = "id")
     public Long getId() {
         return id;
     }
@@ -59,6 +68,7 @@ public class EvaluationDto {
         this.id = id;
     }
 
+    @XmlElement(name = "title")
     public String getTitle() {
         return title;
     }
@@ -67,6 +77,7 @@ public class EvaluationDto {
         this.title = title;
     }
 
+    @XmlElement(name = "startDate")
     public Date getStartDate() {
         return startDate;
     }
@@ -75,6 +86,7 @@ public class EvaluationDto {
         this.startDate = startDate;
     }
 
+    @XmlElement(name = "finalDate")
     public Date getFinalDate() {
         return finalDate;
     }
@@ -83,6 +95,7 @@ public class EvaluationDto {
         this.finalDate = finalDate;
     }
 
+    @XmlElement(name = "state")
     public String getState() {
         return state;
     }
@@ -91,6 +104,7 @@ public class EvaluationDto {
         this.state = state;
     }
 
+    @XmlElement(name = "company")
     public CompanyDto getCompany() {
         return company;
     }
@@ -103,5 +117,4 @@ public class EvaluationDto {
     public String toString() {
         return "EvaluationDto{" + "id=" + id + ", title=" + title + ", startDate=" + startDate + ", finalDate=" + finalDate + ", state=" + state + ", company=" + company + ", modificate=" + modificate + '}';
     }
-
 }

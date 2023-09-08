@@ -4,6 +4,8 @@
  */
 package com.mycompany.tareaws.model;
 
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlRootElement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,6 +13,7 @@ import java.util.List;
  *
  * @author grana
  */
+@XmlRootElement
 public class EmployeeDto {
 
     private Long id;
@@ -63,9 +66,9 @@ public class EmployeeDto {
         job.setForeignAtributes(employee.getJob());
         setEmployeeEvaluationRelationList(employee.getEmployeeEvaluationRelationList());
         setEmployeeEvaluatorRelationList(employee.getEmployeeEvaluatorRelationList());
-            
     }
 
+    @XmlElement(name = "employeeEvaluationRelationList")
     public List<EmployeeEvaluationRelationDto> getEmployeeEvaluationRelationList() {
         return employeeEvaluationRelationList;
     }
@@ -76,6 +79,7 @@ public class EmployeeDto {
         }
     }
 
+    @XmlElement(name = "employeeEvaluatorRelationList")
     public List<EmployeeEvaluatorRelationDto> getEmployeeEvaluatorRelationList() {
         return employeeEvaluatorRelationList;
     }
@@ -86,6 +90,7 @@ public class EmployeeDto {
         }
     }
 
+    @XmlElement(name = "id")
     public Long getId() {
         return id;
     }
@@ -94,6 +99,7 @@ public class EmployeeDto {
         this.id = id;
     }
 
+    @XmlElement(name = "identification")
     public String getIdentification() {
         return identification;
     }
@@ -102,6 +108,7 @@ public class EmployeeDto {
         this.identification = identification;
     }
 
+    @XmlElement(name = "name")
     public String getName() {
         return name;
     }
@@ -110,6 +117,7 @@ public class EmployeeDto {
         this.name = name;
     }
 
+    @XmlElement(name = "firstLastname")
     public String getFirstLastname() {
         return firstLastname;
     }
@@ -118,6 +126,7 @@ public class EmployeeDto {
         this.firstLastname = firstLastname;
     }
 
+    @XmlElement(name = "secondLastname")
     public String getSecondLastname() {
         return secondLastname;
     }
@@ -126,6 +135,7 @@ public class EmployeeDto {
         this.secondLastname = secondLastname;
     }
 
+    @XmlElement(name = "email")
     public String getEmail() {
         return email;
     }
@@ -134,6 +144,7 @@ public class EmployeeDto {
         this.email = email;
     }
 
+    @XmlElement(name = "password")
     public String getPassword() {
         return password;
     }
@@ -142,6 +153,7 @@ public class EmployeeDto {
         this.password = password;
     }
 
+    @XmlElement(name = "phoneNumber")
     public String getPhoneNumber() {
         return phoneNumber;
     }
@@ -150,6 +162,7 @@ public class EmployeeDto {
         this.phoneNumber = phoneNumber;
     }
 
+    @XmlElement(name = "cellphoneNumber")
     public String getCellphoneNumber() {
         return cellphoneNumber;
     }
@@ -158,6 +171,7 @@ public class EmployeeDto {
         this.cellphoneNumber = cellphoneNumber;
     }
 
+    @XmlElement(name = "adminState")
     public String getAdminState() {
         return adminState;
     }
@@ -166,6 +180,7 @@ public class EmployeeDto {
         this.adminState = adminState;
     }
 
+    @XmlElement(name = "activatedState")
     public String getActivatedState() {
         return activatedState;
     }
@@ -174,6 +189,7 @@ public class EmployeeDto {
         this.activatedState = activatedState;
     }
 
+    @XmlElement(name = "forgotPasswordState")
     public String getForgotPasswordState() {
         return forgotPasswordState;
     }
@@ -182,6 +198,7 @@ public class EmployeeDto {
         this.forgotPasswordState = forgotPasswordState;
     }
 
+    @XmlElement(name = "company")
     public CompanyDto getCompany() {
         return company;
     }
@@ -190,6 +207,7 @@ public class EmployeeDto {
         this.company = company;
     }
 
+    @XmlElement(name = "job")
     public JobDto getJob() {
         return job;
     }
@@ -198,6 +216,7 @@ public class EmployeeDto {
         this.job = job;
     }
 
+    @XmlElement(name = "modificate")
     public boolean isModificate() {
         return modificate;
     }
@@ -210,5 +229,4 @@ public class EmployeeDto {
     public String toString() {
         return "EmployeeDto{" + "id=" + id + ", identification=" + identification + ", name=" + name + ", firstLastname=" + firstLastname + ", secondLastname=" + secondLastname + ", email=" + email + ", password=" + password + ", phoneNumber=" + phoneNumber + ", cellphoneNumber=" + cellphoneNumber + ", adminState=" + adminState + ", activatedState=" + activatedState + ", forgotPasswordState=" + forgotPasswordState/*+ ", company=" + company + ", job=" + job + ", modificate="*/ + modificate + '}';
     }
-
 }

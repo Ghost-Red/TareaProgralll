@@ -4,6 +4,8 @@
  */
 package com.mycompany.tareaws.model;
 
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlRootElement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,6 +13,7 @@ import java.util.List;
  *
  * @author james
  */
+@XmlRootElement
 public class EmployeeEvaluatorRelationDto {
 
     private Long id;
@@ -20,12 +23,12 @@ public class EmployeeEvaluatorRelationDto {
     private EmployeeEvaluationRelationDto employeeEvaluated;
     private boolean modificate;
     private List<EESkillRelationDto> skillsEvaluatedList;
-    
+
     public EmployeeEvaluatorRelationDto() {
         modificate = false;
         employeeEvaluated = new EmployeeEvaluationRelationDto();
         employeeEvaluator = new EmployeeDto();
-        skillsEvaluatedList= new ArrayList<>();
+        skillsEvaluatedList = new ArrayList<>();
     }
 
     public EmployeeEvaluatorRelationDto(EmployeeEvaluatorRelation employeeEvaluatorRelation) {
@@ -36,25 +39,25 @@ public class EmployeeEvaluatorRelationDto {
         this.employeeEvaluator = new EmployeeDto(employeeEvaluatorRelation.getEmployeeEvaluator());
         this.employeeEvaluated = new EmployeeEvaluationRelationDto(employeeEvaluatorRelation.getEmployeeEvaluated());
     }
-    
-    public void setForeignAtributes(EmployeeEvaluatorRelation employeeEvaluatorRelation){
+
+    public void setForeignAtributes(EmployeeEvaluatorRelation employeeEvaluatorRelation) {
         employeeEvaluated = new EmployeeEvaluationRelationDto(employeeEvaluatorRelation.getEmployeeEvaluated());
         employeeEvaluated.setForeignAtributes(employeeEvaluatorRelation.getEmployeeEvaluated());
         employeeEvaluator = new EmployeeDto(employeeEvaluatorRelation.getEmployeeEvaluator());
         employeeEvaluator.setForeignAtributes(employeeEvaluatorRelation.getEmployeeEvaluator());
         setSkillsEvaluatedList(employeeEvaluatorRelation.getSkillsEvaluatedList());
     }
+
+    @XmlElement(name = "skillsEvaluatedList")
     public List<EESkillRelationDto> getSkillsEvaluatedList() {
         return skillsEvaluatedList;
     }
 
     public void setSkillsEvaluatedList(List<EESkillRelation> skillsEvaluatedList) {
-        for (EESkillRelation eeSkillRelation : skillsEvaluatedList){
+        for (EESkillRelation eeSkillRelation : skillsEvaluatedList) {
             this.skillsEvaluatedList.add(new EESkillRelationDto(eeSkillRelation));
         }
     }
-    
-    
 
     public Long getId() {
         return id;
@@ -64,6 +67,7 @@ public class EmployeeEvaluatorRelationDto {
         this.id = id;
     }
 
+    @XmlElement(name = "employeeEvaluatorRelationType")
     public String getEmployeeEvaluatorRelationType() {
         return employeeEvaluatorRelationType;
     }
@@ -72,6 +76,7 @@ public class EmployeeEvaluatorRelationDto {
         this.employeeEvaluatorRelationType = employeeEvaluatorRelationType;
     }
 
+    @XmlElement(name = "feedback")
     public String getFeedback() {
         return feedback;
     }
@@ -80,6 +85,7 @@ public class EmployeeEvaluatorRelationDto {
         this.feedback = feedback;
     }
 
+    @XmlElement(name = "employeeEvaluator")
     public EmployeeDto getEmployeeEvaluator() {
         return employeeEvaluator;
     }
@@ -88,6 +94,7 @@ public class EmployeeEvaluatorRelationDto {
         this.employeeEvaluator = employeeEvaluator;
     }
 
+    @XmlElement(name = "employeeEvaluated")
     public EmployeeEvaluationRelationDto getEmployeeEvaluated() {
         return employeeEvaluated;
     }
@@ -96,9 +103,17 @@ public class EmployeeEvaluatorRelationDto {
         this.employeeEvaluated = employeeEvaluated;
     }
 
-    @Override
-    public String toString() {
-        return "EmployeeEvaluatorRelationDto{" + "id=" + id + ", employeeEvaluatorRelationType=" + employeeEvaluatorRelationType + ", feedback=" + feedback + ", id=" + employeeEvaluator + ", employeeEvaluated=" + employeeEvaluated + ", modificate=" + modificate + '}';
+    @XmlElement(name = "modificate")
+    public boolean isModificate() {
+        return modificate;
     }
 
+    public void setModificate(boolean modificate) {
+        this.modificate = modificate;
+    }
+
+    @Override
+    public String toString() {
+        return "EmployeeEvaluatorRelationDto{" + "id=" + id + ", employeeEvaluatorRelationType=" + employeeEvaluatorRelationType + ", feedback=" + feedback + ", employeeEvaluator=" + employeeEvaluator + ", employeeEvaluated=" + employeeEvaluated + ", modificate=" + modificate + '}';
+    }
 }
