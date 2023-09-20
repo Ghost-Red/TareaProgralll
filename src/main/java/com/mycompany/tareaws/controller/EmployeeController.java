@@ -18,6 +18,7 @@ import jakarta.jws.WebParam;
  */
 @WebService(serviceName = "EmployeeController")
 public class EmployeeController {
+
     @EJB
     EmployeeService employeeService;
 
@@ -26,14 +27,15 @@ public class EmployeeController {
         Respuesta res = employeeService.getEmployee(id);
         return (EmployeeDto) res.getResultado("Employee");
     }
+
     @WebMethod(operationName = "saveEmployee")
-    public boolean saveEmployee(EmployeeDto employee){
+    public boolean saveEmployee(EmployeeDto employee) {
         Respuesta res = employeeService.saveEmployee(employee);
         return res.getEstado();
     }
-    
+
     @WebMethod(operationName = "deleteEmployee")
-    public boolean deleteEmployee(@WebParam(name = "id") Long id){
+    public boolean deleteEmployee(@WebParam(name = "id") Long id) {
         Respuesta res = employeeService.deleteEmployee(id);
         return res.getEstado();
     }

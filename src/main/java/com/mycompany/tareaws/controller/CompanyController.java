@@ -27,15 +27,15 @@ public class CompanyController {
         Respuesta res = companyService.getCompany(id);
         return (CompanyDto) res.getResultado("Company");
     }
-    
+
     @WebMethod(operationName = "saveCompany")
-    public boolean saveCompany(CompanyDto company){
+    public boolean saveCompany(CompanyDto company) {
         Respuesta res = companyService.saveCompany(company);
         return res.getEstado();
     }
-    
+
     @WebMethod(operationName = "deleteCompany")
-    public boolean deleteCompany(@WebParam(name = "id") Long id){
+    public boolean deleteCompany(@WebParam(name = "id") Long id) {
         Respuesta res = companyService.deleteCompany(id);
         return res.getEstado();
     }

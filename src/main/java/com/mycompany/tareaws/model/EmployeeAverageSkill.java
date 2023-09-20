@@ -140,6 +140,4 @@ public class EmployeeAverageSkill implements Serializable {
         return "EmployeeAverageSkill{" + "id=" + id + ", skillAverageLvl=" + skillAverageLvl + ", version=" + version + ", employeeEvaluationRelation=" + employeeEvaluationRelation + ", skill=" + skill + '}';
     }
 
-
-
 }

@@ -27,14 +27,15 @@ public class EESkillRelationController {
         Respuesta res = eESkillRelationService.getEESkillRelation(id);
         return (EESkillRelationDto) res.getResultado("EESkillRelation");
     }
+
     @WebMethod(operationName = "saveEESkillRelation")
-    public boolean saveEESkillRelation(EESkillRelationDto eESkillRelation){
+    public boolean saveEESkillRelation(EESkillRelationDto eESkillRelation) {
         Respuesta res = eESkillRelationService.saveEESkillRelation(eESkillRelation);
         return res.getEstado();
     }
-    
+
     @WebMethod(operationName = "deleteEESkillRelation")
-    public boolean deleteEESkillRelation(@WebParam(name = "id") Long id){
+    public boolean deleteEESkillRelation(@WebParam(name = "id") Long id) {
         Respuesta res = eESkillRelationService.deleteEESkillRelation(id);
         return res.getEstado();
     }

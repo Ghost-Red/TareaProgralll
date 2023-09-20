@@ -27,14 +27,15 @@ public class SkillController {
         Respuesta res = skillService.getSkill(id);
         return (SkillDto) res.getResultado("Skill");
     }
+
     @WebMethod(operationName = "saveSkill")
-    public boolean saveSkill(SkillDto skill){
+    public boolean saveSkill(SkillDto skill) {
         Respuesta res = skillService.saveSkill(skill);
         return res.getEstado();
     }
-    
+
     @WebMethod(operationName = "deleteSkill")
-    public boolean deleteSkill(@WebParam(name = "id") Long id){
+    public boolean deleteSkill(@WebParam(name = "id") Long id) {
         Respuesta res = skillService.deleteSkill(id);
         return res.getEstado();
     }

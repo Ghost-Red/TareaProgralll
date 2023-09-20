@@ -27,14 +27,15 @@ public class EmployeeAverageSkillController {
         Respuesta res = employeeAverageSkillService.getEmployeeAverageSkill(id);
         return (EmployeeAverageSkillDto) res.getResultado("EmployeeAverageSkill");
     }
+
     @WebMethod(operationName = "saveEmployeeAverageSkill")
-    public boolean saveEmployeeAverageSkill(EmployeeAverageSkillDto employeeAverageSkill){
+    public boolean saveEmployeeAverageSkill(EmployeeAverageSkillDto employeeAverageSkill) {
         Respuesta res = employeeAverageSkillService.saveEmployeeAverageSkill(employeeAverageSkill);
         return res.getEstado();
     }
-    
+
     @WebMethod(operationName = "deleteEmployeeAverageSkill")
-    public boolean deleteEmployeeAverageSkill(@WebParam(name = "id") Long id){
+    public boolean deleteEmployeeAverageSkill(@WebParam(name = "id") Long id) {
         Respuesta res = employeeAverageSkillService.deleteEmployeeAverageSkill(id);
         return res.getEstado();
     }
