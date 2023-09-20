@@ -4,6 +4,8 @@
  */
 package com.mycompany.tareaws.model;
 
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlRootElement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,6 +13,7 @@ import java.util.List;
  *
  * @author Progralll
  */
+@XmlRootElement
 public class CompanyDto {
 
     private Long id;
@@ -37,13 +40,15 @@ public class CompanyDto {
 
     public CompanyDto(Company company) {
         this();
-        this.id = company.getId();
-        this.name = company.getName();
-        this.email = company.getEmail();
-        this.logo = company.getLogo();
-        this.emailTemplatePassword = company.getEmailTemplatePassword();
-        this.tokenEmail = company.getTokenEmail();
-        this.emailTemplateActivateUser = company.getEmailTemplateActivateUser();
+        if (company != null) {
+            this.id = company.getId();
+            this.name = company.getName();
+            this.email = company.getEmail();
+            this.logo = company.getLogo();
+            this.emailTemplatePassword = company.getEmailTemplatePassword();
+            this.tokenEmail = company.getTokenEmail();
+            this.emailTemplateActivateUser = company.getEmailTemplateActivateUser();
+        }
     }
 
     public void setForeignAtributes(Company company) {
@@ -53,6 +58,7 @@ public class CompanyDto {
         setSkillList(company.getSkillList());
     }
 
+    @XmlElement(name = "skillList")
     public List<SkillDto> getSkillList() {
         return skillList;
     }
@@ -63,6 +69,7 @@ public class CompanyDto {
         }
     }
 
+    @XmlElement(name = "employeeList")
     public List<EmployeeDto> getEmployeeList() {
         return employeeList;
     }
@@ -73,6 +80,7 @@ public class CompanyDto {
         }
     }
 
+    @XmlElement(name = "evaluationList")
     public List<EvaluationDto> getEvaluationList() {
         return evaluationList;
     }
@@ -83,6 +91,7 @@ public class CompanyDto {
         }
     }
 
+    @XmlElement(name = "jobList")
     public List<JobDto> getJobList() {
         return jobList;
     }
@@ -93,6 +102,7 @@ public class CompanyDto {
         }
     }
 
+    @XmlElement(name = "id")
     public Long getId() {
         return id;
     }
@@ -101,6 +111,7 @@ public class CompanyDto {
         this.id = id;
     }
 
+    @XmlElement(name = "name")
     public String getName() {
         return name;
     }
@@ -109,6 +120,7 @@ public class CompanyDto {
         this.name = name;
     }
 
+    @XmlElement(name = "email")
     public String getEmail() {
         return email;
     }
@@ -117,6 +129,7 @@ public class CompanyDto {
         this.email = email;
     }
 
+    @XmlElement(name = "logo")
     public Byte[] getLogo() {
         return logo;
     }
@@ -125,6 +138,7 @@ public class CompanyDto {
         this.logo = logo;
     }
 
+    @XmlElement(name = "emailTemplatePassword")
     public Byte[] getEmailTemplatePassword() {
         return emailTemplatePassword;
     }
@@ -133,6 +147,7 @@ public class CompanyDto {
         this.emailTemplatePassword = emailTemplatePassword;
     }
 
+    @XmlElement(name = "tokenEmail")
     public String getTokenEmail() {
         return tokenEmail;
     }
@@ -141,6 +156,7 @@ public class CompanyDto {
         this.tokenEmail = tokenEmail;
     }
 
+    @XmlElement(name = "emailTemplateActivateUser")
     public Byte[] getEmailTemplateActivateUser() {
         return emailTemplateActivateUser;
     }
@@ -149,6 +165,7 @@ public class CompanyDto {
         this.emailTemplateActivateUser = emailTemplateActivateUser;
     }
 
+    @XmlElement(name = "modificate")
     public boolean isModificate() {
         return modificate;
     }

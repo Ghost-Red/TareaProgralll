@@ -8,11 +8,14 @@ import java.io.Serializable;
 import jakarta.persistence.Basic;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.NamedQueries;
 import jakarta.persistence.NamedQuery;
+import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 import jakarta.persistence.Version;
 
@@ -32,6 +35,8 @@ public class EmployeeAverageSkill implements Serializable {
     private static final long serialVersionUID = 1L;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Id
+    @SequenceGenerator(name = "EMPLOYEE_AVERAGE_SKILL_EAS_ID_GENERATOR", sequenceName = "tarea.EMPLOYEE_AVERAGE_SKILL_SEQ", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "EMPLOYEE_AVERAGE_SKILL_EAS_ID_GENERATOR")
     @Basic(optional = false)
     @Column(name = "EAS_ID")
     private Long id;
@@ -70,43 +75,43 @@ public class EmployeeAverageSkill implements Serializable {
         this.skill.updateSkill(employeeAverageSkillDto.getSkill());
     }
 
-    public Long getid() {
+    public Long getId() {
         return id;
     }
 
-    public void setid(Long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public Long getskillAverageLvl() {
+    public Long getSkillAverageLvl() {
         return skillAverageLvl;
     }
 
-    public void setskillAverageLvl(Long skillAverageLvl) {
+    public void setSkillAverageLvl(Long skillAverageLvl) {
         this.skillAverageLvl = skillAverageLvl;
     }
 
-    public Long getversion() {
+    public Long getVersion() {
         return version;
     }
 
-    public void setversion(Long version) {
+    public void setVersion(Long version) {
         this.version = version;
     }
 
-    public EmployeeEvaluationRelation getemployeeEvaluationRelation() {
+    public EmployeeEvaluationRelation getEmployeeEvaluationRelation() {
         return employeeEvaluationRelation;
     }
 
-    public void setemployeeEvaluationRelation(EmployeeEvaluationRelation employeeEvaluationRelation) {
+    public void setEmployeeEvaluationRelation(EmployeeEvaluationRelation employeeEvaluationRelation) {
         this.employeeEvaluationRelation = employeeEvaluationRelation;
     }
 
-    public Skill getskill() {
+    public Skill getSkill() {
         return skill;
     }
 
-    public void setskill(Skill skill) {
+    public void setSkill(Skill skill) {
         this.skill = skill;
     }
 
@@ -132,7 +137,7 @@ public class EmployeeAverageSkill implements Serializable {
 
     @Override
     public String toString() {
-        return "com.mycompany.tareaws.model.EmployeeAverageSkill[ id=" + id + " ]";
+        return "EmployeeAverageSkill{" + "id=" + id + ", skillAverageLvl=" + skillAverageLvl + ", version=" + version + ", employeeEvaluationRelation=" + employeeEvaluationRelation + ", skill=" + skill + '}';
     }
 
 }

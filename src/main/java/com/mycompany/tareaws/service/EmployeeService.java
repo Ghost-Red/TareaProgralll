@@ -4,8 +4,10 @@
  */
 package com.mycompany.tareaws.service;
 
+import com.mycompany.tareaws.model.Company;
 import com.mycompany.tareaws.model.Employee;
 import com.mycompany.tareaws.model.EmployeeDto;
+import com.mycompany.tareaws.model.Job;
 import com.mycompany.tareaws.util.CodigoRespuesta;
 import com.mycompany.tareaws.util.Respuesta;
 import jakarta.ejb.LocalBean;
@@ -41,7 +43,6 @@ public class EmployeeService {
             Employee employee = (Employee) qryEmployee.getSingleResult();
             EmployeeDto employeeDto = new EmployeeDto(employee);
             employeeDto.setForeignAtributes(employee);
-            employeeDto.getJob().setCompany(employeeDto.getCompany());
             return new Respuesta(true, CodigoRespuesta.CORRECTO, "", "", "Employee", employeeDto);
 
         } catch (NoResultException ex) {
@@ -67,6 +68,9 @@ public class EmployeeService {
                 empleado = em.merge(empleado);
             } else {
                 empleado = new Employee(employeeDto);
+                empleado.setJob(em.find(Job.class, employeeDto.getJob().getId()));
+                empleado.setCompany(em.find(Company.class, employeeDto.getCompany().getId()));
+                //empleado.getJob().updateJob(employeeDto.getJob());
                 em.persist(empleado);
             }
             em.flush();//si hay error lo marca aqui dentro

@@ -4,6 +4,8 @@
  */
 package com.mycompany.tareaws.model;
 
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlRootElement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,6 +13,7 @@ import java.util.List;
  *
  * @author james
  */
+@XmlRootElement
 public class EmployeeEvaluationRelationDto {
 
     private Long id;
@@ -21,50 +24,53 @@ public class EmployeeEvaluationRelationDto {
 
     private List<EmployeeAverageSkillDto> employeeAverageSkillList;
     private List<EmployeeEvaluatorRelationDto> employeeEvaluatorRelationList;
-    
+
     public EmployeeEvaluationRelationDto() {
         modificate = false;
         employeeEvaluated = new EmployeeDto();
         evaluationJobRelation = new EvaluationJobRelationDto();
-        employeeAverageSkillList= new ArrayList<>();
-        employeeEvaluatorRelationList= new ArrayList<>();
+        employeeAverageSkillList = new ArrayList<>();
+        employeeEvaluatorRelationList = new ArrayList<>();
     }
 
     public EmployeeEvaluationRelationDto(EmployeeEvaluationRelation employeeEvaluationRelation) {
         this();
-        this.id = employeeEvaluationRelation.getId();
-        this.employeeClasification = employeeEvaluationRelation.getEmployeeClasification();
+        if (employeeEvaluationRelation != null) {
+            this.id = employeeEvaluationRelation.getId();
+            this.employeeClasification = employeeEvaluationRelation.getEmployeeClasification();
+        }
 
     }
-     public void setForeignAtributes(EmployeeEvaluationRelation employeeEvaluationRelation){
-         evaluationJobRelation = new EvaluationJobRelationDto(employeeEvaluationRelation.getEvaluationJobRelation());
-         evaluationJobRelation.setForeignAtributes(employeeEvaluationRelation.getEvaluationJobRelation());
-         employeeEvaluated = new EmployeeDto(employeeEvaluationRelation.getEmployeeEvaluated());
-         employeeEvaluated.setForeignAtributes(employeeEvaluationRelation.getEmployeeEvaluated());
-         setEmployeeAverageSkillList(employeeEvaluationRelation.getEmployeeAverageSkillList());
-         setEmployeeEvaluatorRelationList(employeeEvaluationRelation.getEmployeeEvaluatorRelationList());
-     }
-     
+
+    public void setForeignAtributes(EmployeeEvaluationRelation employeeEvaluationRelation) {
+        evaluationJobRelation = new EvaluationJobRelationDto(employeeEvaluationRelation.getEvaluationJobRelation());
+        employeeEvaluated = new EmployeeDto(employeeEvaluationRelation.getEmployeeEvaluated());
+        setEmployeeAverageSkillList(employeeEvaluationRelation.getEmployeeAverageSkillList());
+        setEmployeeEvaluatorRelationList(employeeEvaluationRelation.getEmployeeEvaluatorRelationList());
+    }
+
+    @XmlElement(name = "employeeAverageSkillList")
     public List<EmployeeAverageSkillDto> getEmployeeAverageSkillList() {
         return employeeAverageSkillList;
     }
 
     public void setEmployeeAverageSkillList(List<EmployeeAverageSkill> employeeAverageSkillList) {
-        for (EmployeeAverageSkill employeeAverageSkill : employeeAverageSkillList){
+        for (EmployeeAverageSkill employeeAverageSkill : employeeAverageSkillList) {
             this.employeeAverageSkillList.add(new EmployeeAverageSkillDto(employeeAverageSkill));
         }
     }
 
+    @XmlElement(name = "employeeEvaluatorRelationList")
     public List<EmployeeEvaluatorRelationDto> getEmployeeEvaluatorRelationList() {
         return employeeEvaluatorRelationList;
     }
 
     public void setEmployeeEvaluatorRelationList(List<EmployeeEvaluatorRelation> employeeEvaluatorRelationList) {
-        for (EmployeeEvaluatorRelation employeeEvaluatorRelation : employeeEvaluatorRelationList){
+        for (EmployeeEvaluatorRelation employeeEvaluatorRelation : employeeEvaluatorRelationList) {
             this.employeeEvaluatorRelationList.add(new EmployeeEvaluatorRelationDto(employeeEvaluatorRelation));
         }
     }
-     
+
     public Long getId() {
         return id;
     }
@@ -73,6 +79,7 @@ public class EmployeeEvaluationRelationDto {
         this.id = id;
     }
 
+    @XmlElement(name = "employeeClasification")
     public Long getEmployeeClasification() {
         return employeeClasification;
     }
@@ -81,6 +88,7 @@ public class EmployeeEvaluationRelationDto {
         this.employeeClasification = employeeClasification;
     }
 
+    @XmlElement(name = "employeeEvaluated")
     public EmployeeDto getEmployeeEvaluated() {
         return employeeEvaluated;
     }
@@ -89,6 +97,7 @@ public class EmployeeEvaluationRelationDto {
         this.employeeEvaluated = employeeEvaluated;
     }
 
+    @XmlElement(name = "evaluationJobRelation")
     public EvaluationJobRelationDto getEvaluationJobRelation() {
         return evaluationJobRelation;
     }
@@ -97,9 +106,17 @@ public class EmployeeEvaluationRelationDto {
         this.evaluationJobRelation = evaluationJobRelation;
     }
 
-    @Override
-    public String toString() {
-        return "EmployeeEvaluationRelationDto{" + "id=" + id + ", employeeClasification=" + employeeClasification + ", id=" + employeeEvaluated + ", evaluationJobRelation=" + evaluationJobRelation + ", modificate=" + modificate + '}';
+    @XmlElement(name = "modificate")
+    public boolean isModificate() {
+        return modificate;
     }
 
+    public void setModificate(boolean modificate) {
+        this.modificate = modificate;
+    }
+
+    @Override
+    public String toString() {
+        return "EmployeeEvaluationRelationDto{" + "id=" + id + ", employeeClasification=" + employeeClasification + ", employeeEvaluated=" + employeeEvaluated + ", evaluationJobRelation=" + evaluationJobRelation + ", modificate=" + modificate + '}';
+    }
 }

@@ -27,15 +27,16 @@ public class JobController {
         Respuesta res = jobService.getJob(id);
         return (JobDto) res.getResultado("Job");
     }
+
     @WebMethod(operationName = "saveJob")
-    public JobDto saveJob(JobDto job){
+    public boolean saveJob(JobDto job) {
         Respuesta res = jobService.saveJob(job);
-        return (JobDto) res.getResultado("Job");
+        return res.getEstado();
     }
-    
+
     @WebMethod(operationName = "deleteJob")
-    public JobDto deleteJob(@WebParam(name = "id") Long id){
+    public boolean deleteJob(@WebParam(name = "id") Long id) {
         Respuesta res = jobService.deleteJob(id);
-        return (JobDto) res.getResultado("Job");
+        return res.getEstado();
     }
 }

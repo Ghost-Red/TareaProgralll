@@ -8,6 +8,10 @@ package com.mycompany.tareaws.model;
  *
  * @author james
  */
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement
 public class EESkillRelationDto {
 
     private Long id;
@@ -27,13 +31,13 @@ public class EESkillRelationDto {
         this.id = eESkillRelation.getId();
         this.skillClasification = eESkillRelation.getSkillClasification();
     }
-    public void setForeignAtributes(EESkillRelation eESkillRelation){
+
+    public void setForeignAtributes(EESkillRelation eESkillRelation) {
         employeeEvaluatorRelation = new EmployeeEvaluatorRelationDto(eESkillRelation.getEmployeeEvaluatorRelation());
-        employeeEvaluatorRelation.setForeignAtributes(eESkillRelation.getEmployeeEvaluatorRelation());
         evaluatedSkill = new SkillDto(eESkillRelation.getEvaluatedSkill());
-        evaluatedSkill.setForeignAtributes(eESkillRelation.getEvaluatedSkill());
     }
 
+    @XmlElement(name = "id")
     public Long getId() {
         return id;
     }
@@ -42,6 +46,7 @@ public class EESkillRelationDto {
         this.id = id;
     }
 
+    @XmlElement(name = "skillClasification")
     public Long getSkillClasification() {
         return skillClasification;
     }
@@ -50,6 +55,7 @@ public class EESkillRelationDto {
         this.skillClasification = skillClasification;
     }
 
+    @XmlElement(name = "employeeEvaluatorRelation")
     public EmployeeEvaluatorRelationDto getEmployeeEvaluatorRelation() {
         return employeeEvaluatorRelation;
     }
@@ -58,6 +64,7 @@ public class EESkillRelationDto {
         this.employeeEvaluatorRelation = employeeEvaluatorRelation;
     }
 
+    @XmlElement(name = "evaluatedSkill")
     public SkillDto getEvaluatedSkill() {
         return evaluatedSkill;
     }
@@ -66,9 +73,17 @@ public class EESkillRelationDto {
         this.evaluatedSkill = evaluatedSkill;
     }
 
+    @XmlElement(name = "modificate")
+    public boolean isModificate() {
+        return modificate;
+    }
+
+    public void setModificate(boolean modificate) {
+        this.modificate = modificate;
+    }
+
     @Override
     public String toString() {
         return "EESkillRelationDto{" + "id=" + id + ", skillClasification=" + skillClasification + ", employeeEvaluatorRelation=" + employeeEvaluatorRelation + ", evaluatedSkill=" + evaluatedSkill + ", modificate=" + modificate + '}';
     }
-
 }
