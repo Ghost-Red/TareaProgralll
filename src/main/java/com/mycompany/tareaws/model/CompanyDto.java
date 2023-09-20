@@ -40,13 +40,15 @@ public class CompanyDto {
 
     public CompanyDto(Company company) {
         this();
-        this.id = company.getId();
-        this.name = company.getName();
-        this.email = company.getEmail();
-        this.logo = company.getLogo();
-        this.emailTemplatePassword = company.getEmailTemplatePassword();
-        this.tokenEmail = company.getTokenEmail();
-        this.emailTemplateActivateUser = company.getEmailTemplateActivateUser();
+        if (company != null) {
+            this.id = company.getId();
+            this.name = company.getName();
+            this.email = company.getEmail();
+            this.logo = company.getLogo();
+            this.emailTemplatePassword = company.getEmailTemplatePassword();
+            this.tokenEmail = company.getTokenEmail();
+            this.emailTemplateActivateUser = company.getEmailTemplateActivateUser();
+        }
     }
 
     public void setForeignAtributes(Company company) {

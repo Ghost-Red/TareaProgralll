@@ -60,12 +60,8 @@ public class EmployeeDto {
     }
 
     public void setForeignAtributes(Employee employee) {
-        if (employee.getCompany() != null) {
-            company = new CompanyDto(employee.getCompany());
-        }
-        if (employee.getJob() != null) {
-            job = new JobDto(employee.getJob());
-        }
+        company = new CompanyDto(employee.getCompany());
+        job = new JobDto(employee.getJob());
         setEmployeeEvaluationRelationList(employee.getEmployeeEvaluationRelationList());
         setEmployeeEvaluatorRelationList(employee.getEmployeeEvaluatorRelationList());
     }

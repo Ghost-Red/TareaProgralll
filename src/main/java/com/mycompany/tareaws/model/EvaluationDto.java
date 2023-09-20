@@ -35,11 +35,15 @@ public class EvaluationDto {
 
     public EvaluationDto(Evaluation evaluation) {
         this();
-        this.id = evaluation.getId();
-        this.title = evaluation.getTitle();
-        this.startDate = evaluation.getStartDate();
-        this.finalDate = evaluation.getFinalDate();
-        this.state = evaluation.getState();
+        if (evaluation != null) {
+            this.id = evaluation.getId();
+            this.title = evaluation.getTitle();
+            this.startDate = evaluation.getStartDate();
+            this.finalDate = evaluation.getFinalDate();
+            this.state = evaluation.getState();
+        } else {
+            company = null;
+        }
     }
 
     public void setForeignAtributes(Evaluation evaluation) {

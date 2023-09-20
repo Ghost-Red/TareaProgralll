@@ -8,7 +8,6 @@ package com.mycompany.tareaws.model;
  *
  * @author james
  */
-
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlRootElement;
 
@@ -32,7 +31,7 @@ public class EESkillRelationDto {
         this.id = eESkillRelation.getId();
         this.skillClasification = eESkillRelation.getSkillClasification();
     }
-    
+
     public void setForeignAtributes(EESkillRelation eESkillRelation) {
         employeeEvaluatorRelation = new EmployeeEvaluatorRelationDto(eESkillRelation.getEmployeeEvaluatorRelation());
         evaluatedSkill = new SkillDto(eESkillRelation.getEvaluatedSkill());
@@ -88,4 +87,3 @@ public class EESkillRelationDto {
         return "EESkillRelationDto{" + "id=" + id + ", skillClasification=" + skillClasification + ", employeeEvaluatorRelation=" + employeeEvaluatorRelation + ", evaluatedSkill=" + evaluatedSkill + ", modificate=" + modificate + '}';
     }
 }
-

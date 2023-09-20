@@ -35,8 +35,10 @@ public class EmployeeEvaluationRelationDto {
 
     public EmployeeEvaluationRelationDto(EmployeeEvaluationRelation employeeEvaluationRelation) {
         this();
-        this.id = employeeEvaluationRelation.getId();
-        this.employeeClasification = employeeEvaluationRelation.getEmployeeClasification();
+        if (employeeEvaluationRelation != null) {
+            this.id = employeeEvaluationRelation.getId();
+            this.employeeClasification = employeeEvaluationRelation.getEmployeeClasification();
+        }
 
     }
 

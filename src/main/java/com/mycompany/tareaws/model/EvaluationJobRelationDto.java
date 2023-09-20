@@ -30,6 +30,16 @@ public class EvaluationJobRelationDto {
         employeeEvaluationRelationList = new ArrayList<>();
     }
 
+    public EvaluationJobRelationDto(EvaluationJobRelation evaluationJobRelation) {
+        this();
+        if (evaluationJobRelation != null) {
+            this.id = evaluationJobRelation.getId();
+        } else {
+            evaluation = null;
+            job = null;
+        }
+    }
+
     public void setForeignAtributes(EvaluationJobRelation evaluationJobRelation) {
         evaluation = new EvaluationDto(evaluationJobRelation.getEvaluation());
         job = new JobDto(evaluationJobRelation.getJob());
@@ -45,11 +55,6 @@ public class EvaluationJobRelationDto {
         for (EmployeeEvaluationRelation employeeEvaluationRelation : employeeEvaluationRelationList) {
             this.employeeEvaluationRelationList.add(new EmployeeEvaluationRelationDto(employeeEvaluationRelation));
         }
-    }
-
-    public EvaluationJobRelationDto(EvaluationJobRelation evaluationJobRelation) {
-        this();
-        this.id = evaluationJobRelation.getId();
     }
 
     @XmlElement(name = "id")

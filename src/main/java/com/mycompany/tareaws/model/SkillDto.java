@@ -35,10 +35,14 @@ public class SkillDto {
 
     public SkillDto(Skill skill) {
         this();
-        this.id = skill.getId();
-        this.name = skill.getName();
-        this.description = skill.getDescription();
-        this.state = skill.getState();
+        if (skill != null) {
+            this.id = skill.getId();
+            this.name = skill.getName();
+            this.description = skill.getDescription();
+            this.state = skill.getState();
+        } else {
+            company = null;
+        }
     }
 
     public void setForeignAtributes(Skill skill) {

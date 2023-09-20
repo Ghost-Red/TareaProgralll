@@ -34,9 +34,13 @@ public class JobDto {
 
     public JobDto(Job job) {
         this();
-        this.id = job.getId();
-        this.name = job.getName();
-        this.state = job.getState();
+        if (job != null) {
+            this.id = job.getId();
+            this.name = job.getName();
+            this.state = job.getState();
+        } else {
+            company = null;
+        }
     }
 
     public void setForeignAtributes(Job job) {

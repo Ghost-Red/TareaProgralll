@@ -28,8 +28,13 @@ public class EmployeeAverageSkillDto {
 
     public EmployeeAverageSkillDto(EmployeeAverageSkill employeeAverageSkill) {
         this();
-        this.id = employeeAverageSkill.getId();
-        this.employeeSkillLvl = employeeAverageSkill.getSkillAverageLvl();
+        if (employeeAverageSkill != null) {
+            this.id = employeeAverageSkill.getId();
+            this.employeeSkillLvl = employeeAverageSkill.getSkillAverageLvl();
+        } else {
+            employeeEvaluationRelation = null;
+            skill = null;
+        }
     }
 
     public void setForeignAtributes(EmployeeAverageSkill employeeAverageSkill) {

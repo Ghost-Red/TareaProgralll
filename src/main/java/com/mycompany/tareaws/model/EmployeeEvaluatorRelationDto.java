@@ -33,11 +33,16 @@ public class EmployeeEvaluatorRelationDto {
 
     public EmployeeEvaluatorRelationDto(EmployeeEvaluatorRelation employeeEvaluatorRelation) {
         this();
-        this.id = employeeEvaluatorRelation.getId();
-        this.employeeEvaluatorRelationType = employeeEvaluatorRelation.getEmployeeEvaluatorRelationType();
-        this.feedback = employeeEvaluatorRelation.getFeedback();
-        this.employeeEvaluator = new EmployeeDto(employeeEvaluatorRelation.getEmployeeEvaluator());
-        this.employeeEvaluated = new EmployeeEvaluationRelationDto(employeeEvaluatorRelation.getEmployeeEvaluated());
+        if (employeeEvaluatorRelation != null) {
+            this.id = employeeEvaluatorRelation.getId();
+            this.employeeEvaluatorRelationType = employeeEvaluatorRelation.getEmployeeEvaluatorRelationType();
+            this.feedback = employeeEvaluatorRelation.getFeedback();
+            this.employeeEvaluator = new EmployeeDto(employeeEvaluatorRelation.getEmployeeEvaluator());
+            this.employeeEvaluated = new EmployeeEvaluationRelationDto(employeeEvaluatorRelation.getEmployeeEvaluated());
+        } else {
+            employeeEvaluated = null;
+            employeeEvaluator = null;
+        }
     }
 
     public void setForeignAtributes(EmployeeEvaluatorRelation employeeEvaluatorRelation) {
