@@ -42,9 +42,7 @@ public class EmployeeEvaluatorRelationDto {
 
     public void setForeignAtributes(EmployeeEvaluatorRelation employeeEvaluatorRelation) {
         employeeEvaluated = new EmployeeEvaluationRelationDto(employeeEvaluatorRelation.getEmployeeEvaluated());
-        employeeEvaluated.setForeignAtributes(employeeEvaluatorRelation.getEmployeeEvaluated());
         employeeEvaluator = new EmployeeDto(employeeEvaluatorRelation.getEmployeeEvaluator());
-        employeeEvaluator.setForeignAtributes(employeeEvaluatorRelation.getEmployeeEvaluator());
         setSkillsEvaluatedList(employeeEvaluatorRelation.getSkillsEvaluatedList());
     }
 

@@ -34,9 +34,7 @@ public class EmployeeAverageSkillDto {
 
     public void setForeignAtributes(EmployeeAverageSkill employeeAverageSkill) {
         employeeEvaluationRelation = new EmployeeEvaluationRelationDto(employeeAverageSkill.getEmployeeEvaluationRelation());
-        employeeEvaluationRelation.setForeignAtributes(employeeAverageSkill.getEmployeeEvaluationRelation());
         skill = new SkillDto(employeeAverageSkill.getSkill());
-        skill.setForeignAtributes(employeeAverageSkill.getSkill());
     }
 
     @XmlElement(name = "id")
