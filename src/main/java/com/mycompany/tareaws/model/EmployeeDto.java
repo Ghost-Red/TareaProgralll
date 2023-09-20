@@ -60,14 +60,18 @@ public class EmployeeDto {
     }
 
     public void setForeignAtributes(Employee employee) {
-        company = new CompanyDto(employee.getCompany());
-        job = new JobDto(employee.getJob());
+        if (employee.getCompany() != null) {
+            company = new CompanyDto(employee.getCompany());
+        }
+        if (employee.getJob() != null) {
+            job = new JobDto(employee.getJob());
+        }
         setEmployeeEvaluationRelationList(employee.getEmployeeEvaluationRelationList());
         setEmployeeEvaluatorRelationList(employee.getEmployeeEvaluatorRelationList());
     }
 
     @XmlElement(name = "employeeEvaluationRelationList")
-    public List<EmployeeEvaluationRelationDto> getEmployeeEvaluationRelationList() {
+    public List<EmployeeEvaluationRelationDto> getEmployeeEvaluationRelationList() {z
         return employeeEvaluationRelationList;
     }
 
