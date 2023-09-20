@@ -28,14 +28,14 @@ public class EmployeeEvaluationRelationController {
         return (EmployeeEvaluationRelationDto) res.getResultado("EmployeeEvaluationRelation");
     }
     @WebMethod(operationName = "saveEmployeeEvaluationRelation")
-    public EmployeeEvaluationRelationDto saveEmployeeEvaluationRelation(EmployeeEvaluationRelationDto employeeEvaluationRelation){
+    public boolean saveEmployeeEvaluationRelation(EmployeeEvaluationRelationDto employeeEvaluationRelation){
         Respuesta res = employeeEvaluationRelationService.saveEmployeeEvaluationRelation(employeeEvaluationRelation);
-        return (EmployeeEvaluationRelationDto) res.getResultado("EmployeeEvaluationRelation");
+        return res.getEstado();
     }
     
     @WebMethod(operationName = "deleteEmployeeEvaluationRelation")
-    public EmployeeEvaluationRelationDto deleteEmployeeEvaluationRelation(@WebParam(name = "id") Long id){
+    public boolean deleteEmployeeEvaluationRelation(@WebParam(name = "id") Long id){
         Respuesta res = employeeEvaluationRelationService.deleteEmployeeEvaluationRelation(id);
-        return (EmployeeEvaluationRelationDto) res.getResultado("EmployeeEvaluationRelation");
+        return res.getEstado();
     }
 }

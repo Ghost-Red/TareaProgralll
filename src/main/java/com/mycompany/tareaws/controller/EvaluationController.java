@@ -28,14 +28,14 @@ public class EvaluationController {
         return (EvaluationDto) res.getResultado("Evaluation");
     }
     @WebMethod(operationName = "saveEvaluation")
-    public EvaluationDto saveEvaluation(EvaluationDto evaluation){
+    public boolean saveEvaluation(EvaluationDto evaluation){
         Respuesta res = evaluationService.saveEvaluation(evaluation);
-        return (EvaluationDto) res.getResultado("Evaluation");
+        return res.getEstado();
     }
     
     @WebMethod(operationName = "deleteEvaluation")
-    public EvaluationDto deleteEvaluation(@WebParam(name = "id") Long id){
+    public boolean deleteEvaluation(@WebParam(name = "id") Long id){
         Respuesta res = evaluationService.deleteEvaluation(id);
-        return (EvaluationDto) res.getResultado("Evaluation");
+        return res.getEstado();
     }
 }
