@@ -71,7 +71,7 @@ public class EmployeeDto {
     }
 
     @XmlElement(name = "employeeEvaluationRelationList")
-    public List<EmployeeEvaluationRelationDto> getEmployeeEvaluationRelationList() {z
+    public List<EmployeeEvaluationRelationDto> getEmployeeEvaluationRelationList() {
         return employeeEvaluationRelationList;
     }
 
