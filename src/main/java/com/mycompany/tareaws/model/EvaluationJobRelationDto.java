@@ -32,9 +32,7 @@ public class EvaluationJobRelationDto {
 
     public void setForeignAtributes(EvaluationJobRelation evaluationJobRelation) {
         evaluation = new EvaluationDto(evaluationJobRelation.getEvaluation());
-        evaluation.setForeignAtributes(evaluationJobRelation.getEvaluation());
         job = new JobDto(evaluationJobRelation.getJob());
-        job.setForeignAtributes(evaluationJobRelation.getJob());
         setEmployeeEvaluationRelationList(evaluationJobRelation.getEmployeeEvaluationRelationList());
     }
 

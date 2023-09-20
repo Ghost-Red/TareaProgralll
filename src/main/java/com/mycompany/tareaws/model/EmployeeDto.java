@@ -61,9 +61,7 @@ public class EmployeeDto {
 
     public void setForeignAtributes(Employee employee) {
         company = new CompanyDto(employee.getCompany());
-        company.setForeignAtributes(employee.getCompany());
         job = new JobDto(employee.getJob());
-        job.setForeignAtributes(employee.getJob());
         setEmployeeEvaluationRelationList(employee.getEmployeeEvaluationRelationList());
         setEmployeeEvaluatorRelationList(employee.getEmployeeEvaluatorRelationList());
     }

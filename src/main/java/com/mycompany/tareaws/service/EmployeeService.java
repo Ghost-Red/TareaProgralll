@@ -41,7 +41,6 @@ public class EmployeeService {
             Employee employee = (Employee) qryEmployee.getSingleResult();
             EmployeeDto employeeDto = new EmployeeDto(employee);
             employeeDto.setForeignAtributes(employee);
-            employeeDto.getJob().setCompany(employeeDto.getCompany());
             return new Respuesta(true, CodigoRespuesta.CORRECTO, "", "", "Employee", employeeDto);
 
         } catch (NoResultException ex) {

@@ -37,7 +37,6 @@ public class SkillService {
         try {
             Query qrySkill = em.createNamedQuery("Skill.findById", Skill.class);
             qrySkill.setParameter("id", id);
-
             Skill skill = (Skill) qrySkill.getSingleResult();
             SkillDto skillDto = new SkillDto(skill);
             skillDto.setForeignAtributes(skill);

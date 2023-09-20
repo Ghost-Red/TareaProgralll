@@ -44,7 +44,6 @@ public class EvaluationDto {
 
     public void setForeignAtributes(Evaluation evaluation) {
         company = new CompanyDto(evaluation.getCompany());
-        company.setForeignAtributes(evaluation.getCompany());
         setEvaluationJobRelationList(evaluation.getEvaluationJobRelationList());
     }
 
