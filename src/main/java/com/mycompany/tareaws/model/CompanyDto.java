@@ -19,10 +19,10 @@ public class CompanyDto {
     private Long id;
     private String name;
     private String email;
-    private Byte[] logo;
-    private Byte[] emailTemplatePassword;
+    private byte[] logo;
+    private byte[] emailTemplatePassword;
     private String tokenEmail;
-    private Byte[] emailTemplateActivateUser;
+    private byte[] emailTemplateActivateUser;
     private boolean modificate;
 
     private List<EmployeeDto> employeeList;
@@ -129,21 +129,21 @@ public class CompanyDto {
         this.email = email;
     }
 
-    @XmlElement(name = "logo")
-    public Byte[] getLogo() {
+    //@XmlElement(name = "logo")
+    public byte[] getLogo() {
         return logo;
     }
 
-    public void setLogo(Byte[] logo) {
+    public void setLogo(byte[] logo) {
         this.logo = logo;
     }
 
-    @XmlElement(name = "emailTemplatePassword")
-    public Byte[] getEmailTemplatePassword() {
+    //@XmlElement(name = "emailTemplatePassword")
+    public byte[] getEmailTemplatePassword() {
         return emailTemplatePassword;
     }
 
-    public void setEmailTemplatePassword(Byte[] emailTemplatePassword) {
+    public void setEmailTemplatePassword(byte[] emailTemplatePassword) {
         this.emailTemplatePassword = emailTemplatePassword;
     }
 
@@ -156,12 +156,12 @@ public class CompanyDto {
         this.tokenEmail = tokenEmail;
     }
 
-    @XmlElement(name = "emailTemplateActivateUser")
-    public Byte[] getEmailTemplateActivateUser() {
+    //@XmlElement(name = "emailTemplateActivateUser")
+    public byte[] getEmailTemplateActivateUser() {
         return emailTemplateActivateUser;
     }
 
-    public void setEmailTemplateActivateUser(Byte[] emailTemplateActivateUser) {
+    public void setEmailTemplateActivateUser(byte[] emailTemplateActivateUser) {
         this.emailTemplateActivateUser = emailTemplateActivateUser;
     }
 
