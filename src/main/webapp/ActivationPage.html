@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Enviar Solicitud SOAP</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+    <body>
+        <h1>Solicitud Enviada</h1>
+        <script>
+            var urlParams = new URLSearchParams(window.location.search);
+            var idEmpleado = urlParams.get('id');
+            if (idEmpleado) {
+                var xml = `<x:Envelope
+                    xmlns:x="http://schemas.xmlsoap.org/soap/envelope/"
+                    xmlns:con="http://controller.tareaws.mycompany.com/">
+                    <x:Header/>
+                    <x:Body>
+                        <con:activateEmployee>
+                            <id>${idEmpleado}</id>
+                        </con:activateEmployee>
+                    </x:Body>
+                </x:Envelope>`;
+
+                var url = 'http://localhost:8080/TareaProgralll_WebServer/EmployeeController';
+
+                fetch(url, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'text/xml;charset=UTF-8',
+                        'SOAPAction': 'activateEmployee'
+                    },
+                    body: xml
+                })
+                .then(response => response.text())
+                .then(data => {
+                    console.log('Respuesta del servidor:');
+                    console.log(data);
+                    alert('Solicitud SOAP enviada con éxito. Consulta la consola para ver la respuesta.');
+                })
+                .catch(error => {
+                    console.error('Error al enviar la solicitud:', error);
+                    alert('Error al enviar la solicitud SOAP. Consulta la consola para obtener más detalles.');
+                });
+            } else {
+                // Maneja el caso en el que idEmpleado no se proporciona en la URL
+                console.error('No se proporcionó un valor válido para idEmpleado en la URL.');
+                alert('No se proporcionó un valor válido para idEmpleado en la URL.');
+            }
+        </script>
+    </body>
+</html>

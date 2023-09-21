@@ -103,5 +103,29 @@ public class EmployeeService {
             return new Respuesta(false, CodigoRespuesta.ERROR_INTERNO, "Ocurrio un error al eliminar el empleado.", "eliminarEmpleado " + ex.getMessage());
         }
     }
+    
+    public Respuesta activateEmployee(Long id) {
+        try {
+            Employee employee;
+            if (id != null && id > 0) {
+                employee = em.find(Employee.class, id);
+                if (employee == null) {
+                    return new Respuesta(false, CodigoRespuesta.ERROR_NOENCONTRADO, "No se encrontró el empleado a activar.", "activarEmpleado NoResultException");
+                }
+                employee.setActivatedState("A");
+                em.merge(employee);
+            } else {
+                return new Respuesta(false, CodigoRespuesta.ERROR_NOENCONTRADO, "no se encontro el empleado", "activarEmpleado NoResultException");
+            }
+            em.flush();
+            return new Respuesta(true, CodigoRespuesta.CORRECTO, "", "");
+        } catch (Exception ex) {
+            if (ex.getCause() != null && ex.getCause().getCause().getClass() == SQLIntegrityConstraintViolationException.class) {
+                return new Respuesta(false, CodigoRespuesta.ERROR_INTERNO, "No se activar el empleado.", "activarEmpleado " + ex.getMessage());
+            }
+            LOG.log(Level.SEVERE, "Ocurrio un error al activar el empleado.", ex);
+            return new Respuesta(false, CodigoRespuesta.ERROR_INTERNO, "Ocurrio un error al activar el empleado.", "activarEmpleado " + ex.getMessage());
+        }
+    }
 
 }
