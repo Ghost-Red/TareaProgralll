@@ -45,4 +45,10 @@ public class EmployeeController {
         Respuesta res = employeeService.activateEmployee(id);
         return res.getEstado();
     }
+    
+    @WebMethod(operationName = "validateUser")
+    public EmployeeDto validateUser(@WebParam(name = "email") String email, @WebParam(name = "password") String password){
+        Respuesta res = employeeService.validateUser(email, password);
+        return (EmployeeDto) res.getResultado("Employee");
+    }
 }

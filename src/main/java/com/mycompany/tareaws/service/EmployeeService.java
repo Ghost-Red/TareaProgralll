@@ -127,5 +127,26 @@ public class EmployeeService {
             return new Respuesta(false, CodigoRespuesta.ERROR_INTERNO, "Ocurrio un error al activar el empleado.", "activarEmpleado " + ex.getMessage());
         }
     }
+    
+    public Respuesta validateUser(String email, String password){
+        try {
+            Query qryActividad = em.createNamedQuery("Employee.findByEmailPassword", Employee.class);
+            qryActividad.setParameter("email", email);
+            qryActividad.setParameter("password", password);
+            Employee employee = (Employee) qryActividad.getSingleResult();
+            EmployeeDto employeeDto = new EmployeeDto(employee);
+            employeeDto.setForeignAtributes(employee);
+            return new Respuesta(true, CodigoRespuesta.CORRECTO, "", "", "Employee", employeeDto);
+
+        } catch (NoResultException ex) {
+            return new Respuesta(false, CodigoRespuesta.ERROR_NOENCONTRADO, "No existe un usuario con las credenciales ingresadas.", "validarUsuario NoResultException");
+        } catch (NonUniqueResultException ex) {
+            LOG.log(Level.SEVERE, "Ocurrio un error al consultar el usuario.", ex);
+            return new Respuesta(false, CodigoRespuesta.ERROR_INTERNO, "Ocurrio un error al consultar el usuario.", "validateUser NonUniqueResultException");
+        } catch (Exception ex) {
+            LOG.log(Level.SEVERE, "Ocurrio un error al consultar el usuario.", ex);
+            return new Respuesta(false, CodigoRespuesta.ERROR_INTERNO, "Ocurrio un error al consultar el usuario.", "validateUser " + ex.getMessage());
+        }
+    }
 
 }
