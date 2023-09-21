@@ -30,7 +30,7 @@ import java.io.Serializable;
 @NamedQueries({
     @NamedQuery(name = "Company.findAll", query = "SELECT c FROM Company c"),
     @NamedQuery(name = "Company.findById", query = "SELECT c FROM Company c WHERE c.id = :id"),
-    @NamedQuery(name = "Company.findByName", query = "SELECT c FROM Company c WHERE c.name = :name"),
+    @NamedQuery(name = "Company.findByName", query = "SELECT c FROM Company c WHERE UPPER(c.name) = UPPER(:name)"),
     @NamedQuery(name = "Company.findByEmail", query = "SELECT c FROM Company c WHERE c.email = :email"),
     @NamedQuery(name = "Company.findByTokenEmail", query = "SELECT c FROM Company c WHERE c.tokenEmail = :tokenEmail"),
     @NamedQuery(name = "Company.findByVersion", query = "SELECT c FROM Company c WHERE c.version = :version")})

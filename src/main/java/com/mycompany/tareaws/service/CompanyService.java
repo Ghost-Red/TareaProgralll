@@ -32,6 +32,26 @@ public class CompanyService {
     @PersistenceContext(unitName = "TareaWsPU")
     private EntityManager em;
 
+    public Respuesta getCompanyByName(String name) {
+        try {
+            Query qryCompany = em.createNamedQuery("Company.findByName", Company.class);
+            qryCompany.setParameter("name", name);
+            Company company = (Company) qryCompany.getSingleResult();
+            CompanyDto companyDto = new CompanyDto(company);
+            companyDto.setForeignAtributes(company);
+            return new Respuesta(true, CodigoRespuesta.CORRECTO, "", "", "Company", companyDto);
+
+        } catch (NoResultException ex) {
+            return new Respuesta(false, CodigoRespuesta.ERROR_NOENCONTRADO, "No existe una compañia con el código ingresado.", "getCompany NoResultException");
+        } catch (NonUniqueResultException ex) {
+            LOG.log(Level.SEVERE, "Ocurrio un error al consultar la compañia.", ex);
+            return new Respuesta(false, CodigoRespuesta.ERROR_INTERNO, "Ocurrio un error al consultar la compañia.", "getCompany NonUniqueResultException");
+        } catch (Exception ex) {
+            LOG.log(Level.SEVERE, "Ocurrio un error al consultar la compañia.", ex);
+            return new Respuesta(false, CodigoRespuesta.ERROR_INTERNO, "Ocurrio un error al consultar la compañia.", "getCompany " + ex.getMessage());
+        }
+    }
+
     public Respuesta getCompany(Long id) {
         try {
             Query qryCompany = em.createNamedQuery("Company.findById", Company.class);
