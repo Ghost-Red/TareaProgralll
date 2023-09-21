@@ -39,4 +39,10 @@ public class EmployeeController {
         Respuesta res = employeeService.deleteEmployee(id);
         return res.getEstado();
     }
+    
+    @WebMethod(operationName = "activateEmployee")
+    public boolean activateEmployee(@WebParam(name = "id") Long id) {
+        Respuesta res = employeeService.activateEmployee(id);
+        return res.getEstado();
+    }
 }
