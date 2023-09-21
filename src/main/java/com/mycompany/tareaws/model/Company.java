@@ -53,11 +53,11 @@ public class Company implements Serializable {
     @Basic(optional = false)
     @Lob
     @Column(name = "COM_LOGO")
-    private Byte[] logo;
+    private byte[] logo;
     @Basic(optional = false)
     @Lob
     @Column(name = "COM_EMAIL_TEMPLATE_PASSWORD")
-    private Byte[] emailTemplatePassword;
+    private byte[] emailTemplatePassword;
     @Basic(optional = false)
     @Column(name = "COM_TOKEN_EMAIL")
     private String tokenEmail;
@@ -67,7 +67,7 @@ public class Company implements Serializable {
     @Basic(optional = false)
     @Lob
     @Column(name = "COM_EMAIL_TEMPLATE_ACTIVATE_USER")
-    private Byte[] emailTemplateActivateUser;
+    private byte[] emailTemplateActivateUser;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "company")
     private List<Skill> skillList;
     @OneToMany(mappedBy = "company")
@@ -84,7 +84,7 @@ public class Company implements Serializable {
         this.id = id;
     }
 
-    public Company(Long id, String name, String email, Byte[] logo, Byte[] emailTemplatePassword, String tokenEmail, Long version, Byte[] emailTemplateActivateUser) {
+    public Company(Long id, String name, String email, byte[] logo, byte[] emailTemplatePassword, String tokenEmail, Long version, byte[] emailTemplateActivateUser) {
         this.id = id;
         this.name = name;
         this.email = email;
@@ -134,19 +134,19 @@ public class Company implements Serializable {
         this.email = email;
     }
 
-    public Byte[] getLogo() {
+    public byte[] getLogo() {
         return logo;
     }
 
-    public void setLogo(Byte[] logo) {
+    public void setLogo(byte[] logo) {
         this.logo = logo;
     }
 
-    public Byte[] getEmailTemplatePassword() {
+    public byte[] getEmailTemplatePassword() {
         return emailTemplatePassword;
     }
 
-    public void setEmailTemplatePassword(Byte[] emailTemplatePassword) {
+    public void setEmailTemplatePassword(byte[] emailTemplatePassword) {
         this.emailTemplatePassword = emailTemplatePassword;
     }
 
@@ -166,11 +166,11 @@ public class Company implements Serializable {
         this.version = version;
     }
 
-    public Byte[] getEmailTemplateActivateUser() {
+    public byte[] getEmailTemplateActivateUser() {
         return emailTemplateActivateUser;
     }
 
-    public void setEmailTemplateActivateUser(Byte[] emailTemplateActivateUser) {
+    public void setEmailTemplateActivateUser(byte[] emailTemplateActivateUser) {
         this.emailTemplateActivateUser = emailTemplateActivateUser;
     }
 
