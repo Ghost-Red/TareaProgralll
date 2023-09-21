@@ -36,6 +36,15 @@ public class EmployeeService {
     @PersistenceContext(unitName = "TareaWsPU")
     private EntityManager em;
 
+    private void setForeignsAtributes(Employee employee, EmployeeDto employeeDto) {
+        if (employeeDto.getJob().getId() != null) {
+            employee.setJob(em.find(Job.class, employeeDto.getJob().getId()));
+        }
+        if (employeeDto.getCompany().getId() != null) {
+            employee.setCompany(em.find(Company.class, employeeDto.getCompany().getId()));
+        }
+    }
+
     public Respuesta getEmployee(Long id) {
         try {
             Query qryEmployee = em.createNamedQuery("Employee.findById", Employee.class);
@@ -58,23 +67,21 @@ public class EmployeeService {
 
     public Respuesta saveEmployee(EmployeeDto employeeDto) {
         try {
-            Employee empleado;
+            Employee employee;
             if (employeeDto.getId() != null && employeeDto.getId() > 0) {
-                empleado = em.find(Employee.class, employeeDto.getId());
-                if (empleado == null) {
+                employee = em.find(Employee.class, employeeDto.getId());
+                if (employee == null) {
                     return new Respuesta(false, CodigoRespuesta.ERROR_NOENCONTRADO, "No se encrontró el empleado a modificar.", "guardarEmpleado NoResultException");
                 }
-                empleado.updateEmployee(employeeDto);
-                empleado = em.merge(empleado);
+                employee.updateEmployee(employeeDto);
+                employee = em.merge(employee);
             } else {
-                empleado = new Employee(employeeDto);
-                empleado.setJob(em.find(Job.class, employeeDto.getJob().getId()));
-                empleado.setCompany(em.find(Company.class, employeeDto.getCompany().getId()));
-                //empleado.getJob().updateJob(employeeDto.getJob());
-                em.persist(empleado);
+                employee = new Employee(employeeDto);
+                setForeignsAtributes(employee, employeeDto);
+                em.persist(employee);
             }
             em.flush();//si hay error lo marca aqui dentro
-            return new Respuesta(true, CodigoRespuesta.CORRECTO, "", "", "Empleado", new EmployeeDto(empleado));
+            return new Respuesta(true, CodigoRespuesta.CORRECTO, "", "", "Empleado", new EmployeeDto(employee));
         } catch (Exception ex) {
             LOG.log(Level.SEVERE, "Ocurrio un error al guardar el empleado.", ex);
             return new Respuesta(false, CodigoRespuesta.ERROR_INTERNO, "Ocurrio un error al guardar el empleado.", "guardarEmpleado " + ex.getMessage());
@@ -103,7 +110,7 @@ public class EmployeeService {
             return new Respuesta(false, CodigoRespuesta.ERROR_INTERNO, "Ocurrio un error al eliminar el empleado.", "eliminarEmpleado " + ex.getMessage());
         }
     }
-    
+
     public Respuesta activateEmployee(Long id) {
         try {
             Employee employee;
@@ -127,8 +134,8 @@ public class EmployeeService {
             return new Respuesta(false, CodigoRespuesta.ERROR_INTERNO, "Ocurrio un error al activar el empleado.", "activarEmpleado " + ex.getMessage());
         }
     }
-    
-    public Respuesta validateUser(String email, String password){
+
+    public Respuesta validateUser(String email, String password) {
         try {
             Query qryActividad = em.createNamedQuery("Employee.findByEmailPassword", Employee.class);
             qryActividad.setParameter("email", email);
