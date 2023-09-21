@@ -28,6 +28,12 @@ public class CompanyController {
         return (CompanyDto) res.getResultado("Company");
     }
 
+    @WebMethod(operationName = "getCompanyByName")
+    public CompanyDto getCompanyByName(@WebParam(name = "name") String name) {
+        Respuesta res = companyService.getCompanyByName(name);
+        return (CompanyDto) res.getResultado("Company");
+    }
+
     @WebMethod(operationName = "saveCompany")
     public boolean saveCompany(CompanyDto company) {
         Respuesta res = companyService.saveCompany(company);
