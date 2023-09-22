@@ -51,4 +51,10 @@ public class EmployeeController {
         Respuesta res = employeeService.validateUser(email, password);
         return (EmployeeDto) res.getResultado("Employee");
     }
+    
+    @WebMethod(operationName = "validateUserForPassword")
+    public EmployeeDto getEmployeeByEmail(@WebParam(name = "email") String email){
+        Respuesta res = employeeService.getEmployeeByEmail(email);
+        return (EmployeeDto) res.getResultado("Employee");
+    }
 }
