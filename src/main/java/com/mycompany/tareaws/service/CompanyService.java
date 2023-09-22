@@ -87,7 +87,8 @@ public class CompanyService {
                 em.persist(company);
             }
             em.flush();//si hay error lo marca aqui dentro
-            return new Respuesta(true, CodigoRespuesta.CORRECTO, "", "", "Company", new CompanyDto(company));
+            companyDto.setId(company.getId());
+            return new Respuesta(true, CodigoRespuesta.CORRECTO, "", "", "Company", companyDto);
         } catch (Exception ex) {
             LOG.log(Level.SEVERE, "Ocurrio un error al guardar la compañia.", ex);
             return new Respuesta(false, CodigoRespuesta.ERROR_INTERNO, "Ocurrio un error al guardar la compañia.", "saveCompany " + ex.getMessage());

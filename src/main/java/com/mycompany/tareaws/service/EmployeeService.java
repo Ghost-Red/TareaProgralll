@@ -81,7 +81,8 @@ public class EmployeeService {
                 em.persist(employee);
             }
             em.flush();//si hay error lo marca aqui dentro
-            return new Respuesta(true, CodigoRespuesta.CORRECTO, "", "", "Empleado", new EmployeeDto(employee));
+            employeeDto.setId(employee.getId());
+            return new Respuesta(true, CodigoRespuesta.CORRECTO, "", "", "Employee", employeeDto);
         } catch (Exception ex) {
             LOG.log(Level.SEVERE, "Ocurrio un error al guardar el empleado.", ex);
             return new Respuesta(false, CodigoRespuesta.ERROR_INTERNO, "Ocurrio un error al guardar el empleado.", "guardarEmpleado " + ex.getMessage());
