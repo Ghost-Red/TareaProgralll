@@ -29,9 +29,9 @@ public class EmployeeController {
     }
 
     @WebMethod(operationName = "saveEmployee")
-    public boolean saveEmployee(EmployeeDto employee) {
+    public EmployeeDto saveEmployee(EmployeeDto employee) {
         Respuesta res = employeeService.saveEmployee(employee);
-        return res.getEstado();
+        return (EmployeeDto) res.getResultado("Employee");
     }
 
     @WebMethod(operationName = "deleteEmployee")

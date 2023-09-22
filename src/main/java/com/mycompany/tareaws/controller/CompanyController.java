@@ -35,9 +35,9 @@ public class CompanyController {
     }
 
     @WebMethod(operationName = "saveCompany")
-    public boolean saveCompany(CompanyDto company) {
+    public CompanyDto saveCompany(CompanyDto company) {
         Respuesta res = companyService.saveCompany(company);
-        return res.getEstado();
+        return (CompanyDto) res.getResultado("Company");
     }
 
     @WebMethod(operationName = "deleteCompany")
