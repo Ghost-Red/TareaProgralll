@@ -129,7 +129,7 @@ public class CompanyDto {
         this.email = email;
     }
 
-    //@XmlElement(name = "logo")
+    @XmlElement(name = "logo")
     public byte[] getLogo() {
         return logo;
     }
@@ -138,7 +138,7 @@ public class CompanyDto {
         this.logo = logo;
     }
 
-    //@XmlElement(name = "emailTemplatePassword")
+    @XmlElement(name = "emailTemplatePassword")
     public byte[] getEmailTemplatePassword() {
         return emailTemplatePassword;
     }
@@ -156,7 +156,7 @@ public class CompanyDto {
         this.tokenEmail = tokenEmail;
     }
 
-    //@XmlElement(name = "emailTemplateActivateUser")
+    @XmlElement(name = "emailTemplateActivateUser")
     public byte[] getEmailTemplateActivateUser() {
         return emailTemplateActivateUser;
     }
