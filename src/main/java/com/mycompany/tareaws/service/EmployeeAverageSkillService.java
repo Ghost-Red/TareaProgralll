@@ -6,7 +6,9 @@ package com.mycompany.tareaws.service;
 
 import com.mycompany.tareaws.model.EmployeeAverageSkill;
 import com.mycompany.tareaws.model.EmployeeAverageSkillDto;
+import com.mycompany.tareaws.model.EmployeeEvaluationRelation;
 import com.mycompany.tareaws.model.EmployeeEvaluationRelationDto;
+import com.mycompany.tareaws.model.Skill;
 import com.mycompany.tareaws.model.SkillDto;
 import com.mycompany.tareaws.util.CodigoRespuesta;
 import com.mycompany.tareaws.util.Respuesta;
@@ -33,6 +35,15 @@ public class EmployeeAverageSkillService {
 
     @PersistenceContext(unitName = "TareaWsPU")
     private EntityManager em;
+
+    public void setForeignAtributtes(EmployeeAverageSkill employeeAverageSkill, EmployeeAverageSkillDto employeeAverageSkillDto) {
+        if (employeeAverageSkillDto.getEmployeeEvaluationRelation().getId() != null) {
+            employeeAverageSkill.setEmployeeEvaluationRelation(em.find(EmployeeEvaluationRelation.class, employeeAverageSkillDto.getEmployeeEvaluationRelation().getId()));
+        }
+        if (employeeAverageSkillDto.getSkill().getId() != null) {
+            employeeAverageSkill.setSkill(em.find(Skill.class, employeeAverageSkillDto.getSkill().getId()));
+        }
+    }
 
     public Respuesta getEmployeeAverageSkill(Long id) {
         try {
@@ -66,6 +77,7 @@ public class EmployeeAverageSkillService {
                 employeeAverageSkill = em.merge(employeeAverageSkill);
             } else {
                 employeeAverageSkill = new EmployeeAverageSkill(employeeAverageSkillDto);
+                setForeignAtributtes(employeeAverageSkill, employeeAverageSkillDto);
                 em.persist(employeeAverageSkill);
             }
             em.flush();//si hay error lo marca aqui dentro
