@@ -29,9 +29,9 @@ public class SkillController {
     }
 
     @WebMethod(operationName = "saveSkill")
-    public boolean saveSkill(SkillDto skill) {
+    public SkillDto saveSkill(SkillDto skill) {
         Respuesta res = skillService.saveSkill(skill);
-        return res.getEstado();
+        return (SkillDto) res.getResultado("Skill");
     }
 
     @WebMethod(operationName = "deleteSkill")

@@ -29,9 +29,9 @@ public class EvaluationController {
     }
 
     @WebMethod(operationName = "saveEvaluation")
-    public boolean saveEvaluation(EvaluationDto evaluation) {
+    public EvaluationDto saveEvaluation(EvaluationDto evaluation) {
         Respuesta res = evaluationService.saveEvaluation(evaluation);
-        return res.getEstado();
+        return (EvaluationDto) res.getResultado("Evaluation");
     }
 
     @WebMethod(operationName = "deleteEvaluation")

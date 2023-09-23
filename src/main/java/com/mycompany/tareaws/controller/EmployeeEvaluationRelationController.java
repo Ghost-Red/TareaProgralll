@@ -29,9 +29,9 @@ public class EmployeeEvaluationRelationController {
     }
 
     @WebMethod(operationName = "saveEmployeeEvaluationRelation")
-    public boolean saveEmployeeEvaluationRelation(EmployeeEvaluationRelationDto employeeEvaluationRelation) {
+    public EmployeeEvaluationRelationDto saveEmployeeEvaluationRelation(EmployeeEvaluationRelationDto employeeEvaluationRelation) {
         Respuesta res = employeeEvaluationRelationService.saveEmployeeEvaluationRelation(employeeEvaluationRelation);
-        return res.getEstado();
+        return (EmployeeEvaluationRelationDto) res.getResultado("EmployeeEvaluationRelation");
     }
 
     @WebMethod(operationName = "deleteEmployeeEvaluationRelation")
