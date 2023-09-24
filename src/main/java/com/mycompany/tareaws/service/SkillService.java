@@ -4,6 +4,7 @@
  */
 package com.mycompany.tareaws.service;
 
+import com.mycompany.tareaws.model.Company;
 import com.mycompany.tareaws.model.CompanyDto;
 import com.mycompany.tareaws.model.Skill;
 import com.mycompany.tareaws.model.SkillDto;
@@ -33,6 +34,11 @@ public class SkillService {
     @PersistenceContext(unitName = "TareaWsPU")
     private EntityManager em;
 
+    private void setForeignAtributtes(Skill skill, SkillDto skillDto){
+        if (skillDto.getCompany().getId() != null){
+            skill.setCompany(em.find(Company.class, skillDto.getCompany().getId()));
+        }
+    }
     public Respuesta getSkill(Long id) {
         try {
             Query qrySkill = em.createNamedQuery("Skill.findById", Skill.class);
@@ -66,6 +72,7 @@ public class SkillService {
                 skill = em.merge(skill);
             } else {
                 skill = new Skill(skillDto);
+                setForeignAtributtes(skill, skillDto);
                 em.persist(skill);
             }
             em.flush();//si hay error lo marca aqui dentro

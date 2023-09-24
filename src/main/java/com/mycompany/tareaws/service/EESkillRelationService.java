@@ -6,7 +6,9 @@ package com.mycompany.tareaws.service;
 
 import com.mycompany.tareaws.model.EESkillRelation;
 import com.mycompany.tareaws.model.EESkillRelationDto;
+import com.mycompany.tareaws.model.EmployeeEvaluatorRelation;
 import com.mycompany.tareaws.model.EmployeeEvaluatorRelationDto;
+import com.mycompany.tareaws.model.Skill;
 import com.mycompany.tareaws.model.SkillDto;
 import com.mycompany.tareaws.util.CodigoRespuesta;
 import com.mycompany.tareaws.util.Respuesta;
@@ -34,6 +36,14 @@ public class EESkillRelationService {
     @PersistenceContext(unitName = "TareaWsPU")
     private EntityManager em;
 
+    private void setForeignsAtributes(EESkillRelation eESkillRelation, EESkillRelationDto eESkillRelationDto){
+        if (eESkillRelationDto.getEvaluatedSkill().getId() != null){
+            eESkillRelation.setEvaluatedSkill(em.find(Skill.class, eESkillRelationDto.getEvaluatedSkill().getId()));
+        }
+        if (eESkillRelationDto.getEmployeeEvaluatorRelation().getId() != null){
+            eESkillRelation.setEmployeeEvaluatorRelation(em.find(EmployeeEvaluatorRelation.class, eESkillRelationDto.getEmployeeEvaluatorRelation().getId()));
+        }
+    }
     public Respuesta getEESkillRelation(Long id) {
         try {
             Query qryEESkillRelation = em.createNamedQuery("EESkillRelation.findById", EESkillRelation.class);
@@ -65,6 +75,7 @@ public class EESkillRelationService {
                 eESkillRelation = em.merge(eESkillRelation);
             } else {
                 eESkillRelation = new EESkillRelation(eESkillRelationDto);
+                setForeignsAtributes(eESkillRelation, eESkillRelationDto);
                 em.persist(eESkillRelation);
             }
             em.flush();//si hay error lo marca aqui dentro

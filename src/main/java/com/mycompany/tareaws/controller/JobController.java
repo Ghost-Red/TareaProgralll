@@ -29,9 +29,9 @@ public class JobController {
     }
 
     @WebMethod(operationName = "saveJob")
-    public boolean saveJob(JobDto job) {
+    public JobDto saveJob(JobDto job) {
         Respuesta res = jobService.saveJob(job);
-        return res.getEstado();
+        return (JobDto) res.getResultado("Job");
     }
 
     @WebMethod(operationName = "deleteJob")

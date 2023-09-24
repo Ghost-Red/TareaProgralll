@@ -4,8 +4,8 @@
  */
 package com.mycompany.tareaws.service;
 
-import com.mycompany.tareaws.model.EmployeeDto;
-import com.mycompany.tareaws.model.EmployeeEvaluationRelationDto;
+import com.mycompany.tareaws.model.Employee;
+import com.mycompany.tareaws.model.EmployeeEvaluationRelation;
 import com.mycompany.tareaws.model.EmployeeEvaluatorRelation;
 import com.mycompany.tareaws.model.EmployeeEvaluatorRelationDto;
 import com.mycompany.tareaws.util.CodigoRespuesta;
@@ -34,6 +34,14 @@ public class EmployeeEvaluatorRelationService {
     @PersistenceContext(unitName = "TareaWsPU")
     private EntityManager em;
 
+    private void setForeignAtributtes(EmployeeEvaluatorRelation employeeEvaluatorRelation, EmployeeEvaluatorRelationDto employeeEvaluatorRelationDto){
+        if (employeeEvaluatorRelationDto.getEmployeeEvaluator().getId() != null){
+            employeeEvaluatorRelation.setEmployeeEvaluator(em.find(Employee.class, employeeEvaluatorRelationDto.getEmployeeEvaluator().getId()));
+        }
+        if (employeeEvaluatorRelationDto.getEmployeeEvaluated().getId() != null){
+            employeeEvaluatorRelation.setEmployeeEvaluated(em.find(EmployeeEvaluationRelation.class, employeeEvaluatorRelationDto.getEmployeeEvaluated().getId()));
+        }
+    }
     public Respuesta getEmployeeEvaluatorRelation(Long id) {
         try {
             Query qryEmployeeEvaluatorRelation = em.createNamedQuery("EmployeeEvaluatorRelation.findById", EmployeeEvaluatorRelation.class);
@@ -65,6 +73,7 @@ public class EmployeeEvaluatorRelationService {
                 employeeEvaluatorRelation = em.merge(employeeEvaluatorRelation);
             } else {
                 employeeEvaluatorRelation = new EmployeeEvaluatorRelation(employeeEvaluatorRelationDto);
+                setForeignAtributtes(employeeEvaluatorRelation, employeeEvaluatorRelationDto);
                 em.persist(employeeEvaluatorRelation);
             }
             em.flush();//si hay error lo marca aqui dentro

@@ -4,9 +4,11 @@
  */
 package com.mycompany.tareaws.service;
 
+import com.mycompany.tareaws.model.Employee;
 import com.mycompany.tareaws.model.EmployeeDto;
 import com.mycompany.tareaws.model.EmployeeEvaluationRelation;
 import com.mycompany.tareaws.model.EmployeeEvaluationRelationDto;
+import com.mycompany.tareaws.model.EvaluationJobRelation;
 import com.mycompany.tareaws.model.EvaluationJobRelationDto;
 import com.mycompany.tareaws.util.CodigoRespuesta;
 import com.mycompany.tareaws.util.Respuesta;
@@ -34,6 +36,14 @@ public class EmployeeEvaluationRelationService {
     @PersistenceContext(unitName = "TareaWsPU")
     private EntityManager em;
 
+    private void setForeignAtributtes(EmployeeEvaluationRelation employeeEvaluationRelation, EmployeeEvaluationRelationDto employeeEvaluationRelationDto){
+        if (employeeEvaluationRelationDto.getEmployeeEvaluated().getId() != null){
+            employeeEvaluationRelation.setEmployeeEvaluated(em.find(Employee.class, employeeEvaluationRelationDto.getEmployeeEvaluated().getId()));
+        }
+        if (employeeEvaluationRelationDto.getEvaluationJobRelation().getId() != null){
+            employeeEvaluationRelation.setEvaluationJobRelation(em.find(EvaluationJobRelation.class, employeeEvaluationRelationDto.getEvaluationJobRelation().getId()));
+        }
+    }
     public Respuesta getEmployeeEvaluationRelation(Long id) {
         try {
             Query qryEmployeeEvaluationRelation = em.createNamedQuery("EmployeeEvaluationRelation.findById", EmployeeEvaluationRelation.class);
@@ -65,6 +75,7 @@ public class EmployeeEvaluationRelationService {
                 employeeEvaluationRelation = em.merge(employeeEvaluationRelation);
             } else {
                 employeeEvaluationRelation = new EmployeeEvaluationRelation(employeeEvaluationRelationDto);
+                setForeignAtributtes(employeeEvaluationRelation, employeeEvaluationRelationDto);
                 em.persist(employeeEvaluationRelation);
             }
             em.flush();//si hay error lo marca aqui dentro

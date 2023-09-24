@@ -4,9 +4,11 @@
  */
 package com.mycompany.tareaws.service;
 
+import com.mycompany.tareaws.model.Evaluation;
 import com.mycompany.tareaws.model.EvaluationDto;
 import com.mycompany.tareaws.model.EvaluationJobRelation;
 import com.mycompany.tareaws.model.EvaluationJobRelationDto;
+import com.mycompany.tareaws.model.Job;
 import com.mycompany.tareaws.model.JobDto;
 import com.mycompany.tareaws.util.CodigoRespuesta;
 import com.mycompany.tareaws.util.Respuesta;
@@ -34,6 +36,14 @@ public class EvaluationJobRelationService {
     @PersistenceContext(unitName = "TareaWsPU")
     private EntityManager em;
 
+    private void setForeignAtributtes(EvaluationJobRelation evaluationJobRelation, EvaluationJobRelationDto evaluationJobRelationDto){
+        if (evaluationJobRelationDto.getEvaluation().getId() != null){
+            evaluationJobRelation.setEvaluation(em.find(Evaluation.class, evaluationJobRelationDto.getEvaluation().getId()));
+        }
+        if (evaluationJobRelationDto.getJob().getId() != null){
+            evaluationJobRelation.setJob(em.find(Job.class, evaluationJobRelationDto.getJob().getId()));
+        }
+    }
     public Respuesta getEvaluationJobRelation(Long id) {
         try {
             Query qryEvaluationJobRelation = em.createNamedQuery("EvaluationJobRelation.findById", EvaluationJobRelation.class);
@@ -66,6 +76,7 @@ public class EvaluationJobRelationService {
                 evaluationJobRelation = em.merge(evaluationJobRelation);
             } else {
                 evaluationJobRelation = new EvaluationJobRelation(evaluationJobRelationDto);
+                setForeignAtributtes(evaluationJobRelation, evaluationJobRelationDto);
                 em.persist(evaluationJobRelation);
             }
             em.flush();//si hay error lo marca aqui dentro

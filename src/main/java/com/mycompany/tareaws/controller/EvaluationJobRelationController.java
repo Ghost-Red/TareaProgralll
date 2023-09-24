@@ -16,7 +16,7 @@ import jakarta.jws.WebParam;
  *
  * @author grana
  */
-@WebService(serviceName = "EvaluationJobRelationJobRelationController")
+@WebService(serviceName = "EvaluationJobRelationController")
 public class EvaluationJobRelationController {
 
     @EJB
@@ -29,9 +29,9 @@ public class EvaluationJobRelationController {
     }
 
     @WebMethod(operationName = "saveEvaluationJobRelation")
-    public boolean saveEvaluationJobRelation(EvaluationJobRelationDto evaluationJobRelation) {
+    public EvaluationJobRelationDto saveEvaluationJobRelation(EvaluationJobRelationDto evaluationJobRelation) {
         Respuesta res = evaluationJobRelationService.saveEvaluationJobRelation(evaluationJobRelation);
-        return res.getEstado();
+        return (EvaluationJobRelationDto) res.getResultado("EvaluationJobRelation");
     }
 
     @WebMethod(operationName = "deleteEvaluationJobRelation")

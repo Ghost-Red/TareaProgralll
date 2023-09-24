@@ -29,9 +29,9 @@ public class EESkillRelationController {
     }
 
     @WebMethod(operationName = "saveEESkillRelation")
-    public boolean saveEESkillRelation(EESkillRelationDto eESkillRelation) {
+    public EESkillRelationDto saveEESkillRelation(EESkillRelationDto eESkillRelation) {
         Respuesta res = eESkillRelationService.saveEESkillRelation(eESkillRelation);
-        return res.getEstado();
+        return (EESkillRelationDto) res.getResultado("EESkillRelation");
     }
 
     @WebMethod(operationName = "deleteEESkillRelation")

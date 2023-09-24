@@ -4,6 +4,7 @@
  */
 package com.mycompany.tareaws.service;
 
+import com.mycompany.tareaws.model.Company;
 import com.mycompany.tareaws.model.CompanyDto;
 import com.mycompany.tareaws.model.Evaluation;
 import com.mycompany.tareaws.model.EvaluationDto;
@@ -35,6 +36,11 @@ public class EvaluationService {
     @PersistenceContext(unitName = "TareaWsPU")
     private EntityManager em;
 
+    private void setForeignAtributtes(Evaluation evaluation, EvaluationDto evaluationDto){
+        if (evaluationDto.getCompany().getId() != null){
+            evaluation.setCompany(em.find(Company.class, evaluationDto.getCompany().getId()));
+        }
+    }
     public Respuesta getEvaluation(Long id) {
         try {
             Query qryEvaluation = em.createNamedQuery("Evaluation.findById", Evaluation.class);
@@ -66,6 +72,7 @@ public class EvaluationService {
                 evaluation = em.merge(evaluation);
             } else {
                 evaluation = new Evaluation(evaluationDto);
+                setForeignAtributtes(evaluation, evaluationDto);
                 em.persist(evaluation);
             }
             em.flush();//si hay error lo marca aqui dentro

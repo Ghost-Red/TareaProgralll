@@ -29,9 +29,9 @@ public class EmployeeAverageSkillController {
     }
 
     @WebMethod(operationName = "saveEmployeeAverageSkill")
-    public boolean saveEmployeeAverageSkill(EmployeeAverageSkillDto employeeAverageSkill) {
+    public EmployeeAverageSkillDto saveEmployeeAverageSkill(EmployeeAverageSkillDto employeeAverageSkill) {
         Respuesta res = employeeAverageSkillService.saveEmployeeAverageSkill(employeeAverageSkill);
-        return res.getEstado();
+        return (EmployeeAverageSkillDto) res.getResultado("EmployeeAverageSkill");
     }
 
     @WebMethod(operationName = "deleteEmployeeAverageSkill")
