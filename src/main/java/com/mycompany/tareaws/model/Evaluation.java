@@ -95,7 +95,6 @@ public class Evaluation implements Serializable {
         this.startDate = evaluation.getStartDate();
         this.finalDate = evaluation.getFinalDate();
         this.state = evaluation.getState();
-        this.company.updateCompany(evaluation.getCompany());
     }
 
     public Long getId() {
