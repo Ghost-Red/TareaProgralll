@@ -78,8 +78,6 @@ public class EmployeeEvaluationRelation implements Serializable {
     public void updateEmployeeEvaluationRelation(EmployeeEvaluationRelationDto employeeEvaluationRelationDto) {
         this.id = employeeEvaluationRelationDto.getId();
         this.employeeClasification = employeeEvaluationRelationDto.getEmployeeClasification();
-        this.employeeEvaluated.updateEmployee(employeeEvaluationRelationDto.getEmployeeEvaluated());
-        this.evaluationJobRelation.updateEvaluationJobRelation(employeeEvaluationRelationDto.getEvaluationJobRelation());
     }
 
     public Long getId() {
