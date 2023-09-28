@@ -11,6 +11,7 @@ import jakarta.ejb.EJB;
 import jakarta.jws.WebService;
 import jakarta.jws.WebMethod;
 import jakarta.jws.WebParam;
+import java.util.List;
 
 /**
  *
@@ -38,5 +39,11 @@ public class EvaluationJobRelationController {
     public boolean deleteEvaluationJobRelation(@WebParam(name = "id") Long id) {
         Respuesta res = evaluationJobRelationService.deleteEvaluationJobRelation(id);
         return res.getEstado();
+    }
+    
+    @WebMethod(operationName = "getEvaluationsJobRelationByEvalaution")
+    public List<EvaluationJobRelationDto> getEvaluationsJobRelationByEvalaution(@WebParam(name = "idEvaluation") Long idEvaluation) {
+        Respuesta res = evaluationJobRelationService.getEvaluationsJobRelationByEvalaution(idEvaluation);
+        return (List<EvaluationJobRelationDto>) res.getResultado("EvaluationsJobRelation");
     }
 }

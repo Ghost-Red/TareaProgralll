@@ -20,8 +20,11 @@ import jakarta.persistence.NonUniqueResultException;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.Query;
 import java.sql.SQLIntegrityConstraintViolationException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.stream.Stream;
 
 /**
  *
@@ -109,4 +112,29 @@ public class EvaluationJobRelationService {
             return new Respuesta(false, CodigoRespuesta.ERROR_INTERNO, "Ocurrio un error al eliminar la EvaluationJobRelation.", "deleteEvaluationJobRelation " + ex.getMessage());
         }
     }
+    
+    public Respuesta getEvaluationsJobRelationByEvalaution(Long idEvaluation) {
+        try {
+            Query qryEvaluationsJobRelation = em.createNamedQuery("EvaluationJobRelation.findAll", EvaluationJobRelation.class);
+            
+            List<EvaluationJobRelation> evaluationsJobRelation = new ArrayList<>();
+            List<EvaluationJobRelationDto> evaluationJobRelationDto = new ArrayList<>();
+            for (EvaluationJobRelation ejr : evaluationsJobRelation){
+                evaluationJobRelationDto.add(new EvaluationJobRelationDto(ejr));
+            }
+            Stream<EvaluationJobRelationDto> str = evaluationJobRelationDto.stream();
+            str.filter(x -> x.getEvaluation().getId() == idEvaluation);
+            
+            return new Respuesta(true, CodigoRespuesta.CORRECTO, "", "", "EvaluationsJobRelation", str.toList());
+        } catch (NoResultException ex) {
+            return new Respuesta(false, CodigoRespuesta.ERROR_NOENCONTRADO, "No existe una EvaluationJobRelation con el código ingresado.", "getEvaluationJobRelation NoResultException");
+        } catch (NonUniqueResultException ex) {
+            LOG.log(Level.SEVERE, "Ocurrio un error al consultar la EvaluationJobRelation.", ex);
+            return new Respuesta(false, CodigoRespuesta.ERROR_INTERNO, "Ocurrio un error al consultar la EvaluationJobRelation.", "getEvaluationJobRelation NonUniqueResultException");
+        } catch (Exception ex) {
+            LOG.log(Level.SEVERE, "Ocurrio un error al consultar la EvaluationJobRelation.", ex);
+            return new Respuesta(false, CodigoRespuesta.ERROR_INTERNO, "Ocurrio un error al consultar la EvaluationJobRelation.", "getEvaluationJobRelation " + ex.getMessage());
+        }
+    }
+    
 }
