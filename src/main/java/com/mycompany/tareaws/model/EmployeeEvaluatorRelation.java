@@ -90,8 +90,6 @@ public class EmployeeEvaluatorRelation implements Serializable {
     public void updateEmployeeEvaluatorRelation(EmployeeEvaluatorRelationDto employeeEvaluatorRelationDto) {
         this.employeeEvaluatorRelationType = employeeEvaluatorRelationDto.getEmployeeEvaluatorRelationType();
         this.feedback = employeeEvaluatorRelationDto.getFeedback();
-        this.employeeEvaluator.updateEmployee(employeeEvaluatorRelationDto.getEmployeeEvaluator());
-        this.employeeEvaluated.updateEmployeeEvaluationRelation(employeeEvaluatorRelationDto.getEmployeeEvaluated());
     }
 
     public Long getId() {
