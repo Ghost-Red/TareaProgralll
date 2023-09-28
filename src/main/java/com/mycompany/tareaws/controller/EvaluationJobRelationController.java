@@ -44,6 +44,6 @@ public class EvaluationJobRelationController {
     @WebMethod(operationName = "getEvaluationsJobRelationByEvalaution")
     public List<EvaluationJobRelationDto> getEvaluationsJobRelationByEvalaution(@WebParam(name = "idEvaluation") Long idEvaluation) {
         Respuesta res = evaluationJobRelationService.getEvaluationsJobRelationByEvalaution(idEvaluation);
-        return (List<EvaluationJobRelationDto>) res.getResultado("EvaluationsJobRelation");
+        return (List<EvaluationJobRelationDto>) res.getResultado("EvaluationJobRelationList");
     }
 }

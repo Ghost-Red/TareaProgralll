@@ -24,6 +24,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 /**
@@ -117,15 +118,18 @@ public class EvaluationJobRelationService {
         try {
             Query qryEvaluationsJobRelation = em.createNamedQuery("EvaluationJobRelation.findAll", EvaluationJobRelation.class);
             
-            List<EvaluationJobRelation> evaluationsJobRelation = new ArrayList<>();
-            List<EvaluationJobRelationDto> evaluationJobRelationDto = new ArrayList<>();
-            for (EvaluationJobRelation ejr : evaluationsJobRelation){
-                evaluationJobRelationDto.add(new EvaluationJobRelationDto(ejr));
+            List<EvaluationJobRelation> evaluationsJobRelationList = new ArrayList<>();
+            evaluationsJobRelationList.addAll(qryEvaluationsJobRelation.getResultList());
+            List<EvaluationJobRelationDto> evaluationJobRelationDtoList = new ArrayList<>();
+            for (EvaluationJobRelation evaluationsJobRelation : evaluationsJobRelationList){
+                EvaluationJobRelationDto evaluationsJobRelationDto = new EvaluationJobRelationDto(evaluationsJobRelation);
+                evaluationsJobRelationDto.setEvaluation(new EvaluationDto(evaluationsJobRelation.getEvaluation()));
+                evaluationsJobRelationDto.setJob(new JobDto(evaluationsJobRelation.getJob()));
+                evaluationJobRelationDtoList.add(evaluationsJobRelationDto);
             }
-            Stream<EvaluationJobRelationDto> str = evaluationJobRelationDto.stream();
-            str.filter(x -> x.getEvaluation().getId() == idEvaluation);
-            
-            return new Respuesta(true, CodigoRespuesta.CORRECTO, "", "", "EvaluationsJobRelation", str.toList());
+            Stream<EvaluationJobRelationDto> str = evaluationJobRelationDtoList.stream();
+            evaluationJobRelationDtoList = str.filter(x -> x.getEvaluation().getId() == idEvaluation).collect(Collectors.toList());
+            return new Respuesta(true, CodigoRespuesta.CORRECTO, "", "", "EvaluationJobRelationList", evaluationJobRelationDtoList);
         } catch (NoResultException ex) {
             return new Respuesta(false, CodigoRespuesta.ERROR_NOENCONTRADO, "No existe una EvaluationJobRelation con el código ingresado.", "getEvaluationJobRelation NoResultException");
         } catch (NonUniqueResultException ex) {
