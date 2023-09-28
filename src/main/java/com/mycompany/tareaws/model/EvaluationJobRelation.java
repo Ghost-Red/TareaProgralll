@@ -71,8 +71,6 @@ public class EvaluationJobRelation implements Serializable {
 
     public void updateEvaluationJobRelation(EvaluationJobRelationDto evaluationJobRelationDto) {
         this.id = evaluationJobRelationDto.getId();
-        this.evaluation.updateEvaluation(evaluationJobRelationDto.getEvaluation());
-        this.job.updateJob(evaluationJobRelationDto.getJob());
     }
 
     public Long getId() {
