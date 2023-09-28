@@ -20,8 +20,12 @@ import jakarta.persistence.NonUniqueResultException;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.Query;
 import java.sql.SQLIntegrityConstraintViolationException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  *
@@ -63,6 +67,35 @@ public class EmployeeEvaluationRelationService {
         }
     }
 
+    public Respuesta getEmployeeEvaluationRelationByEvaluationJobRelation(Long idEvaluationJobRelation) {
+        try {
+            Query qryEmployeeEvaluationRelation = em.createNamedQuery("EmployeeEvaluationRelation.findAll", EmployeeEvaluationRelation.class);
+            
+            List<EmployeeEvaluationRelation> employeeEvaluationRelationList = new ArrayList<>();
+            employeeEvaluationRelationList.addAll(qryEmployeeEvaluationRelation.getResultList());
+            List<EmployeeEvaluationRelationDto> employeeEvaluationRelationDtoList = new ArrayList<>();
+            
+            for (EmployeeEvaluationRelation employeeEvaluationRelation: employeeEvaluationRelationList){
+                EmployeeEvaluationRelationDto employeeEvaluationRelationDto = new EmployeeEvaluationRelationDto(employeeEvaluationRelation);
+                employeeEvaluationRelationDto.setEmployeeEvaluated(new EmployeeDto(employeeEvaluationRelation.getEmployeeEvaluated()));
+                employeeEvaluationRelationDto.setEvaluationJobRelation(new EvaluationJobRelationDto(employeeEvaluationRelation.getEvaluationJobRelation()));
+                employeeEvaluationRelationDtoList.add(employeeEvaluationRelationDto);
+            }
+            Stream<EmployeeEvaluationRelationDto> str = employeeEvaluationRelationDtoList.stream();
+            employeeEvaluationRelationDtoList = str.filter(x -> x.getEvaluationJobRelation().getId() == idEvaluationJobRelation).collect(Collectors.toList());
+            
+            return new Respuesta(true, CodigoRespuesta.CORRECTO, "", "", "EmployeeEvaluationRelationList", employeeEvaluationRelationDtoList);
+        } catch (NoResultException ex) {
+            return new Respuesta(false, CodigoRespuesta.ERROR_NOENCONTRADO, "No existe una EmployeeEvaluationRelation con el código ingresado.", "getEmployeeEvaluationRelation NoResultException");
+        } catch (NonUniqueResultException ex) {
+            LOG.log(Level.SEVERE, "Ocurrio un error al consultar la EmployeeEvaluationRelation.", ex);
+            return new Respuesta(false, CodigoRespuesta.ERROR_INTERNO, "Ocurrio un error al consultar la EmployeeEvaluationRelation.", "getEmployeeEvaluationRelation NonUniqueResultException");
+        } catch (Exception ex) {
+            LOG.log(Level.SEVERE, "Ocurrio un error al consultar la EmployeeEvaluationRelation.", ex);
+            return new Respuesta(false, CodigoRespuesta.ERROR_INTERNO, "Ocurrio un error al consultar la EmployeeEvaluationRelation.", "getEmployeeEvaluationRelation " + ex.getMessage());
+        }
+    }
+    
     public Respuesta saveEmployeeEvaluationRelation(EmployeeEvaluationRelationDto employeeEvaluationRelationDto) {
         try {
             EmployeeEvaluationRelation employeeEvaluationRelation;
