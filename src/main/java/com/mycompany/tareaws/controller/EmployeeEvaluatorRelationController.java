@@ -11,6 +11,7 @@ import jakarta.ejb.EJB;
 import jakarta.jws.WebMethod;
 import jakarta.jws.WebParam;
 import jakarta.jws.WebService;
+import java.util.List;
 
 /**
  *
@@ -27,7 +28,13 @@ public class EmployeeEvaluatorRelationController {
         Respuesta res = employeeEvaluatorRelationService.getEmployeeEvaluatorRelation(id);
         return (EmployeeEvaluatorRelationDto) res.getResultado("EmployeeEvaluatorRelation");
     }
-
+    
+    @WebMethod(operationName = "getEmployeeEvaluatorRelationByEmployeeEvaluationRelation")
+    public List<EmployeeEvaluatorRelationDto> getEmployeeEvaluatorRelationByEmployeeEvaluationRelation(@WebParam(name = "idEmployeeEvaluationRelation") Long idEmployeeEvaluationRelation) {
+        Respuesta res = employeeEvaluatorRelationService.getEmployeeEvaluatorRelationByEmployeeEvaluationRelation(idEmployeeEvaluationRelation);
+        return (List<EmployeeEvaluatorRelationDto>) res.getResultado("EmployeeEvaluatorRelationList");
+    }
+    
     @WebMethod(operationName = "saveEmployeeEvaluatorRelation")
     public EmployeeEvaluatorRelationDto saveEmployeeEvaluatorRelation(EmployeeEvaluatorRelationDto employeeEvaluatorRelation) {
         Respuesta res = employeeEvaluatorRelationService.saveEmployeeEvaluatorRelation(employeeEvaluatorRelation);

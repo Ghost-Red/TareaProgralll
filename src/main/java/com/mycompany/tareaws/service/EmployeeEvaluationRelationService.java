@@ -82,7 +82,8 @@ public class EmployeeEvaluationRelationService {
                 employeeEvaluationRelationDtoList.add(employeeEvaluationRelationDto);
             }
             Stream<EmployeeEvaluationRelationDto> str = employeeEvaluationRelationDtoList.stream();
-            employeeEvaluationRelationDtoList = str.filter(x -> x.getEvaluationJobRelation().getId() == idEvaluationJobRelation).collect(Collectors.toList());
+            employeeEvaluationRelationDtoList = str.filter(x -> x.getEvaluationJobRelation().getId() == idEvaluationJobRelation)
+                    .collect(Collectors.toList());
             
             return new Respuesta(true, CodigoRespuesta.CORRECTO, "", "", "EmployeeEvaluationRelationList", employeeEvaluationRelationDtoList);
         } catch (NoResultException ex) {
