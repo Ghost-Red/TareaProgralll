@@ -46,6 +46,8 @@ public class EmployeeEvaluatorRelation implements Serializable {
     private Long id;
     @Column(name = "EE_RELATION_TYPE")
     private String employeeEvaluatorRelationType;
+    @Column(name = "EE_EVALUATION_COMPLETE")
+    private String evaluationComplete;
     @Column(name = "EE_FEEDBACK")
     private String feedback;
     @Version
@@ -90,6 +92,15 @@ public class EmployeeEvaluatorRelation implements Serializable {
     public void updateEmployeeEvaluatorRelation(EmployeeEvaluatorRelationDto employeeEvaluatorRelationDto) {
         this.employeeEvaluatorRelationType = employeeEvaluatorRelationDto.getEmployeeEvaluatorRelationType();
         this.feedback = employeeEvaluatorRelationDto.getFeedback();
+        this.evaluationComplete = employeeEvaluatorRelationDto.getEvaluationComplete();
+    }
+
+    public String getEvaluationComplete() {
+        return evaluationComplete;
+    }
+
+    public void setEvaluationComplete(String evaluationComplete) {
+        this.evaluationComplete = evaluationComplete;
     }
 
     public Long getId() {

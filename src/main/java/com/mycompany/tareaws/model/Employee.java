@@ -14,6 +14,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.Lob;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.NamedQueries;
 import jakarta.persistence.NamedQuery;
@@ -88,6 +89,10 @@ public class Employee implements Serializable {
     @Basic(optional = false)
     @Column(name = "EMP_FORGOT_PASSWORD_STATE")
     private String forgotPasswordState;
+    @Basic(optional = false)
+    @Lob
+    @Column(name = "EMP_PHOTO")
+    private byte[] photo;
     @Version
     @Column(name = "EMP_VERSION")
     private Long version;
@@ -143,6 +148,15 @@ public class Employee implements Serializable {
         this.adminState = employee.getAdminState();
         this.activatedState = employee.getActivatedState();
         this.forgotPasswordState = employee.getForgotPasswordState();
+        this.photo = employee.getPhoto();
+    }
+
+    public byte[] getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(byte[] photo) {
+        this.photo = photo;
     }
 
     public Long getId() {

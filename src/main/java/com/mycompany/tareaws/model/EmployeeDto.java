@@ -28,6 +28,7 @@ public class EmployeeDto {
     private String adminState;
     private String activatedState;
     private String forgotPasswordState;
+    private byte[] photo;
     private CompanyDto company;
     private JobDto job;
     private boolean modificate;
@@ -65,7 +66,16 @@ public class EmployeeDto {
         setEmployeeEvaluationRelationList(employee.getEmployeeEvaluationRelationList());
         setEmployeeEvaluatorRelationList(employee.getEmployeeEvaluatorRelationList());
     }
+    
+    @XmlElement(name = "photo")
+    public byte[] getPhoto() {
+        return photo;
+    }
 
+    public void setPhoto(byte[] photo) {
+        this.photo = photo;
+    }
+    
     @XmlElement(name = "employeeEvaluationRelationList")
     public List<EmployeeEvaluationRelationDto> getEmployeeEvaluationRelationList() {
         return employeeEvaluationRelationList;

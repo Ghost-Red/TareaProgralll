@@ -58,6 +58,9 @@ public class Evaluation implements Serializable {
     @Column(name = "EVA_FINAL_DATE")
     @Temporal(TemporalType.TIMESTAMP)
     private Date finalDate;
+    @Column(name = "EVA_APPLICATION_DATE")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date applicationDate;
     @Basic(optional = false)
     @Column(name = "EVA_STATE")
     private String state;
@@ -94,9 +97,19 @@ public class Evaluation implements Serializable {
         this.title = evaluation.getTitle();
         this.startDate = evaluation.getStartDate();
         this.finalDate = evaluation.getFinalDate();
+        this.applicationDate = evaluation.getApplicationDate();
         this.state = evaluation.getState();
     }
 
+    public Date getApplicationDate() {
+        return applicationDate;
+    }
+
+    public void setApplicationDate(Date applicationDate) {
+        this.applicationDate = applicationDate;
+    }
+
+    
     public Long getId() {
         return id;
     }

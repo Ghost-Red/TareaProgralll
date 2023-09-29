@@ -21,6 +21,7 @@ public class EvaluationDto {
     private String title;
     private Date startDate;
     private Date finalDate;
+    private Date applicationDate;
     private String state;
     private CompanyDto company;
     private boolean modificate;
@@ -40,6 +41,7 @@ public class EvaluationDto {
             this.title = evaluation.getTitle();
             this.startDate = evaluation.getStartDate();
             this.finalDate = evaluation.getFinalDate();
+            this.applicationDate = evaluation.getApplicationDate();
             this.state = evaluation.getState();
         } else {
             company = null;
@@ -49,6 +51,15 @@ public class EvaluationDto {
     public void setForeignAtributes(Evaluation evaluation) {
         company = new CompanyDto(evaluation.getCompany());
         setEvaluationJobRelationList(evaluation.getEvaluationJobRelationList());
+    }
+
+    @XmlElement(name = "applicationDate")
+    public Date getApplicationDate() {
+        return applicationDate;
+    }
+
+    public void setApplicationDate(Date applicationDate) {
+        this.applicationDate = applicationDate;
     }
 
     @XmlElement(name = "evaluationJobRelationList")

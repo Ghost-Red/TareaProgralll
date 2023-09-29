@@ -19,6 +19,7 @@ public class EmployeeEvaluatorRelationDto {
     private Long id;
     private String employeeEvaluatorRelationType;
     private String feedback;
+    private String evaluationComplete;
     private EmployeeDto employeeEvaluator;
     private EmployeeEvaluationRelationDto employeeEvaluated;
     private boolean modificate;
@@ -37,6 +38,7 @@ public class EmployeeEvaluatorRelationDto {
             this.id = employeeEvaluatorRelation.getId();
             this.employeeEvaluatorRelationType = employeeEvaluatorRelation.getEmployeeEvaluatorRelationType();
             this.feedback = employeeEvaluatorRelation.getFeedback();
+            this.evaluationComplete = employeeEvaluatorRelation.getEvaluationComplete();
             this.employeeEvaluator = new EmployeeDto(employeeEvaluatorRelation.getEmployeeEvaluator());
             this.employeeEvaluated = new EmployeeEvaluationRelationDto(employeeEvaluatorRelation.getEmployeeEvaluated());
         } else {
@@ -60,6 +62,15 @@ public class EmployeeEvaluatorRelationDto {
         for (EESkillRelation eeSkillRelation : skillsEvaluatedList) {
             this.skillsEvaluatedList.add(new EESkillRelationDto(eeSkillRelation));
         }
+    }
+
+    @XmlElement (name = "evaluationComplete")
+    public String getEvaluationComplete() {
+        return evaluationComplete;
+    }
+
+    public void setEvaluationComplete(String evaluationComplete) {
+        this.evaluationComplete = evaluationComplete;
     }
 
     public Long getId() {
