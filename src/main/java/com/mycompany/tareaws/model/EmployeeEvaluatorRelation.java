@@ -58,7 +58,7 @@ public class EmployeeEvaluatorRelation implements Serializable {
     @JoinColumn(name = "EE_EMP_ID", referencedColumnName = "EMP_ID")
     @ManyToOne(optional = false)
     private Employee employeeEvaluator;
-    @JoinColumn(name = "EVA_EMPLOYEE_ID", referencedColumnName = "EER_ID")
+    @JoinColumn(name = "EE_EER_ID", referencedColumnName = "EER_ID")
     @ManyToOne(optional = false)
     private EmployeeEvaluationRelation employeeEvaluated;
 
