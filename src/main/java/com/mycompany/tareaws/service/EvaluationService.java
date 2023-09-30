@@ -22,6 +22,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  *
@@ -41,6 +43,7 @@ public class EvaluationService {
             evaluation.setCompany(em.find(Company.class, evaluationDto.getCompany().getId()));
         }
     }
+    
     public Respuesta getEvaluation(Long id) {
         try {
             Query qryEvaluation = em.createNamedQuery("Evaluation.findById", Evaluation.class);
@@ -59,7 +62,34 @@ public class EvaluationService {
             return new Respuesta(false, CodigoRespuesta.ERROR_INTERNO, "Ocurrio un error al consultar la evaluacion.", "getEvaluation " + ex.getMessage());
         }
     }
-
+    
+    public Respuesta getEvaluationByCompany(Long idCompany) {
+        try {
+            Query qryEvaluation = em.createNamedQuery("Evaluation.findAll", Evaluation.class);
+            
+            List<Evaluation> evaluationList = new ArrayList<>();
+            evaluationList.addAll(qryEvaluation.getResultList());
+            List<EvaluationDto> evaluationDtoList =new ArrayList<>();
+            for (Evaluation evaluation : evaluationList){
+                EvaluationDto evaluationDto = new EvaluationDto(evaluation);
+                evaluationDto.setCompany(new CompanyDto(evaluation.getCompany()));
+                evaluationDtoList.add(evaluationDto);
+            }
+            Stream<EvaluationDto> str = evaluationDtoList.stream();
+            evaluationDtoList = str.filter(x -> x.getCompany().getId() == idCompany).collect(Collectors.toList());
+            
+            return new Respuesta(true, CodigoRespuesta.CORRECTO, "", "", "EvaluationList", evaluationDtoList);
+        } catch (NoResultException ex) {
+            return new Respuesta(false, CodigoRespuesta.ERROR_NOENCONTRADO, "No existe una lista de evaluaciones con el código ingresado.", "getEvaluationByCompany NoResultException");
+        } catch (NonUniqueResultException ex) {
+            LOG.log(Level.SEVERE, "Ocurrio un error al consultar la lista de evaluaciones.", ex);
+            return new Respuesta(false, CodigoRespuesta.ERROR_INTERNO, "Ocurrio un error al consultar la lista de evaluaciones.", "getEvaluationByCompany NonUniqueResultException");
+        } catch (Exception ex) {
+            LOG.log(Level.SEVERE, "Ocurrio un error al la lista de evaluaciones.", ex);
+            return new Respuesta(false, CodigoRespuesta.ERROR_INTERNO, "Ocurrio un error al consultar la lista de evaluaciones.", "getEvaluationByCompany " + ex.getMessage());
+        }
+    }
+    
     public Respuesta saveEvaluation(EvaluationDto evaluationDto) {
         try {
             Evaluation evaluation;

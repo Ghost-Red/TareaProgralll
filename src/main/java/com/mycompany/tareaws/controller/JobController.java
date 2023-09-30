@@ -11,6 +11,7 @@ import jakarta.ejb.EJB;
 import jakarta.jws.WebMethod;
 import jakarta.jws.WebParam;
 import jakarta.jws.WebService;
+import java.util.List;
 
 /**
  *
@@ -27,7 +28,13 @@ public class JobController {
         Respuesta res = jobService.getJob(id);
         return (JobDto) res.getResultado("Job");
     }
-
+    
+    @WebMethod(operationName = "getJobByCompany")
+    public List<JobDto> getJobByCompany(@WebParam(name = "idCompany") Long idCompany) {
+        Respuesta res = jobService.getJobByCompany(idCompany);
+        return (List<JobDto>) res.getResultado("JobList");
+    }
+    
     @WebMethod(operationName = "saveJob")
     public JobDto saveJob(JobDto job) {
         Respuesta res = jobService.saveJob(job);

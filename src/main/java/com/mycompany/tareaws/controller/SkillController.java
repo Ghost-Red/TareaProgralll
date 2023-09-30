@@ -11,6 +11,7 @@ import jakarta.ejb.EJB;
 import jakarta.jws.WebMethod;
 import jakarta.jws.WebParam;
 import jakarta.jws.WebService;
+import java.util.List;
 
 /**
  *
@@ -27,7 +28,13 @@ public class SkillController {
         Respuesta res = skillService.getSkill(id);
         return (SkillDto) res.getResultado("Skill");
     }
-
+    
+    @WebMethod(operationName = "getSkillByCompany")
+    public List<SkillDto> getSkillByCompany(@WebParam(name = "idCompany") Long idCompany) {
+        Respuesta res = skillService.getSkillByCompany(idCompany);
+        return (List<SkillDto>) res.getResultado("SkillList");
+    }
+    
     @WebMethod(operationName = "saveSkill")
     public SkillDto saveSkill(SkillDto skill) {
         Respuesta res = skillService.saveSkill(skill);

@@ -18,8 +18,12 @@ import jakarta.persistence.NonUniqueResultException;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.Query;
 import java.sql.SQLIntegrityConstraintViolationException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  *
@@ -59,7 +63,35 @@ public class SkillService {
             return new Respuesta(false, CodigoRespuesta.ERROR_INTERNO, "Ocurrio un error al consultar la skill.", "getSkill " + ex.getMessage());
         }
     }
+    
+    public Respuesta getSkillByCompany(Long idCompany) {
+        try {
+            Query qrySkill = em.createNamedQuery("Skill.findAll", Skill.class);
+            
+            List<Skill> skillList = new ArrayList<>();
+            skillList.addAll(qrySkill.getResultList());
+            List<SkillDto> skillDtoList = new ArrayList<>();
+            for (Skill skill : skillList){
+                SkillDto skillDto = new SkillDto(skill);
+                skillDto.setJobList(skill.getJobList());
+                skillDtoList.add(skillDto);
+            }
+            Stream<SkillDto> str = skillDtoList.stream();
+            skillDtoList = str.filter(x -> x.getCompany().getId() == idCompany).collect(Collectors.toList());
 
+            return new Respuesta(true, CodigoRespuesta.CORRECTO, "", "", "SkillList", skillDtoList);
+
+        } catch (NoResultException ex) {
+            return new Respuesta(false, CodigoRespuesta.ERROR_NOENCONTRADO, "No existe una list de skills con el código ingresado.", "getSkillByCompany NoResultException");
+        } catch (NonUniqueResultException ex) {
+            LOG.log(Level.SEVERE, "Ocurrio un error al consultar la lista de skills.", ex);
+            return new Respuesta(false, CodigoRespuesta.ERROR_INTERNO, "Ocurrio un error al consultar la list de skills.", "getSkillByCompany NonUniqueResultException");
+        } catch (Exception ex) {
+            LOG.log(Level.SEVERE, "Ocurrio un error al consultar el skill.", ex);
+            return new Respuesta(false, CodigoRespuesta.ERROR_INTERNO, "Ocurrio un error al consultar la lista de skills.", "getSkillByCompany " + ex.getMessage());
+        }
+    }
+    
     public Respuesta saveSkill(SkillDto skillDto) {
         try {
             Skill skill;
