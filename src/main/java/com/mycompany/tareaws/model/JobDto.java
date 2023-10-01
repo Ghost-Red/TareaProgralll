@@ -38,6 +38,7 @@ public class JobDto {
             this.id = job.getId();
             this.name = job.getName();
             this.state = job.getState();
+            setForeignAtributes(job);
         } else {
             company = null;
         }
