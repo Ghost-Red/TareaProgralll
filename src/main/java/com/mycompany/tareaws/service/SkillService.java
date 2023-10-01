@@ -73,6 +73,7 @@ public class SkillService {
             List<SkillDto> skillDtoList = new ArrayList<>();
             for (Skill skill : skillList){
                 SkillDto skillDto = new SkillDto(skill);
+                skillDto.setCompany(new CompanyDto(skill.getCompany()));
                 skillDto.setJobList(skill.getJobList());
                 skillDtoList.add(skillDto);
             }
