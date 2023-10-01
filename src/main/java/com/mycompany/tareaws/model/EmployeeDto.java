@@ -58,6 +58,7 @@ public class EmployeeDto {
         this.adminState = employee.getAdminState();
         this.activatedState = employee.getActivatedState();
         this.forgotPasswordState = employee.getForgotPasswordState();
+        this.photo = employee.getPhoto();
     }
 
     public void setForeignAtributes(Employee employee) {
