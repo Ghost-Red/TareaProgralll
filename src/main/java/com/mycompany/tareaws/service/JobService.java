@@ -52,7 +52,6 @@ public class JobService {
 
             Job job = (Job) qryJob.getSingleResult();
             JobDto jobDto = new JobDto(job);
-            jobDto.setForeignAtributes(job);
             return new Respuesta(true, CodigoRespuesta.CORRECTO, "", "", "Job", jobDto);
         } catch (NoResultException ex) {
             return new Respuesta(false, CodigoRespuesta.ERROR_NOENCONTRADO, "No existe un puesto con el código ingresado.", "getJob NoResultException");
