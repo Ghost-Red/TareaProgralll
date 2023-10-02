@@ -15,7 +15,7 @@ import jakarta.xml.bind.annotation.XmlRootElement;
 public class EmployeeAverageSkillDto {
 
     private Long id;
-    private Long employeeSkillLvl;
+    private Double employeeSkillLvl;
     private EmployeeEvaluationRelationDto employeeEvaluationRelation;
     private SkillDto skill;
     private boolean modificate;
@@ -52,11 +52,11 @@ public class EmployeeAverageSkillDto {
     }
 
     @XmlElement(name = "employeeSkillLvl")
-    public Long getEmployeeSkillLvl() {
+    public Double getEmployeeSkillLvl() {
         return employeeSkillLvl;
     }
 
-    public void setEmployeeSkillLvl(Long employeeSkillLvl) {
+    public void setEmployeeSkillLvl(Double employeeSkillLvl) {
         this.employeeSkillLvl = employeeSkillLvl;
     }
 
