@@ -72,6 +72,7 @@ public class EmployeeService {
                     return new Respuesta(false, CodigoRespuesta.ERROR_NOENCONTRADO, "No se encrontró el empleado a modificar.", "guardarEmpleado NoResultException");
                 }
                 employee.updateEmployee(employeeDto);
+                employee.setJob(em.find(Job.class, employeeDto.getId()));
                 employee = em.merge(employee);
             } else {
                 employee = new Employee(employeeDto);
