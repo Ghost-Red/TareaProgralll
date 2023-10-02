@@ -20,8 +20,12 @@ import jakarta.persistence.NonUniqueResultException;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.Query;
 import java.sql.SQLIntegrityConstraintViolationException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  *
@@ -64,7 +68,35 @@ public class EmployeeAverageSkillService {
             return new Respuesta(false, CodigoRespuesta.ERROR_INTERNO, "Ocurrio un error al consultar la EmployeeAverageSkill.", "getEmployeeAverageSkill " + ex.getMessage());
         }
     }
-
+    
+    public Respuesta getEmployeeAverageSkillByEmployeeEvaluationRelation(Long idEmployeeEvaluationRelation) {
+        try {
+            Query qryEmployeeAverageSkill = em.createNamedQuery("EmployeeAverageSkill.findAll", EmployeeAverageSkill.class);
+            
+            List<EmployeeAverageSkill> employeeAverageSkillList = new ArrayList<>();
+            employeeAverageSkillList.addAll(qryEmployeeAverageSkill.getResultList());
+            List<EmployeeAverageSkillDto> employeeAverageSkillDtoList = new ArrayList<>();
+            for (EmployeeAverageSkill employeeAverageSkill : employeeAverageSkillList){
+                EmployeeAverageSkillDto employeeAverageSkillDto = new EmployeeAverageSkillDto(employeeAverageSkill);
+                employeeAverageSkillDto.setForeignAtributes(employeeAverageSkill);
+                employeeAverageSkillDtoList.add(employeeAverageSkillDto);
+            }
+            Stream<EmployeeAverageSkillDto> str = employeeAverageSkillDtoList.stream();
+            employeeAverageSkillDtoList = str.filter(x -> x.getEmployeeEvaluationRelation().getId() == idEmployeeEvaluationRelation)
+                    .collect(Collectors.toList());
+            
+            return new Respuesta(true, CodigoRespuesta.CORRECTO, "", "", "EmployeeAverageSkillList", employeeAverageSkillDtoList);
+        } catch (NoResultException ex) {
+            return new Respuesta(false, CodigoRespuesta.ERROR_NOENCONTRADO, "No existe una EmployeeAverageSkill con el código ingresado.", "getEmployeeAverageSkill NoResultException");
+        } catch (NonUniqueResultException ex) {
+            LOG.log(Level.SEVERE, "Ocurrio un error al consultar la EmployeeAverageSkill.", ex);
+            return new Respuesta(false, CodigoRespuesta.ERROR_INTERNO, "Ocurrio un error al consultar la EmployeeAverageSkill.", "getEmployeeAverageSkill NonUniqueResultException");
+        } catch (Exception ex) {
+            LOG.log(Level.SEVERE, "Ocurrio un error al consultar la EmployeeAverageSkill.", ex);
+            return new Respuesta(false, CodigoRespuesta.ERROR_INTERNO, "Ocurrio un error al consultar la EmployeeAverageSkill.", "getEmployeeAverageSkill " + ex.getMessage());
+        }
+    }
+    
     public Respuesta saveEmployeeAverageSkill(EmployeeAverageSkillDto employeeAverageSkillDto) {
         try {
             EmployeeAverageSkill employeeAverageSkill;

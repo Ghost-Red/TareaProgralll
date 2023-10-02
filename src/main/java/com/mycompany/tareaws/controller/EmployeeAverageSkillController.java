@@ -11,6 +11,7 @@ import jakarta.ejb.EJB;
 import jakarta.jws.WebMethod;
 import jakarta.jws.WebParam;
 import jakarta.jws.WebService;
+import java.util.List;
 
 /**
  *
@@ -27,7 +28,13 @@ public class EmployeeAverageSkillController {
         Respuesta res = employeeAverageSkillService.getEmployeeAverageSkill(id);
         return (EmployeeAverageSkillDto) res.getResultado("EmployeeAverageSkill");
     }
-
+    
+    @WebMethod(operationName = "getEmployeeAverageSkillByEmployeeEvaluationRelation")
+    public List<EmployeeAverageSkillDto> getEmployeeAverageSkillByEmployeeEvaluationRelation(@WebParam(name = "idEmployeeEvaluationRelation") Long idEmployeeEvaluationRelation) {
+        Respuesta res = employeeAverageSkillService.getEmployeeAverageSkillByEmployeeEvaluationRelation(idEmployeeEvaluationRelation);
+        return (List<EmployeeAverageSkillDto>) res.getResultado("EmployeeAverageSkillList");
+    }
+    
     @WebMethod(operationName = "saveEmployeeAverageSkill")
     public EmployeeAverageSkillDto saveEmployeeAverageSkill(EmployeeAverageSkillDto employeeAverageSkill) {
         Respuesta res = employeeAverageSkillService.saveEmployeeAverageSkill(employeeAverageSkill);
