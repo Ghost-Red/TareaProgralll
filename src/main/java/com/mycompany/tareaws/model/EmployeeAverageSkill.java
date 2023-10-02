@@ -41,7 +41,7 @@ public class EmployeeAverageSkill implements Serializable {
     @Column(name = "EAS_ID")
     private Long id;
     @Column(name = "EAS_EMPLOYEE_SKILL_LVL")
-    private Long skillAverageLvl;
+    private Double skillAverageLvl;
     @Version
     @Column(name = "EAS_VERSION")
     private Long version;
@@ -71,8 +71,6 @@ public class EmployeeAverageSkill implements Serializable {
     public void updateEmployeeAverageSkill(EmployeeAverageSkillDto employeeAverageSkillDto) {
         this.id = employeeAverageSkillDto.getId();
         this.skillAverageLvl = employeeAverageSkillDto.getEmployeeSkillLvl();
-        this.employeeEvaluationRelation.updateEmployeeEvaluationRelation(employeeAverageSkillDto.getEmployeeEvaluationRelation());
-        this.skill.updateSkill(employeeAverageSkillDto.getSkill());
     }
 
     public Long getId() {
@@ -83,11 +81,11 @@ public class EmployeeAverageSkill implements Serializable {
         this.id = id;
     }
 
-    public Long getSkillAverageLvl() {
+    public Double getSkillAverageLvl() {
         return skillAverageLvl;
     }
 
-    public void setSkillAverageLvl(Long skillAverageLvl) {
+    public void setSkillAverageLvl(Double skillAverageLvl) {
         this.skillAverageLvl = skillAverageLvl;
     }
 

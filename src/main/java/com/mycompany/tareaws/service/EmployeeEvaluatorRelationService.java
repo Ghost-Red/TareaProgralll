@@ -108,6 +108,7 @@ public class EmployeeEvaluatorRelationService {
                     return new Respuesta(false, CodigoRespuesta.ERROR_NOENCONTRADO, "No se encrontró la EmployeeEvaluatorRelation a modificar.", "saveEmployeeEvaluatorRelation NoResultException");
                 }
                 employeeEvaluatorRelation.updateEmployeeEvaluatorRelation(employeeEvaluatorRelationDto);
+                setForeignAtributtes(employeeEvaluatorRelation, employeeEvaluatorRelationDto);
                 employeeEvaluatorRelation = em.merge(employeeEvaluatorRelation);
             } else {
                 employeeEvaluatorRelation = new EmployeeEvaluatorRelation(employeeEvaluatorRelationDto);
