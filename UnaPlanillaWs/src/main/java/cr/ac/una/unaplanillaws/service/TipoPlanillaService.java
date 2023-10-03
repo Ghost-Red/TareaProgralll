@@ -11,23 +11,28 @@ import cr.ac.una.unaplanillaws.model.TipoPlanilla;
 import cr.ac.una.unaplanillaws.model.TipoPlanillaDto;
 import cr.ac.una.unaplanillaws.util.CodigoRespuesta;
 import cr.ac.una.unaplanillaws.util.Respuesta;
+import jakarta.ejb.LocalBean;
+import jakarta.ejb.Stateless;
 import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.logging.Level;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.NoResultException;
 import jakarta.persistence.NonUniqueResultException;
+import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.Query;
+import java.util.logging.Logger;
 
 /**
  *
  * @author Carlos
  */
-// TODO
+@Stateless
+@LocalBean
 public class TipoPlanillaService {
 
-    // TODO
+    private static final Logger LOG = Logger.getLogger(TipoPlanillaService.class.getName());
 
-    // TODO
+    @PersistenceContext(unitName="UnaPlanillaWsPU")
     private EntityManager em;
 
     public Respuesta getTipoPlanilla(Long id) {
@@ -45,10 +50,10 @@ public class TipoPlanillaService {
         } catch (NoResultException ex) {
             return new Respuesta(false, CodigoRespuesta.ERROR_NOENCONTRADO, "No existe un tipo de planilla con el código ingresado.", "getTipoPlanilla NoResultException");
         } catch (NonUniqueResultException ex) {
-            //LOG.log(Level.SEVERE, "Ocurrio un error al consultar el tipo de planilla.", ex);
+            LOG.log(Level.SEVERE, "Ocurrio un error al consultar el tipo de planilla.", ex);
             return new Respuesta(false, CodigoRespuesta.ERROR_INTERNO, "Ocurrio un error al consultar el tipo de planilla.", "getTipoPlanilla NonUniqueResultException");
         } catch (Exception ex) {
-            //LOG.log(Level.SEVERE, "Ocurrio un error al consultar el empleado.", ex);
+            LOG.log(Level.SEVERE, "Ocurrio un error al consultar el empleado.", ex);
             return new Respuesta(false, CodigoRespuesta.ERROR_INTERNO, "Ocurrio un error al consultar el tipo de planilla.", "getTipoPlanilla " + ex.getMessage());
         }
     }
